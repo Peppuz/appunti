@@ -1,0 +1,74 @@
+%File per gli appunti sull'Induzione
+\chapter{Induzione}
+L'induzione è un importante strumento per la definizione di nuovi insiemi,come
+ad esempio l'insieme delle FBF(Formule ben Formate), e la dimostrazione di determinate
+proprietà di un insieme.
+
+%Dimostrazione per induzione(Da migliorare)
+\section{Principio di Induzione}
+Il principio di Induzione si utilizza per dimostrare la correttezza di determinate
+proprietà dell'insieme dei numeri Naturali.
+
+Il principio di induzione viene definito nel seguente modo:\newline
+Data una proposizione $P(x)$ valida per $\forall x \in N$ bisogna:
+
+\begin{enumerate}
+  \item \textbf{Caso Base}: Verificare $P(i)$ con $i$ indicante i primi elementi della proposizione
+  \item \textbf{Passo Induttivo}: Supposto $P(x)$ vero  bisogna verificare la verità di $P(x+1)$
+\end{enumerate}
+
+Esempio:\newline
+Dimostrare tramite Induzione la formula $\displaystyle \sum_{i = 0} ^ n i = \frac{n(n + 1)}{2}$
+
+Dimostrazione \newline
+\textbf{Base} $n = 0 \quad \displaystyle \sum_{i = 0} ^ 0 i = \frac{0(0 + 1)}{2} \quad 0 = 0$ vero
+
+\textbf{Ipotesi Induttiva}: $\displaystyle \sum_{i = 0} ^ n i = \frac{n(n+1)}{2}$ \newline
+\textbf{Tesi Induttiva}: $\displaystyle \sum_{i = 0} ^ {n+1} i = \frac{(n+1)(n+2)}{2}$
+
+\begin{equation*}
+\begin{split}
+  \sum_{i = 0}^n+1 i & = \sum_{i = 0} ^ n + (n+1) \\
+                     & = \frac{n(n+1)}{2} + (n+1) \\
+                     & = \frac{n(n+1) + 2(n+1)}{2} \\
+                     & = \frac{(n+1)(n+2)}{2} \\
+\end{split}
+\end{equation*}
+
+Esempio:\newline
+Dimostrare tramite Induzione la formula $\displaystyle \sum_{i = 1}^n 2i-1 = n^2$
+
+Dimostrazione\newline
+\textbf{Base} $n = 1 \quad \displaystyle \sum_{i = 1}^1 2i-1 = 1^2 \quad 1 = 1$ è vero
+
+\textbf{Ipotesi Induttiva}: $\displaystyle \sum_{i = 1}^n 2i-1 = n^2$ \newline
+\textbf{Tesi Induttiva}: $\displaystyle \sum_{i = 1}^{n+1} 2i-1 = (n+1)^2$
+
+\begin{equation*}
+\begin{split}
+  \sum_{i=1}^{n+1} 2i-1 & = \sum_{i=1}^n 2i-1 + 2(n+1) - 1 \\
+         & = n^2 + 2n + 1 = (n+1)^2 \\
+\end{split}
+\end{equation*}
+
+
+%Definizione induttiva
+\section{Definizione Induttiva}
+L'induzione permette anche di definire nuovi insiemi nel seguente modo:
+
+\begin{enumerate}
+  \item si definisce un insieme di "oggetti base" appartenenti all'insieme.
+  \item si definisce un insieme di operazioni di costruzione che, applicate ad elementi
+        dell'insieme, producono nuovi elementi dell'insieme.
+  \item nient'altro appartiene all'insieme definito.
+\end{enumerate}
+
+%Inserire Esempi
+Esempio:Definizione induttiva di numeri naturali\newline
+
+\begin{enumerate}
+  \item $0 \in N$
+  \item Se $x \in N$ allora $s(x) \in N$
+  \item Nient'altro appartiene ai numeri naturali
+\end{enumerate}
+%Stringhe

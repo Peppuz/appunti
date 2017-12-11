@@ -1,0 +1,13 @@
+Insiemi
+
+
+Induzione
+Esempi sulla definizione Induttiva
+Manca la Ricorsione
+Mancano la definizione induttiva di Stringhe.
+
+Logica proposizionale
+Manca Sistemi Deduttivi,Tableau e Sottoformula
+Migliorare definizione di Sintassi e Semantica
+
+Logica Preposizionale

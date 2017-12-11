@@ -1,0 +1,300 @@
+%File latex per il capitolo sulla logica proposizionale Classica
+\chapter{Logica Proposizionale}
+
+%Definizione di Logica
+La logica è lo studio	del ragionamento e dell’argomentazione e, in particolare,
+dei	procedimenti inferenziali, rivolti a chiarire	quali	procedimenti di pensiero
+siano	validi e quali no.
+
+Vi sono molteplici tipologie di logiche, come ad esempio la logica classica e le logiche costruttive,
+tutte accomunate di essere composte da 3 elementi:
+
+%Elementi di una Logica
+\begin{itemize}
+  \item \textbf{Linguaggio}:insieme di simboli utilizzati nella Logica per definire le cose
+  \item \textbf{Sintassi}:insieme di regole che determina quali elementi appartengono o meno al linguaggio
+  \item \textbf{Semantica}:permette di dare un significato alle formule del linguaggio e determinare
+        se rappresentano o meno la verità.
+\end{itemize}
+
+Noi ci occupiamo della logica Classica che si compone in \textsc{logica proposizionale} e
+\textit{logica predicativa}.
+
+La Logica proposizionale è un tipo di logica Classica che presenta come caratteristica quella
+di essere un linguaggio limitato in quanto si possono esprimere soltanto proposizioni senza
+avere la possibilità di estenderla a una classe di persone.
+
+\section{Linguaggio e Sintassi}
+Il linguaggio di una logica proposizionale è composto dai seguenti elementi:
+
+%Elementi linguaggio logica proposizionale
+\begin{itemize}
+  \item Variabili Proposizionali: $P,Q,R \dots$
+  \item Connettivi Proposizionali: $\land, \lor, \neg, \Rightarrow, \iff$
+  \item Simboli Ausiliari: (,)
+  \item Costanti: $T,F$
+\end{itemize}
+
+La sintassi di un linguaggio è composta da una serie di formule ben formate($FBF$) definite
+induttivamente nel seguente modo:
+
+%definizione formule ben formate
+\begin{enumerate}
+  \item Le costanti e le variabili proposizionali $\in FBF$.
+  \item Se $A$ e $B \in FBF$ allora $(A \land B)$,$(A \lor B)$,$(\neg A)$,$(A \Leftarrow B)$,
+        $(A \iff B)$,$TA$ e $FA$ sono delle formule ben formate.
+  \item nient'altro è una formula
+\end{enumerate}
+
+Esempio:\newline
+$(P \land Q) \in Fbf$  è una formula ben formata\newline
+$(PQ \land R) \not \in Fbf$ in quanto non si rispetta la sintassi del linguaggio definita.\newline
+
+%Manca Definizione delle sottoformule
+
+É possibile ridurre ed eliminare delle parentesi attraverso l'introduzione della
+precedenza tra gli operatori, che è definita come segue:\newline
+$\neg, \land, \lor, \Rightarrow,\iff$.
+
+In assenza di parentesi una formula va parentizzata privileggiando le sottoformule
+i cui connettivi principali hanno la precedenza più alta.\newline
+In caso di parità di precedenza vi è la convenzione di associare da destra a sinistra.
+
+Esempio:\newline
+$\neg A \land (\neg B \Rightarrow C) \lor D$ diventa
+$((\neg A) \land ((\neg B) \Rightarrow C) \lor D)$.
+
+%Semantica Logica Proposizionale
+\section{Semantica}
+%Cercare migliore definizione di Semantica
+La semantica di una logica consente di dare un significato alle formule del Linguaggio
+attraverso le tabelle di verità.\newline
+Si definisce $v(T) = 1$ e $v(F) = 0$ per cui $1$ rappresenta la verità mentre lo $0$
+la falsità di una variabile,sottoformula e formula.
+
+I connettivi della Logica Proposizionale hanno la seguente tabella di verità:\newline
+
+%Tabella di Verità degli operatori
+$\begin{array}{ccccccc}
+\toprule
+\text{A} & \text{B} & A \land B & A \lor B & \neg A & A \Rightarrow B & A \iff B \\
+\midrule
+    0 & 0 & 0 & 0 & 1 & 1 & 1 \\
+    0 & 1 & 0 & 1 & 1 & 1 & 0 \\
+    1 & 0 & 0 & 1 & 0 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 0 & 1 & 1 \\
+\bottomrule
+\end{array}$\newline
+
+Una formula nella logica proposizionale può essere di tre diversi tipi:
+
+%Tipologie di formule
+\begin{itemize}
+  \item Tautologica: la formula è soddisfatta da qualsiasi valutazione della formula
+  \item Soddisfacibile non Tautologica:la formula è soddisfatta da qualche valutazione
+        della formula ma non da tutte
+  \item Contaddizione: la formula non viene soddisfatta da qualsiasi valutazione della formula
+\end{itemize}
+
+Esempio:\newline
+Formula $A \land \neg A$ \quad contraddizione
+
+%Tabella di Verità
+$\begin{array}{ccc}
+\toprule A & \neg A & A \land \neg A \\
+\midrule
+        0 & 1 & 0 \\
+        1 & 0 & 0 \\
+\bottomrule
+\end{array}$\newpage
+
+Formula $Z = (A \land B) \lor C$  soddisfacibile non Tautologica
+
+%Tabella di Verità
+$\begin{array}{ccccc}
+\toprule A & B & C & A \land B & (A \land B) \lor C \\
+\midrule
+         0 & 0 & 0 & 0 & 0 \\
+         0 & 0 & 1 & 0 & 1 \\
+         0 & 1 & 0 & 0 & 0 \\
+         0 & 1 & 1 & 0 & 1 \\
+         1 & 0 & 0 & 0 & 0 \\
+         1 & 0 & 1 & 0 & 1 \\
+         1 & 1 & 0 & 1 & 1 \\
+         1 & 1 & 1 & 1 & 1 \\
+\bottomrule
+\end{array}$\newline
+
+Formula $X = (A \land B) \Rightarrow (\neg A \land C)$ \quad Soddisfacibile  non tautologica\newline
+
+%Tabella di Verità della formula X
+$\begin{array}{ccccccc}
+\toprule A & B & C & \neg A & A \land B & \neg A \land C & X\\
+\midrule
+         0 & 0 & 0 & 1 & 0 & 0 & 1 \\
+         0 & 0 & 1 & 1 & 0 & 1 & 1 \\
+         0 & 1 & 0 & 1 & 0 & 0 & 1 \\
+         0 & 1 & 1 & 1 & 0 & 1 & 1 \\
+         1 & 0 & 0 & 0 & 0 & 0 & 1 \\
+         1 & 0 & 1 & 0 & 0 & 0 & 1 \\
+         1 & 1 & 0 & 0 & 1 & 0 & 0 \\
+         1 & 1 & 1 & 0 & 1 & 0 & 0 \\
+\bottomrule
+\end{array}$ \newline
+
+Formula $Y = \neg(A \land B) \iff (A \lor B \Rightarrow C)$ soddisfacibile non Tautologica
+
+%Tabella di Verità
+$\begin{array}{cccccccc}
+\toprule
+A & B & C & A \land B & \neg(A \land B) & A \lor B & (A \lor B) \Rightarrow C & Y \\
+\midrule
+0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 \\
+0 & 0 & 1 & 0 & 1 & 0 & 1 & 1 \\
+0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 \\
+0 & 1 & 1 & 0 & 1 & 1 & 1 & 1 \\
+1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 \\
+1 & 0 & 1 & 0 & 1 & 1 & 1 & 1 \\
+1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 & 0 & 1 & 1 & 0 \\
+\bottomrule
+\end{array}$
+
+\section{Sistema Deduttivo}
+Il sistema deduttivo è un metodo di calcolo che manipola proposizioni, senza la
+necessità di ricorrere ad altri aspetti della logica(nessuna necessità di ricorrere all'interpretazione).\newline
+Nella logica proposizionale, tramite i teoremi di completezza e correttezza, esiste
+una corrispondenza tra le formule derivanti dal sistema deduttivo e le formule verificabili
+tramite la semantica della logica.
+
+I sistemi deduttivi della logica proposizionale sono i seguenti:
+
+\begin{itemize}
+  \item \textsc{Sistema deduttivo Hilbertiano}:non viene analizzato!!!
+  \item \textsc{Metodo dei Tableau}
+  \item \textsc{Risoluzione Proposizionale}:non viene analizzato!!!
+\end{itemize}
+
+(Da migliorare)(inserire definizione di dimostrazione e teorema)
+Una dimostrazione di una formula di una logica può venire tramite:
+
+\begin{itemize}
+  \item  \textbf{Metodo diretto}: Data un'ipotesi, attraverso una serie di passi
+          si riesce a dimostrare la correttezza della Tesi
+  \item \textbf{Metodo per assurdo}(non sempre accettato in tutte le logiche):
+        Si nega la tesi ed attraverso una serie di passi si riesce a dimostrare
+        la negazione delle ipotesi.
+\end{itemize}
+
+\subsection{Tableau Proposizionali}
+Il metodo dei Tableau è stato introdotto da Hintikka e Beth alla fine degli anni '50
+e poi ripresi successivamente da Smullyan.
+
+I tableau sono degli alberi,la cui radice è l'enunciato in esame, e gli altri nodi
+sono costruiti attraverso l'applicazione di una serie di regole,fino ad arrivare
+alle formule atomiche come radici.
+
+Le regole dei Tableau sono le seguenti:\newline
+T $\land$
+
+$\begin{array}{c}
+\toprule
+S,T A \land B \\
+\midrule
+S, TA, TB \\
+\bottomrule
+\end{array}$
+
+T $\lor$
+
+$\begin{array}{c}
+\toprule
+S,T A \lor B \\
+\midrule
+S, TA/ S, TB \\
+\bottomrule
+\end{array}$
+
+T $\neg$
+
+$\begin{array}{c}
+\toprule
+S,T \neg A \\
+\midrule
+S, FA \\
+\bottomrule
+\end{array}$
+
+T $\Rightarrow$
+
+$\begin{array}{c}
+\toprule
+S,T A \Rightarrow B \\
+\midrule
+S, FA / S, TB \\
+\bottomrule
+\end{array}$
+
+T $\iff$(da fare)
+
+F $\land$
+
+$\begin{array}{c}
+\toprule
+S,F A \land B \\
+\midrule
+S, FA/ S, TB \\
+\bottomrule
+\end{array}$
+
+F $\lor$
+
+$\begin{array}{c}
+\toprule
+S,F A \lor B \\
+\midrule
+S, FA, FB \\
+\bottomrule
+\end{array}$
+
+F $\neg$
+
+$\begin{array}{c}
+\toprule
+S,F \neg A \\
+\midrule
+S, TA \\
+\bottomrule
+\end{array}$
+
+F $\Rightarrow$
+
+$\begin{array}{c}
+\toprule
+S,F A \Rightarrow B \\
+\midrule
+S, TA, FB \\
+\bottomrule
+\end{array}$
+
+F $\iff$(da fare)
+
+%Dimostrazione di tableau
+Il metodo dei Tableau è un metodo dei sistemi deduttivi, che permette attraverso
+l'applicazione di una serie di regole, di capire la tipologia della formula.
+
+%Metodi per capire il tipo della Formula
+\begin{tabular}{cccc}
+\toprule Tipologia & Fare Tableau per & Chiuso? & Aperto? \\
+\midrule
+         Teorema & $\neg A$ & Si & No \\
+         Soddisfacibile & $A$ & No & Si \\
+         Contradditoria & $A$ & Si & No \\
+\bottomrule
+\end{tabular}
+
+Esempio: \newline
+Formula: $ \neg(A \lor B) \rightarrow (\neg A \land \neg B)$
+%Da fare dimostrazione con il Pacchetto bussproof
+
+%Da fare definizione di di Tableau,Tableau dimostrazione,rami chiusi ed aperti del Tableau
