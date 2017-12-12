@@ -1,0 +1,92 @@
+%Capitolo sulla Logica Predicativa
+\chapter{Logica Predicativa}
+
+\section{Semantica}
+Il connettivo $A \iff B$ equivale per definizione ad $(A \rightarrow B) \land (B \rightarrow A)$ per cui quando si usa il $\iff$ si utilizza l'equivalenza
+definita
+Tableaux di $F A \iff B$ utilizzare la definizione data 
+
+Struttura di Interpretazione(Semantica) %Cercare meglio la definizione!!!!!!!!!
+$S = <D,I> $
+D(dominio) è un insieme finito/infinito di costanti
+I(interpretazione) è una funzione che associa a simboli e formule del linguaggio un significato a partire dai simboli primitivi del linguaggio
+(costanti,predicati e funzioni) cioè l'interpretazione varierà a seconda della signatura del linguaggio
+
+Si può interpretare questa struttura come una funzione che associa ad ogni costante una costante del Linguaggio 
+$C_i \mapsto C_d : C_d \in D$
+
+LogicA Aritmetica di Peano
+Linguaggio: $0,s(x),+,*,=$ è la segnatura
+
+Dominio: tutti e numeri Naturali
+L'unica costante del linguaggio $0$ viene associato la costante del Dominio $0$. Può sembrare strano ma sono dei numeri diversi in quanto 
+$0 \in Linguaggio \mapsto 0 \in N$ ossia si associa ad un elemento del linguaggio una sua interpretazione
+
+
+In Logica Proposizionale abbiamo sviluppato indipendente la parte sintattica e la parte semantica e con il Teorema di correttezza li abbiamo messi assiemi
+Anche a livello predicativo è possibile definibile in maniera chiara la semantica ed è definito il teorema di Completezza
+
+In logica chiamiamo Numerale la costante del linguaggio e Numero la sua interpretazione
+
+Ho un simbolo di funzione con n argomenti $f ^ n _L(t1...t_n) \mapsto I(t_k)$ quando $t_k = f(t_1....t_n)$ ossia associa ad ogni elemento della funzione una sua interpretazione
+
+$I(P(t_1....t_n) = <t_1....t_n> $ dove $I(P) \mapsto R ^n$ P è l'insieme delle n-uple che stanno nella relazione definita
+
+Il successore viene interpretato come la funzione successore
+
+Esempio:
+$s s(0) \mapsto 2 \in N$ in quanto 0 lo interpreto come 0, il successore di 0 come 1 e il successore di 1 è 2 e questo due è l'interpretazione di s(s(0))
+
+Esempio Interpretazione relazione
+Il Predicato = viene interpretato come l'insieme delle coppie che hanno i numeri uguali
+$= \mapsto <0,0>,<1,1>,<2,2>,......<n,n>$
+
+Esempio: 
+x + y = z    + è una funzione del linguaggio
+Fissato il $s(0) e s(s(0))$
+$s(0) + s(s(0)) \mapsto 3 \in N$ è l'interpretazione di s(0) e l'interpretazione del s(s(0))
+
+Come si interpretano le formule contenenti delle variabili libere?
+$\eta$ che associa alle variabili libere un'interpretazione  allora grazie a questa funzione $\eta$ possiamo valutare la formula come vera o falsa
+
+Es:
+$x \mapsto s(0)$
+$y \mapsto 0$
+$z \mapsto s(0)$
+Allora x + y = z con questi valori è vera
+
+Formula aperta ha senso chiedersi 
+Si dice che una formula aperta    se esiste un assegnamento alle variabile che la rende vera
+Si dice che una formula aperta se non esiste un assegnamento alle variabile che la rende vera
+
+Data una struttura $S $ e $\eta |-- P(t1...t_n)$ si dice che è vera se esiste un interpretazione di P(t1...tn) che la rende vera
+
+Se una formula è chiusa allora non necessita della funzione $\eta$ in quanto l'interpretazione è unica
+
+$S,\eta |-- A \land B$ è vera se $S,\eta |-- A \land S,\eta |-- B$
+
+$S,\eta |-- \exists x A(x) \iff S,\eta |-- A(a) con a \in D$  S contiene il Dominio
+
+$S,\eta |-- \forall x A(x) \iff S,\eta |-- A(a) \forall a \in D$
+
+Dirò che una formula è valida se è sempre valide qualsiasi struttura
+
+Tutte le formule dimostrate con il metodo dei Tableau devono essere valide
+
+Modello è un interpretazione che rende vere le formule di una teoria
+Tutte le formule del primo Ordine dimostrabili sono sempre valide per il teorema di Completezza
+Teoria è fatta da un insieme di assiomi e da una logica $T = Ax + L$
+Ad esempio prendendo la teoria dell'Aritmetica di Peano gli diamo una serie di assiomi e una logica 
+i cui modelli sono tutte le formule che soddisfano gli assiomi e la logica
+
+Poi si può modificare la logica e in quel caso mescolando assiomi con logiche diverse otteniamo Teorie diverse
+
+Sono degli assiomi dell'Aritmetica di Peano (da sistemare)
+$\forall x \neg S(x) = 0
+\forall x x + 0 = x
+\forall x,y x + s(y) = s(x + y)
+\forall x x * 0 = 0
+\forall x,y x * s(y) = (x * y) + x 
+\forall x,y (s(x) = s(y)) \rightarrow x = y$
+
+
