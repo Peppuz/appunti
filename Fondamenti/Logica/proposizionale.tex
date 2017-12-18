@@ -51,6 +51,14 @@ $(P \land Q) \in Fbf$  è una formula ben formata\newline
 $(PQ \land R) \not \in Fbf$ in quanto non si rispetta la sintassi del linguaggio definita.\newline
 
 %Manca Definizione delle sottoformule
+Sia $A \in FBF$, l'insieme delle sottoformule di $A$ è definito come segue:
+\begin{enumerate}
+\item Se $A$ è una costante o variabile proposizionale allora A stessa è la sua sottoformula
+\item Se $A$ è una formula del tipo $(\neg A')$ allora le sottoformule di A sono A stessa e le sottoformule di $A'$;
+      $\neg$ è detto connettivo principale e $A'$ sottoformula immediata di A.
+\item Se $A$ è una formula del tipo $B o C$ dove $o$ è un connettivo binario della logica proposizionale e B ed C due formule;
+      le sottoformule di A sono A stessa e le sottoformule di B e C;o è il connettivo principale e B e C sono le due sottoformule immediate di A.
+
 
 É possibile ridurre ed eliminare delle parentesi attraverso l'introduzione della
 precedenza tra gli operatori, che è definita come segue:\newline

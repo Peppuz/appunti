@@ -72,6 +72,30 @@ B = \{"Verde","Giallo","Marrone" \} \newline
 A $\cup$ B = \{"Rosso","Arancio","Giallo","Verde","Marrone" \}
 A $\cap$ B = \{"Giallo" \}
 
+Proprietà dell'unione
+\begin{enumerate}
+\item $S \cup S = S$
+\item $S \cup \emptyset = S$
+\item $S_1 \cup S_2 = S_2 \cup S_1$
+\item $S_1 \cup S_2 = S_2 \iff S_1 \subseteq S_2$
+\item $(S_1 \cup S_2) \cup S_3 = S_1 \cup (S_2 \cup S_3)$
+\item $S_1 \subseteq S_1 \cup S_2$
+\item $S_2 \subseteq S_1 \cup S_2$
+\end{enumerate}
+%Mancano le dimostrazioni
+
+Proprietà dell'Intersezione
+\begin{enumerate}
+  \item $S \cap S = S$
+  \item $S \cap \emptyset = \emptyset$
+  \item $S_1 \cap S_2 = S_2 \cap S_1$
+  \item $(S_1 \cap S_2) \cap S_3 = S_1 \cap (S_2 \cap S_3)
+  \item $S_1 \cap S_2 = S_1 \iff S_1 \subseteq S_2
+  \item $S_1 \cap S_2 \subseteq S_1$
+  \item $S_1 \cap S_2 \subseteq S_2$
+\end{enumerate}
+%Mancano le dimostrazioni
+
 L'unione e l'intersezione sono legate dalle proprietà distributive:
 
 \begin{enumerate}
@@ -90,7 +114,18 @@ $U = \{1,2,3,4,5,6,7\} $\newline
 $S = \{2,4,6\} $ \newline
 $\bar{S} = \{1,3,5,7\} $
 
-%Mancano le proprietà
+%Mancano le dimostrazioni delle proprietà proprietà
+Proprietà:
+\begin{enumerate}
+  \item $\bar{U} = \emptyset $
+  \item $\bar{\emptyset} = U$
+  \item $\bar{\bar{S}} = S$
+  \item $\bar{(S_1 \cup S_2)} = \bar{S_1} \cap \bar{S_2}$
+  \item $\bar{(S_1 \cap S_2)} = \bar{S_1} \cup \bar{S_2}$
+  \item $S \cap \bar{S} = \emptyset$
+  \item $S \cup \bar{S} = U$
+  \item $S_1 = S_2 \iff \bar{S_1} = \bar{S_2}$
+  \item $S_1 \subseteq S_2 \iff \bar{S_2} \subseteq \bar{S_1}$
 
 \section{Differenza di Insiemi}
 Dati 2 insiemi $S$ e $T$ chiamiamo $S \ T$ l'insieme \textit{differenza} costituito
@@ -101,10 +136,27 @@ Esempio: \newline
 $S = \{a,b,c,d,e\}$ \quad $T = \{a,c,f,g,e,h\}$\newline
 $S \ T = \{b,d\}$
 
+Proprietà Differenza
+\begin{enumerate}
+  \item $S \ S = \emptyset$
+  \item $S \ \emptyset = S$
+  \item $\emptyset \ S = \emptyset$
+  \item $(S_1 \ S_2) \ S_3 = (S_1 \ S_3) \ S_2 = S_1 \ (S_2 \cup S_3)$
+  \item $S_1 \ S_2 = S_1 \cap \bar{S_2}$
+\end{enumerate}
+
 La \textit{differenza simmetrica} di due insiemi $S_1$ e $S_2$, indicata con $S_1 \triangle S_2$,
 è definita come $S_1 \triangle S_2 = (S_1 \textbackslash S_2) \cup (S_2 \textbackslash S_1) $
 
 %Mancano le proprietà
+Proprietà Differenza simmetrica
+\begin{enumerate}
+  \item $S \triangle S = \emptyset$
+  \item $S \triangle \emptyset = S$
+  \item $S_1 \triangle S_2 = S_2 \triangle S_1$
+  \item $S_1 \triangle S_2 = (S_1 \cap \bar{S_2}) \cup (S_2 \cap \bar{S_1})$
+  \item $S_1 \triangle S_2 = (S_1 \cup S_2) \ (S_2 \cap S_1)$
+\end{enumerate}
 
 \section{Insieme delle Parti}
 L'insieme delle Parti di un insieme $S$, indicato con $\wp S$, è l'insieme formato
@@ -115,7 +167,7 @@ $\wp S = \{X | X \subseteq S\} $
 di $\wp S$ è $2 ^ n$.
 
 %Manca la Dimostrazione
-%Manca la definizione di Cardinalità e dei diversi tipi di Insiemi Numerici
+
 
 \section{Prodotto Cartesiano}
 Dati 2 insiemi $A$ e $B$, non necessariamente  distinti, si definisce come \textit{Prodotto Cartesiano},
