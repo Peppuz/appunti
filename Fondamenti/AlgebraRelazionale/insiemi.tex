@@ -21,11 +21,11 @@ Gli insiemi possono essere definiti in due maniere:
 
 Dati due insiemi $S$ e $T$ si ha:
 %Definizione sottoinsieme e insiemi uguali
-\begin{multline}
+\begin{align*}
   S \subset T = \{x | x \in S \Rightarrow x \in T \land S \not = T \} \\
   S = T  = \{x | x \in S \iff x \in T \} \\
   S \subseteq T = \{x | S \subset Q \lor S = T \}
-\end{multline}
+\end{align*}
 
 %Inserire Esempio
 
@@ -37,25 +37,21 @@ essi sono in corrispondenza univoca.
 %Insiemi Numerici
 Gli insiemi numerici definiti nella Teoria degli insiemi sono i seguenti: \newline
 \begin{itemize}
-  \item $\mathbf{N}$: Insieme dei numeri Naturali
-  \item $\mathbf{Z}$: insieme dei numeri interi
-  \item $\mathbf{Q}$: insieme dei numeri razionali
-  \item $\mathbf{R}$: insieme dei numeri reali
-  \item $\mathbf{C}$: insieme dei numeri complessi
+  \item $\N$: Insieme dei numeri Naturali
+  \item $\Z$: insieme dei numeri interi
+  \item $\Q$: insieme dei numeri razionali
+  \item $\R$: insieme dei numeri reali
+  \item $\C$: insieme dei numeri complessi
 \end{itemize}
 
-Gli insiemi $\mathbf{N}, \mathbf{Z}, \mathbf{Q}$ hanno la stessa cardinalità indicata con $\aleph$
+Gli insiemi $\N, \Z, \Q$ hanno la stessa cardinalità indicata con $\aleph$,dimostrato da Georg Cantor.
 
-Gli insiemi $\mathbf{R}$ e $\mathbf{C}$ hanno la stessa cardinalità indicata con $ 2 ^ \aleph$
+Gli insiemi $\R$ e $\C$ hanno la stessa cardinalità indicata con $ 2 ^ \aleph$,
+dimostrato da Georg Cantor mediante il principio di diagonalizzazione.
 
-%Tipologia di insiemi
-\begin{itemize}
-  \item \textbf{Insieme Finito}: Cercare Definizione
-  \item \textbf{Insieme Transfinito}: Cercare Definizione
-  \item \textbf{Insieme Numerabile}: Cercare Definizione
-\end{itemize}
-
-%Inserire Esempi
+%Tecnica di diagonalizzazione
+\subsection{Tecnica di diagonalizzazione}
+La tecnica di Diagonalizzazione (da fare!!!)
 
 \section{Unione ed Intersezione}
 L'unione di due insiemi $S \cup T$ è l'insieme formato degli elementi di S e degli
@@ -74,27 +70,25 @@ A $\cap$ B = \{"Giallo" \}
 
 Proprietà dell'unione
 \begin{enumerate}
-\item $S \cup S = S$
-\item $S \cup \emptyset = S$
-\item $S_1 \cup S_2 = S_2 \cup S_1$
+\item $S \cup S = S$ \quad Idempotenza
+\item $S \cup \emptyset = S$ \quad Elemento Neutro
+\item $S_1 \cup S_2 = S_2 \cup S_1$ \quad Associatività
 \item $S_1 \cup S_2 = S_2 \iff S_1 \subseteq S_2$
-\item $(S_1 \cup S_2) \cup S_3 = S_1 \cup (S_2 \cup S_3)$
+\item $(S_1 \cup S_2) \cup S_3 = S_1 \cup (S_2 \cup S_3)$ \quad Commutatività
 \item $S_1 \subseteq S_1 \cup S_2$
 \item $S_2 \subseteq S_1 \cup S_2$
 \end{enumerate}
-%Mancano le dimostrazioni
 
 Proprietà dell'Intersezione
 \begin{enumerate}
   \item $S \cap S = S$
   \item $S \cap \emptyset = \emptyset$
   \item $S_1 \cap S_2 = S_2 \cap S_1$
-  \item $(S_1 \cap S_2) \cap S_3 = S_1 \cap (S_2 \cap S_3)
-  \item $S_1 \cap S_2 = S_1 \iff S_1 \subseteq S_2
+  \item $(S_1 \cap S_2) \cap S_3 = S_1 \cap (S_2 \cap S_3)$
+  \item $S_1 \cap S_2 = S_1 \iff S_1 \subseteq S_2$
   \item $S_1 \cap S_2 \subseteq S_1$
   \item $S_1 \cap S_2 \subseteq S_2$
 \end{enumerate}
-%Mancano le dimostrazioni
 
 L'unione e l'intersezione sono legate dalle proprietà distributive:
 
@@ -114,7 +108,6 @@ $U = \{1,2,3,4,5,6,7\} $\newline
 $S = \{2,4,6\} $ \newline
 $\bar{S} = \{1,3,5,7\} $
 
-%Mancano le dimostrazioni delle proprietà proprietà
 Proprietà:
 \begin{enumerate}
   \item $\bar{U} = \emptyset $
@@ -168,14 +161,5 @@ di $\wp S$ è $2 ^ n$.
 
 %Manca la Dimostrazione
 
-
-\section{Prodotto Cartesiano}
-Dati 2 insiemi $A$ e $B$, non necessariamente  distinti, si definisce come \textit{Prodotto Cartesiano},
-indicato con $A x B$, l'insieme di tutte le coppie in cui il primo elemento appartiene ad $A$
-e il secondo elemento della coppia appartiene ad $B$.\newline
-$A$ x $B = {<a,b> | a \in A \land b \in B} $
-
-Esempio:\newline
-$A = \{1,2,3\} \newline
-B = \{1,4,5\} \newline
-A$ x $B = \{<1,1>,<1,4>,<1,5>,<2,1>,<2,4>,<2,5>,<3,1>,<3,4>,<3,5>\} $
+%Paragrafo sul Prodotto Cartesiano
+\input{prodottoCartesiano}
