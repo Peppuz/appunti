@@ -35,9 +35,87 @@ Data una relazione $R$ definita su un dominio $S$ si definiscono le seguenti pro
 Sulle relazioni si possono applicare le usuali operazioni insiemistiche quindi, ad esempio,
 date $R_1 \subseteq S x T$ e $R_2 \subseteq S x T$ anche $R_1 \cup R_2$ è una relazione su $S x T$.
 
+%Definizione Relazione Complementare e Relazione Inversa
+Data una relazione binaria $R \subseteq S x T$ definiamo \emph{relazione complementare}
+$\bar{R} \subseteq S x T$ come $x \bar{R}y \iff <x,y> \not \in R$.
+Per definizione si ha $\bar{\bar{R}} = R$ e $R \cup \bar{R} = S x T$.
 
+Data una relazione binaria $R \subseteq S x T$ esiste sempre la \emph{relazione inversa}
+$R^-1 = \{<y,x> | <x,y> \in R\} \subseteq T x S$.
+Per definizione $(R ^ -1) ^ -1 = R$
 
 %Proprietà relazioni
+Proprietà delle relazioni Riflessive
+Date due relazioni $R$ e $R'$ definite su $S$ si ha:
+\begin{enumerate}
+    \item se $R$ è riflessiva anche $R^-1$ è Riflessiva
+    \item $R$ è riflessiva se e solo se $\bar{R}$ è riflessiva
+    \item se $R$ e $R'$ sono riflessive anche $R \cup R'$ e $R \cap R'$ sono riflessive
+\end{enumerate}
+%mancano le dimostrazioni
 
+Proprietà relazioni Simmetriche
+Date due relazioni $R$ e $R'$ definite su $S$, si ha:
+\begin{enumerate}
+    \item $R$ è simmetrica se e solo se $R = R^-1$
+    \item se $R$ è simmetrica anche $R^-1$ e $\bar{R}$ sono simmetriche
+    \item $R$ è antisimmetrico se e solo se $R \cap R^-1 \subseteq \wp S$
+    \item $R$ è asimmetrica se e solo se $R \cap R^-1 = \emptyset$
+    \item se $R$ e $R'$ sono simmetriche anche $R \cup R'$ e $R \cap R'$ sono simmetriche
+\end{enumerate}
+%Mancano le dimostrazioni
+
+Proprietà relazioni Transitive
+Siano $R$ e $R'$ due relazioni su $S$, se $R$ e $R'$ sono transitive anche $R \cap R'$ è transitiva.
+%Manca la dimostrazione
 
 %Modalità di Rappresentazione delle Relazioni
+\section{Rappresentazione di Relazioni}
+Vi sono diverse modalità di rappresentazione delle relazioni,il cui metodo migliore
+dipendono dall'arietà della relazione, che sono:
+\begin{description}
+    \item[Tabella a $n$ colonne] è una matrice a due dimensioni con righe,rappresentanti
+          gli elementi, e colonne, indicanti gli insiemi; è conveniente utilizzare
+          quando l'arietà della relazione è $\geq 2$.
+    \item[Grafo Bipartito] è un grafo in cui si elencano gli elementi di tutti gli insiemi
+         e si usano delle frecce, chiamate archi, per indicare l'associazione tra gli elementi.
+         E' meglio utilizzare il grafo bipartito soltanto per le relazioni binarie.
+    \item[Matrice Booleana] è una matrice $M_R$ a valori \{0,1\} composta da $n$ righe e $m$ colonn
+    \item[Grafi] modalità di rappresentazione di relazioni binarie(spiegate in un paragrafo successivo)
+\end{description}
+
+\subsection{Tabelle}
+Inserire esempi!!!!!!!!!!!!
+
+\subsection{Grafo Bipartito}
+Inserire esempi con risoluzione!!!!
+
+\subsecion{Matrice Booleana}
+La \emph{Matrice booleana} è una matrice $M_R$,composta da $n$ righe e $m$ colonne,
+i cui elementi sono definiti come $m_{ij} = \{ ^{1 \iff <s_i,t_j \in R} _{0 \text{altrimenti}}$
+
+Inserire esempi!!!!
+
+Da una matrice booleana si possono determinare facilmente le proprietà
+di una relazione $R$,definita su $S$, soprattutto la proprietà simmetrica e la riflessiva.
+
+La \emph{Matrice Complementare} $M_{\bar{R}}$ è costituita dai seguenti elementi
+$\bar{m}_{ij} = \{ ^ 1 \iff m_{ij} = 0 _ 0 \iff m_{ij} = 1$
+
+La \emph{Matrice inversa} $M_{R ^-1}$ è la trasporta della matrice $M_R$.
+%Da fare la dimostrazione
+
+Date due matrici $A$ e $B$,embrambe di $n x m$ elementi, si definiscono 3 operazioni:
+\begin{description}
+    \item[MEET $A \sqcap B = C$]: è una matrice booleana i cui elementi sono:
+    $c_{ij} = \{ ^ 1 \quad a_{ij} = 1 \vand b_{ij} = 1 _ 0 \quad a_{ij} = 0 \vor b_{ij} = 0$
+    \item[JOIN $A \sqcup B = C$]: è una matrice booleana i cui elementi sono:
+    $c{ij} = \{ ^ 1 \quad a_{ij} = 1 \vor b_{ij} = 1 _ 0 \quad a_{ij} = 0 \vand b_{ij} = 0$
+    \item[PRODOTTO BOOLEANO $A \odot B$]: è una matrice booleana $n x p$, i cui elementi sono:
+    $c_{ij} = \{1 \quad \text{se per qualche} k(1 \leq k \leq m) \text{si ha} a_{ik} = 1 \vand b_{kj} = 1
+    _ 0 \quad \text{altrimenti}$
+\end{description}
+
+Inserire Esempi
+
+\subsection{Grafi}
