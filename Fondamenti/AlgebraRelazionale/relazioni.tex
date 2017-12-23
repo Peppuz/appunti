@@ -118,49 +118,5 @@ Date due matrici $A$ e $B$,embrambe di $n x m$ elementi, si definiscono 3 operaz
 
 Inserire Esempi
 
-\section{Grafi}
-Si definisce come \emph{Grafo} $G$ una coppia $<V,E>$ in cui $V$ è l'insieme
-dei \textbf{vertici} o \textbf{Nodi},indicanti gli elementi, invece $E$
- è l'insieme degli \textbf{archi}, indicanti la relazione esistentre tra i vertici del grafo.\newline
-In un grafo orientato è ammesso il cappio ossia archi che escono ed entrano dallo stesso vertice.
-
-Se in grafo tutti gli archi presentano un ordinamento, ossia si definisce una direzione
-tra i 2 vertici di un grafo,si definisce \emph{Grafo orientato}
-altrimenti si definisce il grafo come \emph{Grafo non orientato}.
-%Inserire Esempi
-
-Un arco che congiunge $V_i$ a $V_j$ si dice \emph{uscente} da $V_i$ ed \emph{entrante} in $V_j$.
-
-\subsection{Nomenclatura}
-In un grafo si definisce:
-\begin{description}
-    \item[NODO SORGENTE]: nodi in cui non si hanno archi entranti
-    \item[NODO POZZO]:nodi in cui non si hanno archi uscenti
-    \item[NODO ISOLATO]: nodi in cui non si hanno archi entranti ed uscenti
-    \item[GRADO DI ENTRATA]:è il numero di archi entranti in un nodo
-    \item[GRADO DI USCITA]: è il numero degli archi uscenti da un nodo
-    \item[CAMMINO da $V_{in}$ a $V_{fin}$]:è una sequenza finita di nodi $<V_1,V_2,\dots,V_n>$
-     con $V_1 = V_{in}$ e $V_n = V_{fin}$, dove ciascun nodo è collegato al successivo da un arco orientato
-    \item[SEMICAMMINO da $V_{in}$ a $V_{fin}$]: è una sequenza finita di nodi
-     $<V_1,V_2,\dots,V_n>$ con $V_1 = V_{in}$ e $V_n = V_{fin}$, dove ciascun nodo
-     è collegato al successivo da un arco non orientato.
-    \item[CONNESSO]:un grafo in cui dati due nodi $V_a$ e $V_b$, con $V_a \neq V_b$,
-                    esiste un semicammino tra di essi.
-    \item[CICLO]intorno un nodo $V$ è un cammino in cui $V = V_{in} = V_{fin}$
-    \item[SEMICICLO]intorno un nodo $V$ è un semicammino in cui $V = V_{in} = V_{fin}$
-    \item[CAPPIO]intorno ad un nodo è un cammino di lunghezza 1 in cui $V_in = V_{fin}$
-\end{description}
-
-%Inserire esempi ed esercizi
-%Inserire Proprietà Grafi
-
-\section{DAG ed Alberi}
-Si definisce come \emph{DAG}(Directed Acyclic Graph), un grafo diretto senza cicli.
-%Inserire esempi degli DAG
-
-Si definisce come \emph{Albero}, un DAG connesso con un solo nodo sorgente,detto  radice,
-in cui ogni nodo diverso dalla radice ha un solo nodo entrante.\newline
-I nodi privi di archi entranti sono detti \emph{foglie} dell'albero
-
-%Inserire esempi e proprietà degli Alberi
-%Inserire caratteristiche e Nomenclatura degli Alberi
+%Sezione Grafi
+\include{grafi.tex}

@@ -1,5 +1,19 @@
 %Capitolo sulle funzioni
 \chapter{Funzioni}
 %Migliorare definizione di Funzione!!!
-Si definisce \textit{funzione $f:S \mapsto T$} una relazione $f \subseteq SxT$ tale che $\forall x \in S$
-esiste un unico $y$ per cui $<x,y> \in f$.
+Si definisce \textit{funzione $f:S \mapsto T$} una relazione $f \subseteq SxT$
+tale che $\forall x \in S$ esiste al più un $y \in T$ per cui $<x,y> \in f$.
+
+Se il $dom(f) = S$ la funzione si dice \emph{totale} altrimenti la funzione è \emph{parziale}.
+
+
+%Tipologie di funzioni
+\section{Tipologie di Funzioni}
+Una funzione $f:S \mapsto T$ si dice:
+\begin{description}
+    \item[iniettiva]: $\forall x,y \in S x \neq y \if f(x) \neq f(y)$
+    \item[suriettiva]: $\forall y \in T \exists x \in S : f(x) = y$
+    \item[biettiva]: se la funzione è iniettiva e suriettiva
+\end{description}
+
+%Inserire esempi funzioni
