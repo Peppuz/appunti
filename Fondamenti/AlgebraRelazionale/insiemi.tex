@@ -1,7 +1,7 @@
 %Capitolo sugli insiemi
 \chapter{Insiemi}
 Gli insiemi sono collezioni di oggetti detti elementi, in cui si prescinde dall'
-ordine e dalla ripetizione degli elementi.
+ordine e dalla ripetizione degli elementi e questa è la definizione ingenua degli Insiemi.
 
 Si dice $x \in A$ se l'elemento appartiene all'insieme altrimenti si usa $x \not \in A$.
 L'insieme vuoto si indica con $\emptyset$ mentre se due insiemi sono composti dagli stessi
@@ -28,6 +28,18 @@ Dati due insiemi $S$ e $T$ si ha:
 \end{align*}
 
 %Inserire Esempio
+Esempio:\newline
+\begin{equation*}
+\begin{split}
+A = \{1,2,3,5,6,7,9,10 \} \\
+B = \{1,3,5,6,9 \} \\
+C = \{1,2,3,5,6,7,9,10 \} \\
+A = B \text{Falso} \\
+B \subseteq A \text{Vero} \\
+A \subset C \text{Falso} \\
+A \subseteq C \text{Vero} \\
+\end{split}
+\end{equation*}
 
 %Definizione di Cardinalità di un Insieme
 Si definisce \textit{cardinalità} il numero degli elementi e si indica con $|A|$.\newline
@@ -63,10 +75,15 @@ $S \cup T = \{x | x \in S \lor x \in T \} $ \newline
 $S \cap T = \{x | x \in S \land x \in T \} $
 
 Esempio:\newline
-A = \{"Rosso","Arancio","Giallo" \} \newline
+$A = \{"Rosso","Arancio","Giallo" \}$ \newline
 B = \{"Verde","Giallo","Marrone" \} \newline
 A $\cup$ B = \{"Rosso","Arancio","Giallo","Verde","Marrone" \}
 A $\cap$ B = \{"Giallo" \}
+
+$S = \{1,2,5,4,3,7,6,9\}$
+$T = \{5,4,2,9,11,34,6\}$
+$S \cup T = \{1,2,3,4,5,6,7,9,11,34\}$
+$S \cap T = \{2,4,5,6,9\}$
 
 Proprietà dell'unione
 \begin{enumerate}
@@ -79,6 +96,8 @@ Proprietà dell'unione
 \item $S_2 \subseteq S_1 \cup S_2$
 \end{enumerate}
 
+%Dimostrazione!!!!
+
 Proprietà dell'Intersezione
 \begin{enumerate}
   \item $S \cap S = S$
@@ -89,6 +108,7 @@ Proprietà dell'Intersezione
   \item $S_1 \cap S_2 \subseteq S_1$
   \item $S_1 \cap S_2 \subseteq S_2$
 \end{enumerate}
+%dimostrazione
 
 L'unione e l'intersezione sono legate dalle proprietà distributive:
 
@@ -96,7 +116,7 @@ L'unione e l'intersezione sono legate dalle proprietà distributive:
   \item $S_1 \cap (S_2 \cup S_3) = (S_1 \cap S_2) \cup (S_1 \cap S_3)$
   \item $S_1 \cup (S_2 \cap S_3) = (S_1 \cup S_2) \cap (S_1 \cup S_3)$
 \end{enumerate}
-%Mancano le proprietà dell'unione e dell'Intersezione con le dimostrazioni
+%Dimostrazione
 
 \section{Complementare}
 Dato un insieme $U$, detto Universo, si dice \textit{complemento} di $S$, indicato con $\bar{S}$,
@@ -151,6 +171,21 @@ Proprietà Differenza simmetrica
   \item $S_1 \triangle S_2 = (S_1 \cup S_2) \ (S_2 \cap S_1)$
 \end{enumerate}
 
+%Partizione di un Insieme
+\section{Partizione di un Insieme}
+Dato un insieme non vuoto $S$, una partizione di $S$ è una famiglia $F$ di sottoinsiemi di $S$ tale che
+\begin{enumerate}
+    \item ogni elemento di $S$ appartiene a qualche elemento di $F$, ossia $\cup F = S$
+    \item due elementi qualunque di $F$ sono disgiunti ossia $\cap F = \emptyset$
+\end{enumerate}
+%inserire Esempio
+
+%Funzione Caratteristica!!!!
+\section{Funzione Caratteristica}
+Sia $U$ un insieme assunto come Universo,si definisce come \emph{funzione caratteristica}
+di un sottoinsieme $S \subseteq U$ come:
+$car(S,x) = \begin{cases} 1 \quad x \in S \\ 0 \quad x \not \in S \end{cases}$
+
 \section{Insieme delle Parti}
 L'insieme delle Parti di un insieme $S$, indicato con $\wp S$, è l'insieme formato
 da tutti i sottoinsiemi dell'insieme $S$. \newline
@@ -162,4 +197,4 @@ di $\wp S$ è $2 ^ n$.
 %Manca la Dimostrazione
 
 %Paragrafo sul Prodotto Cartesiano
-\input{prodottoCartesiano}
+\input{AlgebraRelazionale/prodottoCartesiano}

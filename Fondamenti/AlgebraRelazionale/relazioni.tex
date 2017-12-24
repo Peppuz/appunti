@@ -24,10 +24,10 @@ Data una relazione $R$ definita su un dominio $S$ si definiscono le seguenti pro
 \begin{itemize}
   \item Riflessiva $\iff \forall x \in S \quad xRx$
   \item Irriflessiva $\iff \forall x \in S \quad x \not R x$
-  \item simmetrica $\iff  xRy \rightarrow yRx$
-  \item asimmetrica: $\iff xRy \rightarrow y \not R x$
-  \item antisimmetrica: $\iff xRy \land yRx \rightarrow x = y$
-  \item transitiva: $\iff xRy \land yRz \rightarrow xRz$
+  \item Simmetrica $\iff  xRy \rightarrow yRx$
+  \item Asimmetrica: $\iff xRy \rightarrow y \not R x$
+  \item Antisimmetrica: $\iff xRy \land yRx \rightarrow x = y$
+  \item Transitiva: $\iff xRy \land yRz \rightarrow xRz$
 \end{itemize}
 
 %Inserire Esempi
@@ -45,7 +45,7 @@ $R^-1 = \{<y,x> | <x,y> \in R\} \subseteq T x S$.
 Per definizione $(R ^ -1) ^ -1 = R$
 
 %Proprietà relazioni
-Proprietà delle relazioni Riflessive
+\subsection{Proprietà delle relazioni Riflessive}
 Date due relazioni $R$ e $R'$ definite su $S$ si ha:
 \begin{enumerate}
     \item se $R$ è riflessiva anche $R^-1$ è Riflessiva
@@ -54,7 +54,7 @@ Date due relazioni $R$ e $R'$ definite su $S$ si ha:
 \end{enumerate}
 %mancano le dimostrazioni
 
-Proprietà relazioni Simmetriche
+\subsection{Proprietà relazioni Simmetriche}
 Date due relazioni $R$ e $R'$ definite su $S$, si ha:
 \begin{enumerate}
     \item $R$ è simmetrica se e solo se $R = R^-1$
@@ -65,7 +65,7 @@ Date due relazioni $R$ e $R'$ definite su $S$, si ha:
 \end{enumerate}
 %Mancano le dimostrazioni
 
-Proprietà relazioni Transitive
+\subsection{Proprietà relazioni Transitive}
 Siano $R$ e $R'$ due relazioni su $S$, se $R$ e $R'$ sono transitive anche $R \cap R'$ è transitiva.
 %Manca la dimostrazione
 
@@ -90,7 +90,7 @@ Inserire esempi!!!!!!!!!!!!
 \subsection{Grafo Bipartito}
 Inserire esempi con risoluzione!!!!
 
-\subsecion{Matrice Booleana}
+\subsection{Matrice Booleana}
 La \emph{Matrice booleana} è una matrice $M_R$,composta da $n$ righe e $m$ colonne,
 i cui elementi sono definiti come $m_{ij} = \{ ^{1 \iff <s_i,t_j \in R} _{0 \text{altrimenti}}$
 
@@ -108,15 +108,52 @@ La \emph{Matrice inversa} $M_{R ^-1}$ è la trasporta della matrice $M_R$.
 Date due matrici $A$ e $B$,embrambe di $n x m$ elementi, si definiscono 3 operazioni:
 \begin{description}
     \item[MEET $A \sqcap B = C$]: è una matrice booleana i cui elementi sono:
-    $c_{ij} = \{ ^ 1 \quad a_{ij} = 1 \vand b_{ij} = 1 _ 0 \quad a_{ij} = 0 \vor b_{ij} = 0$
+$c_{ij} = \{ \begin{cases} 1 \quad a_{ij} = 1 \land b_{ij} = 1 \\ 0 \quad a_{ij} = 0 \lor b_{ij} = 0 \end{cases}$
     \item[JOIN $A \sqcup B = C$]: è una matrice booleana i cui elementi sono:
-    $c{ij} = \{ ^ 1 \quad a_{ij} = 1 \vor b_{ij} = 1 _ 0 \quad a_{ij} = 0 \vand b_{ij} = 0$
+    $c{ij} = \{ ^ 1 \quad a_{ij} = 1 \lor b_{ij} = 1 _ 0 \quad a_{ij} = 0 \land b_{ij} = 0$
     \item[PRODOTTO BOOLEANO $A \odot B$]: è una matrice booleana $n x p$, i cui elementi sono:
-    $c_{ij} = \{1 \quad \text{se per qualche} k(1 \leq k \leq m) \text{si ha} a_{ik} = 1 \vand b_{kj} = 1
+    $c_{ij} = \{1 \quad \text{se per qualche} k(1 \leq k \leq m) \text{si ha} a_{ik} = 1 \land b_{kj} = 1
     _ 0 \quad \text{altrimenti}$
 \end{description}
 
 Inserire Esempi
 
+%Sezione Composizione di relazioni
+\section{Composizione di Relazioni}
+Data una relazione $R_1 \subseteq S x T$ e una relazione $R_2 \subseteq T x Q$,
+si definisce come relazione composta $R_1 \circ R_2 \subseteq S x Q$ come segue
+$<a,c> \in R_1 \circ R_2 \iff \exists b \in T | <a,b> \in R_1 \land <b,c> \in R_2$
+
+%Inserire Esempio
+
+La composizione di Relazioni non è commutativa ma invece è associativa
+%Fare la Dimostrazione
+
+Teorema: Se $R_1 \subseteq S x T$ e $R_2 \subseteq T x Q$, allora $(R_1 \circ R_2)^-1 = R_1^-1 \circ R_2^-1$
+%Fare Dimostrazione
+
+%Potenza di una relazione
+
 %Sezione Grafi
 \include{grafi.tex}
+
+%Relazioni di Equivalenza
+\section{Relazioni di Equivalenza}
+Si definisce $R$ una \emph{relazione di equivalenza} se e solo se la relazione binaria
+$R$ è riflessiva,simmetrica e transitiva.
+
+%Inserire Esempi
+
+Data una relazione di equivalenza $R$ definita su un insieme $S$, si definisce
+\emph{classe di equivalenza} di un elemento $x \in S$ come $[x] = \{y | <x,y> \in R \}$
+
+Teorema: Se $R$ è una relazione di equivalenza su $S$, allora le classi di Equivalenza
+generate da $R$ partizionano $S$
+
+%Fare la Dimostrazione
+
+Data una relazione di equivalenza in S, la partizione che essa determina si dice
+\emph{insieme quoziente} di $S$ rispetto alla relazione di equivalenza e si indica con $S/$
+
+%Ordinamento
+%\input{ordinamento.tex}
