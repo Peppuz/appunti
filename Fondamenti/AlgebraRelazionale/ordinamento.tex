@@ -1,0 +1,68 @@
+\section{Struttura relazionale}
+Una struttura relazionale $SR$ è una $n$-upla in cui il primo componente è un Insieme
+non vuoto $S$ e le rimanenti componenti sono relazioni su $S^n$.
+
+\subsection{Tipologie di Ordinamenti}
+\begin{description}
+    \item[PREORDINE]: è una struttura relazionale $(S,R)$ in cui $S$ è un insieme non vuoto
+          e $R$ è una relazione binaria \emph{riflessiva} e \emph{transitiva} su $S x S$
+    \item[ORDINE STRETTO]: è una struttura relazionale $(S,R)$ in cui $R$ è una
+          relazione binaria \emph{irriflessiva} e \emph{transitiva} su $S x S$
+    \item[ORDINE LARGO(POSET)]: è una struttura relazionale $(S,R)$ in cui $R$ è una
+          relazione binaria \emph{riflessiva,antisimmetrica} e \emph{transitiva} su $S x S$.
+\end{description}
+
+Una relazione $R$ è un ordinamento sull'insieme $S$ se e solo se $\forall x,y \in S$
+vale solo una delle proprietà di \emph{tricotomia}:
+\begin{itemize}
+    \item $x = y \land \neg(xRy) \land \neg(yRx)$
+    \item $xRy \land x \neq y \land \neg(yRx)$
+    \item $yRx \land x \neq y \land \neg(xRy)$
+\end{itemize}
+
+Se $(S,R)$ è una struttura relazionale anche $(S,R^{-1})$ rappresenta la stessa
+struttura relazionale chimata e $(S,R^{-1})$ è il \emph{duale} di $(S,R)$.
+
+%Dimostrazione della Proposizione!!!!!
+
+%Proposizione lunghezza cicli di un grafo del poset + dimostrazione
+
+%Ordine Lessicografico
+
+
+%Diagramma di Hasse
+\subsection{Diagramma di Hasse}
+Il grafo di un poset può essere rappresentato dal \emph{diagramma di Hasse}, un grafo
+con le seguenti proprietà:
+\begin{itemize}
+    \item si prescinde dal disegnare i cappi in quanto il poset è una relazione riflessiva
+    \item si prescinde dal disegnare gli archi definiti per transitività
+    \item il grafo si legge dal basso verso l'alto
+\end{itemize}
+
+esempio
+
+\subsection{Elementi estremali}
+Dato un poset $(S,R)$ e un insieme $X \subseteq S$ si hanno le seguenti proprietà:
+\begin{description}
+    \item[massimale]: un elemento $s \in S$ è massimale se $\not \exists s' \in S : s \leq s'$
+    \item[minimale]: un elemento $s \in S$ è minimale se $\not \exists s' \in S : s \geq s'$
+    \item[maggiorante]: un elemento $s \in S$ è un maggiorante se $\forall x \in X$ si ha $s \geq s$
+    \item[minorante]: un elemento $s \in S$ è un minorante se $\forall x \in X$ si ha $s \leq x$
+    \item[minimo maggiorante]:un elemento $s \in S$ è un minimo maggiorante, indicato con $\sqcup X$,
+          se è un maggiorante e per ogni altro maggiorante $s'$ di $X$ si ha $s \leq s'$.
+    \item[massimo minorante]: un elemento $s \in S$ è un massimo minorante, indicato con $\sqcap X$,
+          se è un minorante e per ogni altro minorante $s'$ di $X$ si ha $s' \leq s$
+    \item[massimo]: se $\sqcup X \in X$ si dice che $\sqcup X$ è un massimo.
+    \item[minimo]: se $\sqcap X \in X$ si dice che $\sqcap X$ è un minimo.
+\end{description}
+
+%Proprietà con dimostrazioni
+
+%Definizione di Buon Ordinamento
+
+%Reticoli
+\subsection{Reticoli}
+Un \emph{Reticolo} è un poset $(S,R)$ in cui per ogni coppia $x,y \in S$ esistono
+il massimo minorante(indicato con $x \sqcap y$) e il minimo maggiorante(indicato con $x \sqcup y$).
+Se un poset $(S,R)$ è un reticolo anche il suo poset duale è un reticolo.

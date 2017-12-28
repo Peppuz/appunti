@@ -61,7 +61,12 @@ dimostrato da Georg Cantor mediante il principio di diagonalizzazione.
 
 %Tecnica di diagonalizzazione
 \subsection{Tecnica di diagonalizzazione}
-La tecnica di Diagonalizzazione (da fare!!!)
+La tecnica di diagonalizzazione è tecnica, inventata da Cantor, per dimostrare la
+non numerabilità dei Numeri Reali.\newline
+Essa consiste nel tentativo di costruire una bisezione tra un insieme $X$ ed $\N$
+e verificare che qualche elemento di $X$ sfugge alla bisezione.
+
+%Teorema di Cantor!!! DA DIMOSTRARE
 
 \section{Unione ed Intersezione}
 L'unione di due insiemi $S \cup T$ è l'insieme formato degli elementi di S e degli
@@ -83,6 +88,7 @@ $T = \{5,4,2,9,11,34,6\}$
 $S \cup T = \{1,2,3,4,5,6,7,9,11,34\}$
 $S \cap T = \{2,4,5,6,9\}$
 
+\begin{prop}
 Proprietà dell'unione
 \begin{enumerate}
 \item $S \cup S = S$ \quad Idempotenza
@@ -93,9 +99,27 @@ Proprietà dell'unione
 \item $S_1 \subseteq S_1 \cup S_2$
 \item $S_2 \subseteq S_1 \cup S_2$
 \end{enumerate}
+\end{prop}
 
-%Dimostrazione!!!!
+%dimostrazione
+\begin{proof}
+\begin{enumerate}
+    \item $S \cup S = \{ x | x \in S \lor x \in S \} = S$
+    \item $S \cup \emptyset = \{ x | x \in \lor x \in \emptyset \} = S$
+    \item $S_1 \cup S_2 = \{ x | x \in S_1 \lor x \in S_2 \}$ per definizione di Insieme
+           si può scrivere anche $\{ x | x \in S_2 \lor x \in S_1 \} = S_2 \cup S_1$
+    \item Prima dimostriamo che $S_1 \cup S_2 = S_2 \rightarrow S_1 \subseteq S_2$
+          $S_1 \cup S_2 = \{ x | x \in S_1 \lor x \in S_2 \}$
+          Per ipotesi sappiamo che $S_1 \cup S_2 = S_2$ per cui tutti gli elementi di $S_1$
+          sono anche elementi di $S_2$ per cui si dimostra che $S_1 \subseteq S_2$.
+          In maniera analoga si dimostra che $S_1 \subseteq S_2 \rightarrow S_1 \cup S_2 = S_2$.
+    \item Da Fare
+    \item Da Fare
+    \item Da fare
+\end{enumerate}
+\end{proof}
 
+\begin{prop}
 Proprietà dell'Intersezione
 \begin{enumerate}
   \item $S \cap S = S$
@@ -106,7 +130,19 @@ Proprietà dell'Intersezione
   \item $S_1 \cap S_2 \subseteq S_1$
   \item $S_1 \cap S_2 \subseteq S_2$
 \end{enumerate}
+\end{prop}
 %dimostrazione
+
+\begin{proof}
+    \item $S \cap S = \{ x | x \in S \land x \in S \} = S$
+    \item $S \cap \emptyset = \{ x | x \in S \land x \in \emptyset \} = \emptyset$
+    \item $S_1 \cap S_2 = \{ x | x \in S_1 \land x \in S_2 \}$ per definizione di insieme
+           si può scrivere anche $\{ x | x \in S_2 \land x \in S_1 \} = S_2 \cap S_1 $
+    \item Da Fare
+    \item Da Fare
+    \item Da Fare
+    \item Da Fare
+\end{proof}
 
 L'unione e l'intersezione sono legate dalle proprietà distributive:
 
@@ -126,6 +162,7 @@ $U = \{1,2,3,4,5,6,7\} $\newline
 $S = \{2,4,6\} $ \newline
 $\bar{S} = \{1,3,5,7\} $
 
+\begin{prop}
 Proprietà:
 \begin{enumerate}
   \item $\bar{U} = \emptyset $
@@ -138,6 +175,7 @@ Proprietà:
   \item $S_1 = S_2 \iff \bar{S_1} = \bar{S_2}$
   \item $S_1 \subseteq S_2 \iff \bar{S_2} \subseteq \bar{S_1}$
 \end{enumerate}
+\end{prop}
 
 \section{Differenza di Insiemi}
 Dati 2 insiemi $S$ e $T$ chiamiamo $S \ T$ l'insieme \textit{differenza} costituito
@@ -148,6 +186,7 @@ Esempio: \newline
 $S = \{a,b,c,d,e\}$ \quad $T = \{a,c,f,g,e,h\}$\newline
 $S \ T = \{b,d\}$
 
+\begin{prop}
 Proprietà Differenza
 \begin{enumerate}
   \item $S \ S = \emptyset$
@@ -156,11 +195,13 @@ Proprietà Differenza
   \item $(S_1 \ S_2) \ S_3 = (S_1 \ S_3) \ S_2 = S_1 \ (S_2 \cup S_3)$
   \item $S_1 \ S_2 = S_1 \cap \bar{S_2}$
 \end{enumerate}
+\end{prop}
 
 La \textit{differenza simmetrica} di due insiemi $S_1$ e $S_2$, indicata con $S_1 \triangle S_2$,
 è definita come $S_1 \triangle S_2 = (S_1 \textbackslash S_2) \cup (S_2 \textbackslash S_1) $
 
 %Mancano le proprietà
+\begin{prop}
 Proprietà Differenza simmetrica
 \begin{enumerate}
   \item $S \triangle S = \emptyset$
@@ -169,6 +210,7 @@ Proprietà Differenza simmetrica
   \item $S_1 \triangle S_2 = (S_1 \cap \bar{S_2}) \cup (S_2 \cap \bar{S_1})$
   \item $S_1 \triangle S_2 = (S_1 \cup S_2) \ (S_2 \cap S_1)$
 \end{enumerate}
+\end{prop}
 
 %Partizione di un Insieme
 \section{Partizione di un Insieme}
@@ -190,9 +232,9 @@ L'insieme delle Parti di un insieme $S$, indicato con $\wp S$, è l'insieme form
 da tutti i sottoinsiemi dell'insieme $S$. \newline
 $\wp S = \{X | X \subseteq S\} $
 
-\textbf{Definizione}: Se $S$ è composto da $n \geq 0$ elementi, il numero di elementi
-di $\wp S$ è $2 ^ n$.
-
+\begin{defi}
+Se $S$ è composto da $n \geq 0$ elementi, il numero di elementi di $\wp S$ è $2 ^ n$.
+\end{defi}
 %Manca la Dimostrazione
 
 %Paragrafo sul Prodotto Cartesiano

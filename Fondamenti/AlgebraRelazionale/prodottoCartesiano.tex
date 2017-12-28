@@ -3,9 +3,9 @@ Le coppie Ordinate sono una collezione di 2 oggetti in cui non si prescinde
 dall'ordine e dalla ripetizione infatti $(a,b) \neq (b,a)$ e $<1,2,1,4> \neq <1,2,4>$.
 
 Una \emph{n-upla} ordinata $x_1,\dots,x_n$ è definita come $<x1,\dots,x_n> = < <x_1,\dots,x_{n-1}>,x_n>$
-dove $x_1,\dots,x_{n-1}>$ è una $(n-1)$-upla ordinata e si può chiamare anche \emph{sequenza}
+dove $x_1,\dots,x_{n-1}>$ è una $(n-1)$-upla ordinata.
 %Cercare definizione migliore di sequenza!!!!
-
+Si definisce come \emph{sequenza}, una
 Dati 2 insiemi $A$ e $B$, non necessariamente  distinti, si definisce come \textit{Prodotto Cartesiano},
 indicato con $A x B$, l'insieme di tutte le coppie in cui il primo elemento appartiene ad $A$
 e il secondo elemento della coppia appartiene ad $B$.\newline
@@ -18,3 +18,20 @@ A$ x $B = \{(1,1),(1,4),(1,5),(2,1),(2,4),(2,5),(3,1),(3,4),(3,5)\} $
 
 
 Inserire Esempi
+
+\section{Multiinsiemi}
+Si definisce come \emph{multiinsiemi} una collezione di elementi in cui si prescinde
+dall'ordine ma non dalla multiplicità degli elementi.\newline
+Si puo anche definire come una funzione $M:E \mapsto \N$ che associa ad ogni elemento
+di un insieme $E$ finito o numerabile, un numero, appartenente ad $\N$ indicante
+il numero di occorrenze dell'elemento di $E$ nel multiinsieme $M$.\newline
+La cardinalità di un multiinsieme $M$ è definita come $|M| = \sum{_{e_i \in E} ^ {|E|}} M(e_i)$
+
+%Inserire Esempi
+
+\subsection{Operazioni su Multiinsiemi}
+\begin{description}
+    \item[Intersezione]: $M_1 \cap M_2 = M_3$ dove $M_3(e) = min(M_1(e),M_2(e)) \forall e \in E$
+    \item[Unione]: $M_1 \cup M_2 = M_3$ dove $M_3(e) = max(M_1(e),M_2(e)) \forall e \in E$
+    \item[Unione Disgiunta]: $M_1 \uplus M_2 = M_3$ dove $M_3(e) = M_1(e) + M_2(e) \forall e \in E$
+\end{description}
