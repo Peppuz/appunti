@@ -1,61 +1,250 @@
 %Capitolo sulla Logica Predicativa
 \chapter{Logica Predicativa}
+La logica Predicativa, detta anche logica del primo ordine, si ha la possibilità
+di predicare le proprietà di una classe di individui.\newline
+É una logica semidecidibile, in quanto è ricorsivamente enumerabile ma non ricorsivo,
+per cui non sempre tramite una sequenza di passi si riesce a capire la tipologia di formula.
+
+\section{Linguaggio e Sintassi}
+Un linguaggio predicativo $L$ è composto dai seguenti insiemi di simboli:
+\begin{enumerate}
+    \item Insieme di variabili individuali(infiniti) $x,y,z,\dots$
+    \item Connettivi logici $\land \lor \neg \rightarrow \iff$
+    \item Quantificatori esistenziali $\forall \exists$
+    \item Simboli ( , )
+    \item Costanti proposizionali $T,F$
+    \item Simbolo di uguaglianza $=$,eventualmente assente
+\end{enumerate}
+Questa è la parte del linguaggio tipica di ogni linguaggio del primo ordine poi
+ogni linguaggio definisce la propria segnatura ossia definisce in maniera autonomo:
+\begin{enumerate}
+    \item Insiemi di simboli di costante $a,b,c,\dots$
+    \item Simboli di funzione con arieta $f,g,h,\dots$
+    \item Simboli di predicato $P,Q,Z,\dots$ con arietà
+\end{enumerate}
+
+%Inserire Esempio
+
+%Definizione di Termini e Formule ben formate
+Per definire le formule ben formate della logica Predicativa bisogna prima definire
+l'insieme di termini e le formule atomiche.
+
+\begin{defi}
+    L'insieme $TERM$ dei termini è definito induttivamente come segue
+    \begin{enumerate}
+        \item Ogni variabile e costante sono dei Termini
+        \item Se $t_1 \dots t_n$ sono dei termini e $f$ è un simbolo di funzione di arietà $n$
+              allora $f(t_1,\dots,t_n)$ è un termine
+    \end{enumerate}
+\end{defi}
+
+\begin{defi}
+    L'insieme $ATOM$ delle formule atomiche è definito come:
+    \begin{enumerate}
+        \item $T$ e $F$ sono degli atomi
+        \item Se $t_1$ e $t_2$ sono dei termini, allora $t_1 = t_2$ è un atomo
+        \item Se $t_1,\dots,t_n$ sono dei termini e $P$ è un predicato a $n$ argomenti,
+              allora $P(t_1,\dots,t_n)$ è un atomo.
+    \end{enumerate}
+\end{defi}
+
+\begin{defi}
+    L'insieme delle formule ben formate($FBF$) di $L$ è definito induttivamente come
+    \begin{enumerate}
+        \item Ogni atomo è una formula
+        \item Se $A,B \in FBF$, allora $\neg A$, $A \land B$,$A \lor B$,$A \rightarrow B$
+              e $A \iff B$ appartengono alle formule ben formate
+        \item Se $A \in FBF$ e $x$ è una variabile, allora $\forall x A$ e $\exists x A$
+              appartengono alle formule ben formate
+        \item Nient'altro è una formula
+    \end{enumerate}
+\end{defi}
+
+%Inserire Esempi
+
+%Precedenza degli Operatori
+La precedenza tra gli operatori logici è definita nella logica predicativa come segue
+$\forall,\exists,\neg,\land,\lor,\rightarrow,\iff$ e si assume che gli operatori associno a destra.
+
+%Inserire Esempi
+
+%Variabili legate e chiuse
+\begin{defi}
+    L'insieme $var(t)$ delle variabili di un termine $t$ è definito come segue:
+    \begin{itemize}
+        \item $var(t) = \{t \}$, se $t$ è una variabile
+        \item $var(t) = \emptyset$ se $t$ è una costante
+        \item $var(f(t_1,\dots,t_n)) = \bigcup _{i = 1} ^n var(t_i)$
+        \item $var(R(t_1,\dots,t_n)) = \bigcup _{i = 1} ^ n var(t_i)$
+    \end{itemize}
+\end{defi}
+
+%Termini chiusi ed aperti
+Si definisce \emph{Termine chiuso}, un termine che non contiene variabili altrimenti
+si definisce il termine come \emph{chiuso}.\newline
+Le variabili nei termini e nelle formule atomiche possono essere libere
+ in quanto gli unici operatori che "legano" le variabili sono i quantificatori.
+
+Il campo di azione dei quantificatori si riferisce soltanto alla parte in cui
+si applica il quantificatore per cui una variabile si dice \emph{libera}
+se non ricade nel campo di azione di un quantificatore altrimenti la variabile si dice \emph{vincolata}.
+
+\section{Sistemi Deduttivi predicativi}
+Comprendere la tipologia della formula tramite la sua semantica nella logica predicativa
+è più complesso rispetto alla semantica della logica proposizionale per cui l'apparato deduttivo
+e la sua correttezza e completezza rispetto alla semantica assumono particolare rilevanza.
+
+\begin{defi}
+Una sostituzione è una funzione $\sigma:VAR \mapsto TERM$ definita induttivamente:
+\end{defi}
+\begin{enumerate}
+    \item $T\sigma = T$ e $F \sigma = F$
+    \item se $c$ è una costante allora $c \sigma = c$
+    \item se $x$ è una variabile allora $x \sigma = x$
+    \item se $f$ è un simbolo di funzione di arietà $n$ allora
+          $f(t_1,\dots,t_n)\sigma = f(t_1\sigma,\dots,t_n\sigma)$
+\end{enumerate}
+La sostituzione $\sigma$ di un termine $t$ al posto di un simbolo di variabile $x$
+è indicata da $\sigma = \{t/x \}$.
+
+\begin{lem}
+Se $t$ è un termine e $\sigma$ è una sostituzione, allora $t\sigma$ è un termine
+\end{lem}
+%Da fare dimostrazione
+
+\begin{defi}
+    Data una formula $S$, la formula $S\sigma$ è definita nel seguente modo:
+\end{defi}
+\begin{enumerate}
+    \item se $S = P(t_1,\dots,t_n)$ è una formula atomica allora
+          allora $S\sigma = P(t_1\sigma,\dots,t_n\sigma)$
+    \item se $S = (\neg A)$ allora $S \sigma = \neg(A \sigma)$
+    \item se $S = (A \circ B)$ allora $S \sigma = A\sigma \circ B \sigma$
+    \item se $S = (\forall x A)$ allora $S \sigma = \forall x (A  \sigma _ x)$
+    \item se $S = (\exists x A)$ allora $S \sigma = \exists x (A \sigma _ x)$
+\end{enumerate}
+%Tableau predicativi
+\subsection{Tableau Predicativi}
+I tableau predicativi è un apparato deduttivo che permette di stabilire la tipologia
+di una formula del linguaggio mediante l'applicazione di una serie di regole.
+Mantiene le stesse modalità di dimostrazione dei tableaux proposizionale e le stesse
+definizioni di espansioni del Tableaux.
+
+$\begin{array}{cc}
+\toprule S, T \exists x A(x) & \qquad S, F \exists x A(x) \\
+\midrule S,T A(a) \text{con a un nuovo simbolo di variabile} & \qquad S,F A(a),F \exists x A(x) \\
+\end{array}$
+
+$\begin{array}{c}
+\toprule S,T \forall x A(x) \\
+\midrule S, T A(a), T \forall x A(x)\\
+\end{array}$
+
+\qquad $\begin{array}{c}
+\toprule S,F \forall x A(x) \\
+\midrule S,F A(a) \text{con a un nuovo simbolo di variabile} \\
+\end{array}$
+
+Nelle tableuax regole $T \exists$ e $F \forall$ bisogna introdurre un nuovo simbolo di
+variabile, in quanto non si poteva conoscere prima dell'applicazione della regole
+il valore della variabile, mentre nelle altre due si può utilizzare qualsiasi variabile.
+Il fatto di portarsi dietro la formula nell'applicazione delle regole dei tableaux
+porta alla semidecidibilità.
+
+Nei tableau predicativi l'ordine di applicazione delle regole, quando è possibile
+sceglierlo, cambia la chiusura o meno del Tableaux.
+
+Le euristiche nell'applicazione delle regole dei Tableaux sono le seguenti:
+\begin{itemize}
+    \item Applicare prima le regole che non ramificano il tableaux
+    \item Applicare prima le regole che vincolano all'introduzione di nuovi parametri
+    \item Quando si ha la possibilità di scegliere il parametro, conviene sceglierlo uno già scelto.
+\end{itemize}
+%Tableau formule
+
+%Esempi
+
+%Inserire Equivalenze Logica
+\subsection{Equivalenze logiche}
+Nella logica predicativa si definisce due formule semanticamente equivalenti,
+indicato con $P \equiv Q$, se hanno gli stessi modelli.
+Le equivalenze della logica predicativa sono le seguenti:
+\begin{enumerate}
+    \item $\forall x P \equiv \neg \exists x \neg P$
+    \item $\neg \forall x P \equiv \exists x \neg P$
+    \item $\exists x P \equiv \neg \forall x \neg P$
+    \item $\neg \exists x P \equiv \forall x \neg P$
+    \item $\forall x \forall y P \equiv \forall y \forall x P$
+    \item $\exists x \exists y P \equiv \exists y \exists x P$
+    \item $\forall x(P_1 \land P_2) \equiv \forall x P_1 \land \forall x P_2$
+    \item $\exits x(P_1 \lor P_2) \equiv \exists x P_1 \lor \exists x P_2$
+\end{enumerate}
 
 \section{Semantica}
-Il connettivo $A \iff B$ equivale per definizione ad $(A \rightarrow B) \land (B \rightarrow A)$ per cui quando si usa il $\iff$ si utilizza l'equivalenza
-definita
-Tableaux di $F A \iff B$ utilizzare la definizione data 
+La semantica della logica predicativa è più complessa della semantica proposizionale
+in quanto nella logica predicativa si ha la possibilità di predicare su oggetti e le loro proprietà.
+L'interpretazione semantica di formule predicative si serve delle \emph{strutture},
+oggetto matematico che traduce formule predicative in espressioni che hanno un significato
+specifico relativamente alla realtà che si sta rappresentando.
 
-Struttura di Interpretazione(Semantica) %Cercare meglio la definizione!!!!!!!!!
-$S = <D,I> $
-D(dominio) è un insieme finito/infinito di costanti
-I(interpretazione) è una funzione che associa a simboli e formule del linguaggio un significato a partire dai simboli primitivi del linguaggio
-(costanti,predicati e funzioni) cioè l'interpretazione varierà a seconda della signatura del linguaggio
+\begin{defi}
+    Una struttura per il linguaggio $L$ è una coppia $U = (D,I)$ in cui:
+    $D$(dominio) è un insieme non vuoto di elementi del dominio
+    $I$(interpretazione) è una funzione che associa a simboli e formule del linguaggio
+    un significato  a partire dalla segnatura del linguaggio.
+    $I$ associa:
+    \begin{itemize}
+        \item a ogni simbolo di costante $c$ un elemento $c^I \in D$
+        \item a ogni simbolo di funzione n-aria $f$ una funzione $f^I:D^n \mapsto D$
+        \item a ogni simbolo di predicato n-ario $P$ una relazione n-aria $P^I \subseteq D^n$
+    \end{itemize}
+\end{defi}
 
-Si può interpretare questa struttura come una funzione che associa ad ogni costante una costante del Linguaggio 
-$C_i \mapsto C_d : C_d \in D$
+\begin{defi}
+    Sia $Var$ l'insieme delle variabili di un linguaggio predicativo $L$, un assegnazione $\eta$
+    delle variabili in una struttura $U = (D,I)$ è una funzione $\eta:Var \mapsto D$
+\end{defi}
+Un assegnazione $\eta$ è una maniera di associare un valore alle variabili del linguaggio.
 
-LogicA Aritmetica di Peano
-Linguaggio: $0,s(x),+,*,=$ è la segnatura
+\begin{defi}
+    Sia $U =(D,I)$ una struttura per $L$ e sia $\eta$ una assegnazione.Estendiamo
+    tale estensione a un'assegnazione $\bar{\eta}(I,\eta)$ sui termini definita come:
+    \begin{itemize}
+        \item Per ogni variabile $x$, $x^{I,\eta} = x^{\eta}$
+        \item Per ogni costante $c$, $c ^{I,\eta} = c^I$
+        \item Se $t_1,\dots,t_n$ sono dei termini e $f$ è un simbolo di funzione n-aria
+              allora $f(t_1,\dots,t_n)^{I,\eta} = f^I(t_1 ^{I,\eta},\dots,t_n ^{I,\eta})$
+    \end{itemize}
 
-Dominio: tutti e numeri Naturali
-L'unica costante del linguaggio $0$ viene associato la costante del Dominio $0$. Può sembrare strano ma sono dei numeri diversi in quanto 
-$0 \in Linguaggio \mapsto 0 \in N$ ossia si associa ad un elemento del linguaggio una sua interpretazione
+Se un termine è chiuso non si necessità della funzione $\eta$ in quanto l'Interpretazione
+è unica e non dipende dall'interpretazione data tramite la funzione $\eta$.
 
+Una formula $P$, in una struttura $U$ rispetto a un assegnazione $\eta$, si dice \emph{soddisfacibile}
+, denotata con $U,\eta \models P$, se e solo se è vera l'interpretazione di $P$
+in una struttura $U$ in cui ad ogni variabile $x$ è valutata come $x^{\eta}$.
+La soddisfacibilità di una formula è definita induttivamente come segue:
 
-In Logica Proposizionale abbiamo sviluppato indipendente la parte sintattica e la parte semantica e con il Teorema di correttezza li abbiamo messi assiemi
-Anche a livello predicativo è possibile definibile in maniera chiara la semantica ed è definito il teorema di Completezza
+\begin{defi}
+    Sia $U = (D,I)$ una struttura per un linguaggio $L$ e $\eta$ un'assegnazione in $U$
+    \begin{itemize}
+        \item $(U,\eta) \models T$ e $(U,\eta) \not \models F$
+        \item se $A$ è una formula atomica del tipo $P(t_1,\dots,t_n)$, allora
+              $(U,\eta) \models P(t_1,\dots,t_n) \iff (t_1^{I,\eta},\dots,t_n^{I,\eta}) \in P^I$
+        \item $(U,\eta) \models \neg A \iff (U,\eta) \not \models A$
+        \item $(U,\eta) \models (A \circ B) \iff (U,\eta) \models A \circ (U,\eta) \models B$
+        \item $(U,\eta) \models \forall x A \iff \forall d \in D$ è verificato che $U \models A(\eta[d/x])$
+        \item $(U,\eta) \models \exists x A \iff \exists d \in D$ per cui $U \models A(\eta[d/x])$
+    \end{itemize}
+\end{defi}
 
-In logica chiamiamo Numerale la costante del linguaggio e Numero la sua interpretazione
-
-Ho un simbolo di funzione con n argomenti $f ^ n _L(t1...t_n) \mapsto I(t_k)$ quando $t_k = f(t_1....t_n)$ ossia associa ad ogni elemento della funzione una sua interpretazione
-
-$I(P(t_1....t_n) = <t_1....t_n> $ dove $I(P) \mapsto R ^n$ P è l'insieme delle n-uple che stanno nella relazione definita
-
-Il successore viene interpretato come la funzione successore
-
-Esempio:
-$s s(0) \mapsto 2 \in N$ in quanto 0 lo interpreto come 0, il successore di 0 come 1 e il successore di 1 è 2 e questo due è l'interpretazione di s(s(0))
-
-Esempio Interpretazione relazione
-Il Predicato = viene interpretato come l'insieme delle coppie che hanno i numeri uguali
-$= \mapsto <0,0>,<1,1>,<2,2>,......<n,n>$
-
-Esempio: 
-x + y = z    + è una funzione del linguaggio
-Fissato il $s(0) e s(s(0))$
-$s(0) + s(s(0)) \mapsto 3 \in N$ è l'interpretazione di s(0) e l'interpretazione del s(s(0))
-
-Come si interpretano le formule contenenti delle variabili libere?
-$\eta$ che associa alle variabili libere un'interpretazione  allora grazie a questa funzione $\eta$ possiamo valutare la formula come vera o falsa
-
+%Manca definizione di modelli e soddisfacibilità
 Es:
 $x \mapsto s(0)$
 $y \mapsto 0$
 $z \mapsto s(0)$
 Allora x + y = z con questi valori è vera
 
-Formula aperta ha senso chiedersi 
+Formula aperta ha senso chiedersi
 Si dice che una formula aperta    se esiste un assegnamento alle variabile che la rende vera
 Si dice che una formula aperta se non esiste un assegnamento alle variabile che la rende vera
 
@@ -76,7 +265,7 @@ Tutte le formule dimostrate con il metodo dei Tableau devono essere valide
 Modello è un interpretazione che rende vere le formule di una teoria
 Tutte le formule del primo Ordine dimostrabili sono sempre valide per il teorema di Completezza
 Teoria è fatta da un insieme di assiomi e da una logica $T = Ax + L$
-Ad esempio prendendo la teoria dell'Aritmetica di Peano gli diamo una serie di assiomi e una logica 
+Ad esempio prendendo la teoria dell'Aritmetica di Peano gli diamo una serie di assiomi e una logica
 i cui modelli sono tutte le formule che soddisfano gli assiomi e la logica
 
 Poi si può modificare la logica e in quel caso mescolando assiomi con logiche diverse otteniamo Teorie diverse
@@ -86,10 +275,43 @@ $\forall x \neg S(x) = 0
 \forall x x + 0 = x
 \forall x,y x + s(y) = s(x + y)
 \forall x x * 0 = 0
-\forall x,y x * s(y) = (x * y) + x 
+\forall x,y x * s(y) = (x * y) + x
 \forall x,y (s(x) = s(y)) \rightarrow x = y
 P(0)
 \neg D(0)
 \forall x (P(x) \rightarrow \neg P(s(x))) P indica i numeri Pari
 \forall x (D(x) \rightarrow \neg D(S(x))) D indica i numeri Dispari $
 
+LogicA Aritmetica di Peano
+Linguaggio: $0,s(x),+,*,=$ è la segnatura
+
+Dominio: tutti e numeri Naturali
+L'unica costante del linguaggio $0$ viene associato la costante del Dominio $0$.
+ Può sembrare strano ma sono dei numeri diversi in quanto $0 \in Linguaggio \mapsto 0 \in N$
+  ossia si associa ad un elemento del linguaggio una sua interpretazione appartenente al dominio.
+
+In Logica Proposizionale abbiamo sviluppato indipendente la parte sintattica e la parte semantica
+ e con il Teorema di correttezza li abbiamo messi assiemi
+Anche a livello predicativo è possibile definibile in maniera chiara la semantica
+ ed è definito il teorema di Completezza
+
+In logica chiamiamo Numerale la costante del linguaggio e Numero la sua interpretazione
+
+Ho un simbolo di funzione con n argomenti $f ^ n _L(t1...t_n) \mapsto I(t_k)$
+quando $t_k = f(t_1....t_n)$ ossia associa ad ogni elemento della funzione una sua interpretazione
+
+$I(P(t_1....t_n) = <t_1....t_n> $ dove $I(P) \mapsto R ^n$ P è l'insieme delle n-uple che stanno nella relazione definita
+
+Il successore viene interpretato come la funzione successore
+
+Esempio:
+$s s(0) \mapsto 2 \in N$ in quanto 0 lo interpreto come 0, il successore di 0 come 1 e il successore di 1 è 2 e questo due è l'interpretazione di s(s(0))
+
+Esempio Interpretazione relazione
+Il Predicato = viene interpretato come l'insieme delle coppie che hanno i numeri uguali
+$= \mapsto <0,0>,<1,1>,<2,2>,......<n,n>$
+
+Esempio:
+x + y = z    + è una funzione del linguaggio
+Fissato il $s(0) e s(s(0))$
+$s(0) + s(s(0)) \mapsto 3 \in N$ è l'interpretazione di s(0) e l'interpretazione del s(s(0))

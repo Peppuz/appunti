@@ -2,9 +2,8 @@
 \chapter{Logica Proposizionale}
 
 %Definizione di Logica
-La logica è lo studio	del ragionamento e dell’argomentazione e, in particolare,
-dei	procedimenti inferenziali, rivolti a chiarire	quali	procedimenti di pensiero
-siano	validi e quali no.
+La logica è lo studio del ragionamento e dell’argomentazione e, in particolare,
+dei	procedimenti inferenziali, rivolti a chiarire quali	procedimenti di pensiero siano validi e quali no.
 
 Vi sono molteplici tipologie di logiche, come ad esempio la logica classica e le logiche costruttive,
 tutte accomunate di essere composte da 3 elementi:
@@ -30,27 +29,27 @@ Il linguaggio di una logica proposizionale è composto dai seguenti elementi:
 %Elementi linguaggio logica proposizionale
 \begin{itemize}
   \item Variabili Proposizionali: $P,Q,R \dots$
-  \item Connettivi Proposizionali: $\land, \lor, \neg, \Rightarrow, \iff$
+  \item Connettivi Proposizionali: $\land, \lor, \neg, \rightarrow, \iff$
   \item Simboli Ausiliari: (,)
   \item Costanti: $T,F$
 \end{itemize}
 
 La sintassi di un linguaggio è composta da una serie di formule ben formate($FBF$) definite
 induttivamente nel seguente modo:
-
 %definizione formule ben formate
 \begin{enumerate}
   \item Le costanti e le variabili proposizionali $\in FBF$.
-  \item Se $A$ e $B \in FBF$ allora $(A \land B)$,$(A \lor B)$,$(\neg A)$,$(A \Leftarrow B)$,
+  \item Se $A$ e $B \in FBF$ allora $(A \land B)$,$(A \lor B)$,$(\neg A)$,$(A \rightarrow B)$,
         $(A \iff B)$,$TA$ e $FA$ sono delle formule ben formate.
   \item nient'altro è una formula
 \end{enumerate}
 
+%DA INSERIRE IN UN FILE  A PARTE
 Esempio:\newline
 $(P \land Q) \in Fbf$  è una formula ben formata\newline
 $(PQ \land R) \not \in Fbf$ in quanto non si rispetta la sintassi del linguaggio definita.\newline
 
-%Manca Definizione delle sottoformule
+%Definizione delle sottoformule
 Sia $A \in FBF$, l'insieme delle sottoformule di $A$ è definito come segue:
 \begin{enumerate}
 \item Se $A$ è una costante o variabile proposizionale allora A stessa è la sua sottoformula
@@ -63,26 +62,24 @@ Sia $A \in FBF$, l'insieme delle sottoformule di $A$ è definito come segue:
 
 É possibile ridurre ed eliminare delle parentesi attraverso l'introduzione della
 precedenza tra gli operatori, che è definita come segue:\newline
-$\neg, \land, \lor, \Rightarrow,\iff$.
+$\neg, \land, \lor, \rightarrow,\iff$.
 
 In assenza di parentesi una formula va parentizzata privileggiando le sottoformule
 i cui connettivi principali hanno la precedenza più alta.\newline
 In caso di parità di precedenza vi è la convenzione di associare da destra a sinistra.
 
 Esempio:\newline
-$\neg A \land (\neg B \Rightarrow C) \lor D$ diventa
-$((\neg A) \land ((\neg B) \Rightarrow C) \lor D)$.
+$\neg A \land (\neg B \rightarrow C) \lor D$ diventa
+$((\neg A) \land ((\neg B) \rightarrow C) \lor D)$.
 
 %Semantica Logica Proposizionale
 \section{Semantica}
-%Cercare migliore definizione di Semantica
-La semantica di una logica consente di dare un significato alle formule del Linguaggio
-attraverso le tabelle di verità.\newline
+La semantica di una logica consente di dare un significato e un interpretazione
+ alle formule del Linguaggio attraverso le tabelle di verità.\newline
 Si definisce $v(T) = 1$ e $v(F) = 0$ per cui $1$ rappresenta la verità mentre lo $0$
 la falsità di una variabile,sottoformula e formula.
 
 I connettivi della Logica Proposizionale hanno la seguente tabella di verità:\newline
-
 %Tabella di Verità degli operatori
 $\begin{array}{ccccccc}
 \toprule
@@ -96,14 +93,13 @@ $\begin{array}{ccccccc}
 \end{array}$\newline
 
 Una formula nella logica proposizionale può essere di tre diversi tipi:
-
 %Tipologie di formule
-\begin{itemize}
-  \item Tautologica: la formula è soddisfatta da qualsiasi valutazione della formula
-  \item Soddisfacibile non Tautologica:la formula è soddisfatta da qualche valutazione
-        della formula ma non da tutte
-  \item Contaddizione: la formula non viene soddisfatta da qualsiasi valutazione della formula
-\end{itemize}
+\begin{description}
+    \item[Tautologica]: la formula è soddisfatta da qualsiasi valutazione della Formula
+    \item[Soddisfacibile non Tautologica]:la formula è soddisfatta da qualche valutazione
+                        della formula ma non da tutte.
+    \item[Contraddizione]:la formula non viene mai soddisfatta
+\end{description}
 
 Esempio:\newline
 Formula $A \land \neg A$ \quad contraddizione
@@ -169,24 +165,56 @@ A & B & C & A \land B & \neg(A \land B) & A \lor B & (A \lor B) \Rightarrow C & 
 \bottomrule
 \end{array}$
 
+\subsection{Modelli e decidibilità}
+Si definisce \emph{modello}, indicato con $M \models A$, tutte le valutazioni booleane
+che rendono vera la formula $A$.
+Si definisce \emph{contromodello}, indicato con , tutte le valutazioni booleane
+che rendono falsa la formula $A$.
+
+La logica proposizionale è decidibile (posso sempre verificare il significato di una formula).
+Esiste infatti una procedura effettiva che stabilisce la validità o no di una formula, o se questa
+ad esempio è una tautologia.
+In particolare il verificare se una proposizione è tautologica o meno è l’operazione di decibi-
+lità principale che si svolge nel calcolo proposizonale.
+
+\begin{defi}
+    Se $M \models A$ per tutti gli $M$, allora $A$ è una tautologia e si indica $\models A$
+\end{defi}
+
+\begin{defi}
+    Se $M \models A$ per qualche $M$, allora $A$ è soddisfacibile
+\end{defi}
+
+\begin{defi}
+Se $M \models A$ non è soddisfatta da nessun $M$, allora $A$ è insoddisfacibile
+\end{defi}
+
 \section{Sistema Deduttivo}
 Il sistema deduttivo è un metodo di calcolo che manipola proposizioni, senza la
-necessità di ricorrere ad altri aspetti della logica(nessuna necessità di ricorrere all'interpretazione).\newline
+necessità di ricorrere ad altri aspetti della logica.\newline
 Nella logica proposizionale, tramite i teoremi di completezza e correttezza, esiste
 una corrispondenza tra le formule derivanti dal sistema deduttivo e le formule verificabili
 tramite la semantica della logica.
 
 I sistemi deduttivi della logica proposizionale sono i seguenti:
+\begin{description}
+    \item[Sistema deduttivo Hilbertiano]: non viene analizzato
+    \item[Metodo dei Tableau]
+    \item [Risoluzione Proposizionale]:non viene analizzato !!!!
+\end{description}
 
-\begin{itemize}
-  \item \textsc{Sistema deduttivo Hilbertiano}:non viene analizzato!!!
-  \item \textsc{Metodo dei Tableau}
-  \item \textsc{Risoluzione Proposizionale}:non viene analizzato!!!
-\end{itemize}
+\begin{defi}
+Una sequenza di formule $A_1,\dots,A_n$ di $\Lambda$ è una \emph{dimostrazione} se
+per ogni $i$ compreso tra $1$ e $n$, $A_i$ è un assioma di $\Lambda$ oppure una
+conseguenza diretta di una formula precedente.
+\end{defi}
 
-(Da migliorare)(inserire definizione di dimostrazione e teorema)
+\begin{defi}
+Una formula $A$ di una logica $\Lambda$ è detta \emph{teorema} di $\Lambda$,indicata
+con $\vdash A$ se esiste una dimostrazione di $\Lambda$ che ha $A$ come ultima formula
+\end{defi}
+
 Una dimostrazione di una formula di una logica può venire tramite:
-
 \begin{itemize}
   \item  \textbf{Metodo diretto}: Data un'ipotesi, attraverso una serie di passi
           si riesce a dimostrare la correttezza della Tesi
@@ -195,6 +223,15 @@ Una dimostrazione di una formula di una logica può venire tramite:
         la negazione delle ipotesi.
 \end{itemize}
 
+\begin{thm}
+    Un apparato deduttivo $R$ è completo se, per ogni formula $A \in Fbf$, $\vdash A$
+    implica $\models A$
+\end{thm}
+
+\begin{thm}
+    Un apparato deduttivo $R$ è corretto se, per ogni formula $A \in Fbf$, $\models A$
+    implica $\vdash A$
+\end{thm}
 \subsection{Tableau Proposizionali}
 Il metodo dei Tableau è stato introdotto da Hintikka e Beth alla fine degli anni '50
 e poi ripresi successivamente da Smullyan.
@@ -211,7 +248,6 @@ $\begin{array}{c}
 S,T A \land B \\
 \midrule
 S, TA, TB \\
-\bottomrule
 \end{array}$
 
 T $\lor$
@@ -221,7 +257,6 @@ $\begin{array}{c}
 S,T A \lor B \\
 \midrule
 S, TA/ S, TB \\
-\bottomrule
 \end{array}$
 
 T $\neg$
@@ -231,7 +266,6 @@ $\begin{array}{c}
 S,T \neg A \\
 \midrule
 S, FA \\
-\bottomrule
 \end{array}$
 
 T $\Rightarrow$
@@ -241,7 +275,6 @@ $\begin{array}{c}
 S,T A \Rightarrow B \\
 \midrule
 S, FA / S, TB \\
-\bottomrule
 \end{array}$
 
 T $\iff$(da fare)
@@ -253,7 +286,6 @@ $\begin{array}{c}
 S,F A \land B \\
 \midrule
 S, FA/ S, TB \\
-\bottomrule
 \end{array}$
 
 F $\lor$
@@ -263,7 +295,6 @@ $\begin{array}{c}
 S,F A \lor B \\
 \midrule
 S, FA, FB \\
-\bottomrule
 \end{array}$
 
 F $\neg$
@@ -273,7 +304,6 @@ $\begin{array}{c}
 S,F \neg A \\
 \midrule
 S, TA \\
-\bottomrule
 \end{array}$
 
 F $\Rightarrow$
@@ -283,7 +313,6 @@ $\begin{array}{c}
 S,F A \Rightarrow B \\
 \midrule
 S, TA, FB \\
-\bottomrule
 \end{array}$
 
 F $\iff$(da fare)
@@ -291,7 +320,6 @@ F $\iff$(da fare)
 %Dimostrazione di tableau
 Il metodo dei Tableau è un metodo dei sistemi deduttivi, che permette attraverso
 l'applicazione di una serie di regole, di capire la tipologia della formula.
-
 %Metodi per capire il tipo della Formula
 \begin{tabular}{cccc}
 \toprule Tipologia & Fare Tableau per & Chiuso? & Aperto? \\
@@ -302,8 +330,74 @@ l'applicazione di una serie di regole, di capire la tipologia della formula.
 \bottomrule
 \end{tabular}
 
-Esempio: \newline
-Formula: $ \neg(A \lor B) \rightarrow (\neg A \land \neg B)$
-%Da fare dimostrazione con il Pacchetto bussproof
-
 %Da fare definizione di di Tableau,Tableau dimostrazione,rami chiusi ed aperti del Tableau
+
+\section{Equivalenze Logiche}
+Due proposizioni $A$ e $B$ sono logicamente equivalenti se e solo se A e B hanno
+la stessa valutazione booleana.
+
+Nella logica proposizionale sono definite le seguenti equivalenze logiche, indicate con $\equiv$,:
+\begin{enumerate}
+    \item Idempotenza
+            \begin{align*}
+                A \lor B & \equiv & A \\
+                A \land B & \equiv & A \\
+            \end{align*}
+    \item Associavità
+            \begin{align*}
+                A \lor (B \lor C) & \equiv & (A \lor B) \lor C \\
+                A \land (B \land C) & \equiv & (A \land B) \land C \\
+                A \iff (B \iff C) & \equiv & (A \iff B) \iff C \\
+            \end{align*}
+    \item Commutatività
+            \begin{align*}
+                A \lor B & \equiv & B \lor A \\
+                A \land B & \equiv & B \land A \\
+                A \iff B & \equiv B \iff A \\
+            \end{align*}
+    \item Distribuitività
+            \begin{align*}
+                A \lor (B \land C) & \equiv & (A \lor B) \land (A \lor C)\\
+                A \land (B \lor C) & \equiv & (A \land B \lor (A \land C) \\
+            \end{align*}
+    \item Assorbimento
+            \begin{align*}
+                A \lor (A \land B) & \equiv & A \\
+                A \land (A \lor B) & \equiv & A \\
+            \end{align*}
+    \item Doppia negazione
+                \begin{equation}
+                    \neg \neg A \equiv A
+                \end{equation}
+    \item Leggi di De Morgan
+            \begin{align*}
+                \neg (A \lor B) & \equiv & \neg A \land \neg B \\
+                \neg(A \land B) & \equiv & \neg A \lor \neg B \\
+            \end{align*}
+    \item Terzo escluso
+            \begin{equation}
+                A \lor \neg A \equiv T
+            \end{equation}
+    \item Contrapposizione
+            \begin{equation}
+                A \rightarrow B \equiv \neg B \rightarrow \neg A
+            \end{equation}
+    \item Contraddizione
+            \begin{equation}
+                A \land \neg A \equiv F
+            \end{equation}
+\end{enumerate}
+
+\section{Completezza di insiemi di Connettivi}
+Un insieme di connettivi logici è completo se mediante i suoi connettivi si può
+esprimere un qualunque altro connettivo.
+Nella logica proposizionale valgono anche le seguenti equivalenze, utili per ridurre il linguaggio,:
+\begin{align*}
+    (A \rightarrow B) & \equiv & (\neg A \lor B) \\
+    (A \lor B) & \equiv & \neg(\neg A \land \neg B) \\
+    (A \land B) & \equiv & \neg(\neg A \lor \neg B) \\
+    (A \iff B) & \equiv & (A \rightarrow B) \land (B \rightarrow A) \\
+\end{align*}
+
+L'insieme dei connettivi $\{ \neg,\lor,\land \}$, $\{ \neg,\land \}$ e $\{ \neg,\lor \}$ sono completi
+e ciò è facilmente dimostrabile utilizzando le seguenti equivalenze logiche

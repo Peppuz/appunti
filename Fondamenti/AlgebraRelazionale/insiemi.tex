@@ -219,7 +219,12 @@ Dato un insieme non vuoto $S$, una partizione di $S$ è una famiglia $F$ di sott
     \item ogni elemento di $S$ appartiene a qualche elemento di $F$, ossia $\cup F = S$
     \item due elementi qualunque di $F$ sono disgiunti ossia $\cap F = \emptyset$
 \end{enumerate}
-%inserire Esempio
+La partizione non può avere come elemento l'insieme vuoto in quanto esso non
+appartiene agli elementi dell'insieme A.
+
+Esempio:
+$A = \{ 1,2,3 \}$ \newline
+$Par(A) = \{ \{ 1 \},\{2,3 \} \}$
 
 %Funzione Caratteristica!!!!
 \section{Funzione Caratteristica}
@@ -236,6 +241,13 @@ $\wp S = \{X | X \subseteq S\} $
 Se $S$ è composto da $n \geq 0$ elementi, il numero di elementi di $\wp S$ è $2 ^ n$.
 \end{defi}
 %Manca la Dimostrazione
+\begin{proof}
+Supponendo di avere una sequenza binaria di 3 bit,le cui possibili combinazioni
+vengono rappresentate da $2 ^ k$ con $k = numero di bit$.\newline
+Prendendo un insieme $A = \{"a","b","c" \}$ e utilizzando la funzione caratteristica,
+con la convenzione di indicare il primo elemento dell'insieme $A$ a destra, si nota
+che le sequenze di bit sono uguali alla sequenza ottenuta utilizzando la funzione caratteristica.
+\end{proof}
 
 %Paragrafo sul Prodotto Cartesiano
 \input{AlgebraRelazionale/prodottoCartesiano}

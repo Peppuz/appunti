@@ -17,9 +17,9 @@ Data una proposizione $P(x)$ valida per $\forall x \in N$ bisogna:
 \end{enumerate}
 
 Esempio:\newline
-Dimostrare tramite Induzione la formula $\displaystyle \sum_{i = 0} ^ n i = \frac{n(n + 1)}{2}$
+\begin{thm}$\displaystyle \sum_{i = 0} ^ n i = \frac{n(n + 1)}{2}$ \end{thm}
 
-Dimostrazione \newline
+\begin{proof}
 \textbf{Base} $n = 0 \quad \displaystyle \sum_{i = 0} ^ 0 i = \frac{0(0 + 1)}{2} \quad 0 = 0$ vero
 
 \textbf{Ipotesi Induttiva}: $\displaystyle \sum_{i = 0} ^ n i = \frac{n(n+1)}{2}$ \newline
@@ -33,10 +33,14 @@ Dimostrazione \newline
                      & = \frac{(n+1)(n+2)}{2} \\
 \end{split}
 \end{equation*}
+\end{proof}
 
 Esempio:\newline
-Dimostrare tramite Induzione la formula $\displaystyle \sum_{i = 1}^n 2i-1 = n^2$
+\begin{thm}
+ $\displaystyle \sum_{i = 1}^n 2i-1 = n^2$
+\end{thm}
 
+\begin{proof}
 Dimostrazione\newline
 \textbf{Base} $n = 1 \quad \displaystyle \sum_{i = 1}^1 2i-1 = 1^2 \quad 1 = 1$ è vero
 
@@ -49,7 +53,7 @@ Dimostrazione\newline
          & = n^2 + 2n + 1 = (n+1)^2 \\
 \end{split}
 \end{equation*}
-
+\end{proof}
 
 %Definizione induttiva
 \section{Definizione Induttiva}
@@ -64,7 +68,6 @@ L'induzione permette anche di definire nuovi insiemi nel seguente modo:
 
 %Inserire Esempi
 Esempio:Definizione induttiva di numeri naturali\newline
-
 \begin{enumerate}
   \item $0 \in N$
   \item Se $x \in N$ allora $s(x) \in N$

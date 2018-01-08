@@ -30,8 +30,6 @@ Data una relazione $R$ definita su un dominio $S$ si definiscono le seguenti pro
   \item Transitiva: $\iff xRy \land yRz \rightarrow xRz$
 \end{itemize}
 
-%Inserire Esempi
-
 Sulle relazioni si possono applicare le usuali operazioni insiemistiche quindi, ad esempio,
 date $R_1 \subseteq S x T$ e $R_2 \subseteq S x T$ anche $R_1 \cup R_2$ è una relazione su $S x T$.
 
@@ -45,16 +43,17 @@ $R^-1 = \{<y,x> | <x,y> \in R\} \subseteq T x S$.
 Per definizione $(R ^ -1) ^ -1 = R$
 
 %Proprietà relazioni
-\subsection{Proprietà delle relazioni Riflessive}
+\begin{defi}
 Date due relazioni $R$ e $R'$ definite su $S$ si ha:
 \begin{enumerate}
     \item se $R$ è riflessiva anche $R^-1$ è Riflessiva
     \item $R$ è riflessiva se e solo se $\bar{R}$ è riflessiva
     \item se $R$ e $R'$ sono riflessive anche $R \cup R'$ e $R \cap R'$ sono riflessive
 \end{enumerate}
+\end{defi}
 %mancano le dimostrazioni
 
-\subsection{Proprietà relazioni Simmetriche}
+\begin{defi}
 Date due relazioni $R$ e $R'$ definite su $S$, si ha:
 \begin{enumerate}
     \item $R$ è simmetrica se e solo se $R = R^-1$
@@ -63,10 +62,12 @@ Date due relazioni $R$ e $R'$ definite su $S$, si ha:
     \item $R$ è asimmetrica se e solo se $R \cap R^-1 = \emptyset$
     \item se $R$ e $R'$ sono simmetriche anche $R \cup R'$ e $R \cap R'$ sono simmetriche
 \end{enumerate}
+\end{defi}
 %Mancano le dimostrazioni
 
-\subsection{Proprietà relazioni Transitive}
+\begin{defi}
 Siano $R$ e $R'$ due relazioni su $S$, se $R$ e $R'$ sono transitive anche $R \cap R'$ è transitiva.
+\end{defi}
 %Manca la dimostrazione
 
 %Modalità di Rappresentazione delle Relazioni
@@ -85,10 +86,22 @@ dipendono dall'arietà della relazione, che sono:
 \end{description}
 
 \subsection{Tabelle}
-Inserire esempi!!!!!!!!!!!!
+Si vuole definire la relazione $anagrafica \subseteq Cognomi x Nomi x Date x Luoghi$
+
+\begin{tabular}{cccc}
+\toprule
+C & N & D & L \\
+\midrule
+Moscato & Ugo & 10/1/57 & Milano \\
+Iaquinta & Vincenzo & 13/5/68 & Udine \\
+Inzaghi & Filippo & 23/5/78 & Piacenza \\
+\bottomrule
+\end{tabular}
 
 \subsection{Grafo Bipartito}
-Inserire esempi con risoluzione!!!!
+Dati due insiemi $A = \{ 1,2,3 \}$ e $B = \{ 4,7,1 \}$ si definisce la relazione
+$R \subset A x B = \{ (1,7),(1,1),(2,4),(3,7),(3,4) \}$.
+
 
 \subsection{Matrice Booleana}
 La \emph{Matrice booleana} è una matrice $M_R$,composta da $n$ righe e $m$ colonne,
@@ -122,9 +135,12 @@ Inserire Esempi
 \section{Composizione di Relazioni}
 Data una relazione $R_1 \subseteq S x T$ e una relazione $R_2 \subseteq T x Q$,
 si definisce come relazione composta $R_1 \circ R_2 \subseteq S x Q$ come segue
-$<a,c> \in R_1 \circ R_2 \iff \exists b \in T | <a,b> \in R_1 \land <b,c> \in R_2$
+$(a,c) \in R_1 \circ R_2 \iff \exists b \in T | (a,b) \in R_1 \land (b,c) \in R_2$
 
-%Inserire Esempio
+Esempio:
+Siano $S = \{ a,b \}, R_1 = \{ (a,a),(a,b),(b,b) \}$ e $R_2 = \{ (a,b),(b,a),(b,b) \}$
+$R_1 \circ R_2 = \{ (a,a),(a,b),(b,a),(b,b) \}$ \newline
+$R_2 \circ R_1 = \{ (a,b),(b,a),(b,b) \}$
 
 \begin{prop}
 La composizione di Relazioni non è commutativa ma invece è associativa
@@ -151,13 +167,14 @@ $R$ è riflessiva,simmetrica e transitiva.
 Data una relazione di equivalenza $R$ definita su un insieme $S$, si definisce
 \emph{classe di equivalenza} di un elemento $x \in S$ come $[x] = \{y | <x,y> \in R \}$
 
-Teorema: Se $R$ è una relazione di equivalenza su $S$, allora le classi di Equivalenza
+\begin{thm}
+Se $R$ è una relazione di equivalenza su $S$, allora le classi di Equivalenza
 generate da $R$ partizionano $S$
-
+\end{thm}
 %Fare la Dimostrazione
 
 Data una relazione di equivalenza in S, la partizione che essa determina si dice
 \emph{insieme quoziente} di $S$ rispetto alla relazione di equivalenza e si indica con $S/$
 
 %Ordinamento
-%\input{ordinamento}
+\input{AlgebraRelazionale/ordinamento}

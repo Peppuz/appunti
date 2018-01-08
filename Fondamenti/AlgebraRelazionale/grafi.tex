@@ -33,6 +33,20 @@ In un grafo si definisce:
 
 %Inserire esempi ed esercizi
 %Inserire Proprietà Grafi
+\subsection{Proprietà dei Grafi}
+Le proprietà delle relazioni si riflettono in proprietà dei grafi.
+
+\begin{defi}
+Sia $G$ una relazione binaria su un insieme $V$
+\begin{enumerate}
+    \item Se $G$ è riflessiva allora il corrispettivo grafo avrà un cappio intorno ogni nodo
+    \item Se $G$ è una relazione irriflessiva allora nel grafo non ci sono cappi
+    \item Se $G$ è una relazione simmetrica allora il grafo non è orientato
+    \item Se $G$ è una relazione asimmetrica allora tra due nodi non ci sarà mai un arco e il suo inverso
+    \item Se $G$ è una relazione transitiva allora nel grafo qualora vi siano gli archi
+          tra $x_1 \mapsto x_2$ e tra $x_2 \mapsto x_3$ vi è l'arco tra $x_1 \mapsto x_3$
+\end{enumerate}
+\end{defi}
 
 %Paragrafo sui Dag e gli Alberi
 \input{alberi.tex}

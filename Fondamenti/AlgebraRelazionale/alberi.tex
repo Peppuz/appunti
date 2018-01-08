@@ -7,9 +7,34 @@ in cui ogni nodo diverso dalla radice ha un solo nodo entrante.\newline
 I nodi privi di archi entranti sono detti \emph{foglie} dell'albero.
 
 %Inserire esempi e proprietà degli Alberi
-%Inserire caratteristiche e Nomenclatura degli Alberi
 
+%Inserire caratteristiche e Nomenclatura degli Alberi
+Le tipologie di Alberi sono:
+\begin{description}
+    \item[Albero Binario]: albero con al più due rami
+    \item[Albero Strettamento Binario]: albero da cui da ogni nodo partono due rami
+    \item[Albero Bilanciato]: albero in cui tutti i cammini hanno la stessa lunghezza
+\end{description}
 
 %Fare definizione anche delle foreste
 
 %Alberi binari di Ricerca e metodo di visita degli alberi
+\subsection{Alberi binari di ricerca e metodo di visita}
+Dato un insieme di nodi in cui è definita una relazione d'ordine, si definisce come
+\emph{albero di ricerca} un albero in cui tutti i nodi della radice sinistra sono
+minori della radice e tutti i nodi a destra della radice sono maggiori e ogni sottoalbero
+è anch'esso un albero di ricerca.
+
+%Fare Esempio
+
+Il metodo di visità di Albero di Ricerca è il seguente
+Partendo dalla radice per visitare tutti i nodi dell'albero bisogna:
+\begin{itemize}
+    \item visita del sottoalbero sinistro
+    \item visita della radice
+    \item visita del sottoalbero destro
+\end{itemize}
+Si continua ad applicare la visita al sottoalbero fino a quanto si arriva a visitare la radice
+attraverso la ricorsione
+
+%Fare esempio
