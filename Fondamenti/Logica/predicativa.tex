@@ -177,7 +177,7 @@ Le equivalenze della logica predicativa sono le seguenti:
     \item $\forall x \forall y P \equiv \forall y \forall x P$
     \item $\exists x \exists y P \equiv \exists y \exists x P$
     \item $\forall x(P_1 \land P_2) \equiv \forall x P_1 \land \forall x P_2$
-    \item $\exits x(P_1 \lor P_2) \equiv \exists x P_1 \lor \exists x P_2$
+    \item $\exists x(P_1 \lor P_2) \equiv \exists x P_1 \lor \exists x P_2$
 \end{enumerate}
 
 \section{Semantica}
@@ -215,6 +215,7 @@ Un assegnazione $\eta$ è una maniera di associare un valore alle variabili del 
         \item Se $t_1,\dots,t_n$ sono dei termini e $f$ è un simbolo di funzione n-aria
               allora $f(t_1,\dots,t_n)^{I,\eta} = f^I(t_1 ^{I,\eta},\dots,t_n ^{I,\eta})$
     \end{itemize}
+\end{defi}
 
 Se un termine è chiuso non si necessità della funzione $\eta$ in quanto l'Interpretazione
 è unica e non dipende dall'interpretazione data tramite la funzione $\eta$.
@@ -222,8 +223,8 @@ Se un termine è chiuso non si necessità della funzione $\eta$ in quanto l'Inte
 Una formula $P$, in una struttura $U$ rispetto a un assegnazione $\eta$, si dice \emph{soddisfacibile}
 , denotata con $U,\eta \models P$, se e solo se è vera l'interpretazione di $P$
 in una struttura $U$ in cui ad ogni variabile $x$ è valutata come $x^{\eta}$.
-La soddisfacibilità di una formula è definita induttivamente come segue:
 
+La soddisfacibilità di una formula è definita induttivamente come segue:
 \begin{defi}
     Sia $U = (D,I)$ una struttura per un linguaggio $L$ e $\eta$ un'assegnazione in $U$
     \begin{itemize}
@@ -238,6 +239,25 @@ La soddisfacibilità di una formula è definita induttivamente come segue:
 \end{defi}
 
 %Manca definizione di modelli e soddisfacibilità
+%Definizione di Modello
+\begin{defi}
+    Se per una formula $A \in L$, $(U,\eta) \models A$ è verificato se per ogni
+    assegnazione alle variabili, allora scriviamo $U \models A$ e diciamo che $U$
+    è un modello di $A$.
+\end{defi}
+
+%tautologia
+\begin{defi}
+Una formula $A \in L$ è una \emph{tautologia} se e solo se è vera in tutte le strutture
+di $U$ e lo scriviamo $U \models A$
+\end{defi}
+
+Si può estendere la definizione di soddisfacibile anche un insieme di formule con
+la definizione seguente:
+\begin{defi}
+Un insieme di formule $\Gamma$ è soddisfacibile se esiste
+\end{defi}
+
 Es:
 $x \mapsto s(0)$
 $y \mapsto 0$
