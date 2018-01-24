@@ -1,13 +1,11 @@
-Insiemi
+Grafi e alberi
+Inserire esempi e definizioni sugli Alberi
+Inserire esempi di Matrici,Grafo bipartito e Tabelle
 
 
 Induzione
-Esempi sulla definizione Induttiva
-Manca la Ricorsione
 Mancano la definizione induttiva di Stringhe.
 
 Logica proposizionale
-Manca Sistemi Deduttivi,Tableau e Sottoformula
-Migliorare definizione di Sintassi e Semantica
 
 Logica Preposizionale

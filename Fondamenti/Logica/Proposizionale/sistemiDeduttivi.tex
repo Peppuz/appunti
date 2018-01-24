@@ -1,0 +1,142 @@
+\section{Sistema Deduttivo}
+Il sistema deduttivo è un metodo di calcolo che manipola proposizioni, senza la
+necessità di ricorrere ad altri aspetti della logica.\newline
+Nella logica proposizionale, tramite i teoremi di completezza e correttezza, esiste
+una corrispondenza tra le formule derivanti dal sistema deduttivo e le formule verificabili
+tramite la semantica della logica.
+
+I sistemi deduttivi della logica proposizionale sono i seguenti:
+\begin{description}
+    \item[Sistema deduttivo Hilbertiano]: non viene analizzato
+    \item[Metodo dei Tableau]
+    \item [Risoluzione Proposizionale]:non viene analizzato !!!!
+\end{description}
+
+\begin{defi}
+Una sequenza di formule $A_1,\dots,A_n$ di $\Lambda$ è una \emph{dimostrazione} se
+per ogni $i$ compreso tra $1$ e $n$, $A_i$ è un assioma di $\Lambda$ oppure una
+conseguenza diretta di una formula precedente.
+\end{defi}
+
+\begin{defi}
+Una formula $A$ di una logica $\Lambda$ è detta \emph{teorema} di $\Lambda$,indicata
+con $\vdash A$ se esiste una dimostrazione di $\Lambda$ che ha $A$ come ultima formula
+\end{defi}
+
+Una dimostrazione di una formula di una logica può venire tramite:
+\begin{itemize}
+  \item  \textbf{Metodo diretto}: Data un'ipotesi, attraverso una serie di passi
+          si riesce a dimostrare la correttezza della Tesi
+  \item \textbf{Metodo per assurdo}(non sempre accettato in tutte le logiche):
+        Si nega la tesi ed attraverso una serie di passi si riesce a dimostrare
+        la negazione delle ipotesi.
+\end{itemize}
+
+\begin{thm}
+    Un apparato deduttivo $R$ è completo se, per ogni formula $A \in Fbf$, $\vdash A$
+    implica $\models A$
+\end{thm}
+
+\begin{thm}
+    Un apparato deduttivo $R$ è corretto se, per ogni formula $A \in Fbf$, $\models A$
+    implica $\vdash A$
+\end{thm}
+\subsection{Tableau Proposizionali}
+Il metodo dei Tableau è stato introdotto da Hintikka e Beth alla fine degli anni '50
+e poi ripresi successivamente da Smullyan.
+
+I tableau sono degli alberi,la cui radice è l'enunciato in esame, e gli altri nodi
+sono costruiti attraverso l'applicazione di una serie di regole,fino ad arrivare
+alle formule atomiche come radici.
+
+Le regole dei Tableau sono le seguenti:\newline
+T $\land$
+
+$\begin{array}{c}
+\toprule
+S,T A \land B \\
+\midrule
+S, TA, TB \\
+\end{array}$
+
+T $\lor$
+
+$\begin{array}{c}
+\toprule
+S,T A \lor B \\
+\midrule
+S, TA/ S, TB \\
+\end{array}$
+
+T $\neg$
+
+$\begin{array}{c}
+\toprule
+S,T \neg A \\
+\midrule
+S, FA \\
+\end{array}$
+
+T $\Rightarrow$
+
+$\begin{array}{c}
+\toprule
+S,T A \Rightarrow B \\
+\midrule
+S, FA / S, TB \\
+\end{array}$
+
+T $\iff$(da fare)
+
+F $\land$
+
+$\begin{array}{c}
+\toprule
+S,F A \land B \\
+\midrule
+S, FA/ S, TB \\
+\end{array}$
+
+F $\lor$
+
+$\begin{array}{c}
+\toprule
+S,F A \lor B \\
+\midrule
+S, FA, FB \\
+\end{array}$
+
+F $\neg$
+
+$\begin{array}{c}
+\toprule
+S,F \neg A \\
+\midrule
+S, TA \\
+\end{array}$
+
+F $\Rightarrow$
+
+$\begin{array}{c}
+\toprule
+S,F A \Rightarrow B \\
+\midrule
+S, TA, FB \\
+\end{array}$
+
+F $\iff$(da fare)
+
+%Dimostrazione di tableau
+Il metodo dei Tableau è un metodo dei sistemi deduttivi, che permette attraverso
+l'applicazione di una serie di regole, di capire la tipologia della formula.
+%Metodi per capire il tipo della Formula
+\begin{tabular}{cccc}
+\toprule Tipologia & Fare Tableau per & Chiuso? & Aperto? \\
+\midrule
+         Teorema & $\neg A$ & Si & No \\
+         Soddisfacibile & $A$ & No & Si \\
+         Contradditoria & $A$ & Si & No \\
+\bottomrule
+\end{tabular}
+
+%Da fare definizione di di Tableau,Tableau dimostrazione,rami chiusi ed aperti del Tableau

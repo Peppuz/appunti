@@ -1,0 +1,43 @@
+%Paragrafo sulla traduzione dall'italiano a un linguaggio formale della logica del 1° ordine
+\section{Traduzione in linguaggio formale}
+La traduzione in linguaggio formale della logica predicativa consiste nel formalizzare
+le frasi della lingua naturale, in particolare l'italiano per noi italiani, in
+formule della logica proposizionale attraverso la definizione della realtà da rappresentare.
+
+Per rappresentare le frasi del linguaggio naturale in frasi formali bisogna definire:
+\begin{enumerate}
+    \item quali sono le eventuali costanti della frase da tradurre
+    \item quali sono le eventuali funzioni della frase da tradurre
+    \item quali sono i predicati della frase da tradurre
+\end{enumerate}
+
+Le costanti sono rappresentati nel linguaggio naturale da sostantivi mentre i
+predicati e le funzioni sono rappresentati da forme verbali.
+Alcuni esempi di rappresentazione da italiano a linguaggio formale sono i seguenti:
+
+Esempio: Tutti gli uomini sono mortali,Socrate è un uomo allora Socrate è un mortale
+
+Costanti:Socrate \newline
+Predicati:$Uomo(x),Mortale(x)$ \newline
+Funzioni: non presenti \newline
+\begin{equation*}
+\forall x (Uomo(x) \rightarrow Mortale(x) \land Uomo(Socrate) \rightarrow Mortale(Socrate))
+\end{equation*}
+
+Esempio: un cugino di Marco non ha cani
+
+Costanti: Marco
+Predicati:$Cugino(x,y),Avere(x,y),Cane(y)$
+Funzioni: non sono presenti
+\begin{equation*}
+\exists x (Cugino(x,Marco) \land \forall y (Cane(y) \rightarrow \neg Avere(x,y)))
+\end{equation*}
+
+Esempio: Ogni treno ha un numero identificativo
+
+Costanti: non presenti
+Predicati: $Treno(x)$,$Avere(x)$
+Funzioni:$id(x)$
+\begin{equation*}
+\forall x (Treno(x) \rightarrow Avere(id(x)))
+\end{equation*}

@@ -1,0 +1,135 @@
+\section{Traduzione linguaggio Naturale in linguaggio predicativo}
+
+%Frase Tutti i docenti hanno un età maggiore di 24 anni
+Esercizio: Tutti i docenti hanno un età maggiore di 24 anni
+
+Costanti: $24$
+Predicati:$Docente(x)$,$>(x,y)$
+Funzioni:$eta(x)$
+
+$\forall x (Docente(x) \rightarrow eta(x) > 24)$
+
+Esercizi:Tutti i docenti hanno una chiave d'accesso all'edificio U6
+
+Costanti:$U6$
+Predicati:$Docente(x)$,$Avere(y)$,$Chiave(x,y)$
+Funzioni:non presente
+
+\begin{equation*}
+    \forall x (Docente(x) \land \exists y (Chiave(y,U6) \land Avere(y)))
+\end{equation*}
+
+Esercizio:Tutti i canali televisivi con una share maggiore del 10\% sono
+          considerati canali principali
+
+Costanti:$10\%$
+Predicati:$Canale(x)$,$>(x,y)$,$CanalePrincipale(x)$
+Funzioni:$share(x)$
+\begin{equation*}
+    \forall x (Canale(x) \land share(x) > 10\% \rightarrow CanalePrincipale(x))
+\end{equation*}
+
+Esercizio:il fratello di Marco ha copiato il compito ed è stato respinto
+
+Costanti:$Marco$,$compito$
+Predicati:$Copiare(x,y)$,$Uomo(x)$,$Bocciato(x)$,$Fratello(x,y)$
+Funzioni: non presenti
+\begin{equation*}
+    \exists x (Uomo(x) \land Fratello(x,Marco) \land Copiare(x,compito) \rightarrow Bocciato(x))
+\end{equation*}
+
+Esercizio: Tutte le sere gli studenti ascoltano musica Uzbeka e bevono caffè
+
+Costanti:$musicaUzbeka$,$caffè$
+Predicati:$Studenti(x)$,$Ascoltare(x,y)$,$Bere(x,y)$,$Sera(y)$
+Funzioni:non presenti
+\begin{equation*}
+\forall x,y (Studente(x) \land Sera(y) \rightarrow (Ascoltare(x,musicaUzbeka) \land Bere(x,caffè)))
+\end{equation*}
+
+Esercizio:Gli studenti che non si iscrivono all'appello di Fondamenti non possono svolgere l'esame
+
+Costanti:$Fondamenti$
+Predicati:$Studente(x)$,$Iscrivere(x,y)$,$Svolgere(x,y)$,$Esame(y)$
+Funzioni:
+\begin{equation*}
+\forall x (Studente(x) \land \neg Iscrivere(x,Fondamenti) \rightarrow
+\exists y (Esame(y) \land \neg Svolgere(x,y)))
+\end{equation*}
+
+Esercizio:Tutti i professori fanno esami
+
+Costanti: non presenti \newline
+Predicati:$Professore(x)$,$Fare(x,y)$,$Esame(y)$ \newline
+Funzioni: non presenti
+\begin{equation*}
+    \forall x (Professore(x) \rightarrow \exists y(Esame(y) \land Fare(x,y)))
+\end{equation*}
+
+Esercizio: Se uno studente non è iscritto via Sifa ad un appello non può fare l'esame
+
+Costanti: non presenti \newline
+Predicati:$Studente(x)$,$Iscritto(x,y)$,$Appello(y)$,$Esame(x)$ \newline
+Funzioni: non presenti
+\begin{equation*}
+    \forall x (Studenti(x) \land \exists y(Appello(y) \land \neg Iscritto(x,y)) \rightarrow \neg Esame(x))
+\end{equation*}
+
+Esercizio: il voto di un esame universitario va da 0 a 30 e lode
+
+Costanti:$0$ e $30L$ \newline
+Predicati:$Esame(x)$,$>=(x,y)$,$<=(x,y)$ \newline
+Funzioni:$voto(x)$
+\begin{equation*}
+    \forall x (Esame(x) \rightarrow voto(x) >= 0 \land voto(x) <= 30L)
+\end{equation*}
+
+Esercizio:Tutti i docenti sono sposati con una donna antipatica
+
+Costanti: non presenti \newline
+Predicati:$Docente(x)$,$Donna(y)$,$Sposati(x,y)$,$Antipatica(y)$ \newline
+Funzioni: non presenti
+\begin{equation*}
+    \forall x (Docente(x) \rightarrow \exists y(Donna(y) \land Antipatica(y) \land Sposati(x,y)))
+\end{equation*}
+
+Esercizio:Marco ha un capo magnanimo
+
+Costanti:$Marco$ \newline
+Predicati:$Capo(x,y)$,$Magnanimo(x)$ \newline
+Funzioni: non presenti \newline
+\begin{equation*}
+    Capo(x,Marco) \land Magnanimo(x)
+\end{equation*}
+
+Esercizio:L'everest è la montagna più alta al mondo
+
+Costanti:$Everest$ \newline
+Predicati:$Montagna(x)$,$<(x,y)$ \newline
+Funzioni:$altezza(x)$
+\begin{equation*}
+    \forall x (Montagna(x) \rightarrow altezza(x) < altezza(Everest))
+\end{equation*}
+
+Esercizio:Se ogni amico di Mario è amico di Diego e Pietro non è amico di
+          Mario, allora Pietro non è amico di Diego
+
+Costanti:$Mario$,$Diego$,$Pietro$ \newline
+Predicati:$Amico(x,y)$ \newline
+Funzioni:non presenti
+\begin{equation*}
+    \forall x (((Amico(x,Mario) \rightarrow Amico(x,Diego)) \land \neg Amico(Pietro,Mario))
+                \rightarrow \neg Amico(Pietro,Diego))
+\end{equation*}
+
+Esercizio:Se tutti i filosofi intelligenti sono curiosi, e solo i tedeschi sono
+filosofi intelligenti, allora, se ci sono filosofi intelligenti, qualche
+tedesco è curioso.
+
+Esercizio:Se tutti gli studenti sono persone serie, tutti gli studenti sono
+studiosi e tutte le persone serie e studiose non fanno tardi la
+sera, allora se esiste qualcuno che fa tardi la sera, non tutti sono
+studenti
+
+Esercizio:Tutti i ragazzi e le ragazze iscritti all’università sanno usare il
+          computer o conoscono qualcuno che lo sa usare

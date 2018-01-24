@@ -1,0 +1,55 @@
+\section{Equivalenze Logiche}
+Due proposizioni $A$ e $B$ sono logicamente equivalenti se e solo se A e B hanno
+la stessa valutazione booleana.
+
+Nella logica proposizionale sono definite le seguenti equivalenze logiche, indicate con $\equiv$,:
+\begin{enumerate}
+    \item Idempotenza
+            \begin{align*}
+                A \lor B & \equiv & A \\
+                A \land B & \equiv & A \\
+            \end{align*}
+    \item Associavità
+            \begin{align*}
+                A \lor (B \lor C) & \equiv & (A \lor B) \lor C \\
+                A \land (B \land C) & \equiv & (A \land B) \land C \\
+                A \iff (B \iff C) & \equiv & (A \iff B) \iff C \\
+            \end{align*}
+    \item Commutatività
+            \begin{align*}
+                A \lor B & \equiv & B \lor A \\
+                A \land B & \equiv & B \land A \\
+                A \iff B & \equiv B \iff A \\
+            \end{align*}
+    \item Distribuitività
+            \begin{align*}
+                A \lor (B \land C) & \equiv & (A \lor B) \land (A \lor C)\\
+                A \land (B \lor C) & \equiv & (A \land B \lor (A \land C) \\
+            \end{align*}
+    \item Assorbimento
+            \begin{align*}
+                A \lor (A \land B) & \equiv & A \\
+                A \land (A \lor B) & \equiv & A \\
+            \end{align*}
+    \item Doppia negazione
+                \begin{equation}
+                    \neg \neg A \equiv A
+                \end{equation}
+    \item Leggi di De Morgan
+            \begin{align*}
+                \neg (A \lor B) & \equiv & \neg A \land \neg B \\
+                \neg(A \land B) & \equiv & \neg A \lor \neg B \\
+            \end{align*}
+    \item Terzo escluso
+            \begin{equation}
+                A \lor \neg A \equiv T
+            \end{equation}
+    \item Contrapposizione
+            \begin{equation}
+                A \rightarrow B \equiv \neg B \rightarrow \neg A
+            \end{equation}
+    \item Contraddizione
+            \begin{equation}
+                A \land \neg A \equiv F
+            \end{equation}
+\end{enumerate}

@@ -1,0 +1,60 @@
+\section{Complementare}
+Dato un insieme $U$, detto Universo, si dice \textit{complemento} di $S$, indicato con $\bar{S}$,
+la differenza di un sottoinsieme $S$ di $U$ rispetto ad $U$.\newline
+$\bar{S} = \{x | x \in U \ \text{e} \ x \not \in S \} $
+
+Esempio: \newline
+$U = \{1,2,3,4,5,6,7\} $\newline
+$S = \{2,4,6\} $ \newline
+$\bar{S} = \{1,3,5,7\} $
+
+Le proprietà della complementazione di un Insieme sono le seguenti:
+\begin{prop}
+\begin{enumerate}
+  \item $\bar{U} = \emptyset $
+  \item $\bar{\emptyset} = U$
+  \item $\bar{\bar{S}} = S$
+  \item $\bar{(S_1 \cup S_2)} = \bar{S_1} \cap \bar{S_2}$
+  \item $\bar{(S_1 \cap S_2)} = \bar{S_1} \cup \bar{S_2}$
+  \item $S \cap \bar{S} = \emptyset$
+  \item $S \cup \bar{S} = U$
+  \item $S_1 = S_2 \iff \bar{S_1} = \bar{S_2}$
+  \item $S_1 \subseteq S_2 \iff \bar{S_2} \subseteq \bar{S_1}$
+\end{enumerate}
+\end{prop}
+
+\section{Differenza di Insiemi}
+Dati 2 insiemi $S$ e $T$ chiamiamo $S \setminus T$ l'insieme \textit{differenza} costituito
+da tutti gli elementi di S che non sono elementi di T. \newline
+$S \setminus T = \{x | x \in S \ \text{e} \ x \not \in T\} $
+
+Esempio: \newline
+$S = \{a,b,c,d,e\}$ \quad $T = \{a,c,f,g,e,h\}$\newline
+$S \setminus T = \{b,d\}$
+
+La differenza di insiemi gode delle seguenti proprietà:
+\begin{prop}
+\begin{enumerate}
+  \item $S \setminus S = \emptyset$
+  \item $S \setminus \emptyset = S$
+  \item $\emptyset \setminus S = \emptyset$
+  \item $(S_1 \setminus S_2) \setminus S_3 =
+         (S_1 \setminus S_3) \setminus S_2 = S_1 \setminus (S_2 \cup S_3)$
+  \item $S_1 \setminus S_2 = S_1 \cap \bar{S_2}$
+\end{enumerate}
+\end{prop}
+
+La \textit{differenza simmetrica} di due insiemi $S_1$ e $S_2$, indicata con $S_1 \triangle S_2$,
+è definita come $S_1 \triangle S_2 = (S_1 \setminus S_2) \cup (S_2 \setminus S_1) $
+
+%Mancano le proprietà
+\begin{prop}
+Proprietà Differenza simmetrica
+\begin{enumerate}
+  \item $S \triangle S = \emptyset$
+  \item $S \triangle \emptyset = S$
+  \item $S_1 \triangle S_2 = S_2 \triangle S_1$
+  \item $S_1 \triangle S_2 = (S_1 \cap \bar{S_2}) \cup (S_2 \cap \bar{S_1})$
+  \item $S_1 \triangle S_2 = (S_1 \cup S_2) \ (S_2 \cap S_1)$
+\end{enumerate}
+\end{prop}

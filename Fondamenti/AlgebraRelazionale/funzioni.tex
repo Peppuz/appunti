@@ -8,10 +8,16 @@ Se il $dom(f) = S$ la funzione si dice \emph{totale} altrimenti la funzione è \
 \section{Tipologie di Funzioni}
 Una funzione $f:S \mapsto T$ si dice:
 \begin{description}
-    \item[iniettiva]: $\forall x,y \in S x \neq y \rightarrow f(x) \neq f(y)$
+    \item[iniettiva]: $\forall x,y \in S x \neq y \iff f(x) \neq f(y)$
     \item[suriettiva]: $\forall y \in T \exists x \in S : f(x) = y$
     \item[biettiva]: se la funzione è iniettiva e suriettiva
 \end{description}
+
+%Determinare se una funzione è iniettiva e suriettiva
+Per determinare se una funzione è iniettiva bisogna verificare che $f(x) \neq f(y)$
+comporta $x \neq y$.
+Per determinare se una funzione è suriettiva bisogna risolvere l'equazione $f(x) = y$
+e verificare se $y$ appartiene al codominio della funzione.
 
 %Esempi
 Esempi:
@@ -27,12 +33,13 @@ Una funzione $f:S \mapsto T$ ammette una \emph{funzione inversa} $f ^ -1 :T \map
 se e solo se $f$ è una funzione iniettiva.
 
 %Proprietà funzioni Inverse
-\section{Proprietà funzioni inverse}
+\begin{thm}
 Sia $f:A \mapsto B$ invertibile, con funzione inversa $f ^ -1$:
 \begin{enumerate}
     \item $f^-1$ è totale $\iff f$ è suriettiva
     \item $f$ è totale $\iff f^-1$ è suriettiva
 \end{enumerate}
+\end{thm}
 
 %Funzione Composta
 Date due funzioni $f:S \mapsto T$ e $g:T \mapsto Q$ si definisce \emph{funzione composta}
@@ -42,8 +49,10 @@ $g(f(x))$ e $f(x)$
 
 %Inserire esempi di funzioni composte
 
+\begin{thm}
 Siano $f:S \mapsto T$ e $g:T \mapsto Q$ invertibili. Allora $g \circ f$ è invertibile
 e la sua inversa è $(g \circ f) ^ -1 = f^-1 \circ g ^ -1$.
+\end{thm}
 %Inserire dimostrazione
 
 %Operazione
@@ -54,3 +63,14 @@ Se $f$ è un'operazione binaria su $S$, essa si può rappresentare anche mediant
 la notazione infissa $x_1 f x_2$ invece di $f(x_1,x_2)$
 
 %Inserire esempi!!!!
+
+%Definizione Funzioni Monotone
+\begin{defi}
+    Siano $(S,\leq _S)$ e $(T,\leq _T)$ due poset e sia $f:S \mapsto T$ una funzione allora:
+\end{defi}
+\begin{enumerate}
+    \item $f$ è detta \emph{monotona non decrescente} quando $f(x) \leq_T f(y) \iff x \leq_S y$
+    \item $f$ è detta \emph{monotona crescente} quando $f(x) <_T f(y) \iff x <_S y$
+    \item $f$ è detta \emph{monotona non crescente} quando $f(x) \leq_T f(y) \iff x \geq_S y$
+    \item $f$ è detta \emph{monotona decrescente} quando $f(x) <_T f(y) \iff x >_S y$
+\end{enumerate}
