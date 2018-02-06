@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.12.24)  6 FEB 2018 19:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.12.24)  6 FEB 2018 21:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1321,8 +1321,8 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 
 ])
 (./AlgebraRelazionale/Insiemi/insiemiNumerici.tex)
-(./AlgebraRelazionale/Insiemi/unioneIntersezione.tex [2])
-(./AlgebraRelazionale/Insiemi/complementareDifferenza.tex [3] [4])
+(./AlgebraRelazionale/Insiemi/unioneIntersezione.tex [2] [3])
+(./AlgebraRelazionale/Insiemi/complementareDifferenza.tex [4])
 (./AlgebraRelazionale/Insiemi/partizione.tex)
 (./AlgebraRelazionale/Insiemi/insiemeParti.tex [5])
 (./AlgebraRelazionale/prodottoCartesiano.tex
@@ -1339,12 +1339,12 @@ Overfull \hbox (22.0862pt too wide) in paragraph at lines 5--7
 /10.95 )\OML/cmm/m/it/10.95 ; x[]\OT1/cmr/m/n/10.95 )$
  []
 
-
+[6]
 Overfull \hbox (45.2069pt too wide) in paragraph at lines 22--22
 [] 
  []
 
-[6])) (./AlgebraRelazionale/relazioni.tex
+)) (./AlgebraRelazionale/relazioni.tex
 (./AlgebraRelazionale/Relazione/definizione.tex [7]
 Capitolo 2.
 
@@ -1368,15 +1368,9 @@ Overfull \hbox (36.54073pt too wide) in paragraph at lines 68--71
  []
 
 (./AlgebraRelazionale/grafi.tex [11]
-Overfull \hbox (5.5779pt too wide) in paragraph at lines 22--24
-[]\T1/cmr/m/n/10.95 :è una se-quen-za fi-ni-ta di no-di $\OML/cmm/m/it/10.95 < 
-V[]; V[]; [] ; V[] >$
- []
-
-
-Overfull \hbox (41.50624pt too wide) in paragraph at lines 24--27
-[]\T1/cmr/m/n/10.95 : è una se-quen-za fi-ni-ta di no-di $\OML/cmm/m/it/10.95 <
- V[]; V[]; [] ; V[] >$
+Overfull \hbox (26.90633pt too wide) in paragraph at lines 24--27
+[]\T1/cmr/m/n/10.95 : è una se-quen-za fi-ni-ta di no-di $\OT1/cmr/m/n/10.95 (\
+OML/cmm/m/it/10.95 V[]; V[]; [] ; V[]\OT1/cmr/m/n/10.95 )$
  []
 
 (./AlgebraRelazionale/alberi.tex (./Esempi/alberi.tex
@@ -1397,27 +1391,13 @@ Overfull \hbox (41.50624pt too wide) in paragraph at lines 24--27
 \forest@temp@box=\box32761 (local)
 \forest@temp@box=\box32760 (local)
  [12]))))
-(./AlgebraRelazionale/Relazione/composizione.tex
-Overfull \hbox (17.45425pt too wide) in paragraph at lines 6--10
-[]\T1/cmr/m/n/10.95 Esempio: Sia-no $\OML/cmm/m/it/10.95 S \OT1/cmr/m/n/10.95 =
- \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 a; b\OMS/cmsy/m/n/10.95 g\OML/cmm/m/i
-t/10.95 ; R[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 (\OM
-L/cmm/m/it/10.95 a; a\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.
-95 (\OML/cmm/m/it/10.95 a; b\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; \OT1/cmr/
-m/n/10.95 (\OML/cmm/m/it/10.95 b; b\OT1/cmr/m/n/10.95 )\OMS/cmsy/m/n/10.95 g$ \
-T1/cmr/m/n/10.95 e $\OML/cmm/m/it/10.95 R[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/
-10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 a; b\OT1/cmr/m/n/10.95 )\OML/cmm
-/m/it/10.95 ; \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 b; a\OT1/cmr/m/n/10.95 )\
-OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 b; b\OT1/cmr/m/n/1
-0.95 )\OMS/cmsy/m/n/10.95 g$
- []
-
-[13]) (./AlgebraRelazionale/Relazione/equivalenza.tex)
+(./AlgebraRelazionale/Relazione/composizione.tex [13])
+(./AlgebraRelazionale/Relazione/equivalenza.tex)
 (./AlgebraRelazionale/Relazione/ordinamento.tex
 (./AlgebraRelazionale/Relazione/tipologieOrdinamenti.tex [14])
 (./AlgebraRelazionale/Relazione/hasse.tex)
-(./AlgebraRelazionale/Relazione/estremali.tex)
-(./AlgebraRelazionale/Relazione/reticoli.tex [15] [16])))
+(./AlgebraRelazionale/Relazione/estremali.tex [15])
+(./AlgebraRelazionale/Relazione/reticoli.tex [16])))
 (./AlgebraRelazionale/funzioni.tex [17]
 Capitolo 3.
 
@@ -1571,7 +1551,7 @@ re/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type1
 /public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
 m1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/shar
 e/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on appunti.pdf (42 pages, 387673 bytes).
+Output written on appunti.pdf (42 pages, 388425 bytes).
 PDF statistics:
  233 PDF objects out of 1000 (max. 8388607)
  165 compressed objects within 2 object streams
