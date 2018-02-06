@@ -1,11 +1,7 @@
 \chapter{Introduzione agli Algoritmi}
 Il termine Algoritmo proviene da Mohammed ibn-Musa al-Khwarizmi, matematico uzbeco
-del IX secolo a.c. da cui proviene la moderna Algebra.%Cercare maggiori informazioni
-
+del IX secolo a.c. da cui proviene la moderna Algebra. \newline%Cercare maggiori informazioni
 \textbf{Algoritmo}:sequenza di passi che portano alla risoluzione di un problema
-
-Per potere scrivere un algoritmo il più formale ed indipendente dal linguaggio di programmazione
-si utilizza il Pseudocodice, come specificato nel prossimo paragrafo.
 
 %Da definire come subsection????
 \section{Pseudocodice}
@@ -61,10 +57,12 @@ L'invariante deve essere vera in due casi specifici:
         anche all'inizio dell'iterazione successiva
 \end{enumerate}
 
+%Da definire in un file a parte
 Es: Verificare la correttezza di min(A)
 \textbf{Invariante di ciclo}:all'inizio di ogni iterazione la variabile \textit{min} contiene
 il minimo parziale degli elementi A[0....j-1]
 
+\begin{proof}
 \textbf{Passo base}:per j = 1 l'array A è composto da un solo elemento \newline
 \textbf{Ipotesi induttiva}:$\id{min}$ contiene il minimo degli elementi A[0...j-1] all'inizio dell'iterazione\newline
 \textbf{Passo induttivo}:all'esecuzione di un iterazione si possono verificare due casi:\newline
@@ -72,6 +70,7 @@ Caso $A[j] < min$\newline \newline
       la variabile $\id{min}$ viene aggiornata con il valore A[j] e ciò verifica la proprietà\newline
 Caso $A[j] >= min$\newline \newline
       la variabile $\id{min}$ contiene già il minimo parziale degli elementi A[0...j]
+\end{proof}
 
 Per provare l'efficienza di un algoritmo bisogna calcolare e dimostrare il numero di confronti
 necessari,in funzione di n, per risolvere un problema computazionale come viene mostrato
@@ -82,6 +81,9 @@ Es:Calcolo tempo di esecuzione algoritmo min(ITEM[] A,integer n)
 
 Il costo dell'algoritmo $\proc{min}$ nel caso peggiore è $T(n) = (c_2 + c_3 + c_4)n + (c_1 - c_3 - c_4 + c_5)$. \newline
 L'algoritmo $\proc{min}$ nel caso peggiore è una funzione lineare.
+
+%Algoritmo InsertionSort
+\input{Capitolo/Algoritmi/insertionSort}%Paragrafo sull'algoritmo InsertionSort
 
 %Algoritmo linearSearch
 \section{Ricerca di Valori}

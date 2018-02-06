@@ -1,0 +1,22 @@
+%Esercizio 2.2-2 ordinamento mediante selectionSort
+\textbf{Input}:una sequenza di $n$ numeri $(a_1,a_2,\dots,a_n)$ \newline
+\textbf{Output}:una permutazione $(a'_1,a'_2,\dots,a'_n)$ tale che $a'_1 \leq a'_2 \leq \dots \leq a'_n$
+
+%algoritmo selectionSort(A)
+\begin{codebox}
+    \Procname{$\proc{Selection-Sort}(A)$}
+\li \For $j = 1$ \To $\attrib{A}{length-1}$
+    \Do
+\li           $\id{min} \gets A[j]$
+\li           \For $i = j+1$ \To $\attrib{A}{length}$
+              \Do
+\li                  \If $A[j] < \id{min}$
+                     \Then
+\li                         $\id{index} \gets i$
+\li                         $\id{min} \gets A[i]$
+                     \End
+              \End
+\li           $\id{temp} \gets A[j]$
+\li           $A[j] \gets \id{min}$
+\li           $A[\id{index}] \gets \id{temp}$
+\end{codebox}

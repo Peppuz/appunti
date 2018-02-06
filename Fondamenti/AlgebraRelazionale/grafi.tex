@@ -1,12 +1,12 @@
 \section{Grafi}
-Si definisce come \emph{Grafo} $G$ una coppia $<V,E>$ in cui $V$ è l'insieme
+Si definisce come \emph{Grafo} $G$ una coppia $(V,E)$ in cui $V$ è l'insieme
 dei \textbf{vertici} o \textbf{Nodi},indicanti gli elementi, invece $E$
  è l'insieme degli \textbf{archi}, indicanti la relazione esistentre tra i vertici del grafo.\newline
 In un grafo orientato è ammesso il cappio ossia archi che escono ed entrano dallo stesso vertice.
 
 Se in grafo tutti gli archi presentano un ordinamento, ossia si definisce una direzione
 tra i 2 vertici di un grafo,si definisce \emph{Grafo orientato}
-altrimenti si definisce il grafo come \emph{Grafo non orientato}.
+altrimenti si definisce il grafo come \emph{non orientato}.
 %Inserire Esempi
 
 Un arco che congiunge $V_i$ a $V_j$ si dice \emph{uscente} da $V_i$ ed \emph{entrante} in $V_j$.
@@ -19,10 +19,10 @@ In un grafo si definisce:
     \item[NODO ISOLATO]: nodi in cui non si hanno archi entranti ed uscenti
     \item[GRADO DI ENTRATA]:è il numero di archi entranti in un nodo
     \item[GRADO DI USCITA]: è il numero degli archi uscenti da un nodo
-    \item[CAMMINO da $V_{in}$ a $V_{fin}$]:è una sequenza finita di nodi $<V_1,V_2,\dots,V_n>$
+    \item[CAMMINO da $V_{in}$ a $V_{fin}$]:è una sequenza finita di nodi $(V_1,V_2,\dots,V_n)$
      con $V_1 = V_{in}$ e $V_n = V_{fin}$, dove ciascun nodo è collegato al successivo da un arco orientato
     \item[SEMICAMMINO da $V_{in}$ a $V_{fin}$]: è una sequenza finita di nodi
-     $<V_1,V_2,\dots,V_n>$ con $V_1 = V_{in}$ e $V_n = V_{fin}$, dove ciascun nodo
+     $(V_1,V_2,\dots,V_n)$ con $V_1 = V_{in}$ e $V_n = V_{fin}$, dove ciascun nodo
      è collegato al successivo da un arco non orientato.
     \item[CONNESSO]:un grafo in cui dati due nodi $V_a$ e $V_b$, con $V_a \neq V_b$,
                     esiste un semicammino tra di essi.
@@ -38,6 +38,7 @@ Le proprietà delle relazioni si riflettono in proprietà dei grafi.
 
 \begin{defi}
 Sia $G$ una relazione binaria su un insieme $V$
+\end{defi}
 \begin{enumerate}
     \item Se $G$ è riflessiva allora il corrispettivo grafo avrà un cappio intorno ogni nodo
     \item Se $G$ è una relazione irriflessiva allora nel grafo non ci sono cappi
@@ -46,7 +47,6 @@ Sia $G$ una relazione binaria su un insieme $V$
     \item Se $G$ è una relazione transitiva allora nel grafo qualora vi siano gli archi
           tra $x_1 \mapsto x_2$ e tra $x_2 \mapsto x_3$ vi è l'arco tra $x_1 \mapsto x_3$
 \end{enumerate}
-\end{defi}
 
 %Paragrafo sui Dag e gli Alberi
 \input{AlgebraRelazionale/alberi}

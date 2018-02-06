@@ -1,0 +1,8 @@
+1 Fare dimostrazione invariante di Ciclo algoritmo InsertionSort
+2 Controllare la prima parte con l'algoritmo Min
+3 Togliere la parte sul pseudocodice
+4 Fare dimostrazione delle sommatorie
+5 Fare paragrafo sulle sommatorie
+6 Fare Invariante di Ciclo sulla procedura Merge-Sort
+7 Migliorare rappresentazione costi procedure
+8 Togliere esempio Min e linearSearch 

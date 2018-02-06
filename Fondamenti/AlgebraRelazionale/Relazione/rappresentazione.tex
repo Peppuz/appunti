@@ -1,0 +1,77 @@
+\section{Rappresentazione di Relazioni}
+Vi sono diverse modalità di rappresentazione delle relazioni,il cui metodo migliore
+dipendono dall'arietà della relazione, che sono:
+\begin{description}
+    \item[Tabella a $n$ colonne] è una matrice a due dimensioni con righe,rappresentanti
+          gli elementi, e colonne, indicanti gli insiemi; è conveniente utilizzare
+          quando l'arietà della relazione è $n \geq 2$.
+    \item[Grafo Bipartito] è un grafo in cui si elencano gli elementi di tutti gli insiemi
+         e si usano delle frecce, chiamate archi, per indicare l'associazione tra gli elementi.
+         E' meglio utilizzare il grafo bipartito soltanto per le relazioni binarie.
+    \item[Matrice Booleana] è una matrice $M_R$ a valori \{0,1\} composta da $n$ righe e $m$ colonne.
+    \item[Grafi] modalità di rappresentazione di relazioni binarie(spiegate in un paragrafo successivo)
+\end{description}
+
+\subsection{Tabelle}
+Si vuole definire la relazione $anagrafica \subseteq Cognomi x Nomi x Date x Luoghi$
+
+\begin{tabular}{cccc}
+\toprule
+C & N & D & L \\
+\midrule
+Moscato & Ugo & 10/1/57 & Milano \\
+Iaquinta & Vincenzo & 13/5/68 & Udine \\
+Inzaghi & Filippo & 23/5/78 & Piacenza \\
+\bottomrule
+\end{tabular}
+
+\subsection{Grafo Bipartito}
+Dato l'insieme $A = \{ 1,2,3,4 \}$ si definisce la relazione
+$R \subseteq A \times A = \{ (1,1),(1,2),(2,3),(3,1),(3,4) \}$.
+\input{Grafo/esempio1}%Grafo esempio
+
+Dati gli insiemi $A = \{1,2,3\}$ e $B= \{4,7,9,1\}$ si definisce la relazione
+$R \subseteq A \times B = \{(1,9),(1,1),(2,4),(3,7),(3,4)\}$
+\input{Grafo/esempio2}%Esempio 2 Grafo orientato
+
+\subsection{Matrice Booleana}
+La \emph{Matrice booleana} è una matrice $M_R$,composta da $n$ righe e $m$ colonne,
+i cui elementi sono definiti come
+\begin{equation*}
+    m_{ij} = \begin{cases} 1 \iff (s_i,t_j) \in R \\
+                           0 \quad \text{altrimenti} \\
+             \end{cases}
+\end{equation*}
+
+%\input{Grafo/esempio3}%Esempio Matrice Booleana
+
+Da una matrice booleana si possono determinare facilmente le proprietà
+di una relazione $R$,definita su $S$, soprattutto la proprietà simmetrica e la riflessiva.
+
+La \emph{Matrice Complementare} $M_{\bar{R}}$ è costituita dai seguenti elementi
+\begin{equation*}
+    \bar{m}_{ij} = \begin{cases} 1 \iff m_{ij} = 0 \\
+                                 0 \iff m_{ij} = 1 \\
+                   \end{cases}
+\end{equation*}
+
+La \emph{Matrice inversa} $M_{R ^-1}$ è la trasporta della matrice $M_R$.
+%Da fare la dimostrazione
+
+Date due matrici $A$ e $B$,embrambe di $n x m$ elementi, si definiscono 3 operazioni:
+\begin{description}
+    \item[MEET $A \sqcap B = C$]: è una matrice booleana i cui elementi sono:
+$c_{ij} =  \begin{cases} 1 \quad a_{ij} = 1 \land b_{ij} = 1 \\ 0 \quad a_{ij} = 0 \lor b_{ij} = 0 \end{cases}$
+    \item[JOIN $A \sqcup B = C$]: è una matrice booleana i cui elementi sono:
+    $c{ij} = \begin{cases} 1 \quad a_{ij} = 1 \lor b_{ij} = 1 \\
+                           0 \quad \text{altrimenti}\\ \end{cases}$
+    \item[PRODOTTO BOOLEANO $A \odot B$]: è una matrice booleana $n x p$, i cui elementi sono:
+    $c_{ij} = \begin{cases} 1 \quad \text{se per qualche} k(1 \leq k \leq m) \text{si ha} a_{ik} = 1 \land b_{kj} = 1\\
+                            0 \quad \text{altrimenti} \\ \end{cases}$
+\end{description}
+
+%\input{Grafo/esempio4}Esempio sulle operazioni join,meet e prodotto booleano
+Inserire Esempi
+
+%Grafi
+\input{AlgebraRelazionale/grafi}

@@ -1,74 +1,11 @@
 %Capitolo sugli insiemi
 \chapter{Insiemi}
-Gli insiemi sono collezioni di oggetti detti elementi, in cui si prescinde dall'
-ordine e dalla ripetizione degli elementi e questa è la sua definizione ingenua.
 
-Si dice $x \in A$ se l'elemento appartiene all'insieme altrimenti si usa $x \not \in A$.
-L'insieme vuoto si indica con $\emptyset$ mentre se due insiemi hanno gli stessi elementi si usa $A = B$.
-
-Gli insiemi possono essere definiti in due maniere:
-\begin{itemize}
-  \item \textbf{Estensionale}:si elencano gli elementi di un insieme\newline
-        Esempio:\newline
-        $A = \{1,2,3\}$\newline
-        $B = \{2,4,6\}$
-  \item \textbf{Intensionale}:si descrivono gli elementi che soddisfano una determinata proprietà\newline
-        Esempio: \newline
-        $D = \{x \in N | x < 100\}$
-\end{itemize}
-
-Dati due insiemi $S$ e $T$ si ha:
-%Definizione sottoinsieme e insiemi uguali
-\begin{align*}
-  S \subset T & \ \{x | (x \in S \rightarrow x \in T) \land S \not = T \} \\
-  S = T & \  \{x | x \in S \ \text{se e solo se} x \in T \} \\
-  S \subseteq T & \ \{x | S \subset Q \ \text{oppure} S = T \}
-\end{align*}
-
-%Inserire Esempio
-Esempio:\newline
-\begin{align*}
-A = \{1,2,3,5,6,7,9,10 \}  & \quad A = B  \ \text{Falso}\\
-B = \{1,3,5,6,9 \}  & \quad B \subseteq A \ \text{Vero}\\
-C = \{1,2,3,5,6,7,9,10 \} & \quad A \subset C \ \text{Falso}\\
-\end{align*}
-
-%Esempi utili sull'insieme vuoto
-
-%Definizione di Cardinalità di un Insieme
-Si definisce \textit{cardinalità} il numero degli elementi e si indica con $|A|$.\newline
-Due insiemi $S$ e $T$ si dicono \textit{equipotenti}, indicato con $S \sim T$, se
-essi sono in corrispondenza univoca.
-\begin{align*}
-A = \{ 1,4,7,10,43,52,4 \} & \ |A| = 6 \\
-B = \{1,1,2,3,4,5,6,7,8,9 \} & \ |A| = 9 \\
-\end{align*}
+%Definizione di Insieme
+\input{AlgebraRelazionale/Insiemi/definizione.tex}
 
 %Insiemi Numerici
-Gli insiemi numerici definiti nella Teoria degli insiemi sono i seguenti:
-\begin{itemize}
-  \item $\N$: Insieme dei numeri Naturali
-  \item $\Z$: insieme dei numeri interi
-  \item $\Q$: insieme dei numeri razionali
-  \item $\R$: insieme dei numeri reali
-  \item $\C$: insieme dei numeri complessi
-\end{itemize}
-Gli insiemi $\N, \Z, \Q$ hanno la stessa cardinalità indicata con $\aleph_0$,dimostrato da Georg Cantor.\newline
-Gli insiemi $\R$ e $\C$ hanno la stessa cardinalità indicata con $ 2 ^ {\aleph_0}$,
-dimostrato da Georg Cantor mediante il principio di diagonalizzazione.
-
-%Tecnica di diagonalizzazione
-\subsection{Tecnica di diagonalizzazione}
-La tecnica di diagonalizzazione è tecnica, inventata da Cantor, per dimostrare la
-non numerabilità dei Numeri Reali.\newline
-Essa consiste nel tentativo di costruire una bisezione tra un insieme $X$ ed $\N$
-e verificare che qualche elemento di $X$ sfugge alla bisezione.
-
-\begin{thm}
-    $2^{\aleph_0}$ è strettamente maggiore di $\aleph_0$
-\end{thm}
-
-%Teorema di Cantor!!! DA DIMOSTRARE
+\input{AlgebraRelazionale/Insiemi/insiemiNumerici.tex}
 
 %Unione ed Intersezione
 \input{AlgebraRelazionale/Insiemi/unioneIntersezione}
@@ -77,45 +14,10 @@ e verificare che qualche elemento di $X$ sfugge alla bisezione.
 \input{AlgebraRelazionale/Insiemi/complementareDifferenza}
 
 %Partizione di un Insieme
-\section{Partizione di un Insieme}
-Dato un insieme non vuoto $S$, una partizione di $S$ è una famiglia $F$ di sottoinsiemi di $S$ tale che
-\begin{enumerate}
-    \item ogni elemento di $S$ appartiene a qualche elemento di $F$, ossia $\cup F = S$
-    \item due elementi qualunque di $F$ sono disgiunti ossia $\cap F = \emptyset$
-\end{enumerate}
-La partizione non può avere come elemento l'insieme vuoto in quanto esso non
-appartiene agli elementi dell'insieme A.
+\input{AlgebraRelazionale/Insiemi/partizione.tex}
 
-Esempio:
-$A = \{ 1,2,3 \}$ \newline
-$Par(A) = \{ \{ 1 \},\{2,3 \} \}$
-
-%Funzione Caratteristica!!!!
-\section{Funzione Caratteristica}
-Sia $U$ un insieme assunto come Universo,si definisce come \emph{funzione caratteristica}
-di un sottoinsieme $S \subseteq U$ come:
-$car(S,x) = \begin{cases} 1 \quad x \in S \\ 0 \quad x \not \in S \end{cases}$
-
-\section{Insieme delle Parti}
-L'insieme delle Parti di un insieme $S$, indicato con $\wp S$, è l'insieme formato
-da tutti i sottoinsiemi dell'insieme $S$. \newline
-$\wp S = \{X | X \subseteq S\} $
-
-%esempio
-$A = \{\emptyset,3,20 \}$
-$\wp A = \{A,\{\emptyset\},\{ 3\},\{ 20 \},\{ \emptyset,3 \},\{\emptyset,20 \},\{3,20\},\emptyset \}$
-
-\begin{defi}
-Se $S$ è composto da $n \geq 0$ elementi, il numero di elementi di $\wp S$ è $2 ^ n$.
-\end{defi}
-%Manca la Dimostrazione
-\begin{proof}
-Supponendo di avere una sequenza binaria di 3 bit,le cui possibili combinazioni
-vengono rappresentate da $2 ^ k$ con $k = numBit$.\newline
-Prendendo un insieme $A = \{'a','b','c' \}$ e utilizzando la funzione caratteristica,
-con la convenzione di indicare il primo elemento dell'insieme $A$ a destra, si nota
-che le sequenze di bit sono uguali alla sequenza ottenuta utilizzando la funzione caratteristica.
-\end{proof}
+%Insieme delle Parti
+\input{AlgebraRelazionale/Insiemi/insiemeParti.tex}
 
 %Paragrafo sul Prodotto Cartesiano
 \input{AlgebraRelazionale/prodottoCartesiano}

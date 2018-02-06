@@ -7,19 +7,20 @@ tutti e due gli insiemi.
 $S \cup T = \{x | x \in S \ \text{o} \ x \in T \} $ \newline
 $S \cap T = \{x | x \in S \ \text{e} \ x \in T \} $
 
-Esempio:\newline
-$A = \{"Rosso","Arancio","Giallo" \}$ \newline
-B = \{"Verde","Giallo","Marrone" \} \newline
-A $\cup$ B = \{"Rosso","Arancio","Giallo","Verde","Marrone" \}\newline
-A $\cap$ B = \{"Giallo" \}
-
+Esempio:
 \begin{align*}
-S = \{1,2,5,4,3,7,6,9\}  & S \cup T = \{1,2,3,4,5,6,7,9,11,34\} \\
-T = \{5,4,2,9,11,34,6\}  & S \cap T = \{2,4,5,6,9\} \\
+A = & \{Rosso,Arancio,Giallo \} \\
+B = & \{Verde,Giallo,Marrone \} \\
+A \cup B = & \{Rosso,Arancio,Giallo,Verde,Marrone \} \\
+A \cap B = & \{Giallo \} \\
+S = \{1,2,5,4,3,7,6,9\}  & \ S \cup T = \{1,2,3,4,5,6,7,9,11,34\} \\
+T = \{5,4,2,9,11,34,6\}  & \ S \cap T = \{2,4,5,6,9\} \\
 \end{align*}
 
-L'unione gode delle seguenti proprietà:
+%Proprietà dell'Unione
 \begin{prop}
+    L'unione gode delle seguenti proprietà:
+\end{prop}
 \begin{enumerate}
 \item $S \cup S = S$ \quad Idempotenza
 \item $S \cup \emptyset = S$ \quad Elemento Neutro
@@ -29,7 +30,6 @@ L'unione gode delle seguenti proprietà:
 \item $S_1 \subseteq S_1 \cup S_2$
 \item $S_2 \subseteq S_1 \cup S_2$
 \end{enumerate}
-\end{prop}
 
 %dimostrazione
 %\begin{proof}
@@ -49,8 +49,10 @@ L'unione gode delle seguenti proprietà:
 %\end{enumerate}
 %\end{proof}
 
-L'intersezione gode delle seguenti proprietà:
+%Proprietà dell'Intersezione
 \begin{prop}
+    L'intersezione gode delle seguenti proprietà:
+\end{prop}
 \begin{enumerate}
   \item $S \cap S = S$
   \item $S \cap \emptyset = \emptyset$
@@ -60,7 +62,6 @@ L'intersezione gode delle seguenti proprietà:
   \item $S_1 \cap S_2 \subseteq S_1$
   \item $S_1 \cap S_2 \subseteq S_2$
 \end{enumerate}
-\end{prop}
 
 %dimostrazione
 %\begin{proof}
@@ -74,7 +75,9 @@ L'intersezione gode delle seguenti proprietà:
 %    \item Da Fare
 %\end{proof}
 
-L'unione e l'intersezione sono legate dalle proprietà distributive:
+\begin{prop}
+L'unione e l'intersezione hanno le prop. distributive:
+\end{prop}
 \begin{enumerate}
   \item $S_1 \cap (S_2 \cup S_3) = (S_1 \cap S_2) \cup (S_1 \cap S_3)$
   \item $S_1 \cup (S_2 \cap S_3) = (S_1 \cup S_2) \cap (S_1 \cup S_3)$

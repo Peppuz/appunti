@@ -1,0 +1,79 @@
+%Dimostrazione per induzione(Da migliorare)
+\section{Principio di Induzione}
+Il principio di Induzione si utilizza per dimostrare la correttezza di determinate
+proprietà dell'insieme dei numeri Naturali.
+
+Il principio di induzione viene definito nel seguente modo:\newline
+Data una proposizione $P(x)$ valida per $\forall x \in N$ bisogna:
+\begin{enumerate}
+  \item \textbf{Caso Base}: Sia $P(0)$ vero
+  \item \textbf{Passo Induttivo}: Supposto $P(x)$ vero  bisogna verificare la verità di $P(x+1)$
+\end{enumerate}
+
+%Definizione Principio di Induzione Completo
+Il principio di Induzione completo è definito nel seguente modo:
+\begin{defi}
+Sia A(n) una asserzione per ogni elemento $n \geq i \in \N$. Supponendo che:
+\begin{itemize}
+    \item $A(i)$ è vera (Caso Base)
+    \item $\forall m \in \N$, se $A(k)$ è vera $\forall k$,con $0 < k < m$, ne segue
+          che è vera $A(m)$
+\end{itemize}
+Allora $\forall n \in N$,$A(n)$ è vera
+\end{defi}
+
+Esempio:\newline
+\begin{thm}$\displaystyle \sum_{i = 0} ^ n i = \frac{n(n + 1)}{2}$ \end{thm}
+
+\begin{proof}
+Per $n = 0 \quad \displaystyle \sum_{i = 0} ^ 0 i = \frac{0(0 + 1)}{2} \quad 0 = 0$ vero
+
+Se $\displaystyle \sum_{i = 0} ^ n i = \frac{n(n+1)}{2}$ allora
+$\displaystyle \sum_{i = 0} ^ {n+1} i = \frac{(n+1)(n+2)}{2}$
+\begin{equation*}
+\begin{split}
+  \sum_{i = 0}^{n+1} i & = \sum_{i = 0} ^ n + (n+1) \\
+                     & = \frac{n(n+1)}{2} + (n+1) \\
+                     & = \frac{n(n+1) + 2(n+1)}{2} \\
+                     & = \frac{(n+1)(n+2)}{2} \\
+\end{split}
+\end{equation*}
+\end{proof}
+
+Esempio:\newline
+\begin{thm}
+ $\displaystyle \sum_{i = 1}^n 2i-1 = n^2$
+\end{thm}
+
+\begin{proof}
+Per $n = 1 \quad \displaystyle \sum_{i = 1}^1 2i-1 = 1^2 \quad 1 = 1$ è vero
+
+Se $\displaystyle \sum_{i = 1}^n 2i-1 = n^2$ allora
+$\displaystyle \sum_{i = 1}^{n+1} 2i-1 = (n+1)^2$
+
+\begin{equation*}
+\begin{split}
+  \sum_{i=1}^{n+1} 2i-1 & = \sum_{i=1}^n 2i-1 + 2(n+1) - 1 \\
+         & = n^2 + 2n + 1 \\
+         & = (n+1)^2 \\
+\end{split}
+\end{equation*}
+\end{proof}
+
+\begin{thm}
+    $\displaystyle n! \geq 2^{(n-1)} \quad \forall n \in \N$
+\end{thm}
+%Dimostrazione
+\begin{proof}
+Per $n = 0$ si ha $0! \geq 2^{0-1}$ ossia $ 1 \geq 1/2$ che è sempre verificato
+
+Se $n! \geq 2^{(n-1)}$ allora $(n+1)! \geq 2^n$
+\begin{equation*}
+\begin{split}
+(n+1)! \geq 2^{n+1-1} & = n! (n+1) \geq 2^{n-1} * 2 \\
+                      & = n! \frac{(n+1)}{2} \geq 2^{n-1} \\
+\end{split}
+\end{equation*}
+Essendo $\frac{(n+1)}{2} \geq 0 \forall n \in \N$ e $n! \geq 2^{n-1}$ verificato per ipotesi
+si ricava che la proposizione è verificata.
+\end{proof}

@@ -1,0 +1,133 @@
+%Paragrafo sull'algoritmo mergeSort ed introduzione alla ricorsione
+\section{MergeSort}
+Nello sviluppo dell'algoritmo $\proc{Insertion-Sort}$ abbiamo utilizzato una
+struttura incrementale, detta anche iterativa, ma in Informatica per sviluppare
+gli algoritmi si può utilizzare una forma alternativa, chiamata \emph{Divide et Impera},
+come specificato in questo paragrafo.
+
+Molti utili algoritmi sono ricorsivi, ossia per risolvere un particolare problema
+questi algoritmi chiamano se stessi per risolvere sottoproblemi dello stesso tipo.
+Generalmente gli algoritmi ricorsivi adottano un approccio \textbf{divide et impera},
+il quale prevede tre passi a ogni livello di ricorsione:
+\begin{description}
+    \item[Divide]:il problema viene diviso in un certo numero di sottoproblemi, istanze
+                  più piccole del problema.
+    \item[Impera]:i sottoproblemi vengono risolti in maniera ricorsiva
+    \item[Combina]:le soluzioni dei sottoproblemi vengono combinate per generare
+                   la soluzione del problema originario
+\end{description}
+Un esempio del paradigma divide et impera viene dato dall'algoritmo $\proc{Merge-Sort}$,
+algoritmo che risolve il problema dell'ordinamento
+
+L'algoritmo $\proc{Merge-Sort}$ opera seguendo il paradigma divide et impera:
+\begin{description}
+    \item[Divide]:divide la sequenza di $n$ elementi in due sottosequenze di $n/2$ elementi ciascuna.
+    \item[Impera]:ordina le due sottosequenze in maniera ricorsiva mediante l'algoritmo $\proc{Merge-Sort}$.
+    \item[Combina]:fonde le due sottosequenze ordinate per generare la sequenza ordinata.
+\end{description}
+Per effettuare la fusione utilizzo una procedura ausiliaria $\proc{Merge}(A,p,q,r)$,
+dove $A$ è un array e $p,q,r$ sono degli indici tali che $p \leq q \leq r$ e la
+procedura assume che i sottoarray $A[p \twodots q]$ e $A[q+1 \twodots r]$ siano ordinati
+e li fonde per formare il sottoarray $A[p \twodots r]$ ordinato.
+Utilizzo un elemento sentinella, elemento con un valore speciale tipo $\infty$,
+per semplificare il nostro pseudocodice.
+%Procedura Merge(A,p,q,r)
+\begin{codebox}
+    \Procname{$\proc{Merge}(A,p,q,r)$}
+\li $n_1 \gets q - p + 1$
+\li $n_2 \gets r - q$
+\li crea due nuovi array $L[1 \twodots n_1]$ e $R[1 \twodots n_2]$
+\li \For $i \gets 1$ \To $n_1$
+         \Do
+\li      $L[i] \gets A[p+i-1]$
+        \End
+\li \For $j \gets 1$ \To $n_2$
+        \Do
+\li      $R[j] \gets A[q+j]$
+        \End
+\li $L[n_1+1] = \infty$
+\li $R[n_2+1] = \infty$
+\li $i \gets 1$
+\li $j \gets 1$
+\li \For $k = p$ \To $r$
+    \Do
+\li      \If $L[i] \leq R[j]$
+         \Then
+\li              $A[k] = L[i]$
+\li              $i = i+1$
+         \End
+\li      \Else $A[k] \gets R[j]$
+\li            $j \gets j+1$
+    \End
+\end{codebox}
+
+%Invariante di Ciclo con dimostrazione
+
+%Costo procedura
+la procedura $\proc{Merge}$ ha un costo $\omega(n)$, con $n = r-q+1$, in quanto
+i tre cicli for presenti nell'algoritmo richiedono nel caso peggiore $n$ esecuzione
+e non essendo annidati richiedono soltanto un tempo lineare di esecuzione.
+Ora possiamo utilizzare le procedura merge nell'algoritmo $\proc{Merge-Sort}$, il quale
+ordina gli elementi nel sottoarray $A[p \twodots r]$.
+In caso $p \geq r$, il sottoarray ha al massimo un elemento e, quindi, è già ordinato;
+altrimenti il passo "Divide" calcola semplicemente un indice $q$ che separa il sottoarray
+in due sottoarray di $n/2$ elementi, come mostrato dal pseudocodice:
+%Procedura MergeSort(A,p,r)$
+\begin{codebox}
+    \Procname{$\proc{Merge-Sort}(A,p,r)$}
+\li \If $p < r$
+    \Then
+\li     $q \gets (p+r)/ 2$
+\li     $\proc{Merge-Sort}(A,p,q)$
+\li     $\proc{Merge-Sort}(A,q+1,r)$
+\li     $\proc{Merge}(A,p,q,r)$
+    \End
+\end{codebox}
+
+Per ordinare l'intera sequenza $A = (A[1],A[2],\dots,A[n])$ effettuiamo la chiamata
+iniziale $\proc{Merge-Sort}(A,1,\attrib{A}{length})$
+
+%Analisi algoritmo Divide et Impera
+\section{Analisi algoritmi divide et impera}
+In caso un algoritmo contiene una chiamata a se stesso, il suo tempo di esecuzione
+spesso può essere espresso mediante un'\textbf{equazione di ricorrenza}, in cui
+si esprime il tempo di esecuzione totale in funzione del tempo di esecuzione dei sottoproblemi.
+
+Una ricorrenza per il tempo di esecuzione di un algoritmo divide et impera si basa
+sui 3 passi del paradigma di base; se la dimensione del problema è sufficientemente piccola,
+per esempio $n \leq c$ per qualche costante $c$, allora il tempo di esecuzione è
+costante, indicato con $\omega(1)$.
+In caso contrario serve un tempo $aT(n/b)$ per risolvere i sottoproblemi, con $a$
+indicante il numero di sottoproblemi generati e $b$ indicante il rapporto di grandezza
+tra il problema e i sottoproblemi, ed indicando con $D(n)$ il tempo per dividere
+i sottoproblemi e indicando con $C(n)$ il tempo per combinare le soluzioni dei
+sottoproblemi si ottiene la seguente ricorrenza
+\begin{equation*}
+    T(n) = \begin{cases} \omega(1) \text{se} n \leq c \\
+                         aT(n/b) + D(n) + C(n) \text{negli altri casi}\\
+            \end{cases}
+\end{equation*}
+
+\subsection{Analisi di Merge Sort}
+Lo pseudocodice di $\proc{Merge-Sort}$ funziona per qualsiasi dimensione ma, al fine
+di agevolare i calcoli, supponiamo che la dimensione del problema originale sia una
+potenza di 2, per cui ogni passo divide genera due sottosequenze di dimensione pari a $n/2$.
+
+L'algoritmo merge sort se applicato a un solo elemento impiega un tempo costante $\omega(1)$,
+altrimenti suddividiamo il tempo di esecuzione nel seguente modo:
+\begin{description}
+    \item[Divide]:questo passo semplicemente calcola il centro del sottoarray quindi
+                  richiede un tempo costante $\omega(1)$
+    \item[Impera]:risolviamo in maniera ricorsiva i due sottoproblemi di dimensione $n/2$
+                  e ciò richiede $2T(n/2)$ per la risoluzione
+    \item[Combina]:la procedura $\proc{Merge}$ richiede un tempo $\omega(n)$
+\end{description}
+Quando sommiamo $\omega(1)$ e $\omega(n)$ otteniamo una funzione lineare che è $\omega(n)$
+e per cui l'equazione di ricorrenza di $\proc{Merge-Sort}$ è:
+\begin{equation*}
+    T(n) = \begin{cases} \Theta(1) \text{se} n = 1 \\
+                         2T(n/2) + \Theta(n) \text{se} n > 1 \\
+           \end{cases}
+\end{equation*}
+Per risolvere codesta equazione di ricorrenza vi sono 3 modalità, come verrà spiegato
+nel seguente capitolo.

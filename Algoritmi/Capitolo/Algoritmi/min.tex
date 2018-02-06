@@ -1,14 +1,14 @@
 \begin{algorithm}
-\caption{$\proc{min}$(ITEM[] A,\textbf{integer} n)} \qquad Costo \quad Volte
+\caption{$\proc{min}$(ITEM[] A,\textbf{integer} n)} \qquad \qquad Costo \quad Volte
+\end{algorithm}
 \begin{codebox}
-  \li \textbf{integer} \id{min} $\gets A[0]$ \>\>\>\>\>\> $c_1$ \>\>\> $1$
+  \li \id{min} $\gets A[0]$ \>\>\>\>\>\> $c_1$ \>\>\> $1$
   \li \For j $\gets 1$ \To $\id{A.length-1}$ \>\>\>\>\>$c_2$\>\>\>$n$
       \Do
   \li        \If $A[j] \leq \id{min}$ \>\>\>\>\>$c_3$\>\>\>$n-1$
-             \Do
-  \li                  $\id{min} \gets A[j]$\>\>\>\>$c_4$\>\>\>$n-1$
+\li             \Then
+                    $\id{min} \gets A[j]$\>\>\>\>$c_4$\>\>\>$n-1$
              \End
       \End
   \li \Return min \>\>\>\>\>\>$c_5$\>\>\>$1$
 \end{codebox}
-\end{algorithm}

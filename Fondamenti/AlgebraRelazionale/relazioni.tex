@@ -1,175 +1,19 @@
 %Capitolo sulle relazioni
-\chapter{Relazioni}
-Si definisce \textit{relazione n-aria} un sottoinsieme del prodotto cartesiano
-rappresentato da tutte le coppie che rispettano la relazione voluta tra gli $n$ insiemi.
-Si definisce \textit{arietà} di una relazione il numero e il tipo degli argomente
-di una relazione.
 
-%Definizione Dominio e Codominio di una relazione
-\textbf{Dominio}:insieme degli elementi $x$ tali che $(x,y) \in R$ per qualsiasi $y$.
-\textbf{Codominio}:insieme degli elementi $y$ tali che $(x,y) \in R$ per qualsiasi $x$.
-
-%Definizione Relazione Complementare ed Inversa
-Esempio:\newline
-$A$ x $B = \{(1,1),(1,4),(1,5),(2,1),(2,4),(2,5),(3,1),(3,4),(3,5)\} $ \newline
-$R \subseteq A$ x $B$\newline
-R = \{(1,1),(1,4),(1,5),(2,4),(2,5),(3,4),(3,5)\}
-
-$R \subseteq B$ x $A$ \newline
-R = \{(1,1),(1,2),(1,3)\}
+%definizione
+\input{AlgebraRelazionale/Relazione/definizione.tex}
 
 %proprietà delle Relazioni
-Data una relazione $R$ definita su un dominio $S$ si definiscono le seguenti proprietà:
-\begin{itemize}
-  \item Riflessiva se e solo se $\forall x \in S \quad xRx$
-  \item Irriflessiva se e solo se $\forall x \in S \quad x \not R x$
-  \item Simmetrica se e solo se $\forall x \ xRy \rightarrow yRx$
-  \item Asimmetrica: se e solo se $\forall x \ xRy \rightarrow y \not R x$
-  \item Antisimmetrica: se e solo se $xRy \land yRx \rightarrow x = y$
-  \item Transitiva: se e solo se $xRy \land yRz \rightarrow xRz$
-\end{itemize}
-
-Sulle relazioni si possono applicare le usuali operazioni insiemistiche quindi, ad esempio,
-date $R_1 \subseteq S x T$ e $R_2 \subseteq S x T$ anche $R_1 \cup R_2$ è una relazione su $S x T$.
-
-%Definizione Relazione Complementare e Relazione Inversa
-Data una relazione binaria $R \subseteq S x T$ definiamo \emph{relazione complementare}
-$\bar{R} \subseteq S x T$ come $x \bar{R} y \iff <x,y> \not \in R$.
-Per definizione si ha $\bar{\bar{R}} = R$ e $R \cup \bar{R} = S x T$.
-
-Data una relazione binaria $R \subseteq S x T$ esiste sempre la \emph{relazione inversa}
-$R^-1 = \{<y,x> | <x,y> \in R\} \subseteq T x S$.
-Per definizione $(R ^ -1) ^ -1 = R$
-
-%Proprietà relazioni
-\begin{defi}
-Date due relazioni $R$ e $R'$ definite su $S$ si ha:
-\begin{enumerate}
-    \item se $R$ è riflessiva anche $R^-1$ è Riflessiva
-    \item $R$ è riflessiva se e solo se $\bar{R}$ è riflessiva
-    \item se $R$ e $R'$ sono riflessive anche $R \cup R'$ e $R \cap R'$ sono riflessive
-\end{enumerate}
-\end{defi}
-%mancano le dimostrazioni
-
-\begin{defi}
-Date due relazioni $R$ e $R'$ definite su $S$, si ha:
-\begin{enumerate}
-    \item $R$ è simmetrica se e solo se $R = R^-1$
-    \item se $R$ è simmetrica anche $R^-1$ e $\bar{R}$ sono simmetriche
-    \item $R$ è antisimmetrico se e solo se $R \cap R^-1 \subseteq \wp S$
-    \item $R$ è asimmetrica se e solo se $R \cap R^-1 = \emptyset$
-    \item se $R$ e $R'$ sono simmetriche anche $R \cup R'$ e $R \cap R'$ sono simmetriche
-    \item se $R$ e $R'$ sono transitive anche $R \cap R'$ è transitiva.
-\end{enumerate}
-\end{defi}
-%Mancano le dimostrazioni
+\input{AlgebraRelazionale/Relazione/proprieta.tex}
 
 %Modalità di Rappresentazione delle Relazioni
-\section{Rappresentazione di Relazioni}
-Vi sono diverse modalità di rappresentazione delle relazioni,il cui metodo migliore
-dipendono dall'arietà della relazione, che sono:
-\begin{description}
-    \item[Tabella a $n$ colonne] è una matrice a due dimensioni con righe,rappresentanti
-          gli elementi, e colonne, indicanti gli insiemi; è conveniente utilizzare
-          quando l'arietà della relazione è $\geq 2$.
-    \item[Grafo Bipartito] è un grafo in cui si elencano gli elementi di tutti gli insiemi
-         e si usano delle frecce, chiamate archi, per indicare l'associazione tra gli elementi.
-         E' meglio utilizzare il grafo bipartito soltanto per le relazioni binarie.
-    \item[Matrice Booleana] è una matrice $M_R$ a valori \{0,1\} composta da $n$ righe e $m$ colonn
-    \item[Grafi] modalità di rappresentazione di relazioni binarie(spiegate in un paragrafo successivo)
-\end{description}
-
-\subsection{Tabelle}
-Si vuole definire la relazione $anagrafica \subseteq Cognomi x Nomi x Date x Luoghi$
-
-\begin{tabular}{cccc}
-\toprule
-C & N & D & L \\
-\midrule
-Moscato & Ugo & 10/1/57 & Milano \\
-Iaquinta & Vincenzo & 13/5/68 & Udine \\
-Inzaghi & Filippo & 23/5/78 & Piacenza \\
-\bottomrule
-\end{tabular}
-
-\subsection{Grafo Bipartito}
-Dati due insiemi $A = \{ 1,2,3 \}$ e $B = \{ 4,7,1 \}$ si definisce la relazione
-$R \subset A x B = \{ (1,7),(1,1),(2,4),(3,7),(3,4) \}$.
-
-
-\subsection{Matrice Booleana}
-La \emph{Matrice booleana} è una matrice $M_R$,composta da $n$ righe e $m$ colonne,
-i cui elementi sono definiti come $m_{ij} = \{ ^{1 \iff <s_i,t_j \in R} _{0 \text{altrimenti}}$
-
-Inserire esempi!!!!
-
-Da una matrice booleana si possono determinare facilmente le proprietà
-di una relazione $R$,definita su $S$, soprattutto la proprietà simmetrica e la riflessiva.
-
-La \emph{Matrice Complementare} $M_{\bar{R}}$ è costituita dai seguenti elementi
-$\bar{m}_{ij} = \{ ^ 1 \iff m_{ij} = 0 _ 0 \iff m_{ij} = 1$
-
-La \emph{Matrice inversa} $M_{R ^-1}$ è la trasporta della matrice $M_R$.
-%Da fare la dimostrazione
-
-Date due matrici $A$ e $B$,embrambe di $n x m$ elementi, si definiscono 3 operazioni:
-\begin{description}
-    \item[MEET $A \sqcap B = C$]: è una matrice booleana i cui elementi sono:
-$c_{ij} = \{ \begin{cases} 1 \quad a_{ij} = 1 \land b_{ij} = 1 \\ 0 \quad a_{ij} = 0 \lor b_{ij} = 0 \end{cases}$
-    \item[JOIN $A \sqcup B = C$]: è una matrice booleana i cui elementi sono:
-    $c{ij} = \{ ^ 1 \quad a_{ij} = 1 \lor b_{ij} = 1 _ 0 \quad a_{ij} = 0 \land b_{ij} = 0$
-    \item[PRODOTTO BOOLEANO $A \odot B$]: è una matrice booleana $n x p$, i cui elementi sono:
-    $c_{ij} = \{1 \quad \text{se per qualche} k(1 \leq k \leq m) \text{si ha} a_{ik} = 1 \land b_{kj} = 1
-    _ 0 \quad \text{altrimenti}$
-\end{description}
-
-Inserire Esempi
+\input{AlgebraRelazionale/Relazione/rappresentazione.tex}
 
 %Sezione Composizione di relazioni
-\section{Composizione di Relazioni}
-Data una relazione $R_1 \subseteq S x T$ e una relazione $R_2 \subseteq T x Q$,
-si definisce come relazione composta $R_1 \circ R_2 \subseteq S x Q$ come segue
-$(a,c) \in R_1 \circ R_2 \iff \exists b \in T | (a,b) \in R_1 \land (b,c) \in R_2$
-
-Esempio:
-Siano $S = \{ a,b \}, R_1 = \{ (a,a),(a,b),(b,b) \}$ e $R_2 = \{ (a,b),(b,a),(b,b) \}$
-$R_1 \circ R_2 = \{ (a,a),(a,b),(b,a),(b,b) \}$ \newline
-$R_2 \circ R_1 = \{ (a,b),(b,a),(b,b) \}$
-
-\begin{prop}
-La composizione di Relazioni è associativa
-\end{prop}
-%Fare la Dimostrazione
-
-\begin{thm}
-Se $R_1 \subseteq S x T$ e $R_2 \subseteq T x Q$, allora $(R_1 \circ R_2)^-1 = R_1^-1 \circ R_2^-1$
-\end{thm}
-%Fare Dimostrazione
-
-%Potenza di una relazione
-
-%Sezione Grafi
-\input{AlgebraRelazionale/grafi}
+\input{AlgebraRelazionale/Relazione/composizione.tex}
 
 %Relazioni di Equivalenza
-\section{Relazioni di Equivalenza}
-Si definisce $R$ una \emph{relazione di equivalenza} se e solo se la relazione binaria
-$R$ è riflessiva,simmetrica e transitiva.
-
-%Inserire Esempi
-
-Data una relazione di equivalenza $R$ definita su un insieme $S$, si definisce
-\emph{classe di equivalenza} di un elemento $x \in S$ come $[x] = \{y | <x,y> \in R \}$
-
-\begin{thm}
-Se $R$ è una relazione di equivalenza su $S$, allora le classi di Equivalenza
-generate da $R$ partizionano $S$
-\end{thm}
-%Fare la Dimostrazione
-
-Data una relazione di equivalenza in S, la partizione che essa determina si dice
-\emph{insieme quoziente} di $S$ rispetto alla relazione di equivalenza e si indica con $S/$
+\input{AlgebraRelazionale/Relazione/equivalenza.tex}
 
 %Ordinamento
-\input{AlgebraRelazionale/ordinamento}
+\input{AlgebraRelazionale/Relazione/ordinamento}

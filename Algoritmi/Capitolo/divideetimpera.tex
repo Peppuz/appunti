@@ -1,0 +1,22 @@
+%Capitolo sulla tecnica Divide et Impera
+\chapter{Divide et Impera}
+Come già visto nel precedente capitolo, \emph{divide et Impera} è una tecnica
+di sviluppo di algoritmi ricorsivi, in cui si divide il problema in sottoproblemi
+più semplici da risolvere.
+
+Per risolvere l'equazione di ricorrenza, funzione che descrive il tempo di esecuzione
+in funzione del tempo di esecuzione dei sottoproblemi, vi sono 3 metodi:
+\begin{description}
+    \item[Metodo di Sostituzione]:ipotiziamo un tempo di esecuzione e utilizziamo
+                l'induzione matematica per dimostrare la correttezza dell'ipotesi
+    \item[Metodo dell'albero di Ricorsione]:converte l'equazione in un albero i cui
+          nodi rappresentano i costi ai vari livelli della ricorsione
+    \item[Metodo dell'Esperto]:fornisce i limiti dell'equazioni di ricorrenza che
+          rispettano determinate condizioni(Analizzato nei prossimi paragrafi)
+\end{description}
+
+\input{Divide/sostituzione}%Paragrafo sul metodo di sostituzione
+
+\input{Divide/alberoRicorsione}%Paragrafo sul metodo dell'albero di Ricorsione
+
+\input{Divide/esperto}%Paragrafo sul metodo dell'Esperto

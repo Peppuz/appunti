@@ -1,0 +1,22 @@
+\section{Composizione di Relazioni}
+Data una relazione $R_1 \subseteq S x T$ e una relazione $R_2 \subseteq T \times Q$,
+si definisce come relazione composta $R_1 \circ R_2 \subseteq S \times Q$ come segue
+$(a,c) \in R_1 \circ R_2$ se e solo se  $\exists b \in T | (a,b) \in R_1 \land (b,c) \in R_2$
+
+Siano $S = \{ a,b \}, R_1 = \{ (a,a),(a,b),(b,b) \}$ e $R_2 = \{ (a,b),(b,a),(b,b) \}$
+$R_1 \circ R_2 = \{ (a,a),(a,b),(b,a),(b,b) \}$ \newline
+$R_2 \circ R_1 = \{ (a,b),(b,a),(b,b) \}$
+
+\begin{prop}
+La composizione di Relazioni è associativa
+\end{prop}
+%Fare la Dimostrazione
+
+\begin{thm}
+Se $R_1 \subseteq S \times T$ e $R_2 \subseteq T \times Q$, allora $(R_1 \circ R_2)^-1 = R_1^-1 \circ R_2^-1$
+\end{thm}
+%Fare Dimostrazione
+
+%Potenza di una relazione
+
+Inserire Esempi!!!
