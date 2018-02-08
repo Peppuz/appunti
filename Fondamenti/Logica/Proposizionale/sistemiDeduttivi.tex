@@ -49,82 +49,82 @@ I tableau sono degli alberi,la cui radice è l'enunciato in esame, e gli altri n
 sono costruiti attraverso l'applicazione di una serie di regole,fino ad arrivare
 alle formule atomiche come radici.
 
-Le regole dei Tableau sono le seguenti:\newline
-T $\land$
+Le regole dei Tableau sono le seguenti:
+%T AND
+\begin{equation*}
+%T AND
+\begin{prooftree}
+\hypo{S,T (A \land B)}
+\infer1 {S,TA,TB}
+\end{prooftree}
+\quad T \land \qquad
+%F AND
+\begin{prooftree}
+\hypo{S,F (A \land B)}
+\infer1 {S,FA/S,FB}
+\end{prooftree}
+F \ \land
+\end{equation*}
 
-$\begin{array}{c}
-\toprule
-S,T A \land B \\
-\midrule
-S, TA, TB \\
-\end{array}$
+\begin{equation*}
+%T OR
+\begin{prooftree}
+\hypo{S,T (A \lor B)}
+\infer1 {S,TA / S,TB}
+\end{prooftree}
+\quad T \lor \qquad
+%F OR
+\begin{prooftree}
+\hypo{S,F (A \lor B)}
+\infer1 {S,FA,FB}
+\end{prooftree}
+F \ \lor
+\end{equation*}
 
-T $\lor$
+\begin{equation*}
+%T NOT
+\begin{prooftree}
+\hypo{S,T (\neg A)}
+\infer1 {S,FA}
+\end{prooftree}
+\quad T \neg \qquad
+%F NOT
+\begin{prooftree}
+\hypo{S,F (\neg A)}
+\infer1 {S,TA}
+\end{prooftree}
+F \ \neg
+\end{equation*}
 
-$\begin{array}{c}
-\toprule
-S,T A \lor B \\
-\midrule
-S, TA/ S, TB \\
-\end{array}$
+\begin{equation*}
+%T ->
+\begin{prooftree}
+\hypo{S,T (A \rightarrow B)}
+\infer1 {S,FA / S,TB}
+\end{prooftree}
+\quad T \rightarrow \qquad
+%F ->
+\begin{prooftree}
+\hypo{S,F (A \rightarrow B)}
+\infer1 {S,TA,FB}
+\end{prooftree}
+F \ \rightarrow
+\end{equation*}
 
-T $\neg$
-
-$\begin{array}{c}
-\toprule
-S,T \neg A \\
-\midrule
-S, FA \\
-\end{array}$
-
-T $\Rightarrow$
-
-$\begin{array}{c}
-\toprule
-S,T A \Rightarrow B \\
-\midrule
-S, FA / S, TB \\
-\end{array}$
-
-T $\iff$(da fare)
-
-F $\land$
-
-$\begin{array}{c}
-\toprule
-S,F A \land B \\
-\midrule
-S, FA/ S, TB \\
-\end{array}$
-
-F $\lor$
-
-$\begin{array}{c}
-\toprule
-S,F A \lor B \\
-\midrule
-S, FA, FB \\
-\end{array}$
-
-F $\neg$
-
-$\begin{array}{c}
-\toprule
-S,F \neg A \\
-\midrule
-S, TA \\
-\end{array}$
-
-F $\Rightarrow$
-
-$\begin{array}{c}
-\toprule
-S,F A \Rightarrow B \\
-\midrule
-S, TA, FB \\
-\end{array}$
-
-F $\iff$(da fare)
+\begin{equation*}
+%T <-->
+\begin{prooftree}
+\hypo{S,T (A \iff B)}
+\infer1 {S,TA,TB/S,FA,FB}
+\end{prooftree}
+\quad T \iff \qquad
+%F <-->
+\begin{prooftree}
+\hypo{S,F (A \iff B)}
+\infer1{S,TA,FB/S,FA,TB}
+\end{prooftree}
+F \ \iff
+\end{equation*}
 
 %Dimostrazione di tableau
 Il metodo dei Tableau è un metodo dei sistemi deduttivi, che permette attraverso
@@ -139,4 +139,15 @@ l'applicazione di una serie di regole, di capire la tipologia della formula.
 \bottomrule
 \end{tabular}
 
-%Da fare definizione di di Tableau,Tableau dimostrazione,rami chiusi ed aperti del Tableau
+Esempio:$C \rightarrow (P \rightarrow ((Q \rightarrow \neg P) \lor (C \rightarrow P)))$
+\begin{equation*}
+\begin{prooftree}
+\hypo{F C \rightarrow (P \rightarrow ((Q \rightarrow \neg P) \lor (C \rightarrow P)))}
+\infer1 {TC,F (P \rightarrow ((Q \rightarrow \neg P) \lor (C \rightarrow P)))}
+\infer1 {TC,TP,F (Q \rightarrow \neg P) \lor (C \rightarrow P)}
+\infer1 {TC,TP,F (Q \rightarrow \neg P),F (C \rightarrow P)}
+\infer1{TC,TP,F (Q \rightarrow \neg P),TC,FP}
+\end{prooftree}
+\end{equation*}
+Il tableaux chiude in quanto non può essere contemporaneamente $TP$ e $FP$ per cui
+la formula è una tautologia.

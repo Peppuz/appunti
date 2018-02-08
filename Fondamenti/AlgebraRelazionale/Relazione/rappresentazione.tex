@@ -60,12 +60,12 @@ La \emph{Matrice inversa} $M_{R ^-1}$ è la trasporta della matrice $M_R$.
 
 Date due matrici $A$ e $B$,embrambe di $n x m$ elementi, si definiscono 3 operazioni:
 \begin{description}
-    \item[MEET $A \sqcap B = C$]: è una matrice booleana i cui elementi sono:
+    \item[MEET $A \sqcap B = C$]: è una matrice booleana i cui elementi sono:\newline
 $c_{ij} =  \begin{cases} 1 \quad a_{ij} = 1 \land b_{ij} = 1 \\ 0 \quad a_{ij} = 0 \lor b_{ij} = 0 \end{cases}$
-    \item[JOIN $A \sqcup B = C$]: è una matrice booleana i cui elementi sono:
+    \item[JOIN $A \sqcup B = C$]: è una matrice booleana i cui elementi sono:\newline
     $c{ij} = \begin{cases} 1 \quad a_{ij} = 1 \lor b_{ij} = 1 \\
                            0 \quad \text{altrimenti}\\ \end{cases}$
-    \item[PRODOTTO BOOLEANO $A \odot B$]: è una matrice booleana $n x p$, i cui elementi sono:
+    \item[PRODOTTO BOOLEANO $A \odot B$]: è una matrice booleana $n x p$, i cui elementi sono:\newline
     $c_{ij} = \begin{cases} 1 \quad \text{se per qualche} k(1 \leq k \leq m) \text{si ha} a_{ik} = 1 \land b_{kj} = 1\\
                             0 \quad \text{altrimenti} \\ \end{cases}$
 \end{description}

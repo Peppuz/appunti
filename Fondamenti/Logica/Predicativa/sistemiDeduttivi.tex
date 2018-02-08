@@ -39,20 +39,31 @@ di una formula del linguaggio mediante l'applicazione di una serie di regole.
 Mantiene le stesse modalità di dimostrazione dei tableaux proposizionale e le stesse
 definizioni di espansioni del Tableaux.
 
-$\begin{array}{cc}
-\toprule S, T \exists x A(x) & \qquad S, F \exists x A(x) \\
-\midrule S,T A(a) \text{con a un nuovo simbolo di variabile} & \qquad S,F A(a),F \exists x A(x) \\
-\end{array}$
+\begin{equation*}
+\begin{prooftree}%T EXISTS
+\hypo{S,T \exists x A(x)}
+\infer1 {S,A(a) \ \text{con a un nuovo simbolo di variabile}}
+\end{prooftree}
+\quad T \exists \qquad
+\begin{prooftree} %F EXISTS
+\hypo{S,F \exists x A(x)}
+\infer1 {S,F A(a),F \exists A(x)}
+\end{prooftree}
+F \ \exists
+\end{equation*}
 
-$\begin{array}{c}
-\toprule S,T \forall x A(x) \\
-\midrule S, T A(a), T \forall x A(x)\\
-\end{array}$
-
-\qquad $\begin{array}{c}
-\toprule S,F \forall x A(x) \\
-\midrule S,F A(a) \text{con a un nuovo simbolo di variabile} \\
-\end{array}$
+\begin{equation*}
+\begin{prooftree}%T FORALL
+\hypo{S,T \forall x A(x)}
+\infer1 {S,T A(a),T \forall x A(x)}
+\end{prooftree}
+\quad T \forall \qquad
+\begin{prooftree}%F FORALL
+\hypo{S,F \forall x A(x)}
+\infer1 {S,F A(a) \ \text{con a un nuovo simbolo di variabile}}
+\end{prooftree}
+F \ \forall
+\end{equation*}
 
 Nelle tableuax regole $T \exists$ e $F \forall$ bisogna introdurre un nuovo simbolo di
 variabile, in quanto non si poteva conoscere prima dell'applicazione della regole
@@ -69,6 +80,27 @@ Le euristiche nell'applicazione delle regole dei Tableaux sono le seguenti:
     \item Applicare prima le regole che vincolano all'introduzione di nuovi parametri
     \item Quando si ha la possibilità di scegliere il parametro, conviene sceglierlo uno già scelto.
 \end{itemize}
-%Tableau formule
 
+Esempio:$\exists x (P(x) \lor Q(x)) \rightarrow (\exists x P(x) \lor \forall y Q(y))$
+\begin{equation*}
+\begin{prooftree}
+\hypo{F \exists x (P(x) \lor Q(x)) \rightarrow (\exists x P(x) \lor \forall y Q(y))}
+\infer1 {T \exists x (P(x) \lor Q(x)), F \exists x P(x) \lor \forall y Q(y)}
+\infer1{T P(a) \lor Q(a), F \exists x P(x) \lor \forall y Q(y)}
+\infer1 {T P(a) \lor Q(a), F \exists x P(x), F \forall y Q(y)}
+\infer1 {T P(a) \lor Q(a), F \exists x P(x), F Q(b)}
+\infer1 {T P(a),F \exists x P(x),F Q(b)/T Q(a),F Q(b),F \exists x P(x)}
+\end{prooftree}
+\end{equation*}
+Il secondo ramo del tableau non potrà mai chiudere percui bisogna fare il T-Tableaux
+
+\begin{equation*}
+\begin{prooftree}
+\hypo{T \exists x (P(x) \lor Q(x)) \rightarrow (\exists x P(x) \lor \forall y Q(y))}
+\infer1 {F \exists x P(x) \lor Q(x)/T \exists x P(x) \lor \forall y Q(y)}
+\infer1 {F \exists x P(x) \lor Q(x)/T \exists x P(x)/T \forall y Q(y)}
+\end{prooftree}
+\end{equation*}
+Il tableaux non potrà mai chiudere in quanto il secondo e il terzo non generanno mai delle contraddizioni
+per cui la formula è sodddisfacibile non tautologica.
 %Esempi

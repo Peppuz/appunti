@@ -2,8 +2,8 @@
 Sia $U$ un insieme assunto come Universo,si definisce come \emph{funzione caratteristica}
 di un sottoinsieme $S \subseteq U$ come:
 \begin{equation*}
-    car(S,x) = \begin{cases} 1 \quad x \in S \\
-                             0 \quad x \not \in S\\
+    car(S,x) = \begin{cases} 1 \quad \text{se} \ x \in S \\
+                             0 \quad \text{se} \ x \not \in S\\
                \end{cases}
 \end{equation*}
 
@@ -16,13 +16,13 @@ A = \{\emptyset,3,20 \} \\
 \wp A = \{A,\{\emptyset\},\{ 3\},\{ 20 \},\{ \emptyset,3 \},\{\emptyset,20 \},\{3,20\},\emptyset \} \\
 \end{align*}
 
-\begin{align}
+\begin{align*}
 S = \{ \emptyset, \{ \emptyset \}, a,b\} \\
 \wp S = & \{ \emptyset,\{\emptyset \},\{\{\emptyset\}\},\{a\},\{b\}, \\
-        & \{ \emptyset,\{\emptyset\}\}, \{ \emptyset,a\},\{ \emptyset,b\} \\
-        & \{ \emptyset,\{\emptyset\},a\},\{\emptyset,\{\emptyset\},b\}, \\
-        & \{ \{\emptyset\},a,b\},\{ \emptyset,a,b\},\{\{\emptyset\},a\},\{\{\emptyset\},b\} \} \\
-\end{align}
+        & \ \{ \emptyset,\{\emptyset\}\}, \{ \emptyset,a\},\{ \emptyset,b\} \\
+        & \ \{ \emptyset,\{\emptyset\},a\},\{\emptyset,\{\emptyset\},b\}, \\
+        & \ \{ \{\emptyset\},a,b\},\{ \emptyset,a,b\},\{\{\emptyset\},a\},\{\{\emptyset\},b\} \} \\
+\end{align*}
 
 \begin{defi}
 Se $S$ è composto da $n \geq 0$ elementi, il numero di elementi di $\wp S$ è $2 ^ n$.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.12.24)  6 FEB 2018 21:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.12.24)  8 FEB 2018 00:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -843,13 +843,7 @@ File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
 \c@tkz@gr@n=\count138
 \c@tkz@gr@ta=\count139
 \c@tkz@gr@tb=\count140
-) (/usr/share/texlive/texmf-dist/tex/latex/prooftrees/prooftrees.sty
-(/usr/share/texlive/texmf-dist/tex/latex/svn-prov/svn-prov.sty
-Package: svn-prov 2010/04/24 v3.1862 Package Date/Version from SVN Keywords
-)
-Package: prooftrees 2017/02/09 v0.6 (SVN Rev: 5848)
-
-(/usr/share/texlive/texmf-dist/tex/latex/forest/forest.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/forest/forest.sty
 Package: forest 2017/07/14 v2.1.5 Drawing (linguistic) trees
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
@@ -1199,45 +1193,131 @@ Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
 \forest@externalize@max@outer@n=\count333
 \forest@externalize@inner@n=\count334
 )
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-))
-\c@defi=\count335
-\c@prop=\count336
-\c@lem=\count337
-\c@thm=\count338
+(/usr/share/texlive/texmf-dist/tex/latex/ebproof/ebproof.sty
+Package: ebproof 2017/05/17 v2.0 EB's proof trees
+\l_ebproof_separation_dim=\dimen276
+\l_ebproof_rule_margin_dim=\dimen277
+\l_ebproof_rule_thickness_dim=\dimen278
+\l_ebproof_rule_separation_dim=\dimen279
+\l_ebproof_rule_dash_length_dim=\dimen280
+\l_ebproof_rule_dash_space_dim=\dimen281
+\l_ebproof_label_separation_dim=\dimen282
+\l_ebproof_label_axis_dim=\dimen283
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofnewrulestyle with sig. 'mm' on line 78.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofnewstyle with sig. 'mm' on line 140.
+.................................................
+\l_ebproof_transit_dim=\dimen284
+\g_ebproof_level_int=\count335
+\g_ebproof_stack_box=\box76
+\l_ebproof_a_box=\box77
+\l_ebproof_b_box=\box78
+\l_ebproof_c_box=\box79
+\l_ebproof_d_box=\box80
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofset with sig. 'm' on line 615.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofhypo with sig. 'O{}m' on line 623.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofinfer with sig. 'O{}mO{}m' on line 635.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofellipsis with sig. 'mm' on line 659.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofrewrite with sig. 'm' on line 686.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofdelims with sig. 'mm' on line 712.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofAlter with sig. 'm' on line 722.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofDelims with sig. '' on line 724.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofEllipsis with sig. '' on line 726.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofHypo with sig. '' on line 728.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ebproofInfer with sig. '' on line 730.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'prooftree' with sig. 'sO{}' on line 763.
+.................................................
+)
+\c@defi=\count336
+\c@prop=\count337
+\c@lem=\count338
+\c@thm=\count339
  (./appunti.aux)
 \openout1 = `appunti.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Info: Redefining \it@ocap on input line 25.
-LaTeX Info: Redefining \it@ccap on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Info: Redefining \it@ocap on input line 26.
+LaTeX Info: Redefining \it@ccap on input line 26.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count339
-\scratchdimen=\dimen276
-\scratchbox=\box76
-\nofMPsegments=\count340
-\nofMParguments=\count341
+\scratchcounter=\count340
+\scratchdimen=\dimen285
+\scratchbox=\box81
+\nofMPsegments=\count341
+\nofMParguments=\count342
 \everyMPshowfont=\toks56
-\MPscratchCnt=\count342
-\MPscratchDim=\dimen277
-\MPnumerator=\count343
-\makeMPintoPDFobject=\count344
+\MPscratchCnt=\count343
+\MPscratchDim=\dimen286
+\MPnumerator=\count344
+\makeMPintoPDFobject=\count345
 \everyMPtoPDFconversion=\toks57
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1295,12 +1375,12 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1321,17 +1401,21 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 
 ])
 (./AlgebraRelazionale/Insiemi/insiemiNumerici.tex)
-(./AlgebraRelazionale/Insiemi/unioneIntersezione.tex [2] [3])
-(./AlgebraRelazionale/Insiemi/complementareDifferenza.tex [4])
+(./AlgebraRelazionale/Insiemi/unioneIntersezione.tex [2]
+Overfull \hbox (14.68758pt too wide) in paragraph at lines 20--20
+[] 
+ []
+
+[3]) (./AlgebraRelazionale/Insiemi/complementareDifferenza.tex [4])
 (./AlgebraRelazionale/Insiemi/partizione.tex)
 (./AlgebraRelazionale/Insiemi/insiemeParti.tex [5])
-(./AlgebraRelazionale/prodottoCartesiano.tex
+(./AlgebraRelazionale/Insiemi/prodottoCartesiano.tex
 Overfull \hbox (3.29472pt too wide) in paragraph at lines 1--1
 []\T1/cmr/bx/n/14.4 Prodotto Car-te-sia-no,Coppie Or-di-na-te e Se-quen-
  []
 
 
-Overfull \hbox (22.0862pt too wide) in paragraph at lines 5--7
+Overfull \hbox (22.0862pt too wide) in paragraph at lines 6--8
 []\T1/cmr/m/n/10.95 Una \T1/cmr/m/it/10.95 n-upla \T1/cmr/m/n/10.95 or-di-na-ta
  $\OML/cmm/m/it/10.95 x[]; [] ; x[]$ \T1/cmr/m/n/10.95 è de-fi-ni-ta co-me $\OT
 1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 ;
@@ -1340,34 +1424,29 @@ Overfull \hbox (22.0862pt too wide) in paragraph at lines 5--7
  []
 
 [6]
-Overfull \hbox (45.2069pt too wide) in paragraph at lines 22--22
+Overfull \hbox (47.00908pt too wide) in paragraph at lines 23--23
 [] 
  []
 
-)) (./AlgebraRelazionale/relazioni.tex
-(./AlgebraRelazionale/Relazione/definizione.tex [7]
+[7])) (./AlgebraRelazionale/relazioni.tex
+(./AlgebraRelazionale/Relazione/definizione.tex [8]
 Capitolo 2.
 
-Overfull \hbox (214.79097pt too wide) in paragraph at lines 16--16
+Overfull \hbox (4.30772pt too wide) in paragraph at lines 16--16
 [] 
  []
 
-) (./AlgebraRelazionale/Relazione/proprieta.tex) [8
+) (./AlgebraRelazionale/Relazione/proprieta.tex [9
 
-]
+])
 (./AlgebraRelazionale/Relazione/rappresentazione.tex
 Overfull \hbox (11.23343pt too wide) in paragraph at lines 5--8
 []\T1/cmr/m/n/10.95 è una ma-tri-ce a due di-men-sio-ni con ri-ghe,rappresentan
 ti
  []
 
-(./Grafo/esempio1.tex) [9] (./Grafo/esempio2.tex) [10]
-Overfull \hbox (36.54073pt too wide) in paragraph at lines 68--71
-\T1/cmr/m/n/10.95 ele-men-ti so-no: $\OML/cmm/m/it/10.95 c[] \OT1/cmr/m/n/10.95
- = []$ 
- []
-
-(./AlgebraRelazionale/grafi.tex [11]
+(./Grafo/esempio1.tex) [10] (./Grafo/esempio2.tex) [11]
+(./AlgebraRelazionale/grafi.tex [12]
 Overfull \hbox (26.90633pt too wide) in paragraph at lines 24--27
 []\T1/cmr/m/n/10.95 : è una se-quen-za fi-ni-ta di no-di $\OT1/cmr/m/n/10.95 (\
 OML/cmm/m/it/10.95 V[]; V[]; [] ; V[]\OT1/cmr/m/n/10.95 )$
@@ -1390,26 +1469,26 @@ OML/cmm/m/it/10.95 V[]; V[]; [] ; V[]\OT1/cmr/m/n/10.95 )$
 \forest@temp@box=\box32762 (local)
 \forest@temp@box=\box32761 (local)
 \forest@temp@box=\box32760 (local)
- [12]))))
-(./AlgebraRelazionale/Relazione/composizione.tex [13])
+ [13]))))
+(./AlgebraRelazionale/Relazione/composizione.tex [14])
 (./AlgebraRelazionale/Relazione/equivalenza.tex)
 (./AlgebraRelazionale/Relazione/ordinamento.tex
-(./AlgebraRelazionale/Relazione/tipologieOrdinamenti.tex [14])
+(./AlgebraRelazionale/Relazione/tipologieOrdinamenti.tex [15])
 (./AlgebraRelazionale/Relazione/hasse.tex)
-(./AlgebraRelazionale/Relazione/estremali.tex [15])
-(./AlgebraRelazionale/Relazione/reticoli.tex [16])))
-(./AlgebraRelazionale/funzioni.tex [17]
+(./AlgebraRelazionale/Relazione/estremali.tex [16])
+(./AlgebraRelazionale/Relazione/reticoli.tex [17])))
+(./AlgebraRelazionale/funzioni.tex [18]
 Capitolo 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 37--44
 
  []
 
-[18
+[19
 
-]) (./AlgebraRelazionale/ordinali.tex [19])
-(./AlgebraRelazionale/booleana.tex [20]) (./AlgebraRelazionale/induzione.tex
-[21]
+]) (./AlgebraRelazionale/ordinali.tex [20])
+(./AlgebraRelazionale/booleana.tex [21]) (./AlgebraRelazionale/induzione.tex
+[22]
 Capitolo 4.
 (./AlgebraRelazionale/Induzione/principioInduzione.tex
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
@@ -1419,20 +1498,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
  []
 
-[22
+[23
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
-) (./AlgebraRelazionale/Induzione/definizioneInduttiva.tex [23]
+) (./AlgebraRelazionale/Induzione/definizioneInduttiva.tex [24]
 Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-) (./AlgebraRelazionale/Induzione/ricorsione.tex [24]))
-(./Logica/Proposizionale/proposizionale.tex [25]
+) (./AlgebraRelazionale/Induzione/ricorsione.tex [25]))
+(./Logica/Proposizionale/proposizionale.tex [26]
 Capitolo 5.
 (./Logica/Proposizionale/sintassi.tex
 Overfull \hbox (20.93701pt too wide) in paragraph at lines 12--15
@@ -1440,19 +1519,19 @@ Overfull \hbox (20.93701pt too wide) in paragraph at lines 12--15
  di for-mu-le ben formate($\OML/cmm/m/it/10.95 FBF$\T1/cmr/m/n/10.95 )
  []
 
-[26
+[27
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 22--25
 
  []
 
-) (./Logica/Proposizionale/semantica.tex [27]
+) (./Logica/Proposizionale/semantica.tex [28]
 Underfull \hbox (badness 10000) in paragraph at lines 7--19
 
  []
 
-[28]
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 44--57
 
  []
@@ -1467,7 +1546,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--74
 
  []
 
-[29]) (./Logica/Proposizionale/sistemiDeduttivi.tex
+[30]) (./Logica/Proposizionale/sistemiDeduttivi.tex
 Overfull \hbox (3.06064pt too wide) in paragraph at lines 22--24
 []\T1/cmr/bx/n/10.95 Definizione 19. []\T1/cmr/m/it/10.95 Una for-mu-la $\OML/c
 mm/m/it/10.95 A$ \T1/cmr/m/it/10.95 di una lo-gi-ca $\OT1/cmr/m/n/10.95 ^^C$ \T
@@ -1475,12 +1554,26 @@ mm/m/it/10.95 A$ \T1/cmr/m/it/10.95 di una lo-gi-ca $\OT1/cmr/m/n/10.95 ^^C$ \T
 T1/cmr/m/n/10.95 ^^C$\T1/cmr/m/it/10.95 ,indicata
  []
 
-[30]) (./Logica/Proposizionale/equivalenze.tex [31]) [32])
-(./Logica/Predicativa/predicativa.tex [33]
-Capitolo 6.
-(./Logica/Predicativa/sintassi.tex [34
+[31]) (./Logica/Proposizionale/equivalenze.tex [32] [33]
+(./Dimostrazioni/LogicaProposizionale/idempotenzaOr.tex)
+(./Dimostrazioni/LogicaProposizionale/idempotenzaAnd.tex)
+(./Dimostrazioni/LogicaProposizionale/associativitaOr.tex
+Overfull \hbox (158.38004pt too wide) detected at line 12
+  $[]$ 
+ []
 
-] [35])
+) (./Dimostrazioni/LogicaProposizionale/commutativaAnd.tex [34])
+(./Dimostrazioni/LogicaProposizionale/distribuitivaAnd.tex)
+(./Dimostrazioni/LogicaProposizionale/assorbimentoOr.tex [35])
+(./Dimostrazioni/LogicaProposizionale/assorbimentoAnd.tex)
+(./Dimostrazioni/LogicaProposizionale/doppioEscluso.tex)
+(./Dimostrazioni/LogicaProposizionale/deMorganAnd.tex) [36]
+(./Dimostrazioni/LogicaProposizionale/contrapposizione.tex)))
+(./Logica/Predicativa/predicativa.tex [37]
+Capitolo 6.
+(./Logica/Predicativa/sintassi.tex [38
+
+] [39])
 (./Logica/Predicativa/sistemiDeduttivi.tex
 Overfull \hbox (30.51663pt too wide) in paragraph at lines 13--15
 []\T1/cmr/m/n/10.95 se $\OML/cmm/m/it/10.95 f$ \T1/cmr/m/n/10.95 è un sim-bo-lo
@@ -1500,61 +1593,58 @@ it/10.95 S^^[ \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OM
 L/cmm/m/it/10.95 t[]^^[; [] ; t[]^^[\OT1/cmr/m/n/10.95 )$ 
  []
 
-[36]) (./Logica/Predicativa/semantica.tex
+[40]
+Overfull \hbox (9.34393pt too wide) detected at line 66
+ $[] \OML/cmm/m/it/10.95 T\OMS/cmsy/m/n/10.95 8 []\OML/cmm/m/it/10.95 F \OMS/cm
+sy/m/n/10.95 8$ 
+ []
+
+) [41] (./Logica/Predicativa/semantica.tex
 Overfull \hbox (40.42589pt too wide) in paragraph at lines 9--14
 \T1/cmr/m/it/10.95 in cui: $\OML/cmm/m/it/10.95 D$\T1/cmr/m/it/10.95 (dominio) 
 è un in-sie-me non vuo-to di ele-men-ti del do-mi-nio $\OML/cmm/m/it/10.95 I$\T
 1/cmr/m/it/10.95 (interpretazione)
  []
 
-[37] [38]) (./Logica/Predicativa/teorie.tex [39])
-(./Logica/Predicativa/traduzione.tex [40]
+[42]) (./Logica/Predicativa/equivalenze.tex [43])
+(./Logica/Predicativa/teorie.tex [44]) (./Logica/Predicativa/traduzione.tex
 Underfull \hbox (badness 10000) in paragraph at lines 20--23
 
  []
 
-
-Overfull \hbox (0.32248pt too wide) in paragraph at lines 29--32
-[]\T1/cmr/m/n/10.95 Costanti: Mar-co Predicati:$\OML/cmm/m/it/10.95 Cugino\OT1/
-cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 
-; Avere\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 )\OML/cmm
-/m/it/10.95 ; Cane\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 y\OT1/cmr/m/n/10.95 )
-$ \T1/cmr/m/n/10.95 Fun-zio-ni: non
- []
-
-)) [41] (./appunti.aux) ) 
+[45])) [46] (./appunti.aux) ) 
 Here is how much of TeX's memory you used:
- 37502 strings out of 492990
- 870851 string characters out of 6135004
- 954438 words of memory out of 5000000
- 40493 multiletter control sequences out of 15000+600000
+ 34998 strings out of 492990
+ 781910 string characters out of 6135004
+ 805658 words of memory out of 5000000
+ 37963 multiletter control sequences out of 15000+600000
  547087 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 133i,11n,153p,10454b,1490s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1
-.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
-/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/sh
-are/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type
-1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
-bx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/sha
-re/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type1
-/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
-m1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/shar
-e/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on appunti.pdf (42 pages, 388425 bytes).
+ 133i,11n,153p,10401b,1269s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-supe
+r-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sym
+bols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></us
+r/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/
+type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-supe
+r/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr
+/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/t
+ype1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super
+/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/
+share/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
+Output written on appunti.pdf (47 pages, 398591 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 165 compressed objects within 2 object streams
+ 249 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
