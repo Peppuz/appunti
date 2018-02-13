@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.12.24)  8 FEB 2018 00:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.12.24)  13 FEB 2018 21:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1436,9 +1436,10 @@ Overfull \hbox (4.30772pt too wide) in paragraph at lines 16--16
 [] 
  []
 
-) (./AlgebraRelazionale/Relazione/proprieta.tex [9
+) (./AlgebraRelazionale/Relazione/proprieta.tex
+(./Esempi/Relazioni/Proprieta/esempi.tex [9
 
-])
+]))
 (./AlgebraRelazionale/Relazione/rappresentazione.tex
 Overfull \hbox (11.23343pt too wide) in paragraph at lines 5--8
 []\T1/cmr/m/n/10.95 è una ma-tri-ce a due di-men-sio-ni con ri-ghe,rappresentan
@@ -1446,13 +1447,23 @@ ti
  []
 
 (./Grafo/esempio1.tex) [10] (./Grafo/esempio2.tex) [11]
-(./AlgebraRelazionale/grafi.tex [12]
+(./AlgebraRelazionale/Grafi/grafi.tex [12]
 Overfull \hbox (26.90633pt too wide) in paragraph at lines 24--27
 []\T1/cmr/m/n/10.95 : è una se-quen-za fi-ni-ta di no-di $\OT1/cmr/m/n/10.95 (\
 OML/cmm/m/it/10.95 V[]; V[]; [] ; V[]\OT1/cmr/m/n/10.95 )$
  []
 
-(./AlgebraRelazionale/alberi.tex (./Esempi/alberi.tex
+(./Esempi/Grafi/esempio1.tex)
+Overfull \hbox (57.82793pt too wide) in paragraph at lines 22--36
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--36
+
+ []
+
+[13] (./AlgebraRelazionale/Grafi/alberi.tex (./Esempi/alberi.tex
 \forest@temp@box=\box32767 (local)
 \forest@temp@box=\box32766 (local)
 \forest@temp@box=\box32765 (local)
@@ -1469,11 +1480,15 @@ OML/cmm/m/it/10.95 V[]; V[]; [] ; V[]\OT1/cmr/m/n/10.95 )$
 \forest@temp@box=\box32762 (local)
 \forest@temp@box=\box32761 (local)
 \forest@temp@box=\box32760 (local)
- [13]))))
-(./AlgebraRelazionale/Relazione/composizione.tex [14])
-(./AlgebraRelazionale/Relazione/equivalenza.tex)
+) [14])))
+(./AlgebraRelazionale/Relazione/composizione.tex
+Overfull \hbox (167.27979pt too wide) detected at line 29
+ $[][]$ 
+ []
+
+) (./AlgebraRelazionale/Relazione/equivalenza.tex [15])
 (./AlgebraRelazionale/Relazione/ordinamento.tex
-(./AlgebraRelazionale/Relazione/tipologieOrdinamenti.tex [15])
+(./AlgebraRelazionale/Relazione/tipologieOrdinamenti.tex)
 (./AlgebraRelazionale/Relazione/hasse.tex)
 (./AlgebraRelazionale/Relazione/estremali.tex [16])
 (./AlgebraRelazionale/Relazione/reticoli.tex [17])))
@@ -1494,24 +1509,33 @@ Capitolo 4.
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
+(./Esempi/Induzione/esempio1.tex [23
+
+]) (./Esempi/Induzione/esempio2.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-[23
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 43--44
+) (./Esempi/Induzione/esempio3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
 
-) (./AlgebraRelazionale/Induzione/definizioneInduttiva.tex [24]
+[24]) (./Esempi/Induzione/esempio4.tex) (./Esempi/Induzione/esempio5.tex)
+(./Esempi/Induzione/esempio6.tex
+Overfull \hbox (4.11952pt too wide) in paragraph at lines 10--12
+[]\T1/cmr/m/n/10.95 Ipotesi in-dut-ti-va: $[][] \OML/cmm/m/it/10.95 k[] \OT1/cm
+r/m/n/10.95 = []$ \T1/cmr/m/n/10.95 Te-si in-dut-ti-va: $[][] \OML/cmm/m/it/10.
+95 k[] \OT1/cmr/m/n/10.95 = []$ 
+ []
+
+[25])) (./AlgebraRelazionale/Induzione/definizioneInduttiva.tex
 Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-) (./AlgebraRelazionale/Induzione/ricorsione.tex [25]))
-(./Logica/Proposizionale/proposizionale.tex [26]
+) (./AlgebraRelazionale/Induzione/ricorsione.tex [26]))
+(./Logica/Proposizionale/proposizionale.tex [27]
 Capitolo 5.
 (./Logica/Proposizionale/sintassi.tex
 Overfull \hbox (20.93701pt too wide) in paragraph at lines 12--15
@@ -1519,19 +1543,19 @@ Overfull \hbox (20.93701pt too wide) in paragraph at lines 12--15
  di for-mu-le ben formate($\OML/cmm/m/it/10.95 FBF$\T1/cmr/m/n/10.95 )
  []
 
-[27
+[28
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 22--25
 
  []
 
-) (./Logica/Proposizionale/semantica.tex [28]
+) (./Logica/Proposizionale/semantica.tex [29]
 Underfull \hbox (badness 10000) in paragraph at lines 7--19
 
  []
 
-[29]
+[30]
 Underfull \hbox (badness 10000) in paragraph at lines 44--57
 
  []
@@ -1546,15 +1570,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--74
 
  []
 
-[30]) (./Logica/Proposizionale/sistemiDeduttivi.tex
-Overfull \hbox (3.06064pt too wide) in paragraph at lines 22--24
+[31]) (./Logica/Proposizionale/sistemiDeduttivi.tex
+Overfull \hbox (3.06064pt too wide) in paragraph at lines 23--25
 []\T1/cmr/bx/n/10.95 Definizione 19. []\T1/cmr/m/it/10.95 Una for-mu-la $\OML/c
 mm/m/it/10.95 A$ \T1/cmr/m/it/10.95 di una lo-gi-ca $\OT1/cmr/m/n/10.95 ^^C$ \T
 1/cmr/m/it/10.95 è det-ta \T1/cmr/m/n/10.95 teo-re-ma \T1/cmr/m/it/10.95 di $\O
 T1/cmr/m/n/10.95 ^^C$\T1/cmr/m/it/10.95 ,indicata
  []
 
-[31]) (./Logica/Proposizionale/equivalenze.tex [32] [33]
+[32] (./Esempi/LogicaProposizionale/Tableaux/esempio1.tex [33]))
+(./Logica/Proposizionale/equivalenze.tex [34] [35]
 (./Dimostrazioni/LogicaProposizionale/idempotenzaOr.tex)
 (./Dimostrazioni/LogicaProposizionale/idempotenzaAnd.tex)
 (./Dimostrazioni/LogicaProposizionale/associativitaOr.tex
@@ -1562,18 +1587,18 @@ Overfull \hbox (158.38004pt too wide) detected at line 12
   $[]$ 
  []
 
-) (./Dimostrazioni/LogicaProposizionale/commutativaAnd.tex [34])
+) (./Dimostrazioni/LogicaProposizionale/commutativaAnd.tex [36])
 (./Dimostrazioni/LogicaProposizionale/distribuitivaAnd.tex)
-(./Dimostrazioni/LogicaProposizionale/assorbimentoOr.tex [35])
+(./Dimostrazioni/LogicaProposizionale/assorbimentoOr.tex [37])
 (./Dimostrazioni/LogicaProposizionale/assorbimentoAnd.tex)
 (./Dimostrazioni/LogicaProposizionale/doppioEscluso.tex)
-(./Dimostrazioni/LogicaProposizionale/deMorganAnd.tex) [36]
+(./Dimostrazioni/LogicaProposizionale/deMorganAnd.tex) [38]
 (./Dimostrazioni/LogicaProposizionale/contrapposizione.tex)))
-(./Logica/Predicativa/predicativa.tex [37]
+(./Logica/Predicativa/predicativa.tex [39]
 Capitolo 6.
-(./Logica/Predicativa/sintassi.tex [38
+(./Logica/Predicativa/sintassi.tex [40
 
-] [39])
+] [41])
 (./Logica/Predicativa/sistemiDeduttivi.tex
 Overfull \hbox (30.51663pt too wide) in paragraph at lines 13--15
 []\T1/cmr/m/n/10.95 se $\OML/cmm/m/it/10.95 f$ \T1/cmr/m/n/10.95 è un sim-bo-lo
@@ -1593,58 +1618,154 @@ it/10.95 S^^[ \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OM
 L/cmm/m/it/10.95 t[]^^[; [] ; t[]^^[\OT1/cmr/m/n/10.95 )$ 
  []
 
-[40]
+[42]
 Overfull \hbox (9.34393pt too wide) detected at line 66
  $[] \OML/cmm/m/it/10.95 T\OMS/cmsy/m/n/10.95 8 []\OML/cmm/m/it/10.95 F \OMS/cm
 sy/m/n/10.95 8$ 
  []
 
-) [41] (./Logica/Predicativa/semantica.tex
+(./Esempi/LogicaPredicativa/Tableaux/esempio1.tex)
+(./Esempi/LogicaPredicativa/Tableaux/esempio2.tex [43]))
+(./Logica/Predicativa/semantica.tex
 Overfull \hbox (40.42589pt too wide) in paragraph at lines 9--14
 \T1/cmr/m/it/10.95 in cui: $\OML/cmm/m/it/10.95 D$\T1/cmr/m/it/10.95 (dominio) 
 è un in-sie-me non vuo-to di ele-men-ti del do-mi-nio $\OML/cmm/m/it/10.95 I$\T
 1/cmr/m/it/10.95 (interpretazione)
  []
 
-[42]) (./Logica/Predicativa/equivalenze.tex [43])
-(./Logica/Predicativa/teorie.tex [44]) (./Logica/Predicativa/traduzione.tex
-Underfull \hbox (badness 10000) in paragraph at lines 20--23
+[44]) (./Logica/Predicativa/equivalenze.tex [45])
+(./Logica/Predicativa/teorie.tex [46]) (./Logica/Predicativa/traduzione.tex
+[47] (./Esempi/LogicaPredicativa/Traduzione/esempi.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
 
  []
 
-[45])) [46] (./appunti.aux) ) 
+
+Overfull \hbox (36.18288pt too wide) in paragraph at lines 49--52
+[]\T1/cmr/m/n/10.95 Costanti:$\OT1/cmr/m/n/10.95 10%$ \T1/cmr/m/n/10.95 Predica
+ti:$\OML/cmm/m/it/10.95 Canale\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x\OT1/cmr
+/m/n/10.95 )$\T1/cmr/m/n/10.95 ,$\OML/cmm/m/it/10.95 > \OT1/cmr/m/n/10.95 (\OML
+/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 )$\T1/cmr/m/n/10.95 ,$\OML/cmm/m/it/10.9
+5 CanalePrincipale\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 )
+$ \T1/cmr/m/n/10.95 Funzioni:$\OML/cmm/m/it/10.95 share\OT1/cmr/m/n/10.95 (\OML
+/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 )$ 
+ []
+
+
+Overfull \hbox (47.03442pt too wide) in paragraph at lines 58--61
+[]\T1/cmr/m/n/10.95 Costanti:$\OML/cmm/m/it/10.95 Marco$\T1/cmr/m/n/10.95 ,$\OM
+L/cmm/m/it/10.95 compito$ \T1/cmr/m/n/10.95 Predicati:$\OML/cmm/m/it/10.95 Copi
+are\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 )$\T1/cmr/m/n
+/10.95 ,$\OML/cmm/m/it/10.95 Uomo\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x\OT1/
+cmr/m/n/10.95 )$\T1/cmr/m/n/10.95 ,$\OML/cmm/m/it/10.95 Bocciato\OT1/cmr/m/n/10
+.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 )$\T1/cmr/m/n/10.95 ,$\OML/cmm/m/i
+t/10.95 Fratello\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 
+)$
+ []
+
+[48]
+
+LaTeX Warning: Command \` invalid in math mode on input line 67.
+
+Missing character: There is no è in font cmr10!
+
+Overfull \hbox (56.01918pt too wide) in paragraph at lines 67--70
+[]\T1/cmr/m/n/10.95 Costanti:$\OML/cmm/m/it/10.95 musicaUzbeka$\T1/cmr/m/n/10.9
+5 ,$\OML/cmm/m/it/10.95 caff$ \T1/cmr/m/n/10.95 Predicati:$\OML/cmm/m/it/10.95 
+Studenti\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 )$\T1/cmr/m
+/n/10.95 ,$\OML/cmm/m/it/10.95 Ascoltare\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95
+ x; y\OT1/cmr/m/n/10.95 )$\T1/cmr/m/n/10.95 ,$\OML/cmm/m/it/10.95 Bere\OT1/cmr/
+m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 )$\T1/cmr/m/n/10.95 ,$\OM
+L/cmm/m/it/10.95 Sera\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 y\OT1/cmr/m/n/10.9
+5 )$
+ []
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 71.
+
+Missing character: There is no è in font cmr10!
+
+Overfull \hbox (13.4928pt too wide) detected at line 72
+ $\OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 (\OML/cmm/m/i
+t/10.95 Studente\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 ) \
+OMS/cmsy/m/n/10.95 ^ \OML/cmm/m/it/10.95 Sera\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/
+10.95 y\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ! \OT1/cmr/m/n/10.95 (\OML/cmm/
+m/it/10.95 Ascoltare\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; musicaUzbeka\OT1
+/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^ \OML/cmm/m/it/10.95 Bere\OT1/cmr/m/n/10.
+95 (\OML/cmm/m/it/10.95 x; caff\OT1/cmr/m/n/10.95 )))$ 
+ []
+
+) (./Esempi/LogicaPredicativa/Traduzione/esempi1.tex
+Overfull \hbox (48.67743pt too wide) in paragraph at lines 3--6
+[]\T1/cmr/m/n/10.95 Costanti:$\OML/cmm/m/it/10.95 Fondamenti$ \T1/cmr/m/n/10.95
+ Predicati:$\OML/cmm/m/it/10.95 Studente\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95
+ x\OT1/cmr/m/n/10.95 )$\T1/cmr/m/n/10.95 ,$\OML/cmm/m/it/10.95 Iscrivere\OT1/cm
+r/m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 )$\T1/cmr/m/n/10.95 ,$\
+OML/cmm/m/it/10.95 Svolgere\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr
+/m/n/10.95 )$\T1/cmr/m/n/10.95 ,$\OML/cmm/m/it/10.95 Esame\OT1/cmr/m/n/10.95 (\
+OML/cmm/m/it/10.95 y\OT1/cmr/m/n/10.95 )$
+ []
+
+
+Overfull \hbox (29.42914pt too wide) detected at line 9
+ $\OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/1
+0.95 Studente\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 ) \OMS
+/cmsy/m/n/10.95 ^ :\OML/cmm/m/it/10.95 Iscrivere\OT1/cmr/m/n/10.95 (\OML/cmm/m/
+it/10.95 x; Fondamenti\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ! 9\OML/cmm/m/it
+/10.95 y\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 Esame\OT1/cmr/m/n/10.95 (\OML/c
+mm/m/it/10.95 y\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^ :\OML/cmm/m/it/10.95 
+Svolgere\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95 )))$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--52
+
+ []
+
+[49]
+Overfull \hbox (112.53377pt too wide) detected at line 74
+ $\OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 (((\OML/cmm/m/it
+/10.95 Amico\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; Mario\OT1/cmr/m/n/10.95 
+) \OMS/cmsy/m/n/10.95 ! \OML/cmm/m/it/10.95 Amico\OT1/cmr/m/n/10.95 (\OML/cmm/m
+/it/10.95 x; Diego\OT1/cmr/m/n/10.95 )) \OMS/cmsy/m/n/10.95 ^ :\OML/cmm/m/it/10
+.95 Amico\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 Pietro; Mario\OT1/cmr/m/n/10.9
+5 )) \OMS/cmsy/m/n/10.95 ! :\OML/cmm/m/it/10.95 Amico\OT1/cmr/m/n/10.95 (\OML/c
+mm/m/it/10.95 Pietro; Diego\OT1/cmr/m/n/10.95 ))$ 
+ []
+
+))) [50] (./appunti.aux) ) 
 Here is how much of TeX's memory you used:
- 34998 strings out of 492990
- 781910 string characters out of 6135004
- 805658 words of memory out of 5000000
- 37963 multiletter control sequences out of 15000+600000
+ 35120 strings out of 492990
+ 784613 string characters out of 6135004
+ 805638 words of memory out of 5000000
+ 38046 multiletter control sequences out of 15000+600000
  547087 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  133i,11n,153p,10401b,1269s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-supe
-r-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sym
-bols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></us
-r/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/
-type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-supe
-r/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr
-/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/t
-ype1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super
-/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/
-share/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on appunti.pdf (47 pages, 398591 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t
+1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbol
+s/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/s
+hare/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/typ
+e1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
+fbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/sh
+are/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type
+1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
+rm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/sha
+re/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
+Output written on appunti.pdf (51 pages, 412439 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 176 compressed objects within 2 object streams
+ 262 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

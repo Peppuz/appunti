@@ -1,0 +1,21 @@
+%Esercizio Tableaux Logica Proposizionale Compitino di Prova 2017/2018
+8)
+\begin{equation*}
+\begin{prooftree}
+\hypo{F ((P \rightarrow R) \land (Q \rightarrow R)) \rightarrow (P \lor Q)}
+\infer1{T (P \rightarrow R) \land (Q \rightarrow R),F P \lor Q}
+\infer1{T (P \rightarrow R) \land (Q \rightarrow R),FP,FQ}
+\infer1{T P \rightarrow R,T Q \rightarrow R,FP,FQ}
+\infer1{FP,FP,FQ,T Q \rightarrow R/TR,T Q \rightarrow R,FP,FQ}
+\end{prooftree}
+\end{equation*}
+Il tableaux refutazione non può mai chiudere per cui per stabilire la tipologia
+della funzione bisogna effettuare il T-Tableaux:
+\begin{equation*}
+\begin{prooftree}
+\hypo{T ((P \rightarrow R) \land (Q \rightarrow R)) \rightarrow (P \lor Q)}
+\infer1{F (P \rightarrow R) \land (Q \rightarrow R)/T P \lor Q}
+\infer1{F (P \rightarrow R) \land (Q \rightarrow R)/TP/TQ}
+\end{prooftree}
+\end{equation*}
+Il T-Tableaux non può mai chiudere per cui la formula è soddisfacibile non tautologica.

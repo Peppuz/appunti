@@ -1,0 +1,27 @@
+%Appunti in Latex per gli esercizi di Fondamenti dell'Informatica
+\documentclass[a4paper,11px]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}%Package per la matematica
+\usepackage{amsthm}%Package per i teoremi matematici
+\usepackage{amsfonts}%Package per i font matematici
+\usepackage{ebproof}%Package per fare i Tableaux
+\usepackage{tkz-graph}%Package per disegnare i grafi
+\usepackage{forest}%Package per disegnare gli alberi
+\setlength{\parindent}{0pt}%Toglie rientro dai Capoversi
+\newtheorem{defi}{Definizione}%Definizione per avere la gestione delle definizioni
+\newtheorem{prop}{Proposizione}[chapter]
+\newtheorem{thm}{Teorema}[chapter]
+\newcommand{\numberset}{\mathbb}
+\newcommand{\N}{\numberset{N}}
+\newcommand{\Z}{\numberset{Z}}
+\newcommand{\Q}{\numberset{Q}}
+\newcommand{\R}{\numberset{R}}
+
+\begin{document}
+
+\input{Simulazione/prova}%Compitino di Prova
+\input{Simulazione/gennaio}%Compitino Gennaio 2018
+
+\end{document}

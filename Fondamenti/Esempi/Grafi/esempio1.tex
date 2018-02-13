@@ -1,0 +1,22 @@
+%Rappresentazione esempio Grafo
+\begin{tikzpicture}
+\GraphInit[vstyle=normal]
+\tikzset{EdgeStyle/.style={<->,bend right}}
+\Vertex[x = 0,y = 0]{Marco}
+\Vertex[x = -1,y = -3]{Laura}
+\Vertex[x = 1,y = 2]{Luca}
+\Vertex[x = -2,y = 2]{Sara}
+\Vertex[x = 3,y = -3]{Chiara}
+\Vertex[x = -5,y = 0]{Amilcare}
+\Vertex[x = 4,y = 2]{Achille}
+\Vertex[x = 2,y = -5]{Astolfo}
+\Loop(Marco)
+\Loop(Laura)
+\Loop(Luca)
+\Loop(Sara)
+\Loop(Chiara)
+\Loop(Amilcare)
+\Loop(Achille)
+\Loop(Astolfo)
+\Edges(Marco,Laura,Marco,Luca,Marco,Chiara,Marco,Sara,Marco)
+\end{tikzpicture}

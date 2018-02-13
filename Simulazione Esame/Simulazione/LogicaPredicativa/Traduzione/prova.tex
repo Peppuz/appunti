@@ -1,0 +1,28 @@
+%Esercizio Traduzione Linguaggio Naturale Compitino di Prova 2017/2018
+9)
+Frase:Ogni treno ha un numero identificativo
+
+Costanti:non presenti \newline
+Predicati:$Treno(x)$,$Avere(x)$\newline
+Funzioni:$id(x)$
+\begin{equation*}
+    \forall x (Treno(x) \rightarrow Avere(id(x)))
+\end{equation*}
+
+Il treno IC714 parte da Milano Centrale
+
+Costanti:$IC714$,$Milano Centrale$ \newline
+Predicati:$Treno(x)$,$Partenza(x,y$)\newline
+Funzioni:non presenti
+\begin{equation*}
+Treno(IC714) \rightarrow Partenza(IC714,Milano Centrale)
+\end{equation*}
+
+Qualche treno che parte da Milano Centrale in direzione Roma è in ritardo
+
+Costanti:$Milano Centrale$,$Roma$ \newline
+Predicati:$Treno(x)$,$Partenza(x,y)$,$Arrivo(x,y)$,$Ritardo(x)$ \newline
+Funzioni:non presenti
+\begin{equation*}
+\exists x (Treno(x) \land Partenza(x,Milano Centrale) \land Arrivo(x,Roma) \rightarrow Ritardo(x))    
+\end{equation*}

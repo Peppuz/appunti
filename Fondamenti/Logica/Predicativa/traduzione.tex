@@ -15,29 +15,5 @@ Le costanti sono rappresentati nel linguaggio naturale da sostantivi mentre i
 predicati e le funzioni sono rappresentati da forme verbali.
 Alcuni esempi di rappresentazione da italiano a linguaggio formale sono i seguenti:
 
-Esempio: Tutti gli uomini sono mortali,Socrate è un uomo allora Socrate è un mortale
-
-Costanti:Socrate \newline
-Predicati:$Uomo(x),Mortale(x)$ \newline
-Funzioni: non presenti \newline
-\begin{equation*}
-\forall x ((Uomo(x) \rightarrow Mortale(x)) \land Uomo(Socrate) \rightarrow Mortale(Socrate))
-\end{equation*}
-
-Esempio: un cugino di Marco non ha cani
-
-Costanti: $Marco$\newline
-Predicati:$Cugino(x,y),Avere(x,y),Cane(y)$\newline
-Funzioni: non sono presenti
-\begin{equation*}
-\exists x (Cugino(x,Marco) \land \forall y (Cane(y) \rightarrow \neg Avere(x,y)))
-\end{equation*}
-
-Esempio: Ogni treno ha un numero identificativo
-
-Costanti: non presenti \newline
-Predicati: $Treno(x)$,$Avere(x)$\newline
-Funzioni:$id(x)$
-\begin{equation*}
-\forall x (Treno(x) \rightarrow Avere(id(x)))
-\end{equation*}
+\input{Esempi/LogicaPredicativa/Traduzione/esempi}
+\input{Esempi/LogicaPredicativa/Traduzione/esempi1}

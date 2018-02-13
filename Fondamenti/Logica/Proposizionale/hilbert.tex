@@ -1,0 +1,57 @@
+%Appunti sul sistema deduttivo Hilbertiano
+Il sistema deduttivo Hilbertiano è un sistema assiomatico in cui si individuano
+una serie di proposizione, detti assiomi, da cui partire per dimostrare altre proposizioni,
+limitando quindi il numero di regole di inferenza.
+
+Nel sistema hilbertiano sono presenti 3 sistemi di Assiomi:
+\begin{itemize}
+    \item $(A \rightarrow (B \rightarrow A))$
+    \item $(A \rightarrow (B \rightarrow C)) \rightarrow ((A \rightarrow B) \rightarrow (A \rightarrow C))$
+    \item $(B \rightarrow \neg A) \rightarrow ((B \rightarrow A) \rightarrow \neg B)$
+\end{itemize}
+Nel sistema Hilbertiano c'è soltanto una regola di inferenza:
+\begin{equation*}
+\begin{prooftree}
+\hypo{A \quad A \rightarrow B}
+\infer1{B}
+\end{prooftree}
+\end{equation*}
+
+Let U be a set of formulas and A a formula. The notation U 
+A means that the formulas in U are assumptions in the proof of A. A proof is a
+sequence of lines U i  φ i , such that for each i, U i ⊆ U , and φ i is an axiom, a
+previously proved theorem, a member of U i or can be derived by MP from previous
+lines U i  φ i , U i  φ i , where i , i < i.
+Rule 3.13 (Deduction rule)
+U ∪ {A}  B
+.
+U  A → B
+We must show that this derived rule is sound, that is, that the use of the derived
+rule does not increase the set of provable theorems in H . This is done by showing
+how to transform any proof using the rule into one that does not use the rule. There-
+fore, in principle, any proof that uses the derived rule could be transformed to one
+that uses only the three axioms and MP.
+Theorem 3.14 (Deduction theorem) The deduction rule is a sound derived rule.
+
+A more precise terminology would be to say that  A → (B → A)
+is an axiom scheme that is a shorthand for an infinite number of axioms obtained by
+replacing the ‘variables’ A and B with actual formulas, for example:
+A
+B
+A
+
+
+
+  
+
+
+
+((p ∨ ¬ q) ↔ r) → ( ¬ (q ∧ ¬ r) → ((p ∨ ¬ q) ↔ r) ).
+Similarly,  A → A is a theorem scheme that is a shorthand for an infinite number
+of theorems that can be proved in H , including, for example:
+ ((p ∨ ¬ q) ↔ r) → ((p ∨ ¬ q) ↔ r).
+We will not retain this precision in our presentation because it will always clear
+%Assiomi e regole di inferenza
+
+
+%Esercizi ed Esempio
