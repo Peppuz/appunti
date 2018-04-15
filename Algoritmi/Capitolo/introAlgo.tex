@@ -1,0 +1,34 @@
+\chapter{Introduzione agli Algoritmi}
+Il termine Algoritmo proviene da Mohammed ibn-Musa al-Khwarizmi, matematico uzbeco
+del IX secolo a.c. da cui proviene la moderna Algebra. \newline
+\textbf{Algoritmo}:sequenza di passi che portano alla risoluzione di un problema
+
+\textbf{Pseudocodice}: un linguaggio utilizzato per rappresentare e presentare gli algoritmi
+ in maniera compatta e chiara;ogni libro e programmatore definisce la propria specifica
+di Pseudocodice ma comunque quasi tutti si ispirano alla sintassi del Pascal,C e Java.
+
+Gli algoritmi permettono di poter migliorare e rendere il più efficiente e veloce
+la risoluzione di un problema e l'esecuzione di un programma.
+
+Il primo algoritmo che è affrontiamo è $\proc{Insertion-Sort}$ che risolve il problema
+dell'ordinamento di sequenze di dati.
+\input{Capitolo/Algoritmi/insertionSort}%Algoritmo di Insertion Sort
+
+Un altro algoritmo per risolvere il problema dell'ordinamento è il $\proc{Selection-Sort}$,
+che trovando via a via i più piccoli elementi della sequenza e li mette negli elementi più a sinistra.
+\input{Capitolo/Algoritmi/selectionSort}%Algoritmo di Selection Sort
+
+\section{Ricerca di Valori}
+Un altro importante problema da risolvere è la \emph{ricerca} di valori all'interno
+di una sequenza di dati in quanto di solito quando si effettua un qualsiasi Algoritmo
+può capitare di dover effettuare una ricerca all'interno dei dati.
+Vi sono due algoritmi per effettuare la ricerca di valori all'interno di una sequenza:
+il primo è $\proc{linearSearch}$ che effettua una scansione della sequenza mentre
+l'altro è il $\proc{binarySearch}$, algoritmo divide et impera che opera su sequenze ordinate.
+Il secondo è utile quando si sa che i dati saranno e sono ordinati altrimenti effettuare
+l'ordinamento rende vano il guadagno dell'algoritmo rispetto alla ricerca Lineare.
+
+\input{Capitolo/Algoritmi/linearSearch}%Algoritmo linearSearch
+
+
+\input{Capitolo/Algoritmi/binarySearch}%Algoritmo binarySearch

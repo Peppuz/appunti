@@ -1,0 +1,108 @@
+%Algoritmo di Insertion Sort
+L'algoritmo $\proc{Insertion-Sort}$ risolve il problema dell'ordinamento definito come:\newline
+\textbf{Input}:una sequenza di $n$ numeri $(a_1,a_2,\dots,a_n)$ \newline
+\textbf{Output}:una permutazione $(a'_1,a'_2,\dots,a'_n)$ tale che $a'_1 \leq a'_2 \leq \dots \leq a'_n$
+
+%pseudocodice algoritmo insertionSort
+\begin{codebox}
+    \Procname{$\proc{Insertion-Sort}(A)$}
+\li \For $j \gets 2$ \To $\attrib{A}{length}$
+    \Do
+\li            $\id{key} \gets A[j]$
+\li         $i \gets j-1$
+\li         \While $i > 0$ and $A[i] > \id{key}$
+            \Do
+\li                $A[i+1] \gets A[i]$
+\li                $i \gets i-1$
+            \End
+\li         $A[i+1] \gets \id{key}$
+    \End
+\end{codebox}
+
+L'algoritmo $\proc{Insertion-Sort}$ è un algoritmo efficiente per ordinare un ristretto
+numero di elementi ed opera come farebbe un umano a riordinare le carte da gioco,
+ossia prendendo una carta alla volta e facendo il riordinamento delle carte una alla volta.
+
+Per poter affermare che l'algoritmo è corretto, ossia risolve il problema, bisogna
+dimostrare l'invariante del ciclo $\kw{For}$, attraverso un metodo simile all'induzione matematica.
+
+%Dimostrazione Invariante di Ciclo
+L'invariante del ciclo è corretta se si riesce a dimostrare tre cose:
+\begin{description}
+  \item[Inizializzazione]: è corretta prima della prima esecuzione del ciclo.
+  \item[Conservazione]: se è verificata prima di un iterazione del ciclo lo sarà
+                        anche dopo l'esecuzione di quell'iterazione del ciclo.
+  \item[Conclusione]: alla fine del ciclo è ancora verificato e ciò ci aiuta a
+                      determinare la correttezza di un algoritmo.
+\end{description}
+La terza proprietà è la più importante in quanto assieme alla condizione che è causato
+la conclusione del ciclo, si riesce a dimostrare la correttezza dell'algoritmo.
+
+L'invariante di ciclo per l'$\proc{Insertion-Sort}$ è:
+All'inizio di ogni iterazione del ciclo $\kw{for}$ il sottoarray $A[1 \twodots j-1]$
+è ordinato ed è formato dagli stessi elementi che erano originamente in $A[1\twodots j-1]$.
+\begin{description}
+  \item[Inizializzazione]: quando $j = 2$ il sottoarray $A[1\twodots j-1]$ è formato
+                           da un solo elemento che è ordinato ed è l'elemento originale $A[1]$.
+  \item[Conservazione]: all'inizio di ogni esecuzione del ciclo for il sottoarray $A[1 \twodots j-1]$
+                        è formato dai primi $j-1$ elementi dell'array ordinati dal
+                        più piccolo al più grande.
+
+  \item[Conclusione]: Quando $j > \attrib{A}{length}$ il ciclo termina e dato che ogni
+                      ciclo aumenta $j$ di $1$ alla fine del ciclo si avrà $j = n + 1$
+                      per cui si ha che $A[1\twodots n]$ è ordinato ed è formato
+                      dagli elementi ordinati che si trovavano in $A[1 \twodots n]$.
+\end{description}
+
+L'analisi di un algoritmo, per poter determinare se un algoritmo è efficiente, può
+avvenire in due maniere:
+\begin{itemize}
+  \item \textbf{Tempo di Esecuzione}:è il numero di operazioni primitive che vengono eseguite
+        da parte di un algoritmo;l'esecuzione di un'istruzione si assume che richiede un tempo costante
+        per evitare di rendere la valutazione dipendente dall'hardware e dalla bravura del programmatore.
+  \item \textbf{Spazio di Esecuzione}:è il numero di spazio in bit occupato in memoria dall'algoritmo
+        ma questa analisi non viene quasi mai eseguita in quanto oramai è superfluo.
+\end{itemize}
+Il tempo di esecuzione dell'algoritmo è la somma dei tempi di esecuzione per ogni
+istruzione eseguita quindi il tempo di esecuzione di $\proc{Insertion-Sort}$ è:
+\begin{equation*}
+    T(n) = c_1n + c_2(n-1) + c_3(n-1) + c_4 \sum_{j=2} ^n t_j + c_5 \sum_{j=2} ^n (t_j -1)
+         + c_6 \sum_{j=2} ^n (t_j -1) + c_7(n-1)
+\end{equation*}
+In caso l'algoritmo sia già ordinato, caso migliore, si avrebbe sempre $A[i] < \id{key}$
+quindi $t_j$ è sempre $1$, per cui il tempo di esecuzione sarebbe:
+\begin{align*}
+    T(n) & = c_1n + c_2(n-1) + c_3(n-1) + c_4(n-1) + c_7(n-1) \\
+         & = (c_1 + c_2 + c_3 + c_4 + c_5)n - (c_2 + c_3+ c_4+ c_7) \\
+         & = \Omega(n) \\
+\end{align*}
+Nel caso migliore si ha che l'algoritmo richiede un tempo lineare che è un $\Omega(n)$.\newline
+In caso si abbia una sequenza decrescente, corrispondente al caso peggiore, nel ciclo While bisogna
+confrontare ogni elemento $A[j]$ con il sottoarray $A[1 \twodots j-1]$ per cui $t_j = j$
+per $j=2,3,\dots,n$ e poiche si ha
+\begin{align*}
+    \sum _{j=2} ^ n j = \frac{n(n+1)}{2} -1 & \quad \sum_{j=2}^n (j-1) = \frac{n(n-1)}{2}
+\end{align*}
+il tempo dell'algoritmo $\proc{Insertion-Sort}$ nel caso peggiore è il seguente:
+\begin{align*}
+    T(n) & = c_1n + c_2(n-1) + c_3(n-1) + c_4 (\frac{n(n+1)}{2} -1) + c_5 (\frac{n(n-1)}{2})
+         + c_6 (\frac{n(n-1)}{2}) + c_7(n-1) \\
+         & = c_1n + c_2(n-1) + c_3(n-1) + c_4(\frac{n^2+n-2}{2}) + c_5(\frac{n^2-n}{2})
+           + c_6(\frac{n^2-n}{2}) + c_7(n-1) \\
+         & = (\frac{c_4}{2} +\frac{c_5}{2} + \frac{c_6}{2})n^2 + (c_1+c_2+c_3+\frac{c_4}{2} - \frac{c_5}{2}
+            -\frac{c_6}{2}+c_7)n -(c_2+c_3+c_4+c_7)\\
+         & = O(n^2)\\
+\end{align*}
+Il tempo dell'algoritmo può essere scritto, nel caso peggiore, come $an^2 + bn + c$ che è una funzione
+quadratica che viene indicata, nel caso peggiore come $O(n^2)$.
+
+Nel caso medio mi aspetto, supponendo una distribuzione uniforme della probabilità,
+che il vettore sia parzialmente ordinato per cui non avendo modo di rendere il ciclo
+while eseguibile solo una volta, si ha bisogno almeno di $n^2$ confronti che è $O(n^2)$.
+
+In sintesi i tempi di esecuzione dell'algoritmo $\proc{Insertion-Sort}$ sono:
+\begin{description}
+  \item[Caso migliore]: $\Omega(n)$
+  \item[Caso peggiore]: $O(n^2)$
+  \item[Caso medio]: $O(n^2)$
+\end{description}

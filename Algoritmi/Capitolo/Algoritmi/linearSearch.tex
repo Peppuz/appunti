@@ -1,0 +1,28 @@
+%Algoritmo LinearSearch
+Il primo algoritmo di ricerca analizzato è il $\proc{linearSearch}$ che risolve:\newline
+\begin{description}
+  \item[Input:] una sequenza di valori interi $A[1 \twodots n]$ e un valore intero $\id{key}$
+  \item[Output:] un indice $i$ tale che $A[i] \gets \id{key}$ altrimenti ritorna $\const{nil}$
+\end{description}
+
+%pseudocodice
+\begin{codebox}
+\Procname{$\proc{linearSearch}(A,\id{key})$}
+\li \For $j \gets 1$ \To $\attrib{A}{length}$
+    \Do
+\li               \If $A[j] \isequal \id{key}$
+                  \Then
+\li                         \Return $j$
+                  \End
+    \End
+\li \Return $\const{nil}$
+\end{codebox}
+Il tempo di esecuzione del $\proc{linearSearch}$ nei diversi casi è il seguente:
+\begin{description}
+  \item[Caso migliore:] l'elemento $\id{key}$ viene trovato direttamente nel primo elemento
+        per cui viene risolto in un tempo costante $\Omega(1)$
+  \item[Caso peggiore:] l'elemento $\id{key}$ non viene trovato nella sequenza quindi
+        \begin{equation*}
+           T(n) = c(n+1) + cn + c = O(n)
+        \end{equation*}
+\end{description}

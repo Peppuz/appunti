@@ -1,0 +1,27 @@
+\chapter{Crescita delle Funzioni}
+Nel valutare l'algoritmo $\proc{Insertion-Sort}$ si ottiene una funzione $T(n) = an + b$ che
+è una funzione lineare.\newline
+Durante la valutazione di un algoritmo difficilmente si riesce a quantificare con
+esattezza le costanti coinvolte per cui si analizza il comportamento della funzione
+al tendere di n all'infinito.\newline
+Al tal fine si utilizzano le notazioni $O,\ \Omega,\ \Theta\ $ definite come segue:
+
+\begin{itemize}
+  \item $f(n) \in O(g(n))$ se e solo se $\exists c \geq 0\ \exists m \geq 0 : f(n) \leq cg(n)\ \forall n \geq m$
+  \item $f(n) \in \Omega(g(n))$ se e solo se $\exists c, m \geq 0 : f(n) \geq cg(n) \forall n \geq m$
+  \item $f(n) \in \Theta(g(n))$ se e solo se $\exists c_1,c_2,m \geq 0 :
+        c_1g(n) \leq f(n) \leq cg(n)\ \forall n \geq m$
+\end{itemize}
+Per maggiore chiarezza si utilizza un'abuso di linguaggio scrivendo $f(n) = O(g(n))$
+al posto di $f(n) \in O(g(n))$.\newline
+Per poter definire se una funzione appartiene a una notazione bisogna mostrarlo attraverso
+una dimostrazione formale con l'utilizzo dell'induzione matematica ma fortunatamente
+c'è il seguente teorema per semplificare il calcolo della notazione:
+\begin{thm}
+Dato un polinomio del tipo $P(n) = \sum _{i = 0} ^ d a_i n^i$ dove $a_i$ sono i coefficienti
+e $a_d > 0$ si ha che $P(n) = \Theta(n^d)$
+\end{thm}
+Esempio:
+\begin{equation*}
+  P(n) = 5n^3 + 6n^2 + 3 = \Theta(n^3)
+\end{equation*}
