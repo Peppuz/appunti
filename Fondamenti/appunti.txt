@@ -1,4 +1,16 @@
-Pagina 13 Da rileggere meglio e farsi dare una mano a tradurla!!!!
-Pagina 22 da guardare il teorema <--> ed equivalenza logica
-Pagina 25 da vedere e dimostrare la contrapposizione
-Leggere e capire Paragrafo 2.4.1
+Disegnare Matrici Booleane
+Cercare se le matrici,grafi possono operare su relazione di arietà n > 2
+Fare definizione induttiva di Albero
+Fare disegno albero binario di Ricerca
+Sistemare rappresentazione Composizione di Relazioni
+Inserire esempio di relazione di equivalenza e insieme quoziente
+Fare esempi relazioni d'ordine
+Fare disegni ed esempi diagramma di Hasse e Reticoli
+Inserire esempi di Operazioni
+Inserire esempi di Algebra di Boole
+Controllare e sistemare le dimostrazioni per Induzione
+Sistemare(se si vuole) la completezza dei connettivi predicativi
+Correggere definizione di Fbf nel predicativo (Togliere gli atomi)
+Inserire maggiore separazione nei Tableaux predicativi
+Fare dimostrazioni equivalenze logiche
+Fare dimostrazione completezza e correttezza dei Tableaux e Gentzen

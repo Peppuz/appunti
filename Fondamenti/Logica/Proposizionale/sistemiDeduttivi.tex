@@ -45,10 +45,26 @@ Una dimostrazione di una formula di una logica può venire tramite:
 \subsection{Tableau Proposizionali}
 Il metodo dei Tableau è stato introdotto da Hintikka e Beth alla fine degli anni '50
 e poi ripresi successivamente da Smullyan.
+Per poter comprendere e capire i Tableaux dobbiamo introdurre una serie di definizioni:
+\begin{defi}
+Per ogni formula $A$, $\{A,\neg A\}$ è una coppia di formule complementari in cui
+$A$ è il complemento di $\neg A$
+\end{defi}
+
+\begin{defi}
+Un letterale è un atomo o la sua negazione.Se $p$ è un atomo allora $\{p,\neg p\}$
+è una coppia di letterali complementari.
+\end{defi}
 
 I tableau sono degli alberi,la cui radice è l'enunciato in esame, e gli altri nodi
 sono costruiti attraverso l'applicazione di una serie di regole,fino ad arrivare
 alle formule atomiche come radici.
+
+I tableaux proposizionali si dividono in due tipologie di formule(e quindi regole):
+le $\alpha$ regole e le $\beta$ regole;le $\alpha$ formule sono di tipo congiuntivo
+ed è soddisfatta se e soltanto se le sottoformule $\alpha_1$ e $\alpha_2$ sono entrambe soddisfatte
+mentre le $\beta$ formule sono di tipo disgiuntivo e sono soddisfatte se e soltanto
+se almeno una delle due sottoformule $\beta_1$ e $\beta_2$ è soddisfatta.
 
 Le regole dei Tableau sono le seguenti:
 %T AND
@@ -127,6 +143,37 @@ F \ \rightarrow
 F \ \iff
 \end{equation*}
 
+Le $\beta$ regole sono quelle che creano due sottoformule indicate nella regola con $/$
+mentre, per esclusione, le $\alpha$ regole sono quelle in cui si crea soltanto una sottoformula.
+
+%Definizione induttiva di costruzione di un tableaux
+Il tableaux di una formula $A$ inizialmente è composto da un solo nodo, la radice, etichettata
+dalla formula $A$.
+Il tableaux si costruisce induttivamente come segue:
+si sceglie una foglia $l$ non etichettata dell'albero che verrà etichettata da un
+insieme di formule $U(l)$ definite come:
+\begin{enumerate}
+  \item Se $U(l)$ è un insieme di letterali, si controlla se sono presenti una coppia
+        di letterali complementati in $U(l)$;
+        in caso siano presenti si marca la foglia come chiusa $\times$ altrimenti la foglia è aperta
+  \item Se $U(l)$ non è un insieme di letterali si sceglie una formula in $U(l)$ tramite:
+        \begin{itemize}
+          \item Se la formula è un $\alpha$-formula $B$ si crea un nuovo nodo $l'$,
+                figlio di $l$, e lo si etichetta come $U(l') = (U(l) - \{B\}) \cup \{\alpha_1,alpha_2\}$
+          \item Se la formula è un $\beta$-formula $C$ si creano due nodi $l'$ e $l''$,
+                figli di $l$ con $l'$ etichettato come: $U(l') = (U(l) - \{C\}) \cup \{\beta_1\}$
+                mentre $l''$ è etichettata come $U(l'') = (U(l) - \{C\}) \cup \{\beta_2\}$
+        \end{itemize}
+\end{enumerate}
+Il tableaux termina quando tutti i rami sono etichettati come chiusi e/o aperti.
+
+%Definizione di Tableaux completo
+\begin{defi}
+Si definisce un tableaux \emph{completo} se la sua costruzione è complementata.
+Il tableaux si dice \emph{chiuso} se tutte le foglie sono segnate come chiuse
+altrimenti il tableaux è \emph{aperto}
+\end{defi}
+
 %Dimostrazione di tableau
 Il metodo dei Tableau è un metodo dei sistemi deduttivi, che permette attraverso
 l'applicazione di una serie di regole, di capire la tipologia della formula.
@@ -155,3 +202,10 @@ la formula è una tautologia.
 
 Esempio:
 \input{Esempi/LogicaProposizionale/Tableaux/esempio1}
+
+%Completezza dei Tableaux
+%Dimostrazione completezza Tableaux
+
+%Dimostrazione correttezza Tableaux
+
+\input{Logica/Proposizionale/gentzen}%Sistema deduttivo di Gentzen

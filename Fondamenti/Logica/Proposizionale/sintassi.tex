@@ -59,4 +59,15 @@ di $L$, che rappresenta la scomposizione di una formula ben formata $X$ definita
           con $\neg$, il cui figlio è la rappresentazione di $A$
 \end{enumerate}
 
+Poichè una formula è definita mediante un albero sintattico, le proprietà di una formula
+possono essere dimostrate mediante induzione strutturale sulla formula, ossia dimostrare
+che la proprietà di una formula soddisfi i seguenti 3 casi:
+\begin{itemize}
+  \item è verificata la proprietà per tutte le formule atomo $A$
+  \item supposta verifica la proprietà per $A$, si verifica che la proprietà è verificata per $\neg A$
+  \item supposta la proprietà verificata per $A_1$ e $A_2$, si verifica che la
+        proprietà è verifica per $A_1 \circ A_2$, per ogni connettivo $\circ$.
+\end{itemize}
+
+
 %Inserire Esempio

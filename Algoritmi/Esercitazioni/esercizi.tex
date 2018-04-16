@@ -1,0 +1,85 @@
+%Esercitazione 1 di Guido Zandron
+Scrivere un algoritmo che risolva il seguente problema, utilizzando la tecnica divide-et-
+impera: dato in input un vettore $V[1..n]$ contenente $n > 0$ valori interi, calcolare e restituire il
+valore: $(V[1] + V[2]) * (V[2] + V[3]) + \dots + (V[n-1] + V[n])$.
+Scrivere poi l’equazione di ricorrenza che esprime il tempo di calcolo di tale algoritmo, e
+risolverla utilizzando un metodo a piacere.
+
+\begin{codebox}
+\Procname{$\proc{calcoloParticolare}(V,left,\id{right})$}
+\li \If $left \geq \id{right}$
+    \Then
+\li              \Return $left + \id{right}$
+    \End
+\li $\id{mid} \gets (left + \id{right}) / 2$
+\li $ris_1 \gets \proc{calcoloParticolare}(V,left,\id{mid})$
+\li $ris_2 \gets \proc{calcoloParticolare}(V,\id{mid},\id{right})$
+\li \Return $ris_1 * ris_2$
+\end{codebox}
+
+Il tempo di esecuzione dell'algoritmo è il seguente
+\begin{equation*}
+  T(n) = \begin{cases} 2c = \Theta(1) \ \text{se} \ n = 1 \\
+                       2T(\frac{n}{2}) + 2c \ \text{se} \ n > 1\\
+         \end{cases}
+\end{equation*}
+Essendo $2c = O(n^{\log _ 2 2}) = O(n)$ si applica il primo caso del teorema dell'Esperto
+per cui si ottiene $T(n) = \Theta(n)$. Il tempo di esecuzione dell'algoritmo è:
+\begin{equation*}
+  T(n) = \begin{cases} 2c = \Theta(1) \ \text{se} \ n = 1 \\
+                       2T(\frac{n}{2}) + 2c = \Theta(n) \ \text{se} \ n > 1\\
+         \end{cases}
+\end{equation*}
+
+
+Scrivere un algoritmo iterativo che, dati in ingresso due vettori $A[1..m]$ e $B[1..n]$ contenenti
+rispettivamente m ed n caratteri dell’alfabeto italiano, conti quante volte la stringa
+memorizzata in A compare in B. Si assuma che n sia molto maggiore di m.
+Valutare poi i tempi di calcolo nei casi migliore e peggiore, indicando quante volte viene
+eseguita ogni operazione in pseudocodice. Si assuma che ogni singola operazione elementare
+impieghi lo stesso tempo (costante).
+Esempio: dati i vettori:
+A = [ a, b, a ]
+B = [ c, d, c, a, b, a, b, a, c, a, b, a, b, c, d, b, a, b, b, a, b, a, a, b ]
+il programma deve stampare il valore 4, dato che la stringa “aba” compare 4 volte in B (a
+partire dalle posizioni 4, 6, 10 e 20. Fare attenzione alle eventuali sovrapposizioni!).
+
+\begin{codebox}
+\Procname{$\proc{contaRipetizioni}(A,B)$}
+\li $n_1 \gets \attrib{A}{length}$
+\li $n_2 \gets \attrib{B}{length}$
+\li $ripetizioni \gets 0$
+\li \For $j \gets 1$ \To $n_2 - n_1$
+    \Do
+\li                $i \gets 1$
+\li                \While $i \leq n_1$ and $B[j+i-1] \isequal A[i]$
+                   \Do
+\li                               $i \gets i + 1$
+                   \End
+\li                \If $i > n_1$
+                   \Then
+\li                               $\id{ripetizioni} = ripetizioni + 1$
+    \End
+\li \Return ripetizioni
+\end{codebox}
+Il tempo di esecuzione dell'algoritmo è il seguente:
+\begin{equation*}
+  T(n) = 4c + (n+1)c + cn + c\sum _{j = 1} ^ n (t_{w} + 1) + c\sum _{j = 1} ^ n t_w
+         cn + ct_{if}
+\end{equation*}
+L'algoritmo ha i seguenti casi:
+\begin{description}
+  \item[Caso migliore] tutti gli elementi di $B$ sono uguali e diversi da $A[0]$
+        per cui risulta $t_w = 0$ e $t_{if} = 0$ per tutte le iterazioni del ciclo for.
+        \begin{equation*}
+          T(n) = 4c + cn + c + cn + cn = \Omega(n)
+        \end{equation*}
+  \item[Caso peggiore]: tutti gli elementi di $B$ ed $A$ sono uguali per cui risulta
+         $t_w = n_1$ per tutte le iterazioni del ciclo for e $t_{if} = n$.
+         Dato che si suppone che $n_2$ sia nettamente maggiore di $n_1$ si arriva
+         alla conclusione che $n_1 \leq (n_2-n_1) \leq n$ per cui si ha $\sum _{j = 1} ^ n (n_1 + 1)
+         \leq \sum _{j = 1} ^ n ( + 1) \leq (n^2 + n)$.
+         \begin{equation*}
+           T(n) = 5c + cn + cn^2 + cn + cn^2 + cn + cn = 0(n^2)
+         \end{equation*}
+\end{description}

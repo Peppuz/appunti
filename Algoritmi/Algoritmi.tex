@@ -1,0 +1,34 @@
+\documentclass[a4paper]{report}
+\usepackage[T1]{fontenc} %Gestione font in output
+\usepackage[utf8]{inputenc} %Permette di inserire caratteri Italiani
+\usepackage[italian]{babel} %Gestione sillabazione ed altro italiana
+\usepackage{amsmath} %Package gestione Matematica
+\usepackage{amsthm}%Package per le dimostrazioni
+\usepackage{algorithm}%Package Algoritm
+\usepackage{clrscode3e}%Package Algoritmi stile Cormen
+\usepackage{booktabs}%Gestione Tabelle(Guardare Documentazione)
+\usepackage{caption}%Package per le Tabelle(guardare Documentazione)
+\usepackage{forest}%Package per disegnare Alberi
+\usepackage{tkz-graph}%Package per disegnare Grafi
+\newtheorem{thm}{Teorema}%Modalità per rappresentare i teoremi
+\setlength{\parindent}{0pt}%Evita il rientro dei paragrafi e capoversi
+
+\begin{document}
+%Titolo autore e spiegazione
+\title{Appunti di Algoritmi e Strutture Dati}
+\author{Marco Natali}
+\maketitle
+
+\input{Capitolo/introAlgo} %Primo Capitolo Introduzione agli Algoritmi
+\input{Capitolo/divideetimpera}%Capitolo 2 Divide et Impera
+\input{Capitolo/crescitaFunz}%Capitolo 3 Crescita delle funzioni
+\input{Capitolo/Algoritmi/quicksort}%Capitolo 4 QuickSort
+%\input{Esercitazioni/esercizi}%Esercizi Algoritmi
+%\input{Capitolo/heapSort} Capitolo 5 HeapSort
+%\input{Capitolo/struttureElementari} Capitolo 6 Strutture Dati elementari
+%\input{Capitolo/dynamicprogramming}%Capitolo 7 Programmazione Dinamica
+%\input{Capitolo/programmazionegreedy} %Capitolo 8 Programmazione Greedy
+%Terzo Capitolo Strutture Dati Elementari
+
+
+\end{document}

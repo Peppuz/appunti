@@ -5,15 +5,15 @@
     \item[ORDINE STRETTO]: è una struttura relazionale $(S,R)$ in cui $R$ è una
           relazione binaria \emph{irriflessiva} e \emph{transitiva} su $S x S$
     \item[ORDINE LARGO(POSET)]: è una struttura relazionale $(S,R)$ in cui $R$ è una
-          relazione binaria \emph{riflessiva,antisimmetrica} e \emph{transitiva} su $S x S$.
+          relazione binaria \emph{riflessiva, antisimmetrica} e \emph{transitiva} su $S x S$.
 \end{description}
 
 Una relazione $R$ è un ordinamento sull'insieme $S$ se e solo se $\forall x,y \in S$
 vale solo una delle proprietà di \emph{tricotomia}:
 \begin{itemize}
-    \item $(x = y) \land (\neg(xRy)) \land (\neg(yRx))$
-    \item $(xRy) \land (x \neq y) \land (\neg(yRx))$
-    \item $(yRx) \land (x \neq y) \land (\neg(xRy))$
+    \item $x = y \land x \slashed{R} y \land y \slashed{R} x$
+    \item $xRy \land x \neq y \land y \slashed{R} x$
+    \item $(yRx) \land x \neq y \land x \slashed{R} y$
 \end{itemize}
 
 Inserire Esempii!!!!!!

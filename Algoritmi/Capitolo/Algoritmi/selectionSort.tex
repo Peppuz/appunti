@@ -1,0 +1,56 @@
+%algoritmo selectionSort(A)
+\begin{codebox}
+    \Procname{$\proc{Selection-Sort}(A)$}
+\li \For $j = 1$ \To $\attrib{A}{length} - 1$
+    \Do
+\li           $\id{index} \gets j$
+\li           \For $i \gets j+1$ \To $\attrib{A}{length}$
+              \Do
+\li                  \If $A[j] < A[index]$
+                     \Then
+\li                         $\id{index} \gets i$
+                     \End
+              \End
+\li           $\id{temp} \gets A[j]$
+\li           $A[j] \gets \id{min}$
+\li           $A[\id{index}] \gets \id{temp}$
+\end{codebox}
+
+%Scrivere l'invariante di ciclo del Selection sort
+L'invariante di ciclo del selection sort afferma che al termine del ciclo for
+più esterno  si abbia il sottoarray $A[1 \twodots n]$ ordinato infatti:
+\begin{description}
+  \item[Inizializzazione]:nella prima iterazione del ciclo for, per $j = 1$ si ha
+        $A$ formato da un solo elemento che è ovviamente ordinato.
+  \item[Conservazione]:ogni iterazione del ciclo cerca il minimo tra $A[j \twodots n]$
+        e lo posiziona in $A[j]$ per cui al termine di ogni iterazione l'array $A[1 \twodots j]$ è ordinato.
+  \item[Conclusione]:al termine del ciclo, con $j = n$ si abbia il sottoarray$A[1 \twodots n]$
+        ordinato che corrisponde all'array originale ordinato.
+\end{description}
+
+%Calcolo tempo di esecuzione dell'Algoritmo
+Il tempo di esecuzione dell'algoritmo è :
+\begin{equation*}
+    T(n) = c_1n + c_2(n-1) + c_3 \sum _{i = 2} ^{n} i + c_4 \sum _{i = 2} ^ n i +
+           c_5t_{if} + c_6(n-1) + c_7(n-1)
+\end{equation*}
+Possiamo semplificare l'equazione considerando ogni istruzione costante, ossia $c_i = c$, e sapendo che
+\begin{align*}
+  \sum _{i = 2} ^{n} i = \frac{n(n+1)}{2} - 1 = \frac{n(n-1)}{2} \ \text{si ottiene}\\
+  T(n) = cn + 3c(n-1) + 2c(\frac{n(n-1)}{2}) + c t_{if} \\
+\end{align*}
+Il tempo di $\proc{Selection-Sort}$ dipende dai diversi casi:
+\begin{description}
+  \item[Caso migliore]: l'array è già ordinato per cui $t_{if} = 0$ e si ottiene quindi
+        \begin{equation*}
+          T(n) = 3cn + cn^2 - 3c = \Omega(n^2)
+        \end{equation*}
+  \item[Caso peggiore]:l'array è ordinato in maniera decrescente per cui $\displaystyle t_{if} = \sum _{i = 2} ^{n} i$
+        e si ottiene quindi un tempo di esecuzione pari a
+        \begin{equation*}
+          T(n) = 4cn - 3c + \frac{3c}{2}n^2 - \frac{3c}{2}n = O(n^2)
+        \end{equation*}
+        Essendo il caso peggiore uguale a caso migliore si ha $T(n) = \Theta(n^2)$
+  \item[Caso medio]:essendo il caso migliore coincidente con il caso peggiore il Tempo
+        di esecuzione nel caso medio pari a $\Theta(n^2)$
+\end{description}

@@ -1,7 +1,9 @@
 \section{Algebra Booleana}
 Un \emph{algebra di boole} è un reticolo $(B,R)$ in cui valgono le seguenti proprietà:
 \begin{enumerate}
-    \item
+    \item Limitato
+    \item Complementato
+    \item Distributivo
 \end{enumerate}
 
 L'algebra booleana si può definire anche in maniera assiomatica come segue:
@@ -41,19 +43,3 @@ $0$ e $1$ sono due elementi distinti di $B$.
     \item $x \cap x' = 0$
 \end{enumerate}
 
-%Definizione gruppi e algebra booleana
-\subsection{Algebra dei gruppi}
-Un \emph{semigruppo} è una coppia $(S,\circ)$ dove $S$ è un insieme e $\circ$ è
-un operazione binaria associativa su $S$;un semigruppo è detto \emph{commutativo}
-se $\circ$ è un operazione commutativa.
-
-Un \emph{monoide} è un semigruppo in cui esiste,ed è unico, un'unita destra e sinistra per $\circ$,
-ossia un elemento $u \in S$ per cui vale $u \circ x = x \circ u = x \forall x \in S$.
-
-Un \emph{gruppo} è un monoide in cui $\forall x \in S$ esiste,ed è unico, un'elemento inverso,
-tale che: $x \circ x^{-1} = x^{-1} \circ x = u$
-
-Dati due semigruppi $(X,\circ _x)$ e $(Y,\circ_y)$, una funzione $h$ è detta
-\emph{omomorfismo di semigruppi} se e solo $\forall x_1,x_2 \in X$ si ha che:
-$h(x_1)\circ_y h(x_2) = h(x_1 \circ_x x_2)$.
-Se $h$ è una relazione biettiva, allora $h$ è detta \emph{isomorfismo di semigruppi}.
