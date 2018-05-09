@@ -1,0 +1,44 @@
+%Paragrafo sulle code
+\section{Code}
+La \emph{Queue}, in italiano \emph{coda}, è una struttura dati di tipo FIFO(First in First out)
+per memorizzare una sequenza di elementi, in cui l'inserimento di un elemento
+avviene in coda alla sequenza mentre la rimozione avviene in testa alla sequenza.
+
+Una coda può essere implementata attraverso array oppure delle liste a seconda della
+scelta implementatica e della capacità di stabilire un limite massimo di elementi utilizzati.
+
+Essendo una coda una particolare tipologia di sequenza può essere implementata facilmente
+utilizzando una lista e le sue operazioni però, a differenza dello stack, la scelta
+della lista utilizzata per l'implementazione cambia il tempo di esecuzione delle operazioni,
+infatti soltanto con una lista bidirezionale si ottiene un tempo $\Theta(1)$ in tutte le operazioni
+per cui noi utilizziamo una lista bidirezionale per implementare una coda.
+
+%Pseudocodice delle operazioni di una Coda
+Il metodo $\proc{isEmpty}$ indica se la coda contiene o meno degli elementi
+\begin{codebox}
+\Procname{$\proc{isEmpty}()$}
+\li \Return 
+\end{codebox}
+Il metodo $\proc{enqueue}(Q,x)$ inserisce un elemento nella coda e si assume che $x$ sia un elemento
+definito prima della chiamata al metodo.
+\begin{codebox}
+\Procname{$\proc{Enqueue}(Q,x)$}
+\li $\attribb{Q}{tail}{next} \gets x$
+\li $\attrib{Q}{tail} \gets x$
+\end{codebox}
+L'esecuzione del metodo $\proc{enqueue}$ richiede $2c$ ossia $\Theta(1)$ per ciò
+l'inserimento in una coda richiede un tempo costante.
+
+Il metodo $\proc{dequeue()}$ estra il primo elemento della coda ed è implementato come
+\begin{codebox}
+\Procname{$\proc{Dequeue()}$}
+\li \If $\proc{isEmpty()}$
+    \Then
+\li           \Return $\const{nil}$
+\li $\id{temp} \gets \attrib{Q}{head}{element}$
+\li $\attrib{Q}{head} \gets \attribb{Q}{head}{next}$
+\li \Return temp
+\end{codebox}
+L'operazione $\proc{dequeue}$ richede un tempo costante $\Theta(1)$ per effettuare la rimozione.
+
+%Coda tramite Vettore(guardare il Cormen)

@@ -1,0 +1,110 @@
+%Capitolo sulle rappresentazione delle informazioni
+\chapter{Rappresentazione delle Informazioni}
+Nei calcolatori viene utilizzata la codifica binaria, in quanto il passaggio o meno
+della corrente è a due valori e ciò coincide con il numero di simboli nella codifica binaria.
+
+Nella realtà i numeri hanno una cardinalità infinita mentre purtroppo i calcolatori,
+avendo dei limiti di memoria e di componestistica, possono rappresentare soltanto
+un numero finito di numeri, pari a $base ^ n$, stabilito al momento della progettazione della macchina.
+Le informazioni, di qualsiasi tipo siano, vengono rappresentati sui calcolatori
+come una sequenza di numeri per questo iniziamo prima l'analisi di come vengono rappresentati i numeri.
+
+\section{Rappresentazione Numeri interi e negativi}
+Per poter rappresentare un numero sia nella realtà che nei calcolatori si usa per
+convenzione la rappresentazione posizionale in cui la cifra più a destra rappresenta
+la potenza più alta ossia $274 = 2 * 100 + 7 * 10 + 4 * 1$.\newline
+La forma generale di un numero è $\displaystyle \sum _{i=-k} ^ n d_i * base^i$ e le base più comunemente
+utilizzate sono:
+\begin{itemize}
+  \item base 10(decimale):base utilizzata comunemente dagli umani per rappresentare
+        i numeri mentre non viene usata nei calcolatori; le cifre usate sono da 0 a 9
+  \item base 2(binaria): base usata comunemente nei calcolatori elettronci e prevede
+        soltanto le cifre 0 e 1;un unica cifra in base binaria viene chiamata \emph{bit}.
+  \item base 8(ottale): si utilizzano soltanto le prime 8 cifre da 0 a 7
+  \item base 16(esadecimale):utilizzata solitamente per rappresentare le celle di memoria e
+        prevede come cifre: 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F.
+\end{itemize}
+
+%Esempi di rappresentazione dei numeri
+
+La conversione tra le basi potenze di due sono immediate infatti basta espandere/restringere
+le cifre per rappresentare le cifre dell'altra base infatti ad esempio:
+%Inserire esempio di conversione tra base
+
+La conversione tra un numero binario ed un numero decimale prevede qualche calcolo in più:
+il metodo più utilizzato e valido per tutti i numeri è quello di sottrarre il numero
+con la più grande potenza di 2 minore del numero e ripetendo lo stesso procedimento
+con la differenza fino ad arrivare a 0.\newline
+Si inserisce la cifra 1 nelle posizioni che corrispondono alle potenze di 2 usate.
+%Inserire esempio di conversione binaria/decimale
+
+Per rappresentare i numeri negativi nei calcolatori vi sono 4 modalità:
+\begin{description}
+  \item[modulo e segno] si utilizza il bit più a sinistra per rappresentare il segno
+        (0 per + e 1 per -) e i restanti $n-1$ bit sono il valore assoluto del numero.\newline
+        Non viene utilizzata nei calcolatori attuali in quanto si ha la problematica
+        di rappresentare il doppio zero.
+        %Inserire esempio di Modulo e Segno
+  \item[complemento a 1] prevede anch'esso di utilizzare il bit del segno(0 per i positivi e 1 per i negativi)
+        e la negazione di un numero si ottiene invertendo tutti bit, compreso quello di segno.
+        Ha anch'esso la problematica del doppio zero per cui non viene utilizzato nei calcolatori attuali.
+        %Esempio complemento a 1
+  \item[complemento a 2] prevede il bit di segno e l'opposto di un numero si ottiene
+        invertendo tutti i bit e poi alla fine aggiungere 1 al numero invertito.
+        Con il complemento a due si risolve il problema del doppio zero ma si inserisce
+        uno sfasamento di 1 tra i numeri negativi e i numeri positivi rappresentabili.
+        %Esempio complemento a 2
+  \item[notazione in eccesso di $2^{m-1}$] si rappresent il numero memorizzando come
+        somma del numero e $2^{m-1}$ ed è poco utilizzato in quanto confusionario e
+        porta facilmente ad errori ed incomprensioni nella lettura del numero.
+        %Esempio notazione in eccesso
+\end{description}
+
+\section{Rappresentazione numeri in virgola fissa e mobile}
+%Fare Conversione della parte frazionaria, della precisione e dell'errore di approssimazione
+Per rappresentare i numeri con la virgola nei calcolatori vi sono due modalità:
+\begin{description}
+  \item[virgola fissa] Si riservano un numero di bit per la rappresentazione della
+        parte intera e un altro quantitativo di bit per rappresentare la parte frazionaria.\newline
+        Questa modalità non permette di rappresentare molti numeri e l'errore di approssimazione
+        è uguale in tutte le posizioni dell'asse ed ha senso se si sa il range
+        preciso di valori da rappresentare.\newline
+        Per convertire la parte frazionaria in base B in base 2 si procede per
+        moltiplicazioni successive come si può vedere nell'esempio:
+        %Fare esempio conversione parte frazionaria
+
+        %Esempio rappresentazione in virgola fissa
+  \item[virgola mobile] sono comunemente utilizzati nei linguaggi di programmazione
+        per rappresentare i numeri con la virgola e si utilizza la notazione scientifica
+        $n = f * base^{exp}$ con $f$ indicante la parte frazionaria, per la rappresentazione.\newline
+        Essendoci infiniti modi per rappresentare un numero in notazione scientifica,
+        ma in un calcolatore, avendo una capacità finita, si stabilisce una convenzione
+        per permetterne di rappresentare la maggiore combinazione di numeri.
+
+        %Fare foto per rappresentare i numeri(Usa il libro Tanenbaum)
+
+        Al contrario della realtà i numeri in virgola mobile non sono densi per cui
+        alcuni numeri non possono essere rappresentati in maniera esatta e si commette
+        per ciò un certo errore di approssimazione.\newline
+        A differenza della rappresentazione in virgola fissa, l'errore complessivo varia
+        al variare del numero mentre l'errore relativo, ossia la percentuale di errore commessa,
+        rimane costante in tutto l'asse rappresentato.
+
+        %Fare standard IEEE754
+\end{description}
+
+%Fare le operazioni
+\section{Rappresentazione dei caratteri e stringhe}
+I caratteri e le stringhe, sequenza di caratteri, vengono rappresentati nei calcolatori
+come numeri e attraverso una serie di convenzioni sono trasformati nel carattere desiderato.\newline
+Il primo standard per rappresentare i caratteri è l'ASCII(cerca nome completo),
+presente all'inizio a 7bit, in cui si riesce soltanto a convertire le lettere inglesi,
+i numeri e i caratteri speciali; successivamente è stato introdotto l'ASCII a 8bit,
+che causò dei problemi di comunicazione in quanto i caratteri aggiuntivi all'ASCII normale
+dipendevano e cambiavano in base alla nazione del computer.
+Per permettere di rappresentare un numero maggiore di caratteri e lingue è stato introdotta
+la codifica UNICODE, utilizzata ad esempio in Java, che permette la gestione dei caratteri
+delle principali lingue e vi sono diverse versioni di UNICODE come ad esempio vi è
+un unicode per rappresentare le emoji.
+
+%Mettere immagine ASCII e UNICODE

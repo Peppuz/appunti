@@ -111,7 +111,7 @@ Quando sommiamo $\Theta(1)$ e $\Theta(n)$ otteniamo una funzione lineare che è 
 e per cui l'equazione di ricorrenza di $\proc{Merge-Sort}$ è:
 \begin{equation*}
     T(n) = \begin{cases} \Theta(1) \quad \text{se} \ n = 1 \\
-                         2T(n/2) + \Theta(n) \quad \text{se} \ n > 1 \\
+                         2T(\frac{n}{2}) + \Theta(n) \quad \text{se} \ n > 1 \\
            \end{cases}
 \end{equation*}
 Per risolvere codesta equazione di ricorrenza vi sono 3 modalità , che saranno poi analizzate,

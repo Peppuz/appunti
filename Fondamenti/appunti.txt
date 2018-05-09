@@ -14,3 +14,5 @@ Correggere definizione di Fbf nel predicativo (Togliere gli atomi)
 Inserire maggiore separazione nei Tableaux predicativi
 Fare dimostrazioni equivalenze logiche
 Fare dimostrazione completezza e correttezza dei Tableaux e Gentzen
+Togliere papperdella sulla nomenclatura dei grafi da aggiungere solo nel grafo per rendere più chiaro e meno noioso
+

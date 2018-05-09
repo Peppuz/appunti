@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.2.20)  25 FEB 2018 11:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.2.20)  3 MAY 2018 15:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1449,7 +1449,7 @@ OML/cmm/m/it/10.95 V[]; V[]; [] ; V[]\OT1/cmr/m/n/10.95 )$
  []
 
 (./Esempi/Grafi/esempio1.tex) [11] (./AlgebraRelazionale/Grafi/alberi.tex
-[12] (./Esempi/alberi.tex
+(./Esempi/alberi.tex
 \forest@temp@box=\box32767 (local)
 \forest@temp@box=\box32766 (local)
 \forest@temp@box=\box32765 (local)
@@ -1458,6 +1458,7 @@ OML/cmm/m/it/10.95 V[]; V[]; [] ; V[]\OT1/cmr/m/n/10.95 )$
 \forest@temp@box=\box32762 (local)
 \forest@temp@box=\box32761 (local)
 \forest@temp@box=\box32760 (local)
+ [12]
 \forest@temp@box=\box32767 (local)
 \forest@temp@box=\box32766 (local)
 \forest@temp@box=\box32765 (local)
@@ -1561,35 +1562,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--91
  []
 
 [30]) (./Logica/Proposizionale/sistemiDeduttivi.tex
-Overfull \hbox (3.06064pt too wide) in paragraph at lines 23--25
+Overfull \hbox (3.06064pt too wide) in paragraph at lines 22--24
 []\T1/cmr/bx/n/10.95 Definizione 20. []\T1/cmr/m/it/10.95 Una for-mu-la $\OML/c
 mm/m/it/10.95 A$ \T1/cmr/m/it/10.95 di una lo-gi-ca $\OT1/cmr/m/n/10.95 ^^C$ \T
 1/cmr/m/it/10.95 è det-ta \T1/cmr/m/n/10.95 teo-re-ma \T1/cmr/m/it/10.95 di $\O
 T1/cmr/m/n/10.95 ^^C$\T1/cmr/m/it/10.95 ,indicata
  []
 
-[31] [32] (./Esempi/LogicaProposizionale/Tableaux/esempio1.tex [33])
-(./Logica/Proposizionale/gentzen.tex [34]))
-(./Logica/Proposizionale/equivalenze.tex [35]
-(./Dimostrazioni/LogicaProposizionale/idempotenzaOr.tex [36])
+[31] [32] (./Esempi/LogicaProposizionale/Tableaux/esempio1.tex [33]))
+(./Logica/Proposizionale/equivalenze.tex [34]
+(./Dimostrazioni/LogicaProposizionale/idempotenzaOr.tex [35])
 (./Dimostrazioni/LogicaProposizionale/idempotenzaAnd.tex)
 (./Dimostrazioni/LogicaProposizionale/associativitaOr.tex
 Overfull \hbox (158.38004pt too wide) detected at line 12
   $[]$ 
  []
 
-) (./Dimostrazioni/LogicaProposizionale/commutativaAnd.tex [37])
+) (./Dimostrazioni/LogicaProposizionale/commutativaAnd.tex [36])
 (./Dimostrazioni/LogicaProposizionale/distribuitivaAnd.tex)
-(./Dimostrazioni/LogicaProposizionale/assorbimentoOr.tex [38])
+(./Dimostrazioni/LogicaProposizionale/assorbimentoOr.tex [37])
 (./Dimostrazioni/LogicaProposizionale/assorbimentoAnd.tex)
 (./Dimostrazioni/LogicaProposizionale/doppioEscluso.tex)
-(./Dimostrazioni/LogicaProposizionale/deMorganAnd.tex) [39]
+(./Dimostrazioni/LogicaProposizionale/deMorganAnd.tex) [38]
 (./Dimostrazioni/LogicaProposizionale/contrapposizione.tex)))
-(./Logica/Predicativa/predicativa.tex [40]
+(./Logica/Predicativa/predicativa.tex [39]
 Capitolo 6.
-(./Logica/Predicativa/sintassi.tex [41
+(./Logica/Predicativa/sintassi.tex [40
 
-] [42])
+] [41])
 (./Logica/Predicativa/sistemiDeduttivi.tex
 Overfull \hbox (30.51663pt too wide) in paragraph at lines 13--15
 []\T1/cmr/m/n/10.95 se $\OML/cmm/m/it/10.95 f$ \T1/cmr/m/n/10.95 è un sim-bo-lo
@@ -1609,14 +1609,14 @@ it/10.95 S^^[ \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OM
 L/cmm/m/it/10.95 t[]^^[; [] ; t[]^^[\OT1/cmr/m/n/10.95 )$ 
  []
 
-[43]
+[42]
 Overfull \hbox (9.34393pt too wide) detected at line 66
  $[] \OML/cmm/m/it/10.95 T\OMS/cmsy/m/n/10.95 8 []\OML/cmm/m/it/10.95 F \OMS/cm
 sy/m/n/10.95 8$ 
  []
 
 (./Esempi/LogicaPredicativa/Tableaux/esempio1.tex)
-(./Esempi/LogicaPredicativa/Tableaux/esempio2.tex [44]))
+(./Esempi/LogicaPredicativa/Tableaux/esempio2.tex [43]))
 (./Logica/Predicativa/semantica.tex
 Overfull \hbox (40.42589pt too wide) in paragraph at lines 9--14
 \T1/cmr/m/it/10.95 in cui: $\OML/cmm/m/it/10.95 D$\T1/cmr/m/it/10.95 (dominio) 
@@ -1624,9 +1624,9 @@ Overfull \hbox (40.42589pt too wide) in paragraph at lines 9--14
 1/cmr/m/it/10.95 (interpretazione)
  []
 
-[45]) (./Logica/Predicativa/equivalenze.tex [46])
-(./Logica/Predicativa/teorie.tex [47]) (./Logica/Predicativa/traduzione.tex
-[48] (./Esempi/LogicaPredicativa/Traduzione/esempi.tex
+[44]) (./Logica/Predicativa/equivalenze.tex [45])
+(./Logica/Predicativa/teorie.tex [46]) (./Logica/Predicativa/traduzione.tex
+[47] (./Esempi/LogicaPredicativa/Traduzione/esempi.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--6
 
  []
@@ -1654,7 +1654,7 @@ t/10.95 Fratello\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/n/10.95
 )$
  []
 
-[49]
+[48]
 
 LaTeX Warning: Command \` invalid in math mode on input line 67.
 
@@ -1713,7 +1713,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--52
 
  []
 
-[50]
+[49]
 Overfull \hbox (112.53377pt too wide) detected at line 74
  $\OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 (((\OML/cmm/m/it
 /10.95 Amico\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; Mario\OT1/cmr/m/n/10.95 
@@ -1724,11 +1724,11 @@ Overfull \hbox (112.53377pt too wide) detected at line 74
 mm/m/it/10.95 Pietro; Diego\OT1/cmr/m/n/10.95 ))$ 
  []
 
-))) [51] (./appunti.aux) ) 
+))) [50] (./appunti.aux) ) 
 Here is how much of TeX's memory you used:
- 35037 strings out of 492990
- 782970 string characters out of 6135005
- 804442 words of memory out of 5000000
+ 35034 strings out of 492990
+ 782895 string characters out of 6135005
+ 806776 words of memory out of 5000000
  37966 multiletter control sequences out of 15000+600000
  547087 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1753,10 +1753,10 @@ are/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type
 1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
 rm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/sha
 re/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on appunti.pdf (52 pages, 415625 bytes).
+Output written on appunti.pdf (51 pages, 412817 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 187 compressed objects within 2 object streams
+ 262 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

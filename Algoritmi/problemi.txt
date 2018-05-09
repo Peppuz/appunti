@@ -1,6 +1,9 @@
-1 Inserire esempi Metodo dell'esperto
 2 Inserire esempi di Alberi di Ricorsione
 6 fare analisi caso medio del QuickSort
-7 fare la partition di Hoare per il QuickSort con l'aggiunta dell'analisi del caso medio
+7 fare la partition di Hoare per il QuickSort
 8 fare l'Ordinamento in tempo lineare
-9 iniziare a fare le strutture dato Elementari come le pile,le code e le liste
+10 inserire immagini di liste con spiegazioni delle diverse tipologie di liste
+   tramite prelievo dell'immagine con paint.
+11 inserire spiegazione sentinelle nelle liste
+12 fare pseudocodice delle operazioni delle pile e delle code
+13 Fare Heap ed Albero binario ed albero binario di Ricerca.

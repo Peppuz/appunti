@@ -6,13 +6,13 @@ nell'implementazione sui calcolatori attuali.
 
 L'algoritmo $\proc{Quick-Sort}$ esegue i seguenti passi divide et impera:
 \begin{description}
-  \item[Divide]:riarrangia l'array $A[p\twodots r]$ in due sottoarray, eventualmente nulli,
+  \item[Divide] riarrangia l'array $A[p\twodots r]$ in due sottoarray, eventualmente nulli,
                 $A[p \twodots q-1]$ e $A[q+1 \twodots r]$ tali che tutti gli elementi
                 del primo sottoarray sono minori o uguali a $A[q]$ e tutti gli elementi
                 del secondo sottoarray sono maggiori o uguali a $A[q]$.\newline
                 Calcolare l'indice di $q$ viene effettuato nella procedura di riarrangiamento.
-  \item[Impera]:ordina ricorsivamente i due sottoarray $A[p \twodots q-1]$ e $A[q+1 \twodots r]$.
-  \item[Combina]:dato che i due sottoarray sono già ordinati per cui non viene eseguito nulla.
+  \item[Impera] ordina ricorsivamente i due sottoarray $A[p \twodots q-1]$ e $A[q+1 \twodots r]$.
+  \item[Combina] dato che i due sottoarray sono già ordinati per cui non viene eseguito nulla.
 \end{description}
 
 L'algoritmo $\proc{Quick-Sort}$ è il seguente
@@ -38,7 +38,7 @@ La chiave dell'algoritmo è la procedura $\proc{Partition}$ implementato come:
     \Do
 \li               \If $A[j] \leq \id{pivot}$
                   \Then
-\li                              $\id{indice} \gets id{indice} + 1$
+\li                              $\id{indice} \gets \id{indice} + 1$
 \li                              scambia $A[id{indice}]$ con $A[j]$
                   \End
     \End
@@ -70,7 +70,7 @@ la partizione dell'array è bilanciata o meno.
   \item[Caso migliore]:la procedura di partizione produce due sottoproblemi di $\lceil n/2 \rceil$
         e $\lfloor n/2 \rfloor$ elementi per cui, ignorando le condizioni di ceil e floor,
         il tempo di esecuzione è $T(n) = 2T(n/2) + \Theta(n) = \Omega(n \log n)$ per il teorema dell'esperto.
-
+  \item[Caso medio]:effettuare l'analisi con una ripartizione 9 a 1
 \end{description}
 
 

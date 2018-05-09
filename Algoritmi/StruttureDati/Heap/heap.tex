@@ -1,0 +1,33 @@
+%Capitolo sul Heap
+\chapter{Heap}
+Lo \emph{heap} è una struttura dati rappresentata da un array $A$ che può essere vista come un albero binario
+in cui ogni nodo dell'albero è un elemento dell'array, chiamato \emph{chiave}.\newline
+L'array $A$ ha 2 attributi: $\attrib{A}{length}$ per rappresentare la lunghezza dell'array
+e $\attrib{A}{heap-size}$ che indica il numero degli elementi dell'heap memorizzati
+in cui $0 \leq \attrib{A}{heap-size} \leq \attrib{A}{length}$.
+Ci sono due tipologie di Heap:\emph{max-heap}, utilizzato nel heapSort e \emph{min-heap},
+utilizzato principalmente per implementare code prioritarie;queste due tipologie verranno analizzate entrambe
+in seguito in questo paragrafo.
+
+%Fare disegno albero e array del heap
+
+%Fare pseudocodice immediato di left,right e parent
+Per poter effettuare l'accesso ai nodi left,right e parent si utilizzano le seguenti 3 procedure
+
+In un $\emph{max-heap}$ è soddisfatta per ogni nodo $i$ la seguente proprietà:
+$A[\proc{Parent}(i)] \geq A[i]$ per cui il massimo valore della array si trova nella radice
+dell'heap mentre in un $\emph{min-heap}$ avviene il contrario ossia in ogni nodo si ha
+$A[\proc{Parent}(i)] \leq A[i]$ e la radice rappresenta l'elemento minimo dell'array.
+Essendo lo heap definito tramite un albero binario la sua altezza è $\Theta(\log n)$.
+
+
+
+
+%Strutture dati aggiornate
+%suffix-tree
+%FM-index
+%suffix-array
+%wavelet-tree
+%Bloom filters
+%Sequence Bloom trees
+%Tabelle Hash

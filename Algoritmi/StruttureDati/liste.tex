@@ -1,0 +1,109 @@
+%Strutture Dati Lista
+\section{Liste}
+Le liste sono una struttura dati elementare che implementa il concetto matematico
+di sequenza lineare di oggetti, in cui si possono eventualmente ripetere gli elementi
+all'interno della sequenza.\newline
+La lista è una struttura dati lineare dinamica in cui l'accesso all'elemento successivo
+della sequenza avviene tramite un puntatore all'elemento successivo ed un elemento
+è composto da un valore , chiamato $\id{element}$ e da due puntatori $\id{prev}$ e $\id{next}$,
+i quali puntano all'elemento precedente o successivo della lista.\newline
+In caso $\id{prev} \gets \const{nil}$ l'elemento non ha nessun predecessore ed è la $\id{head}$
+della lista mentre il puntatore $\id{next} \gets \const{nil}$ l'elemento non ha
+nessun successore per cui è la coda della lista.
+Vi sono diversi tipologie di caratteristiche che una lista può possedere, anche in
+maniera multipla ossia può possedere più di una proprietà, come si può notare dal seguente elenco:
+\begin{itemize}
+  \item singolarmente o doppiamente concatenata: in caso una lista sia singolarmente
+        concatenata si ha soltanto il collegamento con l'elemento successivo, per
+        cui viene omesso il puntatore $\id{prev}$, mentre nella lista doppiamente concatenata
+         si ha il collegamento, tramite i puntatori, con l'elemento precedente e l'elemento successivo.
+  \item ordinata: una lista si dice ordinata se è previsto un ordinamento tra i valori
+        degli elementi presenti in una lista.
+  \item circolare: il puntatore $\id{prev}$ della testa della lista punta alla coda
+        mentre il puntatore $\id{next}$ della coda della lista punta alla testa
+       per cui si può dire che la lista è un anello di elementi.
+\end{itemize}
+
+Forniamo ora un implementazione di una lista doppiamente concatenata non ordinata
+in cui un elemento della lista è composto da un dato chiamato $\id{element}$ e da due
+puntatori, chiamati $\id{prev}$ e $\id{next}$, che puntano all'elemento precedente e successivo.
+
+La prima operazione implementata in una lista è la ricerca di un elemento che opera
+secondo l'algoritmo di ricerca Lineare in quanto non essendo ordinati i valori della lista
+non è possibile implentare la ricerca tramite la ricerca binaria.
+Lo pseudocodice della ricerca di un elemento di una lista è il seguente:
+%Pseudocodice della ricerca di una Lista
+\begin{codebox}
+\Procname{$\proc{List-Search}(L,\id{key})$}
+\li $x\gets \attrib{L}{head}$
+\li \While $x \neq \const{nil}$ and $\attrib{x}{\id{element}} \neq \id{key}$
+    \Do
+\li                      $x \gets \attrib{x}{\id{next}}$
+    \End
+\li \Return $\id{x}$
+\end{codebox}
+La ricerca di un elemento da una lista richiede il seguente tempo con i diversi casi:
+\begin{equation*}
+  T(n) = c + c(t_w + 1) + ct_w + c
+\end{equation*}
+\begin{description}
+  \item[Caso migliore]:l'elemento da ricercare viene trovato al primo elemento della lista
+        per cui $t_w = 0$ indi il tempo di esecuzione è $T(n) = c + c + c = \Omega(1)$
+  \item[Caso peggiore]: l'elemento non è presente nella lista per cui $t_w = n$
+        \begin{equation*}
+          T(n) = c + cn + c + cn + c = 2cn + 3c = O(n)
+        \end{equation*}
+\end{description}
+
+%Pseudocodice Inserimento in una lista
+Il secondo metodo in una lista è $\proc{List-Insert}$ in cui si suppone che il valore
+dell'elemento da inserire sia stato già impostato ossia $\id{element}$ abbia il valore desiderato.
+\begin{codebox}
+\Procname{$\proc{List-Insert}(L,x)$}
+\li $\attrib{x}{\id{next}} \gets \attrib{L}{\id{head}}$
+\li \If $\attrib{L}{head} \neq \const{nil}$
+    \Then
+\li                       $\attrib{L}{\attrib{\id{head}}{\id{prev}}} \gets x$
+    \End
+\li $\attrib{L}{\id{head}} \gets x$
+\li $\attrib{x}{\id{prev}} \gets \const{nil}$
+\end{codebox}
+Il tempo di esecuzione $T(n) = 5c = \Theta(1)$ e tra il caso migliore e peggiore non
+vi è alcuna differenza se non il fatto che non viene eseguita soltanto la terza istruzione.
+
+La rimozione di un elemento da una lista, implementata tramite $\proc{List-Delete}$,
+prevede di darne il puntatore all'elemento alla procedura per cui per effettuare
+la rimozione di un elemento qualsiasi della lista bisogna effettuare la chiamata
+a $\proc{List-Search}$ prima per ottenere l'elemento da eliminare.
+Lo pseudocodice per la rimozione di un elemento è il seguente:
+%Pseudocodice Rimozione da una Lista
+\begin{codebox}
+\Procname{$\proc{List-Delete}(L,x)$}
+\li \If $\attrib{x}{prev} \neq \const{nil}$
+    \Then
+\li              $\attrib{x}{prev} \gets \attrib{x}{next}$
+    \End
+\li \Else        $\attrib{L}{head} \gets \attrib{x}{next}$
+
+\li \If $\attrib{x}{next} \neq \const{nil}$
+    \Then
+\li              $\attribb{x}{\id{next}}{\id{prev}} \gets \attrib{x}{\id{prev}}$
+    \End
+\end{codebox}
+Il tempo di esecuzione è $T(n) = 4c = \Theta(1)$ e tra il caso peggiore e migliore non cambia
+nulla però va detto che se si volesse implementare la rimozione da un elemento qualsiasi
+della lista si avrebbe un tempo di esecuzione $\Theta(n)$ in quanto si avrebbe la chiamata
+alla procedura $\proc{List-Search}$ per stabilire l'elemento da rimuovere.
+
+Le altre implementazioni delle diverse tipologie di liste sono similari soltanto
+che implementano o meno l'ordinamento tra gli elementi, considerano o meno il puntatore prev
+ed altri considerazioni fatte in base alla tipologia di lista.
+
+Un implementazione alternativa della sequenza, anche se meno intutiva e naturale
+di quella presentata fino ad ora, è quella tramite la memorizzazione degli elementi
+in un vettore, in cui la posizione di un elemento corrisponde all'indice del vettore.\newline
+Questa implementazione permette di passare in maniera costante da un elemento ad un altro,
+di accorgersi se si supera un estremo della sequenza, di modificare o leggere il valore
+di un elemento anche tramite un accesso diretto tramite indice, ma sfortunatamente
+richiede di conoscere la dimensione massima della sequenza per evitare sprechi di memoria
+e il tempo di inserimento e cancellazione richiede la scansione della sequenza per cui a tempo $\Theta(n)$.

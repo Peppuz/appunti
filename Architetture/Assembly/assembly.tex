@@ -1,0 +1,225 @@
+%Capitolo sulla Programmazione Assembly
+\chapter{Le istruzioni del Computer e il linguaggio Assembly}
+Tutti i calcolatori, dai più recenti e prestazionali ai più vetusti ed opsolescenti,
+eseguono ed effettuano le loro attività interpretando soltanto il linguaggio macchina,
+composto solo da sequenze di numeri binari.\newline
+Per permettere lo sviluppo dei programmi sempre più complessi ed agevolare il lavoro
+dei programmatori è stato introdotto il linguaggio Assembly, simbolica rappresentazione
+delle istruzioni in linguaggio macchina, il quale permette di utilizzare delle label
+per identificare particolari celle di memoria che tengono informazioni o dati.
+
+Nonostante il miglioramento rispetto al linguaggio macchina, l'Assembly non è ancora
+sufficiente facile da essere utilizzato dai programmatori per cui nel corso degli anni
+sono stati introdotti dei linguaggi ad alto livello, come ad esempio il C,
+per migliorare la produttività, la chiarezza e la leggibilità, in cui le istruzioni
+somigliano all'inglese scritto rispetto a sequenze interminabili di bit; i programmi scritti
+in linguaggi ad alto livello vengono poi convertiti in Assembly dal compilatore,
+come verrà visto nel paragrafo sulla catena programmativa.
+
+I vantaggi del linguaggio Assembly rispetto ai linguaggi ad alto livello risiedono
+nel poter ottenere una maggiore ottimizzazione e migliori prestazioni, a discapito però
+della portabilità, in quanto il linguaggio assembly è dipendente dalla macchina,
+e della produttività, dato che per ottenere un risultato in assembly bisogna scrivere
+un maggior numero di codice rispetto ai linguaggi ad alto livello.
+
+Noi nel corso Architettura degli Elaboratori utilizziamo una macchina MIPS, già
+analizzata in un precedente capitolo, in particolare una macchina MIPS a 32 bit.\newline
+Per poter testare e verificare il funzionamento dei programmi Assembly utilizziamo
+due simulatori:Qtspim, tool che permette soltanto l'esecuzione di un programma Assembly,
+mentre Mars è un ide per assembly che permette di scrivere,eseguire ed analizzare l'effetto di ogni operazione.\newline
+I programmi Assembly, vengono caricati in memoria per venire eseguiti per cui ogni istruzione
+ha un proprio indirizzo in memoria.
+
+Un programma scritto in linguaggio Assembly MIPS contiene un segmento \emph{data},
+in cui è presente la rappresentazione binaria dei dati utilizzati nel programma,
+e un segmento \emph{text}, in cui sono presenti le istruzioni del programma in cui
+deve essere il label \emph{main} per indicare l'inizio del programma.
+
+Nel linguaggio MIPS sono presenti 3 tipologie di istruzioni, tutte da 32 bit:
+\begin{description}
+  \item[R type] sono le istruzioni di tipo aritmetico logico che prevede la seguente distribuzione:\newline
+        \begin{tabular}{|c|c|c|c|c|c|}
+          \hline
+           op(6) & rs(5) & rt(5) & rd(5) & shamt(5) & funct(6)\\
+           \hline
+        \end{tabular}\newline
+        I registri $rs$ e $rt$ rappresentano i due operandi mentre il registro $rd$
+        indica il registro dove memorizzare il risultato;il campo $shamt$ indica lo shift
+        effettuato, campo usato solo nelle istruzioni di shift.\newline
+        Il campo $op$ e $funct$ specificano l'operazione base dell'istruzione e la variante
+        dell'operazione rispetto all'opcode, specificato da $op$.
+  \item[I type] sono utilizzate per rappresentare le operazioni di lettura e scrittura
+        in memoria, delle operazioni immediate e delle istruzioni di branch.
+        La distribuzione della istruzione nei 32 bit è la seguente:\newline
+        \begin{tabular}{|c|c|c|c|}
+          \hline
+           op(6) & rs(5) & rt(5) & constant or address(16)\\
+           \hline
+        \end{tabular}\newline
+        Il campo $constant or address$ permette di specificare un numero costante
+        o un indirizzo di memoria.
+  \item[J type] è utilizzata per rappresentare le istruzioni di Jump e prevede la seguente codifica:
+        \begin{tabular}{|c|c|}
+          \hline
+          op(6) & address(26)\\
+          \hline
+        \end{tabular}
+\end{description}
+
+\section{Istruzioni aritmetiche, logiche e di accesso alla memoria}
+Nel Mips32 le istruzioni aritmetiche prevedono l'utilizzo di solo 3 registri
+in cui due indicano gli operandi dell'operazione e un registro è utilizzato per
+salvare il risultato;nel linguaggio assembly del MIPS32 si possono soltanto utilizzare
+i valori presenti nei registri per effettuare le operazioni aritmetiche.
+Le istruzioni aritmetiche, come anche quelle logiche, sono operazioni di tipo R
+e le più utilizzate sono le seguenti:
+\begin{description}
+  \item[add rd,rs,rt] effettua la somma tra i registri rs e rt e la salva nel registro rd.
+  \item[sub rd,rs,rt] effettua la sottrazione tra i registri rs e rt e la salva nel registro rd.
+  \item[mul rd,rs,rt] effettua la moltiplicazione tra i registri rs e rt e la salva in rd.
+  \item[div rd,rs,rt] effettua la divisione tra i due registri rs e rt e lo salva nel registro rd
+  \item[sll rd,rt,shamt] sposta a sinistra di n bit(shamt) il registro rt e lo salva in rd;rappresenta la moltiplicazione $2 ^ n$.
+  \item[srl rd,rt,shamt] sposta a destra di n bit(shamt) il registro rt e lo salva in rd e rappresenta la divisione per $2^n$.
+  \item[and rd,rs,rt] effettua l'and logico bit a bit tra i registri rs e rt e lo salva nel registro rd.
+  \item[or rd,rs,rt] effettua l'or logico bit a bit tra i registri rs e rt e lo salva nel registro rd.
+  \item[nor rd,rs,rt] effettua il nor bit a bit tra i registri rs e rt;per implementare il $not(A)$ si effettua $A \ NOR 0$.
+\end{description}
+
+%Inserire esempi istruzioni Aritmetiche
+\lstinputlisting{Assembly/somma.asm}
+La syscall utilizzata alla fine viene utilizzata per effettuare operazioni di input-
+output nel simulatore e queste istruzioni verranno introdotte nel paragrafo sulle procedure.
+
+In una macchina MIPS a 32 bit, come già accennato, sono presenti soltanto 32 registri
+i quali non permettono l'utilizzo di dati più complessi di quelli primitivi, come i numeri e i caratteri,
+per cui per ovviare si utilizza la memoria per salvare e memorizzare i dati complessi, come array e strutture.
+Per permettere di utilizzare e scrivere i dati in memoria per eseguire le operazioni aritmetiche
+il MIPS32 fornisce le istruzioni di lettura e scrittura chiamate \emph{load} e \emph{store}.
+
+%Inserire grafico organizzazione memoria!!!!
+
+Per caricare dalla memoria una word, ossia un dato a 32 bit, si utilizza l'istruzione $lw$
+il quale ha la seguente sintassi: $lw \ rt,offset(rs)$
+L'istruzione $lw$ è allineata a 4 bytes per cui cercare di accedere ad un indirizzo
+non allineato a 4bytes genera un eccezione mentre l'indirizzo da cui leggere i dati
+è determinato da $address = offset + rs$.
+
+L'istruzione di salvataggio in memoria di una word è l'istruzione $sw$ che ha la
+stessa struttura e sintassi dell'istruzione $lw$.
+In caso si abbia la necessità di caricare e/o salvare dati in memoria più piccoli
+o grandi di una word ci sono le relative istruzioni per bytes,halfword e double word
+da vedere nella documentazione MIPS disponibile nell'appendice(INSERIRE RIFERIMENTO AD APPENDICE).
+
+Esempio:\newline
+\lstinputlisting{Assembly/massimo.asm}
+I registri a differenza dei valori in memoria permettono di usare le istruzioni Aritmetiche
+e logiche, per cui andrebbero utilizzati i registri per le variabili utilizzate spesso
+in un programma per rendere l'esecuzione del programma il più veloce possibile e
+con minor consumo di energia.
+
+Un istruzione similare a quella di caricamento e salvataggio in memoria, ossia hanno
+la stessa tipologia di codifica la I-type, è l'addizione immediata, fornita dall'istruzione $addi \ rt,rs,constant$.\newline
+Vi sono le versioni immediate di tutte le operazioni aritmetiche e logiche, tranne il nor.
+
+\section{Istruzioni di controllo e di ripetizione}
+A differenza dei normali calcolatori, i computer sono in grado di prendere delle decisioni,
+ossia la capacità di eseguire differenti istruzioni in base a determinati valori dati in input.\newline
+Questa capacità di prendere decisioni nei linguaggi ad alto livello viene rappresentata
+dalle istruzioni $if-else$ mentre MIPS prevede due istruzioni per fare tutto ciò:
+\begin{description}
+  \item[beq register1,register2,L1] questa istruzione, chiamata \emph{branch if equals} punta all'istruzione nel L1
+        in caso i due registri siano uguali.
+  \item[bne register1,register2,L1] l'istruzione, chiamata \emph{branch if not equal} punta al label L1 in caso i due
+        registri abbiano valori diversi.
+\end{description}
+Questa due istruzioni branch sono chiamate \emph{salti condizionali}, istruzioni
+che permettono di alterare il flusso di esecuzione in base al soddisfamento di una data condizione.
+
+Esempio: Scrivere un programma MIPS Assembly che dice se due stringhe sono uguali
+
+
+Le istruzioni di ripetizioni permettono la ripetizione di una serie di istruzioni
+fino al soddisfamento di una serie di condizioni;nei linguaggi ad alto livello viene
+effettuata tramite le istruzioni while,do-while e for mentre nel MIPS viene implementato
+nel seguente modo, con ad esempio un programma che determina la dimensione di una stringa.
+%Inserire codice dimensione di una stringa
+\lstinputlisting{Assembly/conta.asm}
+
+Le istruzioni dentro il label $loop$ sono chiamate \emph{blocco di istruzioni} ossia
+istruzioni in cui non compare alcun branch, eccetto eventualmente alla fine, e
+senza alcun label di branch, eccetto eventualmente all'inizio.
+Il test di uguaglianza e disuguaglianza sono i test più popolari ma a volte si ha
+bisogno di sapere se una variabile è minore di un altra e ciò nel MIPS viene verificato
+tramite \emph{slt}(set less than) in cui è memorizzato 1 se il primo registro è minore
+dell'altro; dell'istruzione slt esiste la variante immediate ed unsigned per permettere
+il confronto immediato con una costante e il confronto tra due numeri positivi.
+
+%Paragrafo sulle procedure
+\section{Procedure in linguaggio Assembly}
+Le procedure sono una sequenza di istruzioni con un nome che risolvono un determinato compito
+e possono essere riutilizzate e servono per implementare l'astrazione e la mantenibilità.
+Le procedure implementano il concetto matematico di funzione e possono avere dei parametri
+formali e possono ritornare o meno dei valori alla parte di programma che lo chiama.
+
+Le procedure, qualsiasi operazione svolgano, hanno le seguente esecuzione:
+\begin{enumerate}
+  \item Posizionano i parametri in maniera tale che si possa accedervi.
+  \item Sposta il controllo del programma alla procedura.
+  \item Si ricavano le risorse di memoria necessarie per l'esecuzione della procedura.
+  \item si esegue il compito desiderato della procedura.
+  \item si salva il valore di ritorno in una posizione accessibile dal chiamante.
+  \item sposta il controllo del programma al punto in cui è stata chiamata la procedura.
+\end{enumerate}.
+In quanto i registri sono il posto migliore per salvare i dati, il MIPS ha previsto
+dei registri appositi per le procedure all'interno dei 32 disponibili:
+\begin{enumerate}
+  \item \$a0-\$a3: 4 registri per salvare 4 argomenti passati come parametri alla procedura.
+  \item \$v0-\$v1:2 registri per tenere 2 valori di ritorno della procedura
+  \item \$ra: registro per tenere l'indirizzo del punto in cui viene chiamata la procedura
+\end{enumerate}
+Il linguaggio assembly del MIPS prevede un istruzione chiamata $jal ProcedureAddress$,
+per puntare ad un indirizzo e salvare simultaneamente l'indirizzo dell'istruzione successiva nel registro \$ra
+e ovviamente codesta istruzione è utile ed usata per chiamare una procedura.
+
+Per effettuare il ritorno al punto di origine e terminare l'esecuzione della procedura
+il linguaggio assembly del MIPS prevede l'istruzione $jr register$ per effettuare
+il salto al contenuto del registro; nel caso di ritorno da una procedura si usa $jr \$ra$.
+
+In caso si abbiano bisogno di più di 4 registri per gli argomenti e/o più di due registri
+per i valori di ritorno si utilizza lo stack per salvare i registri aggiuntivi necessari
+e lo stack prevede un puntatore all'ultimo elemento inserito, a cui il MIPS ha previsto
+un registro, chiamato \$sp, per memorizzare l'indirizzo del puntatore dello stack.
+Lo stack è una struttura dati LIFO(Last in First Out) in cui l'inserimento, chiamato \emph{push},
+nel MIPS consiste nel diminuire il valore dello stack pointer in quanto lo stack cresce dall'alto verso il basso,
+mentre la rimozione, chiamata \emph{pop}, avviene aumentando il valore dello stack pointer.
+
+%Inserire esempio di procedura in linguaggio Assembly
+
+Per evitare di salvare e ripristinare i registri i cui i valori possono non venire
+più usati, come ad esempio i registri temporanei, il linguaggio MIPS separa i registri in due gruppi:
+\begin{enumerate}
+  \item i registri non preservati dalla procedura come ad esempio i registri temporanei \$t0-\$t9
+  \item i registri preservati dalle procedure(in caso la procedura li usa devono essere ripristinati)
+        come ad esempio i registri \$s0-\$s7
+\end{enumerate}
+
+\section{Procedure annidate}
+Le procedure che fino ad ora abbiamo visto sono delle procedure foglie, ossia procedure
+che non chiamano altre, però alcune volte per poter svolgere la propria attività
+una procedura ne chiama un altra e ciò viene definita procedura annidata; un particolare
+tipo di procedura annidata è la ricorsione, in cui una procedura chiama se stessa.
+
+Con le procedure annidate bisogna stare attenti ai registri infatti gli argomenti
+\$a0-\$a4 e il registro \$ra creano conflitto tra le diverse procedure per cui bisogna
+salvarli nello stack per poter mantenere i risultati dopo la chiamata alla procedura ausiliaria,
+come si può notare nell'esempio:
+%Inserire esempio Procedura annidata
+
+Nello stack sono anche presenti le variabili locali non rappresentate da dei registri,
+come gli array locali o le strutture e il segmento dello stack contenente
+i registri salvati dalla procedura e le variabili locali si chiama \emph{record di attivazione}.
+Alcuni software MIPS usano il registro \$fp(frame pointer), il quale punta alla prima
+parola del record della procedura ed è utile rispetto allo stack pointer in quanto
+non cambia durante la procedura per cui il riferimento ad una variabile ha lo stesso offset,
+rendendo più leggibile e mantenibile il codice assembly della procedura.
+%Inserire esempio dell'Assembly
