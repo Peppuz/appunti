@@ -1,0 +1,118 @@
+%Capitolo relativo alla Cache
+\chapter{Gerarchia di Memoria}
+Ovviamente come in tutti i campi gli informatici vorrebbero avere un illimitato
+quantitativo di memoria ad alta velocità però sfortunatamente ciò non è possibile
+però il concetto relativo alla cache e alle gerarchie permette di ottenere ciò.
+
+Un programma, qualsiasi tipologia sia, non accede alle istruzioni e/o dati con
+la stessa probabilità e ciò viene definito \emph{principio di località}; vi sono
+due tipologia di località:
+\begin{itemize}
+  \item Località temporale:se accedo ad un elemento tenderò ad accedervi ancora nel
+                           breve periodo come ad esempio le istruzioni all'interno del ciclo for.
+  \item Località spaziale:se accedo ad un elemento è molto probabile che accedo agli
+                          elementi collegati nelle vicinanze come ad esempio gli elementi di un array.
+\end{itemize}
+
+IMMAGINE ELEARNING
+Per sfruttare questi principi al meglio implementiamo la memoria come una gerarchia
+ossia abbiamo diversi livelli di memoria con differenti lunghezze e velocità in cui
+le memorie veloci sono più costose per bit rispetto alle memorie lente.
+
+IMMAGINE PAG 375 ed IMMAGINE PAG 376
+I dati sono similarmente in gerarchia infatti i dati ad un livello superiore sono
+un sottoinsieme dei dati al livello inferiore e il trasferimento può avvenire solo
+tra due livelli adiacente per questo analizziamo solo una gerarchia a due livelli.
+
+La più piccola unità di informazione memorizzabile in una gerarchia di memoria si
+chiama blocco e in caso un elemento si trova nel determinato livello si dice che
+si è verificato un hit altrimenti si dice che si è realizzata una miss;
+il tempo per stabilire se l'elemento si trova nel dato livello di memoria si chiama
+hit time mentre se si è verificato una miss, oltre al hit time, si aggiunge anche
+una miss penalty, ossia il tempo necessario per inserire l'elemento nel livello desiderato.
+
+Un'altra importante concetto delle gerarchie delle memoria è la frequenza di hit e miss
+in quanto maggiore la frequenza di hit maggiormente si verifica l'illusione di memoria veloce illimitata.
+
+
+\section{Cache}
+Cache è il nome usato per indicare il livello, nella gerarchia di memoria, tra il
+processore e la memoria principale e nel datapath si usa la cache al posto della memoria principale.
+
+Vi sono 3 tipologie di cache:
+\begin{itemize}
+  \item Direct-mapped cache: una struttura cache in cui ogni locazione viene mappata
+        esattamente da una locazione nella cache.
+  \item Set associative cache: cache in cui vi è un numero fissato di locazioni (almeno 2)
+        dove ogni blocco può essere piazzato nella cache.
+  \item Fully associative cache: cache nella quale ogni blocco può essere disposto
+        in qualsiasi locazione della cache.
+\end{itemize}
+Nei prossimi paragrafi analizziamo le diverse tipologie di cache per trovarne i
+pregi e difetti delle diverse implementazioni, iniziando dalla più semplice, la Direct-mapped.
+
+\subsection{Direct-mapped Cache}
+Come già affermato nel precedente paragrafo, una cache direct-mapped prevede che ogni
+locazione viene direttamente collegata ad una ed sola locazione della cache come si
+può facilmente notare nella figura
+
+Per effettuare il collegamento tra memoria e cache si utilizza il seguente calcolo
+(Indirizzo del blocco) modulo (Numero di blocchi nella cache) per calcolare l'indice della cache,
+che viene omessa in quanto corrisponde all'indirizzo della cache ma viene solo inserita
+nella memoria principale.
+
+Dato che ogni locazione della cache può contenere un contenuto proveniente da una locazione
+differente, per stabilire la locazione del dato nella cache si aggiunge il campo \emph{tag}
+alla cache in cui viene contenuto la parte superiore dell'indirizzo, quella non rappresentata
+dall'indice.
+
+Per sapere se un blocco della cache ha una informazione corretta aggiungiamo un bit
+di validità ad ogni elemento della cache in cui se viene attivato l'elemento è valido.
+FIGURA 5.7 e 5.8 PAG 385 e FIGURE 5.9 e 5.10
+
+La dimensione in bit necessari per la cache dipende dalla grandezza della cache e dalla dimensione
+dell'indirizzo in quanto la cache include sia il salvataggio dei dati che del tag.
+
+
+
+\subsection{Fully associative e set associative cache}
+In questo sottoparagrafo analizziamo le altre due cache: la full associative e quella
+set associative;ambedue prevedono più o meno la stessa struttura cache soltanto
+pochi accorgimenti vengono svolti e il calcolo della dimensione della cache è
+similare con quella vista nel precedente sottoparagrafo.
+
+In una cache fully associative un blocco di memoria può essere associato a qualsiasi
+locazione della cache per cui per trovare un blocco nella cache bisogna analizzare
+tutta la cache con notevole spreco di tempo; per ovviare si effettua una ricerca
+parallela con un aumento di costo nell hardware per cui una cache fully associative
+è indicata solo per cache con un piccolo numero di blocchi.
+
+Nella cache set associative invece un blocco di memoria può essere memorizzato
+nella cache in numero fissato di locazioni infatti ogni blocco è associato a solo
+un set di elementi della cache attraverso il campo index e il blocco può essere
+messo soltanto in ogni elemento di quell'insieme associato.
+
+La cache set associative combina la direct mapped e la fully associative cache per
+migliorare ed ottimizzare le prestazioni della cache e per calcolare l'insieme
+collegato a un blocco di memoria si usa (Block number) modulo (num set in th cache).
+
+FIGURA 5.14 e 5.15
+
+Il vantaggio di aumentare il grado di associatività è la dimuzione del livello di miss
+con lo svantaggio di un potenziale aumento del hit time.
+
+In una cache set-associative ogni blocco include un address tag che fornisce l'indirizzo
+del blocco ed assieme al set appropriato permette di controllare se è uguale all'Indirizzo
+del blocco nel processore.\newline
+Il valore dell'index è usato per selezionare il set contenente l'indirizzo ricercato
+e il tag di tutti gli elementi nel set devono essere cercati.
+
+Ogni incremento di un fattore di 2 nell'associatività della cache comporta l'aumento
+di un bit dell'index con una dimuzione di 1bit nella grandezza del tag.
+
+FIGURA 5.16
+
+Il costo extra in una cache set associative è causato da confronti extra e il ritardo
+che si verifica per comparare e scegliere tra gli elementi di un set per cui la scelta
+tra le diverse tipologie di cache dipende dal confronto tra costo di una miss contro
+il costo di implementazione dell'associatività, sia in termini di tempo che di hardware.

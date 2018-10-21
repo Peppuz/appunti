@@ -10,6 +10,30 @@ I nodi privi di archi entranti sono detti \emph{foglie} dell'albero.
 L'albero è una struttura matematica importantissima in informatica utilizzata per
 rappresentare una serie di situazioni, come ad esempio organizzazioni gerarchiche di dati,
 procedimenti enumerativi o decisionali, e ve ne esistono un'infinita di implementazioni di alberi
-però iniziamo ad analizzare per prima gli alberi liberi.
+però iniziamo ad analizzare per prima gli alberi liberi binari.
 
 %Inserire immagine albero binario
+
+%Metodi di visita di un albero
+I metodi di visita di un albero binario sono 3:
+\begin{itemize}
+  \item inorder: si visiona prima il sottoalbero sinistro poi il nodo e infine il sottoalbero destro
+  \item preorder: si visiona prima il nodo poi i suoi sottoalberi
+  \item postorder: si visionano prima i sottoalberi ed infine il nodo
+\end{itemize}
+Il primo metodo di visita viene usato soprattutto negli alberi binari di ricerca per
+stampare gli elementi dell'albero in maniera crescente mentre in un albero binario
+normale la scelta di quale metodo di visita utilizzare è inifluente e ogni programmatore
+sceglie nell'utilizzo quale metodo di visita utilizzare per stampare l'albero.
+Il cammino dalla radice ad un elemento foglia dell'albero richiede al massimo $O(h)$,
+in cui $h$ è l'altezza dell'albero, in quanto richiede di scendere di livello fino
+ad arrivare alle foglie, che si trovano al livello $h$.
+
+La specifica di un albero binario, in cui ogni implementazione per essere valida deve prevedere:\newline
+\textbf{Item} search(Tree T,Item k);\newline
+\textbf{void} insert(Tree T,Item x);\newline
+\textbf{Item} delete(Tree T,Item x);\newline
+\textbf{Item} mininum(Tree T);\newline
+\textbf{Item} maxinum(Tree T);\newline
+\textbf{Item} predecessor(Tree T,Item x);\newline
+\textbf{Item} successor(Tree T,Item x);\newline

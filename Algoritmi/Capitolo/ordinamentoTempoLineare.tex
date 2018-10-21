@@ -3,4 +3,106 @@
 Gli algoritmi di ordinamento analizzati fino ad ora hanno un importante proprietà,
 ossia effettuano l'ordinamento soltanto mediante il confronto tra gli elementi in input.
 In questo capitolo verrà analizzato il limite minimo di confronti da effettuare e
-verranno analizzati altri due algoritmi di Ordinamento.
+verranno analizzati altri due algoritmi di Ordinamento: il counting e il radix sort.
+
+\section{Ordinamento in base ai confronti}
+In un ordinamento in base ai confronti per riordinare la sequenza $(a_1,a_2,\dots,a_n)$
+bisogna effettuare uno solo dei seguenti test $a_i > a_j,a_i < a_j,a_i \leq a_j,a_i \geq a_j,a_i = a_j$.
+Assumendo di avere tutti gli elementi di una sequenza distinti e considerando che i confronti
+sono tutti equivalent, in quanto permettono di stabilire l'ordine di due elementi,
+consideriamo solo i confronti $a_i \leq a_j$:
+definiamo come \emph{albero dei confronti} un albero binario in cui vengono rappresentati
+i confronti fra gli elementi effettuati da un particolare algoritmo di ordinamento;
+l'esecuzione dell'algoritmo di ordinamento corrisponde al tracciare un cammino semplice
+dalla radice dell'albero di decisione fino ad arrivare ad una foglia.
+
+%Inserire immagine di un albero di decisione
+
+La lunghezza del cammino semplice più lungo dell'albero determina il numero di confronti
+effettuati nel caso peggiore dall'algoritmo di ordinamento; di conseguenza il numero
+di confronti nel caso peggiore corrisponde all'altezza del suo albero di decisione.
+
+\begin{thm}
+Qualsiasi algoritmo di ordinamento per confronti richiede $\Omega(n \log n)$ nel caso
+peggiore.
+\end{thm}
+\begin{proof}
+Per riuscire a dimostrare il seguente teorema è sufficiente determinare l'altezza
+del suo albero di decisione dove ogni permutazione appare come una foglia raggiungibile.\newline
+Consideriamo un albero di decisione di altezza $h$ con $l$ foglie raggiungibili
+che corrisponde a un ordinamento per confronti di $n$ elementi: poichè ciascuna delle
+$n!$ permutazioni dell'input compaiono in una foglia, si ha $n! \leq l$, e dal momento
+che un albero binario di altezza $h$ non ha più di $2^h$ foglie si ottiene $n! \leq l \leq 2^h$.
+
+Passando ai logaritmi si ricava che $h \geq \log(n!)$ in quanto $\log$ è monotonicamente crescente
+da cui otteniamo che $\Theta(n \log n)$, come dimostriamo adesso.
+\begin{equation*}
+\begin{split}
+ \log (n!) & = \log (n* n-1 * \dots * 2 * 1) \\
+            & = \log 1 + \log 2 + \dots + \log (n-1) + \log n \\
+            & \leq \log (n^n) \\
+            & \leq n \log n = O(n log n) \\
+\end{split}
+\end{equation*}
+Resta da dimostrare ora che $\log n!$ sia $\Omega(n log n)$ per riuscire a dimostrare
+che qualsiasi algoritmo di ordinamento richiede $n \log n$ per effettuare l'ordinamento:
+\begin{equation*}
+\begin{split}
+ \log (n!) & = \log 1 + \log 2 + \dots + \log (n-1) + \log n \\
+            & \geq \log n/2 + \log (n/2 + 1) + \dots + \log (n-1) + \log n \\
+            & \geq n/2 \log n/2 \\
+            & = \Omega(n \log n) \\
+\end{split}
+\end{equation*}
+\end{proof}
+
+\section{Counting-Sort}
+Il CountingSort è un algoritmo di ordinamento in cui viene assunto che ognuno dei $n$ elementi
+sia un numero intero nel range $[0,k]$ e per effettuare l'ordinamento determina per ogni
+elemento $x$ il numero degli elementi con valore minore rispetto ad $x$; questa
+informazione viene  utilizzata per piazzare l'elemento $x$ nella corretta posizione
+nell'array di output infatti ad esempio se 17 elementi sono minori di $x$ viene
+messo $x$ nella posizione $18$ nell'array di output.
+
+Nello pseudocodice del CountingSort, utilizziamo l'array $A[1 \twodots n]$ come array
+di input, l'array $B[1 \twodots n]$ come array di output ed infine $C[0 \twodots k]$
+come array temporaneo per calcolare il numero di elementi inferiori, come verrà mostrato
+di seguito:
+\begin{codebox}
+\li crea un nuovo array $C[0 \twodots k]$
+\li \For $i \gets 0$ \To $k$
+    \Do
+\li               $C[i] \gets 0$
+    \End
+\li \For $j \gets 1$ \To $\attrib{A}{\id{length}}$
+    \Do
+\li               $C[A[j]] = C[A[j]] + 1$
+    \End
+\li \For $i \gets 1$ \To $k$
+    \Do
+\li         $C[i] = C[i] + C[i-1]$
+    \End
+\li \For $j \gets \attrib{A}{length}$ \Downto 1
+    \Do
+\li         $B[C[A[j]]] = A[j]$
+\li         $C[A[j]] = C[A[j]] - 1$
+\end{codebox}
+Le righe 4-5 imposta ogni elemento $i$ di $C$ con il numero di elementi
+uguali al valore $i$ mentre le righe 6-7 imposta ogni elemento $i$ di C il numero di
+elementi minori e/o uguali ad $i$; le ultime righe del pseudocodice si occupano
+soltanto di ordinare l'array sfruttando l'informazione del numero degli elementi
+calcolata tramite l'array $C$.
+
+Il tempo di esecuzione dipende dai valori $k$ e $n$ infatti le righe 2-3 e 6-7 richiedono
+$\Theta(k)$ mentre le righe 4-5 e 8-9-10 richiedono $\Theta(n)$ per cui l'equazione
+del tempo di esecuzione è $\Theta(n + k)$: se $k$ è $\Theta(n)$ il countingSort
+è $\Theta(n)$.
+
+Come si può notare
+Un importante proprietà del counting sort è la \emph{stabilità} ossia i numeri con
+lo stesso valore appaiono nello stesso ordine sia nell'array di input che in quello
+di output; questa proprietà è importante in quanto il counting sort è spesso utilizzata
+come subroutine nel radixSort e per funzionare correttamente ha bisogno la stabilità
+del countingSort, come vedremo nel prossimo paragrafo.
+
+\section{Radix-Sort}

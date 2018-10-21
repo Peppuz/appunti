@@ -1,1 +1,133 @@
 %Capitolo sugli Alberi Binari di Ricerca
+\chapter{Alberi Binari di Ricerca}
+Dato un insieme di nodi in cui è definita una relazione d'ordine, si definisce come
+\emph{albero di ricerca} un albero in cui tutti i nodi della radice sinistra sono
+minori della radice e tutti i nodi a destra della radice sono maggiori e ogni sottoalbero
+è anch'esso un albero di ricerca.
+
+%FARE DISEGNO ALBERO BINARIO DI RICERCA
+
+I metodi di visita di un albero visti nel capitolo precedente sono valide anche
+per gli alberi binari di ricerca in particolare la visita $\proc{Inorder}$ consente
+di mostrare i valori dell'albero ordinati in maniera corretta.
+
+Le operazioni definite di solito in un albero binario di ricerca sono le seguenti:
+\textbf{Item} search(Tree T,Item k);\newline
+\textbf{void} insert(Tree T,Item z);\newline
+\textbf{void} delete(Tree T,Item z);\newline
+\textbf{Item} min(Tree T);\newline
+\textbf{Item} maxinum(Tree T);\newline
+\textbf{Item} predecessor(Tree T,Item x);\newline
+\textbf{Item} successor(Tree T,Item x);
+
+Tutte le seguenti operazioni richiedono un tempo $O(h)$ con $h$ indicante l'altezza
+dell'albero per cui è meglio riuscire a mantenere il più possibile l'albero bilanciato
+per ottenere l'altezza $h = \log n$.
+
+L'operazione $\proc{search}$ permette di ricercare un elemento all'interno di un albero
+binario di ricerca;per la proprietà di avere un ordinamento tra gli elementi dell'albero
+la ricerca di un elemento ricalca quella della ricerca binaria per cui il pseudocodice è:
+\begin{codebox}
+\Procname{$\proc{BST-search}(Tree T,Item k)$}
+\li $x \gets \attrib{T}{root}$
+\li \If $x \isequal \const{nil}$ or $\attrib{x}{key} \isequal \attrib{k}{key}$
+    \Then
+\li                    \Return x
+\li \If $\attrib{x}{key} < \attrib{k}{key}$
+    \Then
+\li                     \Return $\proc{Tree-search}(\attrib{T}{right},k)$
+\li \Else \Return $\proc{Tree-search}(\attrib{T}{left},k)$
+\end{codebox}
+
+La ricerca di un elemento richiede la scansione dell'albero dalla radice alle foglie
+che sappiamo essere pari a $O(h)$ con $h$ indicante l'altezza dell'albero.
+La procedura $\proc{Tree-min}$ calcola il minimo dell'albero binario di ricerca sfruttando
+il fatto che l'elemento minimo dell'albero si trova nel sottoalbero più a sinistra presente nell'albero
+per cui lo pseudocodice è facilmente implementabile come:
+%Pseudocodice minimo di un albero binario di ricerca
+\begin{codebox}
+\Procname{$\proc{BST-min}(Tree T)$}
+\li \If $\attrib{T}{left} \isequal \const{nil}$
+    \Then
+\li                       \Return $T$
+\li \Else \Return $\proc{Tree-min}(\attrib{T}{left})$
+\end{codebox}
+
+La scansione dell'albero per trovare il sottoalbero più a sinistra richiede
+$O(h)$ con $h$ rappresentante l'altezza  dell'albero;in caso l'albero sia bilanciato il tempo sarebbe $O(\log n)$.
+Simmetricamente e con il tempo di esecuzione uguale, è l'algoritmo di ricerca del massimo di un
+albero di ricerca, in cui il massimo si trova nel sottoalbero più a destra:
+%Pseudocodice Massimo di un albero binario di ricerca
+\begin{codebox}
+\Procname{$\proc{BST-max}(Tree T)$}
+\li \If $\attrib{T}{right} \isequal \const{nil}$
+    \Then
+\li                        \Return T
+\li \Else \Return $\proc{Tree-max}(\attrib{T}{right})$
+\end{codebox}
+Scandendo l'array andando sempre nel sottoalbero destro richiede un tempo $O(h)$,
+come anche già visto per la ricerca del minimo, con $h$ indicante l'altezza dell'albero.
+
+%Pseudocodice Successore di un albero binario di ricerca
+\begin{codebox}
+\Procname{$\proc{BST-successor}(Tree T,Item x)$}
+\li \If $\attrib{x}{right} \neq \const{nil}$
+    \Then
+\li             \Return $\proc{Tree-min}(\attrib{T}{right})$
+\li $y \gets \attrib{x}{p}$
+\li \While $y \neq \const{nil}$ and $x \isequal \attrib{y}{right}$
+    \Do
+\li                $x \gets y$
+\li                $y \gets \attrib{y}{p}$
+    \End
+\Return $y$
+\end{codebox}
+
+%Pseudocodice Predecessore di un albero binario di ricerca
+\begin{codebox}
+\Procname{$\proc{BST-predecessor}(Tree T,Item x)$}
+\li \If $\attrib{x}{left} \neq \const{nil}$
+    \Then
+\li                     \Return $\proc{Tree-maxinum}(\attrib{T}{left})$
+    \End
+\li y $\gets \attrib{x}{p}$
+\li \While $y \neq \const{nil}$ and $x \isequal \attrib{y}{left}$
+    \Do
+\li                $x \gets y$
+\li                $y \gets \attrib{y}{p}$
+    \End
+\li \Return $y$
+\end{codebox}
+
+
+%Pseudocodice inserimento di un albero binario di ricerca
+L'inserimento di un'elemento in un albero binario di ricerca prevede di effettuare
+un cammino, considerando il valore dell'elemento, per trovare la prima posizione
+nulla, che rispetta la proprietà di albero di ricerca, dove inserire l'elemento.\newline
+Analogamente alle altre operazioni su alberi l'inserimento richiede $O(h)$ in un albero
+di altezza $h$ e il suo pseudocodice è il seguente:
+\begin{codebox}
+\Procname{$\proc{BST-Insert}(\textbf{Tree} \ T,\textbf{Item} \ z)$}
+\li $ y \gets \const{nil}$
+\li $ x \gets \attrib{T}{root}$
+\li \While $ x \neq \const{nil}$
+    \Do
+\li            $ y \gets x $
+\li            \If $\attrib{x}{value} < \attrib{z}{value}$
+               \Then
+\li                           $ x \gets \attrib{x}{right}$
+\li            \Else $x \gets \attrib{x}{left}$
+    \End
+\li $\attrib{z}{p} \gets y$
+\li \If $y \isequal \const{nil}$
+    \Then
+\li        $\attrib{T}{root} \gets z$
+\li \ElseIf $\attrib{y}{value} < \attrib{z}{value}$
+    \Then
+\li                  $\attrib{y}{right} \gets z$
+\li \Else $\attrib{y}{left} \gets z$
+\end{codebox}
+
+
+
+%Pseudocodice Rimozione elemento di un albero binario di ricerca

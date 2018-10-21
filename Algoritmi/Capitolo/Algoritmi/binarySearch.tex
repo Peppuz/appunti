@@ -1,8 +1,10 @@
 %Analisi Algoritmo binarySearch
-Il secondo algoritmo di ricerca è il $\proc{binarySearch}$, algoritmo divide et impera che prevede che la sequenza
-di valori sia già ordinata in cui ad ogni passo viene eliminata una parte della sequenza
-in quanto i valori di quella parte di sequenza si è riusciti a determinare che sono fuori del range.
-%DA riscrivere meglio le prime 3 frasi
+Il secondo algoritmo di ricerca è il $\proc{binarySearch}$, algoritmo divide et impera
+in cui viene già previsto che la sequenza di valori sia ordinata e sfruttando ciò
+ad ogni passo viene eliminata una parte della sequenza.\newline
+La ricerca binaria ad ogni passo controlla l'elemento mediano per vedere se è il valore
+ricercato altrimenti richiama l'algoritmo sulla sottosequenza sinistra in caso il valore
+da trovare sia minore oppure lo effettua sulla sottosequenza destra.
 
 %Pseudocodice binarySearch
 \begin{codebox}
@@ -25,6 +27,7 @@ in quanto i valori di quella parte di sequenza si è riusciti a determinare che 
 \li                \Else \Return $\proc{binarySearch}(A,\id{mid}+1,\id{right},\id{key})$
     \End
 \end{codebox}
+
 Il tempo di esecuzione del $\proc{binarySearch}$ nei diversi casi è il seguente:
 \begin{description}
   \item[Caso migliore:] l'elemento $\id{key}$ viene trovato direttamente nell'elemento mediano

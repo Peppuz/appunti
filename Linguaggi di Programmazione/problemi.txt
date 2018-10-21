@@ -1,0 +1,4 @@
+Fare esempi di programmi logici, imperativi e funzionali
+Inserire regole di inferenza proposizionali
+Fare Logica del Primo Ordine 
+Analizzare principio di risoluzione 

@@ -1,0 +1,97 @@
+%Paragrafo sulle reti Logiche(AND OR NOT ed ecc...
+\chapter{Reti Logiche}
+Per poter capire ed analizzare le componentistiche di un calcolatore elettronico
+bisogna prima considerare le porte logiche attraverso cui sono costruiti tutti i
+circuiti presenti nei calcolatori.
+
+L'elettronica utilizzata nei calcolatori è \emph{digitale}, ossia opera con due valori
+logici \emph{low} and \emph{high voltage} e gli altri valori sono temporanei e si
+verificano nella transizione tra i due valori, per questo nei calcolatori si utilizza
+la rappresentazione binaria in cui il valore \emph{high} rappresenta un valore vero(1)
+mentre il valore \emph{low} indica il valore falso(0).
+
+Le porte logiche attraverso cui vengono costruiti tutti i circuiti utilizzati nei calcolatori
+si dividono in due categorie:\emph{reti combinatorie}, circuiti non contenenti memoria
+e i cui valori ottenuti in output dipendono soltanto dei valori in input, e \emph{reti sequenziali},
+circuiti in cui si ha la presenza di memoria e i valori in output dipendono dai valori
+presenti in memoria e dai valori in input.
+
+
+\section{Reti combinatorie}
+Le reti combinatorie, come viste nell'introduzione del capitolo, sono circuiti "smemorati"
+ossia i valori in output dipendono soltanto dai valori in input e la rappresentazione
+dei valori assunti dal circuiti può essere fatta in due modi:tavole di verità e algebra booleana,
+analizzati e studiati nel corso "Fondamenti dell'Informatica".
+
+L'elemento base secondo cui vengono costruite tutti i circuiti sono le porte logiche base,
+in cui viene implementato e rappresentato le funzioni logiche base:\emph{AND},\emph{OR} e \emph{NOT}.
+%Disegno porte logiche AND OR e NOT
+
+È prassi comune aggiungere delle bolle per invertire un dato invece di disegnare un invertitore
+come si nota nel seguente circuito:
+%Circuito NOT(NOT(A) OR B)
+
+Tutte le porte logiche possono essere rappresentate solo utlizzando un tipo di porta,
+prassi utilizzata nella costruzione di tutti i calcolatori, ossia le porte \emph{NOR} e/o \emph{NAND}
+in cui si invertono le porte AND e/o OR e sfruttando le proprietà dell'algebra booleana
+si rappresentano anche gli altri circuiti logici.
+
+I circuti combinatori utilizzati ed analizzati sono i seguenti:
+\begin{itemize}
+  \item \textbf{Decoder}: circuito logico in cui viene tradotto i $n$ bit di input
+                        in un segnale indicante il valore binario dei bit forniti.
+                        %DISEGNO DECODER
+  \item \textbf{Multiplex}:circuito in cui, dato un input, viene restituito come output
+        l'elemento in input scelto da un "controllore" e viene utilizzato
+        per scegliere l'elemento da utilizzare in base a dei valori di selezione.
+        %DISEGNO MULTIPLEX
+  \item \textbf{PLA(Programmable Logic Array)} è il circuito per rappresentare le funzioni logiche
+        a due livelli(somma-prodotto/prodotto-somma) e possono essere comprate e
+        venire "programmate" per eseguire e rappresentare nuovi circuiti.
+        %IMMAGINE FUNZIONAMENTO E STRUTTURA PLA
+  \item ROM(Read Only Memory): circuito combinatorio in cui viene implementato la tavola
+        di verità di una funzione logica ed è totalmente costruita tramite i decoder.
+        Il suo nome presenta la parola \emph{memory} in quanto è anche una memoria
+        i cui valori sono configurati e inseriti soltanto alla costruzione del circuito.\newline
+        Vi sono delle evoluzioni delle ROM che permettono la programmabilità e la
+        modifica dei valori presenti nella ROM ma noi non li analizziamo.
+  \item ALU(Arithmetic Logic Unit): è un circuito fondamentale nei calcolatori in cui
+        si implementano le operazioni logiche eseguite da un calcolatore;in quasi
+        tutte le istruzioni dei programmi viene utilizzata come sarà poi visto nel capitolo
+        relativo al datapath.\newline
+        Essendo un circuito fondamentale e complesso si utilizza un sottoparagrafo
+        per essere il più chiari e compatti possibile.
+\end{itemize}
+
+\subsection{Arithmetic Logic Unit}
+L'ALU è un circuito deputato ad eseguire, come si evince dal nome, le operazioni
+aritmetiche logiche fondamentali nel percorso dati delle istruzioni dei programmi.\newline
+La dimensione dei valori input e output nell'ALU dipende dalla macchina: nel MIPS32
+si necessita di un ALU a $32$ bit però per comprendere l'ALU iniziamo prima a presentare
+l'ALU a $1$ bit.
+
+Le operazioni logiche nell'ALU sono facilmente implementabili in quanto si usano le
+porte logiche elementari $AND$ e $OR$;nel MIPS è stato deciso di non implementare
+il NOT ma si usa il NOR, il cui circuito verrà visto poi nel proseguo dell'analisi sull'ALU.
+
+Un'altra operazione importante da implementare in una ALU è il circuito per effettuare
+l'addizione, la cui l'implementazione come circuito non la facciamo in quanto si può
+facilmente effettuare utilizzando la tavola di verità e le equazioni logiche.\newline
+L'addizione ha 3 ingressi in input, i due addendi e il carryIn(riporto in ingresso),
+e due ingressi in Output, il risultato e il carryOut(riporto in uscita).
+
+Per scegliere l'operazione da svolgere si usa un multiplex come si nota nel seguente circuito:
+%CIRCUITO OP.LOGICHE ed ADDER
+
+La sottrazione tra due numeri può essere anch'essa facilmente implementabile considerando
+che $a-b = a + (-b) = a + (b^_ + 1) = a + b^_ + 1$ e per questa ragione si utilizza
+il complemento a due nella rappresentazione dei numeri binari negativi nel hardware di tutti i calcolatori.
+
+Il MIPS ha deciso di fornire la funzione $NOR$ al posto della NOT, che può essere
+implementata sfruttando le altre operazioni considerando il teorema di DeMorgan
+$(a + b) = a * b$;il circuito aggiungendo la NOR e la sottrazione è la seguente:
+%CIRCUITO ALU A 1 BIT
+
+
+Nei calcolatori attuali si usano ALU a 32/64 bit 
+\section{Reti sequenziali}

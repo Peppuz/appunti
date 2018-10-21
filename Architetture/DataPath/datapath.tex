@@ -1,0 +1,38 @@
+%Capitolo sul Datapath nel MIPS32
+\chapter{Datapath}
+Dopo aver analizzato le istruzioni e come implementare un programma in linguaggio assembly,
+consideriamo ora il processore e il datapath delle istruzioni, ossia il percorso
+utilizzato per l'esecuzione delle istruzioni nel computer.
+Noi consideriamo per sviluppare il datapath una subset delle istruzioni MIPS in grado di effettuare
+solo le seguenti istruzioni:
+\begin{itemize}
+  \item le istruzioni di accesso alla memoria load word(\emph{lw}) e store word(\emph{sw}).
+  \item le istruzioni aritmetico-logiche \emph{add,sub,AND,OR} e \emph{slt}.
+  \item le istruzioni branch equal(\emph{beq}) e and jump(\emph{j})
+\end{itemize}
+Le altre operazioni, come ad esempio l'istruzione \emph{multiply}, operano in maniera
+similare e possono essere facilmente implementate effettuando delle piccole modifiche
+al circuito del datapath.
+
+\section{Fasi di un istruzione}
+Ogni istruzione, qualsiasi essa sia, ha 3 fasi per svolgere il suo operato:
+\begin{enumerate}
+  \item \textbf{fetch} in cui tramite il \emph{program counter} viene prelevata l'
+                       istruzione dalla memoria.Al termine della fase di fetch
+                       viene aggiornato il PC, tramite PC = PC + 4, per far puntare all'istruzione successiva.
+  \item \textbf{decode} in cui viene decodificata l'istruzione e predisposti i valori
+                        necessari all'esecuzione dell'istruzione.
+  \item \textbf{execute} in cui viene eseguita l'istruzione prevista dal programma.
+\end{enumerate}
+Le prime due fasi sono uguali per tutte le istruzioni mentre la fase di esecuzione,
+come si poteva facilmente immaginare, varia in base all'istruzione ma comunque le
+istruzioni delle 3 tipologie sono similari nell'esecuzioni così viene resa più veloce
+ed efficente l'esecuzione e l'implementazione del datapath.
+
+%Fase di fetch grafico
+
+
+%Fase di decode grafico
+
+La fase di esecuzione cambia in base al tipo di istruzione per cui verrà vista nel
+prossimo paragrafo dove andrà analizzato il datapath delle istruzioni.

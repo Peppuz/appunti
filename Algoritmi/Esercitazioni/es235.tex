@@ -1,0 +1,83 @@
+%Esercitazione del 23/5/2018 Algoritmi
+Implementare la procedura extract per estrarre l'elemento k-esimo  di una coda Q
+senza utilizzare code d'appoggio e mantenendo i valori della coda.
+
+int extract(Queue Q,int k){
+    Q.enqueue(-1);
+    c = 1;
+    r = 0;
+    while(c \leq k and r != -1){
+        r = Q.dequeue()
+        if(r != -1){
+          Q.enqueue(r);
+        }
+        c++
+    }
+    if(r == -1)
+        return "underflow"
+    Q.dequeue()//Toglie l'elemento k-esimo
+
+    %Sistema la coda agli elementi iniziali
+    r = Q.dequeue()
+    while(r != -1){
+        Q.enqueue(r);
+        r = Q.dequeue();
+    }
+}
+
+SI usa un valore sentinella per capire che si ha finito di iterare la coda;il valore sentinella
+varia in base ai valori che utilizziamo infatti la coda Q usata nell'esercizio è
+composta solo da numeri interi positivi per cui usiamo il -1.
+
+
+Implementare la rimozione di tutte le occorrenze di un elemento da una coda utilizzando
+soltanto come struttura dati le code
+
+
+
+while(!Q.emptyQueue()){
+    crea una coda d'appoggio QA = new Queue();
+    r = Q.dequeue();
+    if(r != a){
+      Q.enqueue(QA,r);
+    }
+}
+
+while(!Q2.emptyQueue()){
+    r = Q2.dequeue();
+    Q2.enqueue(r);
+}
+
+Tempo di esecuzione = cn + cn + cn + ct_if + ctw_2 + c + ctw_2 + ctw_2
+
+Caso migliore: T(n) = 3cn = \Omega(n) (tutta la coda è composta dall'elemento a)
+
+Caso peggiore: non vi è alcun elemento a nella coda
+   T(n) = 3cn + cn + 3cn + c = O(n)
+
+Tempo dell'algoritmo T(n) = \Theta(n)
+
+
+Implementare l'ordinamento tra due code Q1 e Q2, già ordinate.
+
+Queue* ordina(Queue Q1,Queue Q2){
+    controllare che Q1 e Q2 contengono almeno un elemento
+
+    r1 = Q1.dequeue();
+    r2 = Q2.dequeue();
+    while(!Q1.empty() and !Q2.empty()){
+          if(r1 <= r2){
+              Q.enqueue(r1);
+              r1 = Q1.dequeue()
+          }else{
+              Q.enqueue(r2);
+              r2 = Q2.dequeue();
+          }
+    }
+    %Ipotiziamo che manchino da inserire solo gli elementi di Q1
+    while(!Q1.empty()){
+
+    }
+}
+
+Tempo di esecuzione T(n) circa n+n = \Theta(n)%FARE ANALISI NEL TEMPO

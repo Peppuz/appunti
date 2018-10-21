@@ -1,0 +1,65 @@
+%Paragrafo sulla sezione di trovare un peak
+\section{Peak-finding}
+Un importante algoritmo, utilizzato in tutti i campi della matematica, nella fisica,
+nella ricerca operativa ed ecc.., è quello di trovare un massimo/minimo locale
+su un'insieme di valori rappresentati da un array di numeri.
+
+Dato un array di numeri interi $A[1 \twodots n]$ definiamo un elemento $A[i]$
+come \emph{peak}(Vertice) se e solo se $A[i] \geq A[i-1]$ e $A[i] \geq A[i+1]$;
+nel caso $i = 1$ bisogna solo confrontare l'elemento successivo mentre con $i=n$
+bisogna confrontare solo l'elemento precedente.
+
+La prima soluzione, quella più naturale, consiste nello scansionare tutto l'array
+fino a quanto trovo il peak; come si può immaginare nel caso peggiore si deve scansionare
+tutto l'array e il relativo pseudocodice è il seguente:
+\begin{codebox}
+\Procname{$\proc{1DPeak}(int[] A)$}
+\li $i \gets 1$
+\li \While $i \leq \attrib{A}{length}$
+    \Do
+\li                \If $i \isequal 1$ and $A[i] \geq A[i+1]$
+\li                          \Return $A[i]$
+\li                \If $i \isequal \attrib{A}{length}$ and $A[i] \geq A[i-1]$
+\li                          \Return $A[i]$
+\li                \If $i > 1$ and $i < \attrib{A}{length}$ and $A[i] \geq A[i-1]$ and $A[i] \geq A[i+1]$
+\li                          \Return $A[i]$
+\li                $i \gets i + 1$
+\end{codebox}
+%Fare l'invariante di ciclo per dimostrare la correttezza
+
+L'algoritmo prevede i seguenti tempi di esecuzione:
+\begin{description}
+  \item[Caso Migliore] il peak si trova nel primo elemento per cui il tempo di esecuzione è $\Omega(1)$.
+  \item[Caso Peggiore] il peak si trova solo nell'ultimo elemento per cui si deve
+                       scansionare tutto la sequenza di numeri che richiede $O(n)$.
+\end{description}
+
+Dato che dobbiamo trovare un peak che non deve essere per forza il massimo peak presente
+si può ragionare come la ricerca binaria in cui se $A[i] < A[i-1]$ guarderò solo $A[1 \twodots i-1]$
+in quanto con $A[i]$ sono in fase di discesa; cosa analoga con $A[i] < A[i+1]$ in cui
+guarderò solo $A[i+1 \dots n]$ in quanto siamo nella fase di salita.
+Questo ragionamento permette ad ogni iterazione di eliminare la metà degli elementi
+usando $i = (left+right)/2$ e lo pseudocodice è il seguente:
+\begin{codebox}
+\Procname{$\proc{1DPeak}(int[] A,int p,int r)$}
+\li $\id{mid} \gets (p + r) / 2$
+\li \If $\id{mid} > 1$ and $A[\id{mid}-1] > A[\id{mid}]$
+    \Then
+\li                   \Return $\proc{1DPeak}(A,p,\id{mid}-1)$
+\li \Elif $\id{mid} < \attrib{A}{length}$ and $A[\id{mid} + 1] > A[\id{mid}]$
+    \Then
+\li                   \Return $\proc{1DPeak}(A,\id{mid}+1,r)$
+\li \Else \Return $A[\id{mid}]$
+\end{codebox}
+%FARE L'INVARIANTE DI CICLO!!!!!
+
+Il tempo di esecuzione dell'algoritmo è il seguente:
+\begin{equation*}
+  T(n) = \begin{cases} 4c \quad n = 1\\
+                       c + T(\bigfrac{n}{2})\\
+         \end{cases}
+\end{equation*}
+Nel caso migliore, rappresentato dal fatto che l'elemento mediano è già un peak,
+si ha bisogno di un tempo costante $\Omega(1)$ mentre nel caso peggiore,in cui il
+peak è negli elementi estremi, l'algoritmo richiede un tempo $O(\log n)$,
+trovata attraverso l'espansione dell'equazione fino ad arrivare al caso base.
