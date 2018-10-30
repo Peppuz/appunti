@@ -1,0 +1,13 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\contentsline {chapter}{\numberline {1}Introduzione ai Paradigmi di Programmazione}{2}
+\contentsline {section}{\numberline {1.1}Paradigma Imperativo}{3}
+\contentsline {section}{\numberline {1.2}Paradigma Logico}{3}
+\contentsline {section}{\numberline {1.3}Paradigma Funzionale}{4}
+\contentsline {section}{\numberline {1.4}Richiami sugli ambienti RunTime e architettura degli elaboratori}{4}
+\contentsline {chapter}{\numberline {2}Ripasso Logica Proposizionale e Predicativa}{6}
+\contentsline {subsection}{\numberline {2.0.1}Logica Proporzionale}{8}
+\contentsline {subsection}{\numberline {2.0.2}Logica del primo ordine}{11}
+\contentsline {chapter}{\numberline {3}Prolog:Programmazione Logica}{13}
+\contentsline {subsection}{\numberline {3.0.1}Principio di Risoluzione}{14}
+\contentsline {section}{\numberline {3.1}Principio di Unificazione}{16}

@@ -1,0 +1,4 @@
+inserire immagine tipologie di derivazioni
+dimostrazione equivalenza tra tipologie di derivazioni
+dimostrazione ambiguità di una grammatica
+aggiunta esempi sulle grammatiche context-free

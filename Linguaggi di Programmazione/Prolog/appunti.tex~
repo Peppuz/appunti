@@ -4,11 +4,22 @@
 \usepackage[italian]{babel}%per poter effettuare la giusta sillabazione della lingua italiana
 \usepackage{amsmath}%per poter rappresentare ed utilizzare al meglio gli ambienti e le formule matematiche
 \usepackage{amssymb}%per rappresentare alcuni simboli particolari matematici
+\usepackage{amsthm}%per definire e poter effettuare le dimostrazioni matematiche
 %\usepackage{amsfont}%per poter avere i font matematici
-\usepackage{booktabs}
+\usepackage{booktabs}%per la corretta gestione delle tabelle
+\usepackage{graphics}%per effettuare i grafici
+\usepackage{pgfplots}%per i grafici
+\usepackage{rotating}%per effettuare le rotazioni delle immagini e grafici
 \usepackage{microtype}%per effettuare un aggiustamento della spaziatura tra caratteri e del font
+\usepackage{minted}
 \usepackage{url}%per poter rappresentare gli url nel testo latex
 %\usepackage{hypertext}%per effettuare un collegamento con una pagina internet
+\newtheorem{defi}{Definizione}%Definizione per avere la gestione delle definizioni
+\newtheorem{prop}{Proposizione}[chapter]
+\newtheorem{lem}{Lemma}
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{corol}{Corollario}[chapter]
+\newtheorem{esempio}{Esempio}
 
 \begin{document}
 %Intestazione e indice dei contenuti
@@ -174,7 +185,7 @@ ed avendo le seguenti conoscenze pregresse:
 \begin{enumerate}
 \item $\overline{AB}=\overline{BC} \land \overline{BH}=\overline{BH} \land \angle ABH = \angle HBC \rightarrow \triangle ABH=\triangle HBC$
 \item  $\triangle ABH=\triangle HBC \rightarrow \overline{AB}=\overline{BC} \land \overline{BH}=\overline{BH} \land \overline{AH}=\overline{HC}
-        \land \angle ABH = \angle HBC \land \angle AHB = \angle CBH \land \angle A=\angle C.
+        \land \angle ABH = \angle HBC \land \angle AHB = \angle CBH \land \angle A=\angle C$.
 \end{enumerate}
 per ottenere $\overline{AB} = \overline{BC} \vdash \angle A = \angle C$ bisogna effettuare la seguente catena:
 \begin{enumerate}
@@ -190,7 +201,7 @@ per ottenere $\overline{AB} = \overline{BC} \vdash \angle A = \angle C$ bisogna 
 \end{enumerate}
 Abbiamo così dimostrato tutto anche per mezzo dei costrutti della logica
 \end{proof}
-\begin{definizione}
+\begin{defi}
 Una dimostrazione del tipo \textit{F è conseguenza di S}, \textbf{dim}, si indica con:
 $$S\,\,\vdash\,\, F$$
 ed è una sequenza:
@@ -200,7 +211,7 @@ con:
 \item $P_n=F$
 \item $P_i \in S$ o con $P_i$ ottenibile dalle $P_1,...,P_{i-1}$ applicando una regola di inferenza
 \end{itemize}
-\end{definizione}
+\end{defi}
 Un insieme di regole di inferenza costituisce la base di un calcolo logico, il quale ha lo scopo di manipolare le formule in modo
 unicamente sintattico al fine di stabilire una connessione tra un insieme di formule di partenza, dette assiemi e un insieme di conclusioni.
 
@@ -258,8 +269,10 @@ $$\frac{a\to b, \neg b}{\neg a}$$
 $$\frac{P_1\land P_2 \land ... \land P_n}{P_i}\,\,[\mbox{Eliminazione di }\land]$$
 \end{esempio}
 
+\begin{esempio}
 $$\frac{P_1, P_2,...,P_n}{P_1\land P_2 \land ... \land P_n}\,\,[\mbox{Introduzione di }\land]$$
 \end{esempio}
+
 \begin{esempio}[Introduzione di $\lor$]
 $$\frac{a}{a \lor b}$$
 \end{esempio}
@@ -271,7 +284,7 @@ Ecco altre regole utili:
 $$\frac{a \lor \neg a}{vero}$$
 \item \textbf{Eliminazione di} $\neg$:
 $$\frac{\neg \neg a}{a}$$
-\item \textbf{Eliminazione di} $\vee$:
+\item \textbf{Eliminazione di} $\land$:
 $$\frac{a \land vero}{a}$$
 \item \textbf{Contraddizione:}
 $$\frac{a \lor \neg a}{b}$$
@@ -296,10 +309,10 @@ Una formula nella logica proposizionale può essere di tre diversi tipi:
     \item[Contraddizione]:la formula non viene mai soddisfatta
 \end{description}
 
-\begin{thm}
+\begin{teorema}
 $A$ è una formula valida se e solo se $\neg A$ è insoddisfacibile.
 $A$ è soddisfacibile se e solo se $\neg A$ è falsibicabile
-\end{thm}
+\end{teorema}
 
 Si definisce \emph{modello}, indicato con $M \models A$, tutte le valutazioni booleane
 che rendono vera la formula $A$.
@@ -332,15 +345,15 @@ Una dimostrazione di una formula di una logica può venire tramite:
         la negazione delle ipotesi.
 \end{itemize}
 
-\begin{thm}
+\begin{teorema}
     Un apparato deduttivo $R$ è completo se, per ogni formula $A \in Fbf$, $\vdash A$
     implica $\models A$
-\end{thm}
+\end{teorema}
 
-\begin{thm}
+\begin{teorema}
     Un apparato deduttivo $R$ è corretto se, per ogni formula $A \in Fbf$, $\models A$
     implica $\vdash A$
-\end{thm}
+\end{teorema}
 
 \subsection{Logica del primo ordine}
 La logica del primo ordine, chiamata anche logica predicativa, permette di quantificare i vari fatti ed introduce il concetto di funzione e
@@ -449,10 +462,131 @@ avvenuta nel 1972 a Marsiglia attraverso Alain Colmerauer e Philippe Roussel.
 Si tratta di un linguaggio di programmazione logica basato sulle Clausole di Horn, ovvero un insieme di procedure attivate
 da una asserzione iniziale d’obiettivo e la procedura utilizzata da prolog per la computazione è il principio di risoluzione.
 
-Un programma prolog è un formato da un insieme di istruzioni, rappresentanti un sottoinsieme di frasi ben formate della logica del 1° Ordine
+Un programma prolog è un formato da un insieme di istruzioni, rappresentanti un sottoinsieme di frasi ben formate della logica del primo ordine
+e il sistema prolog ha il fine di determinare se una data assunzione è verificata o meno nel programma e sotto quali eventuali vincoli
+ciò risulta  verificato.
 
+I componenti basilari di un programma prolog, rappresentanti tutti una clausola di Horn, sono:
+\begin{description}
+\item [Fatti]: indica una relazione esistente tra due oggetti, che può venire chiama predicato.
+               \begin{minted}{prolog}
+                 A.
+               \end{minted}
+\item [Query]: chiede al sistema se una relazione esiste tra gli oggetti e quindi inizia una deduzione per stabilire se la query
+               è una conseguenza diretta del programma, dopo l'applicazione del modus ponens universale per un numero finito di volte.
+               \begin{minted}{prolog}
+                 :- B_1, B_2, ..., B_n.
+               \end{minted}
+ 
+\item [Regole]: definisce una nuova relazione esistente tra gli oggetti, ossia permette di derivare una nuova conclusione
+                da una serie di fatti e regole.
+                \begin{minted}{prolog}
+                  A :- B_1, B_2, ..., B_n.
+                \end{minted}
+                la testa della regola $A$, viene detta conseguenza mentre il corpo $B_1, B_2, \dots, B_n$ sono l'antecedente
+                e il simbolo $:-$ indica il simbolo logico di implicazione.\newline
+                Una relazione può essere definita ricorsiva, e in questo caso necessita di due regole, una per il caso base e
+                una per il caso passo.
+                
+\end{description}
+I fatti e le regole sono quantificate universalmente mentre una query si intende sempre quantificata esistenzialmente, per cui una query
+risponde true se esiste un instanza $\alpha$ che verifica la query altrimenti risponde false.
 
-I componenti basilari di un programma prolog sono:
+Le query e le regole le abbiamo definite nella forma generale, ossia possiamo definire regole e query su congiunzioni di termini,
+infatti il simbolo ``,'' rappresenta l'operatore logico and, perciò in caso più termini hanno lo stesso simbolo di variabile
+l'instanza $\alpha$ deve essere la stessa per stabilire se una query è una conseguenza diretta del programma.
 
+Le regole stabiliscono una relazione di implicazione, indicato con il simbolo :-, infatti definiamo che risulta A se risulta verificato
+B_1, B_2, $\dots$, B_n, ovviamente sempre dal punto di vista sintattico.
+Per vedere al meglio questo concetto di implicazione vediamo la definizione del concetto di nonno nel linguaggio Prolog:
+\begin{minted}{prolog}
+  grandfather(X, Y) :- father(X, Z), father(Z, Y).
+\end{minted}
+Questa relazione stabilisce che X è il nonno di Y se risulta che esiste un Z tale che X è padre di Z e Z è padre di Y.
+
+%Definizione Unificazione
+Per riuscire a stabilire se un goals è una conseguenza diretta del programma il sistema prolog utilizza il principio di risoluzione,
+utilizzato per effettuare la dimostrazione del programma , e il principio di unificazione, necessario come si evince dal nome per
+unificare le variabili presenti in una formula del programma.
+
+\subsection{Principio di Risoluzione}
+Il principio di risoluzione è una regola di inferenza generalizzata semplice e facilmente implementabile in un calcolatore, assieme all'
+algoritmo di unificazione, che opera su formule ben formate nella forma normale congiuntiva, in cui i letterali si chiamano clausole,
+e viene utilizzata per la dimostrazione di formule ben formate attraverso la refutazione per assurdo.
+La regola di inferenza ha la seguente forma:
+$$\frac{p\vee r,\, s\vee r}{p\vee s}\,\,\,\,\,\,\,\,\,\,\frac{\neg r,\, r}{\perp}$$
+dove:
+\begin{itemize}
+\item $p\vee s$ è la \textit{clausola risolvente}
+\item $\perp$ è la \textit{clausola vuota}, che corrisponde all'aver creato una contraddizione con delle FBF,ossia posso dedurre qualsiasi cosa,
+       compresa anche la clausola vuota(posso infatti dedurre qualsiasi cosa, anche la clausola vuota)
+\end{itemize}
+
+vediamo un'altra regola di inferenza:
+\begin{esempio}[(unit) resolution]
+$$\frac{\neg p,\,\, q_1\vee q_2\vee ... \vee q_k \vee p}{q_1\vee q_2\vee ... \vee q_k}$$
+o anche:
+$$\frac{p,\,\, q_1\vee q_2\vee ... \vee q_k \vee \neg p}{q_1\vee q_2\vee ... \vee q_k}$$
+è una regola di risoluzione molto generale, chiamata anche procedura di Davis-Putnam, e se una delle due clausole da risolvere
+è un \textit{letterale} si parla di \emph{unit resolution}.\newline
+Come esempio si può avere:
+\begin{itemize}
+\item non piove, piove e c'è il sole
+\item c'è il sole
+\end{itemize}
+\end{esempio}
+
+Prolog per stabilire se un goal e/o regola risulta verificata utilizza la refutazione per assurdo, ossia data una proposizione P suppone che
+sia falsa ed applicando le regole di inferenza se risulta che $\neg P$ sarebbe assurdo afferma che $P$ è verificata.
+
+Le formule del linguaggio Prolog sono \emph{clausole di Horn}, definite nelle seguenti regole.
+Ogni FBF può essere in \textit{forma normale a clausola}:
+\begin{itemize}
+\item \textit{formula normale congiunta:} congiunzione di disgiunzioni o di negazione di predicati (sia positivi che negativi):
+$$\wedge_i(\vee_iL_{ij})$$
+\begin{esempio}
+ecco degli esempi:
+\begin{itemize}
+\item $(p(x)\vee q(x,y)\vee \neg t(z))\wedge(p(w)\vee\neg s((u)\vee \neg r(v))$
+\item $(\neg t(z))\vee (p(w)\vee\neg s(u))\wedge (p(x)\vee s(x)\vee q(y))$
+\end{itemize}
+che sono riscrivibili come:
+$$t(z)\to p(x)\vee q(x,y)$$
+e
+$$s(u)\wedge r(v)\to p(w)$$
+\end{esempio}
+\item \textit{forma normale disgiunta}: disgiunzione di congiunzioni o di negazione di predicati (sia positivi che negativi)
+$$\vee_i(\wedge_iL_{ij})$$
+\end{itemize}
+Le clausole con un solo letterale positivo solo le \textit{clausole di Horn}, con lo presenza o meno di letterali negativi,
+e un programma in prolog è una collezione di \textit{clausole di Horn}.\newline
+Ovviamente non tutte le formule ben formate possono rappresentate tramite le clausole di Horn per cui il Prolog è un sottoinsieme
+della logica del Primo Ordine.\newline
+Attraverso questa restrizione nel 1974 Kowalski produsse un interpretazione procedurale delle dimostrazione e ciò diventò la base
+della semantica di ogni sistema prolog.
+
+Ogni espressione prolog viene chiamata \emph{Termine}, che può essere della seguente tipologia:
+\begin{description}
+\item [atomi] : elemento base del sistema prolog e può essere rappresentato da un numero, qualsiasi sequenza racchiusa da (' '),
+  una sequenza di caratteri alfanumerici, con la lettera minuscola iniziale, e nel swprolog anche una stringa indica un atomo.
+
+\item [variabili] : sequenza di caratteri alfanumerici, iniziata con la lettera maiuscola oppure con \_ e vengono inizializzate
+  quando il sistema prova a dimostrare una query.\newline
+                    Una variabile composta soltanto dal simbolo \_ viene detta \emph{anonymous}.
+
+\item [termini composti]: termine composto da un funtore, simbolo rappresentante il nome di una funzione o predicato, e da una sequenza
+                          di termini all'interno di parentesi e separati da una virgola.                    
+\end{description}
+
+Un programma caricato nel sistema prolog rappresenta una base di conoscenza e questa base può venire rappresentata in vari modi:
+\begin{itemize}
+\item tutte le informazioni vengono rappresentate come argomenti in un'unica relazione e ciò può essere comodo solo per
+  piccole relazioni dato che è difficile da mantenere e coprendere una relazione così definita.
+
+\item le informazioni vengono rappresentate con più relazione annidate tra di loro e ciò aumenta la leggibilità e
+  la mantenibilità del programma prolog.
+
+\item tutte le relazioni possono essere rappresentate tramite lo schema XML
+\end{itemize}
 
 \end{document}

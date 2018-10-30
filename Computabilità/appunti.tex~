@@ -1,0 +1,388 @@
+%Appunti del Corso Computabilità
+\documentclass[a4paper]{report}
+\usepackage[T1]{fontenc}%per rappresentare i font italiani, come le lettere accentate, con la giusta spaziatura
+\usepackage[utf8]{inputenc}%per poter inserire nel testo .tex i caratteri unicode8
+\usepackage[italian]{babel}%per poter effettuare la giusta sillabazione della lingua italiana
+\usepackage{amsmath}%per poter rappresentare ed utilizzare al meglio gli ambienti e le formule matematiche
+\usepackage{amssymb}%per rappresentare alcuni simboli particolari matematici
+\usepackage{amsthm}%per definire e poter effettuare le dimostrazioni matematiche
+%\usepackage{amsfont}%per poter avere i font matematici
+\usepackage{booktabs}%per la corretta gestione delle tabelle
+\usepackage{graphics}%per effettuare i grafici
+\usepackage{pgfplots}%per i grafici
+\usepackage{rotating}%per effettuare le rotazioni delle immagini e grafici
+\usepackage{microtype}%per effettuare un aggiustamento della spaziatura tra caratteri e del font
+%\usepackage{minted}
+\usepackage{url}%per poter rappresentare gli url nel testo latex
+%\usepackage{hypertext}%per effettuare un collegamento con una pagina internet
+\theoremstyle{definition}%per avere lo stile tondo quando uso un ambiente definito da newtheorem
+\newtheorem*{defi}{Def}%Definizione per avere la gestione delle definizioni
+\newtheorem{prop}{Prop}[chapter]
+\newtheorem{lem}{Lemma:}
+\newtheorem{thm}{Thm:}[chapter]
+\newtheorem{corol}{Corol}[chapter]
+\newtheorem*{esempio}{Esempio}
+\newcommand{\numberset}{\mathbb}
+\newcommand{\N}{\numberset{N}}
+\newcommand{\Z}{\numberset{Z}}
+\newcommand{\Q}{\numberset{Q}}
+\newcommand{\R}{\numberset{R}}
+\newcommand{\C}{\numberset{C}}
+
+\begin{document}
+\title{Appunti del corso Linguaggi e Computabilità}
+\author{Marco Natali}
+\date{}
+\maketitle
+
+Il corso di Linguaggi e Computabilità riguarda l'informatica teorica e si occupa di definire la calcolabilità di un problema,
+di definire le grammatiche e i linguaggi formali con l'ausilio di anche di automi e macchine di Turing.
+
+Incominciamo con la definizione dei componenti basilari attraverso cui svilupperemo poi i concetti del corso
+\begin{defi}
+  Si definisce come \emph{alfabeto}, indicato con $\Sigma$, una sequenza di simboli, attraverso cui possiamo stabilire un alfabeto.
+\end{defi}
+\begin{esempio}
+  $\Sigma = \{0, 1\}$ e $\Sigma = \{a, b, c\}$
+\end{esempio}
+
+\begin{defi}
+  Si definisce come stringa, indicata solitamente con $w$, una sequenza di simboli appartenenti ad un alfabeto $\Sigma$
+\end{defi}
+Esempio: su un alfabeto $\Sigma = \{0, 1\}$ definiamo le seguenti stringhe:
+  $w = 10110 \,\,\, z = 10111111$
+
+Considerando un qualsiasi alfabeto $\Sigma$, esisterà sempre la stringa $\epsilon$, rappresentante la stringa vuota per cui
+attraverso questa considerazione si definisce una stringa in maniera induttiva come:
+\begin{defi}
+ Una stringa viene definita induttiva come:
+    \begin{description}
+      \item [caso base]: $\epsilon$ è una stringa vuota
+      \item [caso passo]: se $w$ è una stringa, allora anche $a \circ w $ è una stringa
+    \end{description}
+\end{defi}
+Dopo aver definito le stringhe, definiamo le seguenti operazioni definite su le stringhe:
+  \begin{itemize}
+  \item lunghezza $|w|: \Sigma ^ * \to \N$: rappresenta il numero di caratteri presenti in una stringa, con $\Sigma ^ *$ indicante
+        una qualsiasi stringa e la definizione di lunghezza avviene induttivamente come segue:
+        \begin{description}
+        \item [base]: la lunghezza di $|\epsilon| = 0$
+        \item [passo]: se $|w| = n$ con $n \in \N$ e sia $a \in \Sigma$ allora $|a \circ w| = 1 + |w| = n + 1$.
+        \end{description}
+        \begin{esempio}
+          $w = abcdec  \quad |w| = 6$
+        \end{esempio}
+  \item insieme di stringhe: definiamo come $\Sigma ^ k$ l'insieme di stringhe su $\Sigma$ con $k$ caratteri come segue:
+        \begin{align}
+          \Sigma ^ 0 & = \{ \epsilon\} \\
+          \Sigma ^ 1 & = \Sigma \\
+          \Sigma ^ 2 & = insieme di stringhe di due caratteri \\
+          \dots \dots \\
+          \Sigma ^ k & = insieme di stringhe di k caratteri \\
+        \end{align}
+        Le due più importanti insiemi di stringhe, usate per rappresentare l'insieme di stringhe di qualsiasi lunghezza, sono:
+        \begin{align}
+          \Sigma ^ * & = \cup _{i = 0} \Sigma ^ i \\
+          \Sigma ^ + & = \Sigma ^ * - \{\epsilon\} \\
+        \end{align}
+        
+  \item concatenazione $\circ: \sum ^ * \times \sum ^ * \to \sum ^ *$: rappresenta l'aggiunta dei caratteri della seconda stringa
+        al termine della prima stringa ma vediamo ora una definizione più formale:
+        \begin{defi}
+          Date due stringhe $x = a_1 a_2 \dots a_n$ e $y = b_1 b_2 \dots b_n$ si definisce $x \circ y = a_1 a_2 \dots a_n b_1 b_2 \dots b_n$
+          con $|x \circ y| = |x| + |y| = n + m$.
+        \end{defi}
+        La concatenazione possiede le seguenti proprietà:
+        \begin{itemize}
+        \item è associativa: $\forall x,y,z \in \sum^* x \circ (y \circ z) = (x \circ y) \circ z$.
+        \item non è commutativa infatti presi due stringhe $x,y$ diverse risulta $x \circ y \neq y \circ x$.
+        \item possiede l'elemento neutro $\epsilon$ per cui $x \circ \epsilon = x = \epsilon \circ x$.
+        \end{itemize}
+        \begin{esempio}
+          \begin{align}
+            w = 1011100 \quad z = 1011110  \\
+          w \circ z = 10111001011110 \\
+          z \circ w = 10111101011100 \\
+          \end{align}
+        \end{esempio}
+  \end{itemize}
+  Attraverso le seguenti operazioni si può stabilire che $(\Sigma ^ *,\circ,\epsilon)$ è un monoide libero su $\Sigma$.
+
+  \begin{defi}
+    Definiamo come \emph{Linguaggio} un'insieme di stringhe scelte su $\Sigma ^ *$ scelte per far parte del linguaggio
+    ossia $L \subseteq \Sigma ^ *$.
+    Le componenti di un linguaggio sono:
+    \begin{description}
+    \item [alfabeto] : insieme di simboli su cui definiamo poi il lessico e la sintassi
+    \item [lessico]: definisce il vocabolario del linguaggio e viene definito tramite una grammatica di tipo 3
+    \item [sintassi]: definisce come le varie frasi del linguaggio devono essere disposte nel linguaggio e ciò
+      viene definito da una grammatica di tipo 2.
+    \item [semantica]: il significato attribuito alle frasi del linguaggio però nei linguaggi formali deriva dalla sintassi
+      anche se in questo corso la semantica non verrà affrontata.
+    \end{description}
+  \end{defi}
+
+  \begin{defi}
+    Si definisce come \emph{Grammatica} un'insieme di regole che delineano le stringhe ammissibili del linguaggio e
+    possono essere di due tipologie:
+    \begin{description}
+      \item [grammatica generativa] : insieme di regole che permettono di generare tutte le stringhe di un lunguaggio partendo dalle stringhe base 
+      \item [grammatica analitica] : analizza le stringhe passate in input e stabilisce l'appartenenza o meno al linguaggio
+    \end{description}
+    \end{defi}
+  Nel 1956 il linguista Choumsky introdusse e definì la gerarchia delle grammatiche, che ha avuto una notevole importanza
+  nell'informatica teorica anche se il suo intento era quello di catalogare le varie tipologie di linguaggi naturali:
+  \begin{description}
+  \item [grammatiche di tipo 3]: sono i linguaggi regolari, generati da grammatiche regolari e riconosciuti da automi a stati finiti.
+    Una spiegazione dettagliata avverrà nel seguito dei paragrafi/capitoli.
+    
+  \item [grammatiche di tipo 2]: grammatiche libere dal contesto, riconosciute da automi a pila; una spiegazione più dettagliata
+    avverrà nei paragrafi successivi.
+    
+  \item [grammatiche di tipo 1]: grammatica dipendente dal contesto in cui per definizione i lati destri delle produzioni delle
+    grammatiche non posso essere più lunghi dei rispetti lati sinistri, ossia $\alpha \to \beta |\alpha| \geq |\beta|$.
+    Per rappresentarli e stabilire se una stringa appartiene al linguaggio si usano gli \emph{automi lineari}, che non sono oggetto del corso.
+    
+  \item [grammatiche di tipo 0]: grammatiche in cui non vi è alcun vincolo per le produzioni della grammatica e può essere
+         rappresentato tramite una macchina di turing nondeterministica però questa tipologia di grammatica non verrà affrontata.
+  \end{description}
+  
+\chapter{Grammatiche di tipo 2}
+Iniziamo ora a considerare le grammatiche di tipo 2 incominciando da un esempio e poi definendola in maniera formale.
+\begin{esempio}
+  Dato il linguaggio delle stringhe palindrome $L _{pal} = \{w \in \Sigma ^ * : w = w ^ R\}$ dove $w^R$ rappresenta la stringa
+  reversa per cui ad esempio $''OTTO'' \in L _ {pal}$ mentre $''PAPA''$ non appartiene al linguaggio.
+ 
+  Definiamo in maniera più formale e meno ambigua i componenti di $L_{pal}$:
+  \begin{description}
+  \item [caso base]: $\epsilon, 0, 1 \in L_{pal}$
+  \item [caso induttivo]: se $w \in L_{pal}$ allora $0w0$ e $1w1$ appartengono a $L_{pal}$ e nient'altro appartiene al linguaggio.
+  \end{description}
+  Le regole di derivazione per $L_{pal}$ sono le seguenti, e derivano dalla definizione dei componenti:
+  \begin{itemize}
+  \item $P \to \epsilon$
+  \item $P \to 0$
+  \item $P \to 1$
+  \item $P \to 0P0$
+  \item $P \to 1P1$
+  \end{itemize}
+  Dopo aver dato le regole di derivazione dobbiamo capire se le seguente regole definiscono tutte e sole le stringhe del linguaggio per
+  cui ci chiediamo per esempio se $010 \in L_{pal}$ e $10001 \in L_{pal}$?
+  \begin{align}
+    P \Rightarrow 0P0 \Rightarrow 010  \quad \text{la stringa appartiene correttamente al linguaggio}\\
+    P \Rightarrow 1P1 \Rightarrow 10P01 \Rightarrow 10001 \quad \text{la stringa appartiene correttamente al linguaggio}\\
+  \end{align}
+  
+  Attraverso l'applicazione di una serie di regole di derivazione otteniamo una stringa $w \in \Sigma ^*$ se e solo $w \in L$
+  della grammatica definita.
+\end{esempio}
+
+%Definizione di Grammatica
+\begin{defi}
+  Si definisce una grammatica context free come $G = (V, T, P_g, S)$, i cui componenti sono:
+  \begin{itemize}
+  \item $V$ rappresenta l'insieme delle variabili usate per rappresentare un linguaggio
+  \item $T$ rappresenta l'insieme dei simboli terminali, ossia l'insieme dei simboli attraverso cui sono definite le stringhe
+    del linguaggio per questo di solito coincide con l'alfabeto del linguaggio.
+
+  \item $S$ rappresenta la variabile di inizio della grammatica, ossia la variabile attraverso cui si definisce la grammatica
+    per cui le altre variabili sono classi ausiliari di stringhe che aiutano a definire le stringhe del linguaggio.
+
+  \item $P_g$ indica l'insieme di regole, che rappresentano la definizione ricorsiva del linguaggio, della seguente forma:
+    \begin{equation*}
+        P_g = \{ X \to \beta | \beta \in (V \cup  T)^* \ \text{e} \ X \in V\}
+    \end{equation*}
+    la variabile $X$ rappresenta la testa della produzione mentre $\beta$ indica il corpo
+  \end{itemize}
+\end{defi}
+
+  Nell'esempio del linguaggio palidromo la grammatica che lo genera è
+  \begin{equation*}
+    G = (\{P\},\{0, 1\}, \{P \to \epsilon,P \to 0,P \to 1,P \to 0P0,P \to 1P1\}, S\}
+  \end{equation*}
+
+  %Concetto di derivazione
+  Dopo aver definito in maniera formale di grammatica introduciamo il concetto di derivazione, per stabilire se una stringa appartiene
+  o meno al linguaggio.
+  
+  \begin{defi}
+    Sia $G = (V, T,P_g,S)$ una grammatica context-free, sia $\alpha A \beta$ una stringa di terminali e variabili con $A \in V$ e
+    sia infine $A \to \gamma$ una regola di derivazione allora $\alpha A \beta \Rightarrow _g \alpha \gamma \beta$.
+  \end{defi}
+  \begin{defi}
+    Si indica $\Rightarrow _g ^*$, il simbolo di applicazione di zero,uno o più step di derivazione, definiti nel seguente modo:
+    \begin{description}
+    \item [caso base]: per ogni stringa $\alpha$ di terminali e variabili, si ha $\alpha \Rightarrow _g ^* \alpha$
+    \item [caso passo]: se $\alpha \Rightarrow _g ^* \beta$ e $\beta \Rightarrow _ g \gamma$ allora $\alpha \Rightarrow _g ^* \gamma$
+    \end{description}
+  \end{defi}
+  %Esempio
+
+  Le stringhe che otteniamo sono delle forme sentenziali, ossia stringhe appartenenti a $(V \cup T)^*$ e un particolare
+  sottoinsieme, in cui le stringhe sono composte da letterali, definisce le stringhe del linguaggio.
+
+  Sempre considerando l'esempio del linguaggio delle stringhe palindrome la derivazione di $10011001$ è la seguente:
+  \begin{equation*}
+    P \Rightarrow 1P1 \Rightarrow 10P01 \Rightarrow 100P001 \Rightarrow 1001P1001 \Rightarrow 10011001
+  \end{equation*}
+  
+  Al fine di ridurre il numero di scelte nella derivazione di una stringa introduciamo ora:
+  \begin{description}
+  \item [left derivation]: sostituiamo la variabile più a sinistra nell'applicazione di una regola di derivazione
+                           e ciò viene rappresentato con il simbolo $\Rightarrow _{lm}$.
+
+  \item [right derivation]: sostituiamo la variabile più a destra nell'applicazione di una regola di derivazione
+                            ed essoviene rappresentato con il simbolo $\Rightarrow _{rm}$.
+  \end{description}
+
+  \begin{defi}
+    Data una grammatica context-free $G = (V, T, P_g, S)$ si definisce un linguaggio context-free $L$ come:
+    \begin{equation*}
+      L_g = \{ w \in T^* | S \Rightarrow _g ^* w \}
+    \end{equation*}
+  \end{defi}
+
+  Nei linguaggi context-free si può soltanto effettuare la concatenazione e l'annidamento dei sottolinguaggi come vediamo
+  nei seguenti esempi:
+  
+  %Esempio di linguaggio Context-free
+  \begin{esempio}
+  Mostriamo ora un esempio di linguaggio definito come la concatenazione di due linguaggi
+  \begin{equation*}
+     L_g = \{ w \in \{0,1\}^* | w = 0^m 1^{m+1}01^n001^n \ n\geq 0\}
+  \end{equation*}
+  Per sapere come costruire la grammatica del linguaggio dobbiamo visualizzare la struttura della stringa
+  \begin{equation*}
+    0^m11^m 0 1^n001^n  \quad \text{lo spazio rappresenta i blocchi su cui viene formata la stringa}
+  \end{equation*}
+  Si può vedere che i 3 blocchi sono 3 linguaggi che concatenati generano il linguaggio $L_g$ per cui le regole
+  di derivazione di $L_g$ sono $P_g = \{S \to X0Y, X \to 1 | 0X1, Y \to 1001 | 1Y1\}$.
+  \end{esempio}
+  
+  \begin{esempio}
+    Mostriamo ora un esempio di linguaggio definito come l'annidamento di linguaggi:
+    \begin{equation*}
+      L = \{ w = \{a,b,c,d\}^* | w = a^nb^mc^md^n \, m > 0, n \geq 0\}
+    \end{equation*}
+    Le regole di produzione del seguente linguaggio sono $P_g = \{S \to aSd | Y, Y \to bYc | bc\}$
+    e come si nota il linguaggio viene definito come una sequenza di a e d intrammezzate da un blocco Y, formato da b e c,
+    e ciò è l'annidamento tra diversi blocchi di una stringa che formano le stringhe del linguaggio.
+  \end{esempio}
+
+  %Inferenza Ricorsiva
+  Un'altra modalità per stabilire l'appartenza di una stringa di un linguaggio è \emph{inferenza ricorsiva}, il quale a differenza delle altre
+  applica le regole dal corpo alla testa, ossia concateniamo  ogni terminale che appare nel corpo e inferiamo che la stringa trovata
+  è nel linguaggio delle variabili, presenti in testa alle regole.
+
+  Viene poco utilizzato in quanto è più naturale e chiaro pensare secondo la derivazione per cui ne vediamo soltanto un esempio
+  e lo usiamo in un importante teorema sull'equivalenza delle modalità di derivazione, che verrà presentato prossimamente.
+  \begin{esempio}
+     Fare esempio
+  \end{esempio}
+  
+  %Alberi Sintattici
+  Introduciamo ora un'importante forma grafica per vedere le regole di derivazioni applicate per formare una stringa
+  \begin{defi}
+    Data una grammatica context-free $G$, un albero sintattico per $G$ è un albero composto come:
+    \begin{itemize}
+       \item ogni nodo interno è etichettato con una variabile $X \in V$, con la radice etichettata con $S$.
+       \item ogni foglia è etichettata con una variabile, un simbolo terminale o $\epsilon$; se una foglia viene etichettata
+             con $\epsilon$ allora dev essere l'unico figlio del padre.
+       \item se un nodo è etichettato con $A$ e i suoi figli sono etichettati come $x_1, x_2, \dots, x_k$, allora $A \to x_1x_2 \dots x_k$
+             è una regola di produzione della grammatica.
+    \end{itemize}
+  \end{defi}
+  Eseguendo il prodotto delle stringhe foglia otteniamo una stringa $w$ appartenente alla grammatica di cui abbiamo svolto l'albero sintattico
+  
+  %Esempio di Albero Sintattico
+  \begin{esempio}
+    Prendendo il linguaggio $L$ definito come segue:$L = \{w \in \{a,b,c,d\}^* | w = a^ncb^mcd^{n+m} n \geq 0,m > 0\}$
+    stabiliamo una grammatica context-free e fare l'albero sintattico di $aacbbbcddddd \in L$:
+    le regole di produzione di $L$ sono $P_g = \{S \Rightarrow aSd | cY, Y \Rightarrow bcd | bYd\}$ per cui la grammatica è:
+    \begin{equation*}
+      G = (\{S,Y\},\{a,b,c,d\},P_g,S)
+    \end{equation*}
+    L'albero sintattico di $aacbbbcddddd$ è il seguente:
+    
+  \end{esempio}
+
+  \section{Equivalenza tra le derivazioni}
+  In questo paragrafo consideriamo un importante teorema sulle equivalenze tra le varie modalità di derivazione, definito come segue:
+  \begin{thm}
+    Data una grammatica context-free $G = (V, T,P_g,S)$ abbiamo che le seguenti modalità di derivazione sono equivalenti:
+    \begin{enumerate}
+    \item la procedura di inferenza ricorsiva che determina che una stringa di terminali $w$ appartiene ad un linguaggio di variabili $A$
+    \item $A \Rightarrow ^ * w$
+    \item $A \Rightarrow _{lm} ^ * w$
+    \item $A \Rightarrow _{rm} ^ * w$
+    \item esiste un albero sintattico con radice $A$ e come prodotto di foglie la stringa $w$.
+    \end{enumerate}
+  \end{thm}
+  %Immagine per vedere la modalità di equivalenza
+
+  I primi due sono facilmente dimostrabili dato che le derivazione a sinistra e a destra sono delle derivazioni invece iniziamo a dimostrare:
+  \begin{thm}
+
+    pippo
+  \end{thm}
+
+
+  \section{Grammatiche e Linguaggi Ambigui}
+  In questo paragrafo analizziamo le grammatiche e i linguaggi ambigui, incominciando da un esempio per catturare gli aspetti essenziali,
+  che poi verranno definiti formalmente.
+
+  Incominciamo per cui a considerare le espressioni algebriche definite su $T = \{+, *, a, b, (, )\}$ con le seguenti regole di produzione:
+  \begin{equation*}
+    P_g = \{E \Rightarrow I | E + E | E * E | (E), I \Rightarrow a | b | aI | bI \}
+  \end{equation*}
+  La grammatica per definire gli identificatori $I$ è una grammatica di tipo 3, cosa che analizzeremo nel prossimo capitolo, però
+  questa grammatica è ambigua dato che preso ad esempio $a + b * a$ avremmo due derivazioni left-most, che sono le seguenti:
+  %Alberi sintattici di a + b * a
+
+  Diamo ora una definizione formale di grammatica ambigua:
+  \begin{defi}
+    Si dice che una grammatica è ambigua se e solo se esiste una stringa $w \in L$ tale per cui $w$ ammette due derivazioni $lm$ e/o $rm$
+    diverse oppure ammette due alberi sintattici definiti sulla stessa grammatica $G$
+  \end{defi}
+  L'obiettivo è quello di avere grammatiche non ambigue perchè esse permettono di definire in maniera univoca, per cui automamilizzabile
+  con una procedura, l'insieme delle stringhe del linguaggio e fortunatamente nella maggior parte dei casi, quando il linguaggio non è ambiguo,
+  data una grammatica ambigua è possibile definire una grammatica non ambigua $G'$ tale che $L(G) = L(G')$.
+
+  \begin{defi}
+    Un linguaggio $L \subseteq \sum^*$ è detto \emph{ambiguo} se per ogni grammatica $G$, tale per cui $L = L_G$, risulta che $G$ è ambigua.
+  \end{defi}
+  La grammatica data delle espressioni algebriche ha due cause di ambiguità:
+  \begin{enumerate}
+  \item la precedenza degli operatori non viene rispettata in quanto andrebbe raggruppato prima il silmbolo di $*$ rispetto a $+$
+  \item una sequenza di uguali operatori può essere reggruppata sia da sinistra che da destra e si stabilisce per convenzione
+    che si raggruppa da sinistra a destra.
+  \end{enumerate}
+  Considerate queste cause di ambiguità, per eliminarla si introducono altre variabili definite come:
+  \begin{enumerate}
+  \item un fattore è un espressione che non può essere spezzata da nessun operatore, sia il $*$ che il $+$, per cui gli unici fattori
+    nel nostro linguaggio delle espressioni sono gli identificatori e ogni espressioni dentro le parentesi.
+  \item un termine è un espressione che non può spezzata dall'operatore $+$.
+  \item un espressione può riferirsi a qualsiasi possibile espressione, incluse quelle che possono essere spezzate da un adiacente $*$ o $+$
+  \end{enumerate}
+  La grammatica non ambigua del linguaggio delle espressioni è la seguente:
+  \begin{equation*}
+    P_{exp} = \{E \to T | E + T, T \to F | T * F,F \to I | (E), I \to a | b | aI| bI | 0I | 1I\}
+  \end{equation*}
+
+  Mostriamo ora un esempio di linguaggio ambiguo $L$ definito come segue:
+  \begin{equation*}
+    L = \{w = a^nb^nc^md^m | n,m \geq 1\} \cup \{z = a^nb^mc^md^n | n,m \geq 1 \}
+  \end{equation*}
+  Le regole di produzione che generano il seguente linguaggio sono le seguenti:
+  \begin{equation*}
+    P_L = \{S \to XY | Z, X \to ab | aXb, Y \to cd | cYd, Z \to aZd | aRd, R \to bc | bRc\}
+  \end{equation*}
+  Questa grammatica è ovviamente ambigua dato che per esempio la stringa $aabbccdd$ ha due derivazioni sinistre:
+
+  La dimostrazione che il linguaggio è ambiguo è molto complessa ma il concetto alla base è quello di provare che tutte le grammatiche
+  del linguaggio generano un numero finito di stringhe con almeno due derivazioni sinistre/destre e nel nostro caso definiamo che il
+  linguaggio è ambiguo perche per $n = m$ qualsiasi grammatica usiamo per definire il linguaggio avremmo i due sottolinguaggi che generano
+  la stessa stringa in maniera diversa.
+
+\chapter{Grammatiche Regolari}
+\end{document}

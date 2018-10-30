@@ -12,6 +12,7 @@
 \usepackage{rotating}%per effettuare le rotazioni delle immagini e grafici
 \usepackage{microtype}%per effettuare un aggiustamento della spaziatura tra caratteri e del font
 \usepackage{minted}
+\usepackage{pygmentize}%Package necessario per far funzionare minted
 \usepackage{url}%per poter rappresentare gli url nel testo latex
 %\usepackage{hypertext}%per effettuare un collegamento con una pagina internet
 \newtheorem{defi}{Definizione}%Definizione per avere la gestione delle definizioni
