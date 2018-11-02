@@ -11,7 +11,8 @@
 \usepackage{pgfplots}%per i grafici
 \usepackage{rotating}%per effettuare le rotazioni delle immagini e grafici
 \usepackage{microtype}%per effettuare un aggiustamento della spaziatura tra caratteri e del font
-\usepackage{minted}
+%\usepackage{pygmentize}%Package necessario per far funzionare minted
+\usepackage[cache = false]{minted}
 \usepackage{url}%per poter rappresentare gli url nel testo latex
 %\usepackage{hypertext}%per effettuare un collegamento con una pagina internet
 \newtheorem{defi}{Definizione}%Definizione per avere la gestione delle definizioni
@@ -470,18 +471,18 @@ I componenti basilari di un programma prolog, rappresentanti tutti una clausola 
 \begin{description}
 \item [Fatti]: indica una relazione esistente tra due oggetti, che può venire chiama predicato.
                \begin{minted}{prolog}
-                 A.
+                 worksFor(paolo, coop).
                \end{minted}
 \item [Query]: chiede al sistema se una relazione esiste tra gli oggetti e quindi inizia una deduzione per stabilire se la query
                è una conseguenza diretta del programma, dopo l'applicazione del modus ponens universale per un numero finito di volte.
                \begin{minted}{prolog}
-                 :- B_1, B_2, ..., B_n.
+                 :- worksFor(paolo, trenord).
                \end{minted}
  
 \item [Regole]: definisce una nuova relazione esistente tra gli oggetti, ossia permette di derivare una nuova conclusione
                 da una serie di fatti e regole.
                 \begin{minted}{prolog}
-                  A :- B_1, B_2, ..., B_n.
+                  parent(X, Y) :- father(X, Y).
                 \end{minted}
                 la testa della regola $A$, viene detta conseguenza mentre il corpo $B_1, B_2, \dots, B_n$ sono l'antecedente
                 e il simbolo $:-$ indica il simbolo logico di implicazione.\newline
@@ -500,11 +501,10 @@ Le regole stabiliscono una relazione di implicazione, indicato con il simbolo :-
 B_1, B_2, $\dots$, B_n, ovviamente sempre dal punto di vista sintattico.
 Per vedere al meglio questo concetto di implicazione vediamo la definizione del concetto di nonno nel linguaggio Prolog:
 \begin{minted}{prolog}
-  grandfather(X, Y) :- father(X, Z), father(Z, Y).
+  grandfather(X, Y) :- father(X, Z), parent(Z, Y).
 \end{minted}
-Questa relazione stabilisce che X è il nonno di Y se risulta che esiste un Z tale che X è padre di Z e Z è padre di Y.
+Questa relazione stabilisce che X è il nonno di Y se risulta che esiste un Z tale che X è padre di Z e Z è genitore di Y.
 
-%Definizione Unificazione
 Per riuscire a stabilire se un goals è una conseguenza diretta del programma il sistema prolog utilizza il principio di risoluzione,
 utilizzato per effettuare la dimostrazione del programma , e il principio di unificazione, necessario come si evince dal nome per
 unificare le variabili presenti in una formula del programma.
@@ -514,10 +514,10 @@ Il principio di risoluzione è una regola di inferenza generalizzata semplice e 
 algoritmo di unificazione, che opera su formule ben formate nella forma normale congiuntiva, in cui i letterali si chiamano clausole,
 e viene utilizzata per la dimostrazione di formule ben formate attraverso la refutazione per assurdo.
 La regola di inferenza ha la seguente forma:
-$$\frac{p\vee r,\, s\vee r}{p\vee s}\,\,\,\,\,\,\,\,\,\,\frac{\neg r,\, r}{\perp}$$
+$$\frac{p\vee r,\, s\lor r}{p\vee s}\,\,\,\,\,\,\,\,\,\,\frac{\neg r,\, r}{\perp}$$
 dove:
 \begin{itemize}
-\item $p\vee s$ è la \textit{clausola risolvente}
+\item $p \lor  s$ è la \textit{clausola risolvente}
 \item $\perp$ è la \textit{clausola vuota}, che corrisponde all'aver creato una contraddizione con delle FBF,ossia posso dedurre qualsiasi cosa,
        compresa anche la clausola vuota(posso infatti dedurre qualsiasi cosa, anche la clausola vuota)
 \end{itemize}
@@ -543,7 +543,9 @@ Le formule del linguaggio Prolog sono \emph{clausole di Horn}, definite nelle se
 Ogni FBF può essere in \textit{forma normale a clausola}:
 \begin{itemize}
 \item \textit{formula normale congiunta:} congiunzione di disgiunzioni o di negazione di predicati (sia positivi che negativi):
-$$\wedge_i(\vee_iL_{ij})$$
+  \begin{equation*}
+    \land_i(\lot_iL_{ij})
+  \end{equation*}
 \begin{esempio}
 ecco degli esempi:
 \begin{itemize}
@@ -556,7 +558,9 @@ e
 $$s(u)\wedge r(v)\to p(w)$$
 \end{esempio}
 \item \textit{forma normale disgiunta}: disgiunzione di congiunzioni o di negazione di predicati (sia positivi che negativi)
-$$\vee_i(\wedge_iL_{ij})$$
+  \begin{equation*}
+    \lor_i(\land_i L_{ij})
+  \end{equation*}
 \end{itemize}
 Le clausole con un solo letterale positivo solo le \textit{clausole di Horn}, con lo presenza o meno di letterali negativi,
 e un programma in prolog è una collezione di \textit{clausole di Horn}.\newline
@@ -582,11 +586,556 @@ Un programma caricato nel sistema prolog rappresenta una base di conoscenza e qu
 \begin{itemize}
 \item tutte le informazioni vengono rappresentate come argomenti in un'unica relazione e ciò può essere comodo solo per
   piccole relazioni dato che è difficile da mantenere e coprendere una relazione così definita.
-
+ %Inserire esempio
 \item le informazioni vengono rappresentate con più relazione annidate tra di loro e ciò aumenta la leggibilità e
   la mantenibilità del programma prolog.
-
+ %Inserire esempio
 \item tutte le relazioni possono essere rappresentate tramite lo schema XML
 \end{itemize}
 
+\section{Principio di Unificazione}
+Il principio di unificazione è il cuore del modello di computazione dei programmi logici ed è alla base della deduzione automatica
+e dell'uso dell'inferenza logica nell'intelligenza artificiale.
+
+Per poter definire il principio di unificazione introduciamo le seguenti definizioni:
+\begin{itemize}
+  \item Un termine $t$ è un instanza comune  di $t_1$ e $t_2$ se esistono le sostituzioni $\alpha_1$ e $\alpha_2$
+        che rendono $t$ uguale a $\alpha_1t_1$ e a $\alpha_2t_2$.
+  \item Un termine $s$ è un termine generale del termine $t$ se $t$ è un'istanza di $s$ ma $s$ non è un istanza di $t$.
+
+  \item Un termine $s$ è una variante alfabetica del termine $t$ se $t$ è un istanza di $s$ e $s$ è un istanza di $t$.
+\end{itemize}
+L'unificazione tra due termini consiste nell'effettuare una sostituzione che rende i due termini identici
+per cui c'è una relazione chiusa con l'instanza comune di due termini.
+
+Il principio di unificazione consiste nel trovare il \emph{mgu}(Most general unifier),
+l'unificazione la cui instanza comune è un termine generale, e in caso non lo trova riporta un fallimento.
+Presentiamo ora alcuni esempi per capire come funziona il Mgu:
+\begin{minted}{prolog}
+Mgu(42, 42) % ->{} non serve nessuna sostituzione
+Mgu(42, X) % ->{X/42} ovvero X deve essere 42
+Mgu(X,42) % ->{X/42} ovvero X deve essere 42
+Mgu(foo(bar, 42), foo(bar, X)) % ->{X/42} ovvero X deve essere 42
+Mgu(foo(X, 42), foo(bar, X)) % ->{Y/bar, X/42} ovvero X deve essere 42
+
+Mgu(foo(bar(42), baz), foo(X, Y))  /* ->{X/bar (42), Y/baz}
+ ovvero X deve essere  bar(42) e Y baz*/
+Mgu(foo(X), foo(bar(Y))) 
+Mgu(foo(bar(42), baz), foo(X, Y))  /* ->{X/bar (y), Y_:G001}
+ ovvero non si ha soluzione */
+\end{minted}
+L'Mgu non è altro che il risultato finale della procedura di valutazione del Prolog. Il modo più semplice per vedere se l'unificazione funziona è usare "=", ovvero, ricollegandoci al codice sopra:
+\begin{minted}{prolog}
+?- 42 = 42.
+Yes
+
+?- 42 = X.
+X = 42 % per rendere vera l'affermazione serve x = 42
+Yes
+
+?- foo(bar, 42) = foo(bar, X).
+X = 42
+Yes
+
+?- foo(Y, 42) = foo(bar, X).
+Y = bar
+X = 42
+Yes
+
+?- foo(bar(42), baz) = foo(X, Y).
+X = bar(42)
+Y = baz
+Yes
+
+?- foo(X) = foo(bar(Y)).
+X = bar(Y)
+Y = _G001
+Yes
+
+?- foo(42, bar(X), trillian) = foo(Y, bar(Y), X).
+No
+\end{minted}
+
+%Si ha quindi un solo termine come conseguente (\textit{regola di Horn}). Si ha quindi:
+%\textit{un pesce è un animale e ha le squame}: 
+%\begin{minted}{prolog}
+%pesce(x) :- animale(x), ha_le_squame(x).
+%\end{minted}
+%oppure:\\
+%\textit{gigi ama chiunque ami il vino}
+%aggiungi prolo
+
+
+Si definisce una lista in Prolog racchiudendo gli elementi (termini e/o variabili logiche) della lista tra parentesi quadre \textit{[} e \textit{]}
+e separandoli da virgole. Gli elementi di una lista in Prolog possono essere termini
+qualsiasi o liste. La lista vuota si indica con \textit{[]}.
+Una lista non vuota si può dividere in \textit{testa} e \textit{coda}:
+\begin{itemize}
+\item la testa è il primo elemento della lista
+\item la coda rappresenta tutto il resto ed è sempre una lista
+\end{itemize}
+Presentiamo ora degli esempi di liste in Prolog:
+\begin{minted}{prolog}
+[a, b, c] % a è la testa e [b, c] la coda
+[a, b] % a è la testa e [b] la coda
+[a] % a è la testa e [] la coda
+[[a]] % [a] è la testa e [] la coda
+[[a, b], c] % [a, b] è la testa e [c] la coda
+[[a, b], [c], d] % [a, b] è la testa e [[c], d] la coda
+\end{minted}
+Prolog possiede uno speciale operatore usato per distinguere tra l'inizio e la coda di una lista: l'operatore \textit{|}:
+\begin{minted}{prolog}
+?- [X | Ys] = [mia, vincent, jules, yolanda].
+X = mia
+Ys = [vincent, jules, yolanda]
+Yes
+
+?- [X, Y | Zs] = [the, answer, is, 42].
+X = the
+Y = answer
+Zs = [is, 42]
+Yes
+
+?- [X, 42 | _] = [41, 42, 43, foo(bar)].
+X = 41
+Yes
+\end{minted}
+La lista vuota \textit{[]} in prolog è gestita come una lista speciale:
+\begin{minted}{prolog}
+?- [X | Ys] = [].
+No
+\end{minted}
+
+In Prolog la base di conoscenza è nascosta ed è accessibile solo tramite opportuni comandi o tramite ambiente di programmazione
+per cui bisogna poter caricare un insieme di fatti e regole nell'ambiente Prolog, nel nostro caso SW-Prolog.
+Per farlo si ha il comando \textit{consult}, che appare come un predicato da valutare (un goal) e prende almeno un termine che denota un file
+come argomento, file che deve contenere fatti e regole
+\begin{minted}{prolog}
+?- consult(’guida-astrostoppista.pl’).
+Yes
+
+?- consult(’Projects/Lang/Prolog/Code/esempi-liste.pl’).
+Yes
+\end{minted}
+
+il predicato \textit{reconsult} deve invece essere usato quando si vuole ricaricare un file (ovvero un data o knowledge base) nell'ambiente Prolog.
+L’effetto è di prendere i predicati presenti nel file, rimuoverli completamente dal data base interno
+e di reinstallarli utilizzando le nuove definizioni:
+\begin{minted}{prolog}
+?- reconsult(’guida-astrostoppista.pl’).
+Yes
+% A questo punto la base di dati Prolog contiene il
+% nuovo contenuto del file.
+\end{minted}
+
+?- reconsult(user). % Notare il sotto-prompt.
+|- foo(42).
+|- friends(zaphod, trillian).
+|- ^D
+Yes
+
+% A questo punto la base di dati Prolog contiene i due
+% fatti inseriti manualmente.
+?- friends(zaphod, W).
+W = trillian
+Yes
+\end{minted}
+
+Il Prolot lavora su strutture ad albero e anche i programmi sono strutture dati manipolabili con predicati \textit{extra-logici}
+per cui il prolog usa la ricorsione invece dell'assegnamento.
+
+Vediamo ora un programma che effettua la somma tra due numeri naturali:
+\begin{minted}{prolog}
+sum(0, X, X).
+sum(s(X), y, s(Z)) -: sum(X, Y, Z).
+\end{minted}
+con $s(n)$ interpretato come il successore ($0=0,\, s(0)=1, \,s(s(0))=2,... $).\newline
+Quando viene specificato un goal esso viene confrontato con tutte le clausole di programma, che usa il procedimento di negazione
+e di trasformazione in sintassi Prolog come viene mostrato in dettaglio con questo esempio:
+\begin{itemize}
+\item  interroghiamo il programma:
+$$\exists X\,\,\, sum(s(0),\, 0,\, X)\,\,\,\,\,\{X\,/\, s(0)\}$$
+$$\exists W\,\,\, sum(s(s(0)),\, s(0), \, W)\,\,\,\,\,\{W\,/\, s(s(s(0)))\}$$
+dove $\{X\,/\, s(0)\}$ e $\{W\,/\, s(s(s(0)))\}$ sono le sostituzioni che rappresentano il risultato
+\item usiamo il procedimento di negazione e trasformazione in sintassi:
+\begin{minted}{prolog}
+:- sum(s(0), 0, N).    %{N / s(0)}
+:- sum (s(s(0)), s(0), W).     %{W / s(s(s(0)))}
+\end{minted}
+con $\{N\, /\, s(0)\}$ e $\{W \,/\, s(s(s(0)))\}$ che sono le \textbf{sostituzioni}.
+
+Una computazione corrisponde al tentativo di dimostrare, tramite la regola di risoluzione, che una formula segue logicamente da un programma
+e si ha inoltre che si deve determinare una sostituzione per le variabili del goal per cui la query segue  logicamente dal programma:
+\begin{esempio}
+Sia dato il programma P e la query:
+\begin{minted}{prolog}
+:- p(t1, t2, ..., tm).
+\end{minted}
+se \textbf{X1,..., Xn} sono le variabili in \textbf{t1,..., tm}, il significato della query è:
+$$\exists X1,\,..., \,Xn\, . \,p(t1, t2, ..., tm)$$
+e si cerca una sostituzione:
+$$s=\{X1\,/\,s1,...,\, Xn\,/\,sn$$
+con gli $s\,i$ termini tali per cui:
+$$P\vdash s[p(t1, t2, ..., tm)]$$
+\end{esempio}
+Dato un insieme di clausole di Horn è possibile derivare la clausola vuota solo se c'è almeno una clausola senza testa, ovvero una query $G_0$
+, in cui si deve dimostrare che da $P \cup G_0$ si può derivare la clausola e ciò avviene per assurdo col principio di risoluzione.
+
+Nel prossimo sottoparagrafo vediamo come effuttua la risoluzione il sistema Prolog, che per efficienza usa una forma particolare di risoluzione.
+\subsection{Risoluzione ad Input Lineare (SLD)}
+Il sistema Prolog dimostra la veridicità di un goal eseguendo una sequenza di passi di risoluzione, il cui ordine di esecuzione
+determina sistemi di prova più o meno efficienti.\newline
+In Prolog la risoluzione avviene sempre fra l’ultimo goal derivato in ciascun passo e una \emph{clausola di programma}
+e questa forma è detta \emph{Risoluzione-SLD}, dove le sentenze lineari sono le clausole di Horn.
+\begin{esempio}
+partiamo dal goal $G_i$:
+$$G_i\equiv \,\,\,?-\, A_{i,\, 1}, ...,  A_{i,\, m}.$$
+e dalla regola:
+$$A_r\,\,\,:-\,\,\, B_{r,\,1},..., B_{r,\,k}.$$
+se esiste un unificatore $\sigma$ tale che $\sigma[A_r]=\sigma[A_{i,\,1}]$ allora si ottiene il nuovo goal:
+$$G_{i+1}\equiv\,\,\,B^{'}_{r,\,1},..., B^{'}_{r,\,k},A^{'}_{i,\, 1}, ...,  A^{'}_{i,\, m}.$$
+che è un passo di risoluzione eseguito dal sistema Prolog (con $\sigma[A_{i,\,m}]=A^{'}_{i,\,m}$ 4 $\sigma[B_{i,\,m}]=B^{'}_{i,\,m}$.
+La scelta di unificare il primo sottogoal di $G_i$ è arbitraria infatti si sarebbe potuto scegliere un arbitario sottogoal di $G_i$.
+\end{esempio}
+\begin{esempio}
+partiamo dal goal $G_i$:
+$$G_i\equiv \,\,\,?-\, A_{i,\, 1}, ...,  A_{i,\, m}.$$
+e dalla regola (ovvero dal \textbf{fatto}):
+$$A_r.$$
+se esiste un unificatore $\sigma$ tale che $\sigma[A_r]=\sigma[A_{i,\,1}]$ allora si ottiene il nuovo goal:
+$$G_{i+1}\equiv\,\,\,A^{'}_{i,\, 2}, ...,  A^{'}_{i,\, m}.$$
+che ha dimensioni minori di $G_i$ avendo $m-1$ sottogoal
+\end{esempio}
+Nella risoluzione SLD si possono avere i seguenti risultati:
+\begin{itemize}
+\item \textbf{successo:} si genera la clausola vuota, ovvero se per $n$ finito $G_n$ è uguale alla clausola vuota $G_:n\equiv\,\,\,:-$
+\item \textbf{insuccesso finito}: se per $n$ finito $G_n$  non è uguale alla clausola vuota $G_:n\equiv\,\,\,:-$ e non è più possibile derivare un nuovo \textit{risolvente} da $G_n$ ed una clausola d programma
+\item \textbf{successo infinito: }se è sempre possibile derivare nuovi risolventi tutti diversi dalla clausola vuota
+\end{itemize}
+La \textbf{sostituzione di risposta} è la sequenza di unificatori usati; applicata alle variabili nei termini del goal iniziale dà la risposta finale.\\
+Durante il processo di generazione di goal intermedi si costruiscono delle varianti dei letterali e delle clausole coinvolti
+mediante larinominazione di variabili infatti una variante per una clausola $C$ é la clausola $C^{'}$ ottenuta da $C$ rinominando le sue variabili
+\begin{esempio}
+esempio:
+\begin{minted}{prolog}
+p(X) :- q(X, g(Z)).
+% è uguale alla clausola con variabili rinominate:
+p(X1) :- q(X1, g(FooFrobboz)).
+\end{minted}
+\end{esempio}
+Possono esserci più clausole di programma utilizzabili per applicare la risoluzione con il goal corrente ed esistono diverse strategie di ricerca:
+\begin{itemize}
+\item \textbf{in profondità (Depth First)}: si sceglie una clausola e si mantiene fissa questa scelta, finché non si arriva alla clausola vuota o alla impossibilità di fare nuove risoluzioni; in questo ultimo caso si riconsiderano le scelte fatte precedentemente
+\item \textbf{in ampiezza (Breadth First)}: si considerano in parallelo tutte le possibili alternative
+\end{itemize}
+Ogni sistema di programmazione logica sceglie la propria strategia e il Prolog ha deciso di adottare una strategia di risoluzione
+in profondità con Backtracking, ossia la possibilità di ritornare indietro e provare tutte le possibilità, al fine di avere così
+un risparmio di memoria anche se non è una strategia completa per le clausole di Horn.
+
+Introduciamo ora l'importante argomento degli alberi di derivazione, per analizzare come un sistema Prolog effettua la computazione
+e quali passi esegue per riuscire a stabilire se una data query deriva dal programma o meno.
+
+Dato un programma logico $P$, un goal $G_i$ e una regola di calcolo $R$ si ha che un \textit{albero SLD} per $P\cup G_i$ via $R$
+è definito sulla base del processo di prova visto precedentemente:
+\begin{itemize}
+\item ciascun \textbf{nodo} dell'albero è un goal (possibilmente vuoto)
+\item la \textbf{radice }dell'albero SLD è il goal $G_0$
+\item dato il nodo: $:-\,\,\, A_1,...,A_{m-1},A_m,A_{m+1},...,A_k$
+  se $A_m$ è il sottogoal selezionato dalla regola di calcolo $R$, allora questo nodo (genitore) ha un nodo figlio
+  per ciascuna clausola del tipo:
+$$C_i\equiv A_i\,\,\, :-\,\,\, B_{i,\,1},...,B_{i,\,q}$$
+$$C_k\equiv A_k$$
+di $P$ tale che $A_i$ e $A_M$ ($A_K$ e $A_m$) sono unificabili attraverso la sostituzione più generale $\sigma$.\newline
+Il nodo figlio è etichettato con la clausola goal
+$$:-\,\,\,\sigma[A_1,...,A_{m-1},B_{i,\,i},...,B_{i,\,q},A_{m+1},...,A_k]$$
+$$:-\,\,\,\sigma[A_1,...,A_{m-1},A_m,A_{m+1},...,A_k]$$
+e il ramo dal nodo padre al figlio è etichettato dalla sostituzione $\sigma$ e dalla clausola selezionata $C_i$ o $C_k$.\\
+Il nuovo nodo $:-$ non ha figli.
+\end{itemize}
+La regola $R$ è variabile. Si ha:
+\begin{itemize}
+\item \textbf{regola Left-most}: ovvero si ha la scelta del sottogoal più a sinistra 
+\item \textbf{regola Right-most}: ovvero si ha la scelta del sottogoal più a destra
+\item si può avere la scelta di un sottogoal a caso
+\item se si ha un modo per decider il miglior sottogoal  
+\end{itemize}
+Ogni sistema logico decide la propria modalità di applicazione della regola e il sistema Prolog utilizza sempre la regola left-most.
+
+L'albero SLD, generato implicitamente dal sistema Prolog, ordina i figli di un nodo secondo l'ordine dall'alto verso il basso
+delle regole e dei fatti del programma P. 
+\begin{esempio}
+Ecco un esempio:
+\begin{center}
+\includegraphics[scale=0.7]{img/alb.png}
+\end{center}
+\end{esempio}
+Ad ogni ramo di un albero SLD corrisponde una derivazione SLD e ogni ramo che termina con il nodo vuoto $:-$; la regola di calcolo
+influisce sulla struttura dell'albero per quanto riguarda l'ampiezza e la profondità ma tuttavia non influisce sulla correttezza e completezza.
+
+\begin{esempio}
+  Ecco un altro esempio, con fallimento infinito, dove la clausola vuota può essere generata ma il Prolog non è in grado di trovare
+  questa soluzione dato che la sua strategia di percorrimento dell’albero (implicito) di soluzioni è depth-first con backtracking :
+\begin{center}
+\includegraphics[scale=0.7]{img/alb2.png}
+\end{center}
+\end{esempio}
+\begin{esempio}
+%aggiungi esempio
+\end{esempio}
+\subsection{Cut e Backtracking}
+Introduciamo ora il predicato \emph{Cut}, il quale permette di controllare il backtracking, in quanto si tagliano certe possibilità
+di ritornare indietro nelle scelte durante la computazione.
+
+Il predicato cut si indica con $!$ e il Prolog effettua un'interpretazione procedurale, sempre per il fatto che viene eseguito su un calcolatore.
+
+Come abbiamo affermato precedentemente, le clausole nel data base di un programma Prolog vengono considerate “da sinistra, verso destra”
+e “dall'alto al basso” per cui se un (sotto)goal fallisce, allora il dimostratore Prolog, sceglie un'alternativa,
+scandendo “dall'alto” verso “il basso” la lista delle clausole.
+Questa procedurà può venire controllata dal \textit{cut} infatti per esempio:
+\begin{minted}{prolog}
+a :- b1, b2, ..., bk, !, ..., bn.
+\end{minted}
+Questo è l'effetto del cut:
+\begin{itemize}
+\item se il goal corrente \textit{G} unifica con \textit{a} e $b_1,...,b_k$ hanno successo,
+      allora il dimostratore si impegna inderogabilmente alla scelta di C per dimostrare G.
+\item ogni clausola alternativa (successiva, in basso) per \textit{a} che unifica con \textit{G} viene ignorata
+\item se un qualche $b_j$ con $j > k$ fallisse, il backtracking si fermerebbe al cut e le altre scelte sono rimosse dall'albero di derivazione
+\item quando il backtracking raggiunge il cut, allora il cut fallisce e la ricerca procede dall’ultimo punto di scelta
+      prima che \textit{G} scegliesse \textit{C}
+\end{itemize}
+%aggiungere gestione stack di prolog
+vediamo un albero di derivazione in caso di cut:
+\begin{center}
+	\includegraphics[scale=0.8]{img/cut.png}
+\end{center}
+Si hanno due tipi di cut:
+\begin{itemize}
+\item \textbf{green cut: } utili per esprimere “determinismo” (e quindi per rendere più efficiente il programma)
+\item \textbf{red cut: } usati per soli scopi di efficienza, hanno per caratteristica principale quella di omettere
+  alcune condizioni esplicite in un programma e, soprattutto, quella di modificare la semantica del programma equivalente senza cuts.
+  Hanno degli effetti indesiderabili ma sono utili per cui vanno maneggiati con cura per evitare gli effetti negativi.
+\end{itemize}
+consideriamo il seguente codice:
+\begin{minted}{prolog}
+/* merge di due liste ordinate*/
+
+merge([X | Xs], [Y | Ys], [X | Zs]) :-
+	X < Y,
+	merge(Xs, [Y | Ys], Zs).
+merge([X | Xs], [Y | Ys], [X, Y | Zs]) :-
+	X = Y,
+	merge(Xs, Ys, Zs).
+merge([X | Xs], [Y | Ys], [Y | Zs]) :-
+	X > Y,
+	merge([X | Xs], Ys, Zs).
+merge([], Ys, Ys).
+merge(Xs, [], Xs).
+
+/+ minimo tra due numeri */
+
+minimum(X, Y, X) :- X =< Y.
+minimum(X, Y, Y) :- Y < X.
+\end{minted}
+vediamo cosa succede:
+\begin{center}
+\includegraphics[scale=0.8]{img/cut2.png}
+\end{center}
+consideriamo la seguente query:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- merge([], [], Xs).
+Xs = [];
+Xs = [];
+False.
+\end{lstlisting}
+\end{shaded}
+si ha una soluzione di troppo.
+Un programma Prolog si dice \textbf{deterministico} quando una sola delle clausole serve (o si vorrebbe servisse) per provare un dato goal. Si usano quindi i green cuts:
+\begin{minted}{prolog}
+merge([X | Xs], [Y | Ys], [X | Zs]) :-
+	X < Y, !,
+	merge(Xs, [Y | Ys], Zs).
+merge([X | Xs], [Y | Ys], [X, Y | Zs]) :-
+	X = Y, !,
+	merge(Xs, Ys, Zs).
+merge([X | Xs], [Y | Ys], [Y | Zs]) :-
+	X > Y, !,
+	merge([X | Xs], Ys, Zs).
+merge([], Ys, Ys) :- !.
+merge(Xs, [], Xs) :- !.
+\end{minted}
+ottenendo:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- merge([], [], Xs).
+Xs = [];
+False.
+\end{lstlisting}
+\end{shaded}
+ovvero:
+\begin{center}
+\includegraphics[scale=0.8]{img/cut3.png}
+\end{center}
+il programma del minimo diventa:
+\begin{minted}{prolog}
+minimum(X, Y, X) :- X =< Y, !.
+minimum(X, Y, Y) :- Y < X, !.
+\end{minted}
+\textit{qui il secondo cut è ridondante ma viene messo per simmetria}.\\
+Una volta che il programma ha fallito la prima clausola (ovvero il
+test X =< Y) al sistema Prolog non rimane che controllare la
+clausola seguente. Riscrivo in maniera non simmetrica:
+\begin{minted}{prolog}
+minimum(X, Y, X) :- X =< Y, !.
+minimum(X, Y, Y).
+\end{minted}
+Qui si ha un red cut dato che taglia solo delle soluzioni, portando anche a risultati errati.
+
+\section{Aritmetica in Prolog}
+Il Prolog fornisce dei predicati standard per gestire ed effettuare le operazioni aritmetiche, i quali a differenza dei soliti predicati
+che derivano dalla logica, questi effettuano ed eseguono le operazioni direttamente usando l’hardware, perdendo la possibilità di effettuare
+l’instanzazione tramite l’unificazione ma dovendola fare direttamente alla chiamata dei predicati aritmetici.
+Il Prolog prevede ed usa gli operatori matematici, con la loro relativa precedenza, $+ - * /$ 
+I predicati standard comunemente usato per la gestione dell’aritmetica sono i seguenti:
+\begin{itemize}
+    \item $>$(Expr1, Expr2): stabilisce se Expr1 è maggiore dell’Expr2
+    \item $<$(Expr1,Expr2): stabilisce se Expr1 è minore di Expr2
+    \item $<=$<(Expr1,Expr2): vero se Expr1 è minore o uguale a Expr2
+    \item $>=$(Expr1,Expr2): verificato se Expr1 è maggiore di Expr2
+    \item $\=$(Expr1,Expr2): verificato se Expr1 è diverso ad Expr2
+    \item $=$(Expr1,Expr2): verificato se l’Expr1 viene valutata come l’Expr2
+    \item $is$(Number,Expr2): verificato se Number è la valutazione di Expr2
+
+Esempi:
+
+
+
+
+Predicati di tipo
+Ogni predicato di tipo viene visto come un’infinità tabella di fatti 
+Integer(X): risulta verificato se X è un intero
+Number(X): risulta verificato se X è un numero
+
+
+\subsection{Predicati Meta-Logici}
+Vediamo il predicato:
+\begin{minted}{prolog}
+celsius_fahrenheit(C, F) :- C is 5/9 * (F - 32).
+\end{minted}
+Questo predicato non è invertibile. Si deve decidere qual è l'input e qual è l'output. Per questi problemi si hanno i \textit{predicati meta-logici}. La ragione di questo effetto (della non invertibilità) sta nell'uso che abbiamo fatto di vari predicati aritmetici nel corpo dei predicati (>, <, =<, is, etc), per poter usare i predicati aritmetici che usano direttamente l'hardware abbiamo sacrificato la semantica dei
+nostri programmi.
+
+I predicati meta-logici principali trattano le variabili come oggetti del linguaggio e ci permettono di riscrivere molti programmi che usano i predicati aritmetici di sistema come predicati dalla semantica “corretta” ed dal comportamento invertibile.
+I comuni predicati predicati importanti:
+\begin{itemize}
+\item \textit{var(X):}  vero se \textit{X} è una variabile logica
+\item \textit{nonvar(X):}  vero se \textit{X} non è una variabile logica
+\end{itemize}
+ovvero:
+\begin{minted}{prolog}
+?- var(foo).
+No
+?- var(X).
+Yes
+?- nonvar(42).
+Yes
+\end{minted}
+il nostro programma dei gradi diventa:
+\begin{minted}{prolog}
+celsius_fahrenheit(C, F) :- 
+	var(C), nonvar(F), C is 5/9 * (F - 32).
+celsius_fahrenheit(C, F) :- 
+	var(F), nonvar(C), F is (9/5 * C) + 32
+\end{minted}
+con var decido che clausola usare. L'uso di questi predicati ci permette di scrivere programmi efficienti e semanticamente corretti.
+\subsection{Ispezione dei termini}
+Posso chiedere a prolog se ho a che fare con termini atomici o scomposti, con i seguenti predicati:
+\begin{itemize}
+\item \textit{atomic(X): }vero se \textit{X} è un numero od una costante
+\item \textit{compound(X):} vero se non \textit{atomic(X)}
+\end{itemize}
+Ho anche per manipolare un termine \textit{Term}:
+\begin{itemize}
+\item \textit{functor(Term, F, Arity)},
+vero se \textit{Term} è un termine, con\textit{ Arity }argomenti, il cui funtore (simbolo di funzione o di predicato) è \textit{F}
+\item \textit{arg(N, Term, Arg)},
+vero se l’N-esimo argomento di \textit{Term }è \textit{Arg}
+\item \textit{Term =.. L}
+questo predicato, =..,viene chiamato (per motivi storici) \textit{univ}; è vero quando L è una lista il cui primo elemento è il funtore di \textit{Term} ed i rimanenti elementi sono i suoi argomenti
+\end{itemize}
+ovvero:
+\begin{minted}{prolog}
+?- functor(foo(24), foo, 1).
+YES
+?- functor(node(x, _, [], []), F, 4).
+F = node
+Yes
+?- functor(Term, bar, 2).
+Term = bar(_0,_1)
+Yes
+?- arg(3, node(x, _, [], []), X).
+X = []
+Yes
+?- arg(1, father(X, lot), haran).
+X = haran
+Yes
+?- father(haran, lot) =.. Ts.
+Ts = [father, haran, lot]
+Yes
+?- father(X, lot) =.. [father, haran, lot].
+X = haran
+Yes
+\end{minted}
+\subsection{Programmazione di ordine superiore}
+Quando si formula una domanda per il sistema Prolog, ci si
+aspetta una risposta che è un'istanza (individuale) derivabile dalla knowledge base. Col backtracking ne abbiamo una alla folta, se le voglio tutte o voglio altri modi per acceder agli insiemi ho:
+\begin{itemize}
+\item \textit{findall(Template, Goal, Set):} 
+\begin{itemize}
+\item Vero se Set contiene tutte le istanze di Template che soddisfano Goal
+\item \textit{Le istanze di Template vengono ottenute mediante backtracking}
+\end{itemize}
+\item \textit{bagof(Template, Goal, Bag):}
+\begin{itemize}
+\item Vero se Bag contiene tutte le alternative di Template che soddisfano Goal
+\item Le alternative vengono costruite facendo backtracking solo se vi sono delle variabili libere in Goal che non appaiono in Template
+\item È possibile dichiarare quali variabili non vanno considerate libere al fine del backtracking grazie alla sintassi $Var^G$ come Goal; In questo caso Var viene pensata come una variabile esistenziale
+\end{itemize}
+\item \textit{setof(Template, Goal, Set)}, che si comporta come bagof, ma Set non contiene soluzioni duplicate
+\end{itemize}
+\newpage
+ovvero:
+\begin{minted}{prolog}
+/* findall */
+
+?- findall(C, father(X, C), Kids).
+C = _0
+X = _1
+Kids = [abraham, nachor, haran, isaac, lot, milcah, yiscah]
+Yes.
+
+
+/* bagof */
+
+?- bagof(C, father(X, C), Kids).
+C = _0
+X = terach
+KIDS = [abraham, haran, nachor];
+C = _0
+X = haran
+KIDS = [lot, yiscah, milcah];
+C = _0
+X = abraham
+KIDS = [isaac];
+NO.
+
+/* bagof con variabile esistenziale */
+
+?- bagof(C, X^father(X, C), Kids).
+C = _0
+X = _1
+Kids = [abraham, haran, lot, yiscah, nachor, isaac, milcah];
+NO.
+\end{minted}
 \end{document}

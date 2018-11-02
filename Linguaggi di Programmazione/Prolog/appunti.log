@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.21)  30 OCT 2018 15:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.21)  2 NOV 2018 17:31
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -887,77 +887,83 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@every@listing=\toks49
 \c@listing=\count170
 )
-runsystem(mkdir -p _minted-appunti)...executed.
+(/usr/share/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count171
+\lst@gtempboxa=\box50
+\lst@token=\toks50
+\lst@length=\count172
+\lst@currlwidth=\dimen261
+\lst@column=\count173
+\lst@pos=\count174
+\lst@lostspace=\dimen262
+\lst@width=\dimen263
+\lst@newlines=\count175
+\lst@lineno=\count176
+\lst@maxwidth=\dimen264
 
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
+\c@lstnumber=\count177
+\lst@skipnumbers=\count178
+\lst@framebox=\box51
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2018/09/02 1.7 listings configuration
+))
+Package: listings 2018/09/02 1.7 (Carsten Heinz)
 
 (/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@defi=\count171
-\c@prop=\count172
-\c@lem=\count173
-\c@teorema=\count174
-\c@corol=\count175
-\c@esempio=\count176
+\c@defi=\count179
+\c@prop=\count180
+\c@lem=\count181
+\c@teorema=\count182
+\c@corol=\count183
+\c@esempio=\count184
 runsystem(which pygmentize && touch appunti.aex)...executed.
 
+runsystem(rm appunti.aex)...executed.
 
-
-! Package minted Error: You must have `pygmentize' installed to use this packag
-e.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.24 \begin{document}
-                     
-? usepackage{pygmentize}
-Type <return> to proceed, S to scroll future error messages,
-R to run without stopping, Q to run quietly,
-I to insert something, E to edit your file,
-1 or ... or 9 to ignore the next 1 to 9 tokens of input,
-H for help, X to quit.
-? R
-OK, entering \nonstopmode...
-(./appunti.aux)
+ (./appunti.aux)
 \openout1 = `appunti.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 24.
- (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 29.
+
+(/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Info: Redefining \it@ocap on input line 24.
-LaTeX Info: Redefining \it@ccap on input line 24.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Info: Redefining \it@ocap on input line 29.
+LaTeX Info: Redefining \it@ccap on input line 29.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count177
-\scratchdimen=\dimen261
-\scratchbox=\box50
-\nofMPsegments=\count178
-\nofMParguments=\count179
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count180
-\MPscratchDim=\dimen262
-\MPnumerator=\count181
-\makeMPintoPDFobject=\count182
-\everyMPtoPDFconversion=\toks51
+\scratchcounter=\count185
+\scratchdimen=\dimen265
+\scratchbox=\box52
+\nofMPsegments=\count186
+\nofMParguments=\count187
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count188
+\MPscratchDim=\dimen266
+\MPnumerator=\count189
+\makeMPintoPDFobject=\count190
+\everyMPtoPDFconversion=\toks52
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -983,9 +989,9 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 24.
+ on input line 29.
 
-LaTeX Info: Redefining \microtypecontext on input line 24.
+LaTeX Info: Redefining \microtypecontext on input line 29.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -999,7 +1005,8 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 29.
+\c@lstlisting=\count191
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1007,7 +1014,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 29.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1031,33 +1038,33 @@ Capitolo 2.
 <img/tri.png, id=32, 178.6675pt x 247.92625pt>
 File: img/tri.png Graphic file (type png)
 <use img/tri.png>
-Package pdftex.def Info: img/tri.png  used on input line 149.
+Package pdftex.def Info: img/tri.png  used on input line 154.
 (pdftex.def)             Requested size: 89.33353pt x 123.96281pt.
 <img/tri2.png, id=34, 224.84pt x 252.945pt>
 File: img/tri2.png Graphic file (type png)
 <use img/tri2.png>
-Package pdftex.def Info: img/tri2.png  used on input line 159.
+Package pdftex.def Info: img/tri2.png  used on input line 164.
 (pdftex.def)             Requested size: 112.41972pt x 126.47218pt.
 [6
 
  <./img/tri.png>] [7 <./img/tri2.png>]
-Overfull \hbox (12.59009pt too wide) in paragraph at lines 222--224
+Overfull \hbox (12.59009pt too wide) in paragraph at lines 227--229
 []\T1/cmr/m/n/10 (-20) La sin-tas-si di un lin-guag-gio è com-po-sta da una se-
 rie di for-mu-le ben formate($\OML/cmm/m/it/10 FBF$\T1/cmr/m/n/10 (-20) )
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--234
+Underfull \hbox (badness 10000) in paragraph at lines 236--239
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 241--253
+Underfull \hbox (badness 10000) in paragraph at lines 246--258
 
  []
 
@@ -1065,195 +1072,287 @@ Underfull \hbox (badness 10000) in paragraph at lines 241--253
 Capitolo 3.
 \openout4 = `appunti.pyg'.
 
-runsystem(pygmentize -S default -f latex -P commandprefix=PYG > _minted-appunti
-/default-pyg-prefix.pygstyle)...executed.
+runsystem(pygmentize -S default -f latex -P commandprefix=PYG > appunti.out.pyg
+)...executed.
 
-(./_minted-appunti/default-pyg-prefix.pygstyle)
-runsystem(pygmentize -S default -f latex -P commandprefix=PYGdefault > _minted-
-appunti/default.pygstyle)...executed.
+(./appunti.out.pyg)
+runsystem(pygmentize -S default -f latex -P commandprefix=PYGdefault > appunti.
+out.pyg)...executed.
 
+ (./appunti.out.pyg)
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
 
-(./_minted-appunti/default.pygstyle)
-runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-appunti/DAEDD7F92DA64C406E70860F383C0DFB2ADF418B61BF5CBE0C74530CAB61B82B
-.pygtex appunti.pyg)...executed.
+ (./appunti.out.pyg
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1.
 
-
-
-! Package minted Error: Missing Pygments output; \inputminted was
-probably given a file that does not exist--otherwise, you may need 
-the outputdir package option, or may be using an incompatible build tool,
-or may be using frozencache with a missing file.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.474                \end{minted}
-                                 
-This could be caused by using -output-directory or -aux-directory 
-without setting minted's outputdir, or by using a build tool that 
-changes paths in ways minted cannot detect, 
-or using frozencache with a missing file.
-
+(/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+)
 \openout4 = `appunti.pyg'.
 
-runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-appunti/EE3A2070E1B32A77282C59FC79BCFE3A2ADF418B61BF5CBE0C74530CAB61B82B
-.pygtex appunti.pyg)...executed.
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
 
-
-! Package minted Error: Missing Pygments output; \inputminted was
-probably given a file that does not exist--otherwise, you may need 
-the outputdir package option, or may be using an incompatible build tool,
-or may be using frozencache with a missing file.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.479                \end{minted}
-                                 
-This could be caused by using -output-directory or -aux-directory 
-without setting minted's outputdir, or by using a build tool that 
-changes paths in ways minted cannot detect, 
-or using frozencache with a missing file.
-
+ (./appunti.out.pyg)
 \openout4 = `appunti.pyg'.
 
-runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-appunti/295C58A22194D8606B36E7A701442EF72ADF418B61BF5CBE0C74530CAB61B82B
-.pygtex appunti.pyg)...executed.
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
 
 
-! Package minted Error: Missing Pygments output; \inputminted was
-probably given a file that does not exist--otherwise, you may need 
-the outputdir package option, or may be using an incompatible build tool,
-or may be using frozencache with a missing file.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.485                 \end{minted}
-                                  
-This could be caused by using -output-directory or -aux-directory 
-without setting minted's outputdir, or by using a build tool that 
-changes paths in ways minted cannot detect, 
-or using frozencache with a missing file.
+(./appunti.out.pyg)
+Overfull \hbox (8.33739pt too wide) in paragraph at lines 491--495
+\T1/cmr/m/n/10 (-20) la te-sta del-la re-go-la $\OML/cmm/m/it/10 A$\T1/cmr/m/n/
+10 (-20) , vie-ne det-ta con-se-guen-za men-tre il cor-po $\OML/cmm/m/it/10 B[]
+; B[]; [] ; B[]$
+ []
 
 [13
 
 ]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.500 B_
-        1, B_2, $\dots$, B_n, ovviamente sempre dal punto di vista sintattico.
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg) [14] [15]
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg [16])
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 6.
+
+(/usr/share/texmf-dist/tex/latex/base/ts1cmtt.fd
+File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 25.
+)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg [17])
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+
+(./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg
+[18])
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg) [19] [20]
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+
+(./appunti.out.pyg) [21]
+<img/alb.png, id=104, 665.48625pt x 381.425pt>
+File: img/alb.png Graphic file (type png)
+<use img/alb.png>
+Package pdftex.def Info: img/alb.png  used on input line 873.
+(pdftex.def)             Requested size: 465.83719pt x 266.99567pt.
+
+Overfull \hbox (120.83719pt too wide) in paragraph at lines 873--874
+ [] 
+ []
+
+<img/alb2.png, id=105, 644.4075pt x 395.4775pt>
+File: img/alb2.png Graphic file (type png)
+<use img/alb2.png>
+Package pdftex.def Info: img/alb2.png  used on input line 883.
+(pdftex.def)             Requested size: 451.08218pt x 276.83235pt.
+
+Overfull \hbox (106.08218pt too wide) in paragraph at lines 883--884
+ [] 
+ []
+
+[22 <./img/alb.png>]
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg) [23 <./img/alb2.png>]
+<img/cut.png, id=114, 439.6425pt x 281.55188pt>
+File: img/cut.png Graphic file (type png)
+<use img/cut.png>
+Package pdftex.def Info: img/cut.png  used on input line 914.
+(pdftex.def)             Requested size: 351.71446pt x 225.24179pt.
+
+Overfull \hbox (6.71446pt too wide) in paragraph at lines 914--915
+ [] 
+ []
 
 \openout4 = `appunti.pyg'.
 
-runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-appunti/A9E3E1A186CC813893058DB6B434F5912ADF418B61BF5CBE0C74530CAB61B82B
-.pygtex appunti.pyg)...executed.
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
 
+(./appunti.out.pyg [24 <./img/cut.png>])
+<img/cut2.png, id=119, 447.92343pt x 217.5628pt>
+File: img/cut2.png Graphic file (type png)
+<use img/cut2.png>
+Package pdftex.def Info: img/cut2.png  used on input line 946.
+(pdftex.def)             Requested size: 358.33922pt x 174.05048pt.
 
-! Package minted Error: Missing Pygments output; \inputminted was
-probably given a file that does not exist--otherwise, you may need 
-the outputdir package option, or may be using an incompatible build tool,
-or may be using frozencache with a missing file.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.504 \end{minted}
-                  
-This could be caused by using -output-directory or -aux-directory 
-without setting minted's outputdir, or by using a build tool that 
-changes paths in ways minted cannot detect, 
-or using frozencache with a missing file.
-
-
-LaTeX Warning: Command \` invalid in math mode on input line 505.
-
-
-LaTeX Warning: Command \` invalid in math mode on input line 505.
-
-
-LaTeX Warning: Command \` invalid in math mode on input line 505.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.506 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no è in font cmr10!
-Missing character: There is no è in font cmr10!
-Missing character: There is no è in font cmr10!
-
-Overfull \hbox (625.15524pt too wide) in paragraph at lines 499--506
-\T1/cmr/m/n/10 (-20) in-fat-ti de-fi-nia-mo che ri-sul-ta A se ri-sul-ta ve-ri-
-fi-ca-to B$[]\OML/cmm/m/it/10 ; B[];$\T1/cmr/m/n/10 (-20) ...$\OML/cmm/m/it/10 
-; B[]; ovviamentesempredalpuntodivistasintattico:Pervederealmeglioquestoconcett
-odiimplicazionevediamoladefinizionedelconcettodinonnonellinguaggioProlog \OT1/c
-mr/m/n/10 (-20) :
+Overfull \hbox (13.33922pt too wide) in paragraph at lines 946--947
+ [] 
  []
 
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2018/09/02 1.7 listings language file
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2018/09/02 1.7 listings language file
+)
+\openout4 = `appunti.pyg'.
 
-Overfull \hbox (93.9191pt too wide) in paragraph at lines 499--506
-\OML/cmm/m/it/10 QuestarelazionestabiliscecheXilnonnodiYserisultacheesisteunZta
-lecheXpadrediZeZgenitorediY:$ 
- []
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
 
-[14]
-! Undefined control sequence.
-l.547     \land_i(\lot
-                      _iL_{ij})
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+ (./appunti.out.pyg)
+[25 <./img/cut2.png>]
+<img/cut3.png, id=123, 426.84468pt x 220.57407pt>
+File: img/cut3.png Graphic file (type png)
+<use img/cut3.png>
+Package pdftex.def Info: img/cut3.png  used on input line 982.
+(pdftex.def)             Requested size: 341.47621pt x 176.45947pt.
+\openout4 = `appunti.pyg'.
 
-[15] [16] (./appunti.aux)
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg) [26 <./img/cut3.png>]
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg) [27]
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+
+(./appunti.out.pyg) [28] [29]
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg) [30] (./appunti.aux)
 runsystem(rm appunti.pyg)...executed.
+
+runsystem(rm appunti.out.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 28113 strings out of 492642
- 678939 string characters out of 6135565
- 902515 words of memory out of 5000000
- 31336 multiletter control sequences out of 15000+600000
- 26163 words of font info for 118 fonts, out of 8000000 for 9000
+ 30117 strings out of 492642
+ 705038 string characters out of 6135565
+ 1115507 words of memory out of 5000000
+ 33246 multiletter control sequences out of 15000+600000
+ 27953 words of font info for 131 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,96p,878b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/t
-exmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf-dist/font
+ 62i,9n,96p,878b,1141s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/
+texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
 share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
-symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbi1000.
-pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share
-/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fon
-ts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public
-/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2
-488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist
-/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf-dist/fonts/type1/pu
-blic/cm-super/sfti1000.pfb>
-Output written on appunti.pdf (17 pages, 296935 bytes).
+ublic/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
+pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share
+/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fon
+ts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public
+/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2
+074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/share/texmf-dist
+/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/s
+frm1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></u
+sr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on appunti.pdf (31 pages, 525210 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
+ 212 PDF objects out of 1000 (max. 8388607)
+ 145 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 21015 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 22576 words of extra memory for PDF output out of 24883 (max. 10000000)
 

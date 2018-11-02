@@ -11,3 +11,9 @@
 \contentsline {chapter}{\numberline {3}Prolog:Programmazione Logica}{13}
 \contentsline {subsection}{\numberline {3.0.1}Principio di Risoluzione}{14}
 \contentsline {section}{\numberline {3.1}Principio di Unificazione}{16}
+\contentsline {subsection}{\numberline {3.1.1}Risoluzione ad Input Lineare (SLD)}{20}
+\contentsline {subsection}{\numberline {3.1.2}Cut e Backtracking}{23}
+\contentsline {section}{\numberline {3.2}Aritmetica in Prolog}{26}
+\contentsline {subsection}{\numberline {3.2.1}Predicati Meta-Logici}{27}
+\contentsline {subsection}{\numberline {3.2.2}Ispezione dei termini}{28}
+\contentsline {subsection}{\numberline {3.2.3}Programmazione di ordine superiore}{28}
