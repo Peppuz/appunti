@@ -13,6 +13,9 @@
 \usepackage{microtype}%per effettuare un aggiustamento della spaziatura tra caratteri e del font
 %\usepackage{pygmentize}%Package necessario per far funzionare minted
 \usepackage[cache = false]{minted}
+\usepackage{color}
+\usepackage{framed}
+\usepackage{listings}
 \usepackage{url}%per poter rappresentare gli url nel testo latex
 %\usepackage{hypertext}%per effettuare un collegamento con una pagina internet
 \newtheorem{defi}{Definizione}%Definizione per avere la gestione delle definizioni
@@ -21,6 +24,7 @@
 \newtheorem{teorema}{Teorema}[chapter]
 \newtheorem{corol}{Corollario}[chapter]
 \newtheorem{esempio}{Esempio}
+\definecolor{shadecolor}{gray}{0.90}
 
 \begin{document}
 %Intestazione e indice dei contenuti
@@ -498,7 +502,7 @@ infatti il simbolo ``,'' rappresenta l'operatore logico and, perciò in caso pi�
 l'instanza $\alpha$ deve essere la stessa per stabilire se una query è una conseguenza diretta del programma.
 
 Le regole stabiliscono una relazione di implicazione, indicato con il simbolo :-, infatti definiamo che risulta A se risulta verificato
-B_1, B_2, $\dots$, B_n, ovviamente sempre dal punto di vista sintattico.
+$B_1, B_2, \dots, B_n$, ovviamente sempre dal punto di vista sintattico.
 Per vedere al meglio questo concetto di implicazione vediamo la definizione del concetto di nonno nel linguaggio Prolog:
 \begin{minted}{prolog}
   grandfather(X, Y) :- father(X, Z), parent(Z, Y).
@@ -544,7 +548,7 @@ Ogni FBF può essere in \textit{forma normale a clausola}:
 \begin{itemize}
 \item \textit{formula normale congiunta:} congiunzione di disgiunzioni o di negazione di predicati (sia positivi che negativi):
   \begin{equation*}
-    \land_i(\lot_iL_{ij})
+    \land_i(\lor_iL_{ij})
   \end{equation*}
 \begin{esempio}
 ecco degli esempi:
@@ -726,7 +730,6 @@ e di reinstallarli utilizzando le nuove definizioni:
 Yes
 % A questo punto la base di dati Prolog contiene il
 % nuovo contenuto del file.
-\end{minted}
 
 ?- reconsult(user). % Notare il sotto-prompt.
 |- foo(42).
@@ -763,6 +766,7 @@ dove $\{X\,/\, s(0)\}$ e $\{W\,/\, s(s(s(0)))\}$ sono le sostituzioni che rappre
 :- sum (s(s(0)), s(0), W).     %{W / s(s(s(0)))}
 \end{minted}
 con $\{N\, /\, s(0)\}$ e $\{W \,/\, s(s(s(0)))\}$ che sono le \textbf{sostituzioni}.
+\end{itemize}
 
 Una computazione corrisponde al tentativo di dimostrare, tramite la regola di risoluzione, che una formula segue logicamente da un programma
 e si ha inoltre che si deve determinare una sostituzione per le variabili del goal per cui la query segue  logicamente dal programma:
@@ -1001,12 +1005,12 @@ I predicati standard comunemente usato per la gestione dell’aritmetica sono i 
 \begin{itemize}
     \item $>$(Expr1, Expr2): stabilisce se Expr1 è maggiore dell’Expr2
     \item $<$(Expr1,Expr2): stabilisce se Expr1 è minore di Expr2
-    \item $<=$<(Expr1,Expr2): vero se Expr1 è minore o uguale a Expr2
+    \item $<=$(Expr1,Expr2): vero se Expr1 è minore o uguale a Expr2
     \item $>=$(Expr1,Expr2): verificato se Expr1 è maggiore di Expr2
-    \item $\=$(Expr1,Expr2): verificato se Expr1 è diverso ad Expr2
+    \item $\\=$(Expr1,Expr2): verificato se Expr1 è diverso ad Expr2
     \item $=$(Expr1,Expr2): verificato se l’Expr1 viene valutata come l’Expr2
     \item $is$(Number,Expr2): verificato se Number è la valutazione di Expr2
-
+\end{itemize}
 Esempi:
 
 
