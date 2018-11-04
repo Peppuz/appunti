@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.21)  30 OCT 2018 12:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.21)  4 NOV 2018 22:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -714,21 +714,21 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 [1] [2] [3]
 Capitolo 1.
 
-Overfull \hbox (3.81673pt too wide) detected at line 174
+Overfull \hbox (3.81673pt too wide) detected at line 176
 []
  []
 
 [4
 
-] [5]
-Overfull \hbox (7.2252pt too wide) in paragraph at lines 291--293
+] [5] [6]
+Overfull \hbox (7.2252pt too wide) in paragraph at lines 336--338
 []\T1/cmr/m/n/10 (-20) se un no-do è eti-chet-ta-to con $\OML/cmm/m/it/10 A$ \T
 1/cmr/m/n/10 (-20) e i suoi fi-gli so-no eti-chet-ta-ti co-me $\OML/cmm/m/it/10
  x[]; x[]; [] ; x[]$\T1/cmr/m/n/10 (-20) ,
  []
 
 
-Overfull \hbox (11.27563pt too wide) in paragraph at lines 299--302
+Overfull \hbox (11.27563pt too wide) in paragraph at lines 344--347
 []\T1/cmr/bx/n/10 Esempio. []\T1/cmr/m/n/10 (-20) Pren-den-do il lin-guag-gio $
 \OML/cmm/m/it/10 L$ \T1/cmr/m/n/10 (-20) de-fi-ni-to co-me segue:$\OML/cmm/m/it
 /10 L \OT1/cmr/m/n/10 (-20) = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 w \OMS/cmsy/m/
@@ -736,14 +736,67 @@ n/10 2 f\OML/cmm/m/it/10 a; b; c; d\OMS/cmsy/m/n/10 g[]j\OML/cmm/m/it/10 w \OT1
 /cmr/m/n/10 (-20) =
  []
 
-[6] [7] [8]
+[7] [8] [9]
 Capitolo 2.
 
-Overfull \hbox (123.79274pt too wide) detected at line 409
+Overfull \hbox (123.79274pt too wide) detected at line 454
 []
  []
 
 
-Overfull \hbox (27.03972pt too wide) in paragraph at lines 411--413
+Overfull \hbox (27.03972pt too wide) in paragraph at lines 456--458
 \T1/cmr/m/n/10 (-20) guag-gio rap-pre-sen-ta: $\OML/cmm/m/it/10 L \OT1/cmr/m/n/
-10 (-20) = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 ^^O; \OT1/c
+10 (-20) = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 ^^O; \OT1/cmr/m/n/10 (-20) 0\OML/
+cmm/m/it/10 ; \OT1/cmr/m/n/10 (-20) 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (-20) 0
+0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (-20) 01\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 
+(-20) 10\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (-20) 11\OML/cmm/m/it/10 ; \OT1/cmr/
+m/n/10 (-20) 000\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (-20) 001\OML/cmm/m/it/10 ; 
+\OT1/cmr/m/n/10 (-20) 010\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (-20) 011\OML/cmm/m
+/it/10 ; \OT1/cmr/m/n/10 (-20) 100\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (-20) 101\
+OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (-20) 110\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (
+-20) 111\OML/cmm/m/it/10 ; [] \OMS/cmsy/m/n/10 g$ 
+ []
+
+[10
+
+]
+Overfull \hbox (101.29214pt too wide) detected at line 507
+[]
+ []
+
+
+Overfull \hbox (25.00003pt too wide) detected at line 507
+[]
+ []
+
+[11] [12] (./appunti.aux) ) 
+Here is how much of TeX's memory you used:
+ 25146 strings out of 492642
+ 618210 string characters out of 6135565
+ 802316 words of memory out of 5000000
+ 28476 multiletter control sequences out of 15000+600000
+ 22249 words of font info for 103 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 62i,15n,96p,878b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-s
+uper-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dis
+t/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/p
+ublic/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/
+sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></
+usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf
+-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
+per/sfti1000.pfb>
+Output written on appunti.pdf (13 pages, 232262 bytes).
+PDF statistics:
+ 115 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 18445 words of extra memory for PDF output out of 20736 (max. 10000000)
+

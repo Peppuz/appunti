@@ -17,3 +17,6 @@
 \contentsline {subsection}{\numberline {3.3.1}Predicati Meta-Logici}{29}
 \contentsline {subsection}{\numberline {3.3.2}Ispezione dei termini}{30}
 \contentsline {subsection}{\numberline {3.3.3}Programmazione di ordine superiore}{31}
+\contentsline {subsection}{\numberline {3.3.4}Manipolazine della base di Dati}{32}
+\contentsline {section}{\numberline {3.4}Input e Output in Prolog}{37}
+\contentsline {subsection}{\numberline {3.4.1}Interpreti in Prolog}{38}

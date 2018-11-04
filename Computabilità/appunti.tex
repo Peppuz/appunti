@@ -99,11 +99,13 @@ Dopo aver definito le stringhe, definiamo le seguenti operazioni definite su le 
         \item possiede l'elemento neutro $\epsilon$ per cui $x \circ \epsilon = x = \epsilon \circ x$.
         \end{itemize}
         \begin{esempio}
-          \begin{align}
+          \begin{equation*}
+          \begin{split}
             w = 1011100 \quad z = 1011110  \\
           w \circ z = 10111001011110 \\
           z \circ w = 10111101011100 \\
-          \end{align}
+          \end{split}
+          \end{equation*}
         \end{esempio}
   \end{itemize}
   Attraverso le seguenti operazioni si può stabilire che $(\Sigma ^ *,\circ,\epsilon)$ è un monoide libero su $\Sigma$.
@@ -276,9 +278,52 @@ Iniziamo ora a considerare le grammatiche di tipo 2 incominciando da un esempio 
 
   Viene poco utilizzato in quanto è più naturale e chiaro pensare secondo la derivazione per cui ne vediamo soltanto un esempio
   e lo usiamo in un importante teorema sull'equivalenza delle modalità di derivazione, che verrà presentato prossimamente.
-  \begin{esempio}
-     Fare esempio
-  \end{esempio}
+
+\begin{esempio}
+Sia $G=(V,T,O,E)$, con $V=\{E,I\}$ e $T=\{a,b,0,1,(,),+,*\}$ 
+quindi ho le seguenti regole, è di tipo 3:
+\begin{enumerate}
+\item $E\to I$
+\item $E\to E+E$
+\item $E\to E*E$
+\item $E\to (E)$
+\item $I\to a$
+\item $I\to b$
+\item $I\to Ia$
+\item $I\to Ib$
+\item $I\to I0$
+\item $I\to I1$
+\end{enumerate}
+voglio ottenere $a*(a+b00)$ 
+sostituisco sempre a destra (right most derivation)
+$$E\to E*E\to E*(E)\to E*(E+E)\to E*(E+I)\to E+(E+I0)$$
+$$\to R+(I+b00)\to E*(a+b00)\to I*(a+b00)\to a*(a+b00)$$
+
+usiamo ora \textit{l'inferenza ricorsiva}:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+  \toprule passo & stringa ricorsiva & var & prod & passo stringa impiegata\\
+\midrule 1 & a & I & 5 & $\backslash$ \\
+\hline
+2 & b & I & 6 & $\backslash$ \\ 
+\hline
+3 & b0 & I & 9 & 2\\
+\hline
+4 & b00 & I & 9 & 3\\
+\hline
+5 & a & E & 1 & 1 \\
+\hline
+6 & b00 & E & 1 & 4\\
+\hline
+7 & a+b00 & E & 2 & 5,6\\
+\hline
+8 & (a+b00) & E & 4 & 7\\
+\hline
+9 &a*(a+b00) & E & 3 & 5, 8\\
+\hline
+\end{tabular}
+\end{center}
+\end{esempio}
   
   %Alberi Sintattici
   Introduciamo ora un'importante forma grafica per vedere le regole di derivazioni applicate per formare una stringa
@@ -441,7 +486,7 @@ Iniziamo ora a considerare le grammatiche di tipo 2 incominciando da un esempio 
     
   \item Chiusura di Kleene: dato un linguaggio $L$ si ha $L*$ definito induttivamente come:
     \begin{equation*}
-    \begin{align}
+    \begin{split}
       L^0 = \{epsilon\}
       L^1 = L \\
       L^2 = L \circ L \\
@@ -449,43 +494,44 @@ Iniziamo ora a considerare le grammatiche di tipo 2 incominciando da un esempio 
       L^i = L^{i-1} \circ L\\
       L^* = L^0 \cup L^1 \cup L^2 \cup \dots \\
       L^+ = L^* - \{epsilon\} \\
-    \end{align}
+    \end{split}
     \end{equation*}
     Esempio: dato $L = \{0,1\}$ abbiamo:
     \begin{equation*}
-    \begin{align}
+    \begin{split}
       L^0 = \{epsilon\}\\
       L^1 = \{0, 1\}\\
       L^2 = \{00, 01, 10, 11\}\\
       L^3 = \{0000, 0001, 0010, 0011, 0100, 0101, 0110, 0111, 1000, 1001, 1010, 1011, 1100, 1101, 1110, 1111\} \\
-    \end{align}
+    \end{split}
     \end{equation*}
     Il linguaggio $L*$ è generalmente un linguaggio infinito in quanto è l'unione di un numero infinito di linguaggi finiti
     ma esistono due linguaggi la cui chiusura è finita, che analizziamo ora:
     \begin{itemize}
     \item il linguaggio $L = \{0\}$ la sua chiusura di kleene è finita dato che si ha:
       \begin{equation*}
-      \begin{align}
+      \begin{split}
         L^0 = \epsilon \\
         L^1 = L\\
         L^2 = L \circ L = L\\
         L^3 = L^2 \circ L = L\\
         L^i = L^{i-1} \circ L = L \\
         L^* = L^0 \cup L^1 \cup L^2 \cup \dots = L \cup {epsilon} = L\\
-      \end{align}
+      \end{split}
       \end{equation*}
     \item il linguaggio $L = \emptyset$ la sua chiusera di kleene è finita in quanto:
       \begin{equation*}
-      \begin{align}
+      \begin{split}
       L^0 = \epsilon \\
       L^1 = \emptyset \\
       L^2 = \emptyset \circ \emptyset = \emptyset \\
       L^i = \emptyset^i \circ \emptyset = \emptyset \\
-      L^* = \emptyset \cup \{\epsilon\} = \{epsilon} \\
-      \end{align}
+      L^* = \emptyset \cup \{\epsilon\} = \{epsilon\} \\
+      \end{split}
       \end{equation*}
     \end{itemize}
-
+  \end{itemize}
+  
     Dopo aver definito le operazioni sui linguaggi regolari, definiamo ora:
     \begin{defi}
       Si definisce \emph{espressione regolare} induttivamente come segue, considerando anche il linguaggio che generano:

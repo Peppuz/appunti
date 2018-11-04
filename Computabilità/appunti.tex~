@@ -384,5 +384,127 @@ Iniziamo ora a considerare le grammatiche di tipo 2 incominciando da un esempio 
   linguaggio è ambiguo perche per $n = m$ qualsiasi grammatica usiamo per definire il linguaggio avremmo i due sottolinguaggi che generano
   la stessa stringa in maniera diversa.
 
-\chapter{Grammatiche Regolari}
+  \chapter{Linguaggi Regolari}
+  Per definire le stringhe appartenenti ai linguaggi regolari, di tipo 3, vi può utilizzare le \emph{grammatiche regolari},
+  in cui vengono definite delle regole per stabilire se e quando una stringa appartiene al linguaggio, e le \emph{espressioni regolari}
+
+  Incominciamo a considerare le grammatiche regolari, sottoinsieme delle grammatiche di tipo 2 secondo la gerarchia di Choumsky,
+  utilizzate per generare i linguaggi regolari.
+  
+  Prevedono dei maggiori vincoli sulle produzioni infatti:
+  \begin{enumerate}
+  \item $\epsilon$ può apparire solo nel corpo del simbolo start ossia può essere solo $S \to \epsilon$.
+  \item le produzioni sono del seguente tipo, dove $a \in T$ e $A, B \in V$,:
+    \begin{itemize}
+    \item $A \to aB$ oppure $A \to a$(lineari a destra)
+    \item $A \to Ba$ oppure $A \to a$(lineari a sinistra)
+      \end{itemize}
+  \item non si può avere produzioni sia lineari sinistre che lineari destre
+  \end{enumerate}
+
+  Esempio: i due insiemi di produzioni per definire gli identificatori di un espressione algebriche sono le seguenti:
+  \begin{align*}
+    P_1 = \{I \to a | b | Ia| Ib| I0 | I1\} \quad \text{lineare a destra}
+    P_2 = \{I \to aJ | bJ, J \to aJ | bJ | 0J | 1J | 0 | 1 | a | b\} \quad \text{lineare a sinistra}
+  \end{align*}
+
+  Esempio:data la grammatica $G(\{S\},\{0,1\},\{S \to \epsilon | 0S | 1S\},S)$ capire che linguaggio rappresenta:
+  $L = \{\epsilon, 0, 1, 00, 01, 10, 11, 000, 001, 010, 011, 100, 101, 110, 111, \dots \}$
+
+  Esempio:Produrre le produzioni lineari sinistra e lineari destra del seguente linguaggio:
+  \begin{equation*}
+    L = \{w \in \{a, b\}* | w = a^nb^m n,m \geq 0\}
+  \end{equation*}
+
+  Esempio: Produrre le produzioni lineari sinistra e lineari destra del seguente linguaggio:
+  \begin{equation*}
+    L = \{w \in \{a,b,c,d,e\}* | w = ab^ncd^me n \geq 0, m > 0\}
+  \end{equation*}
+
+  Esempio: Fornire le produzioni lineari sinistra e lineari destra del seguente linguaggio:
+  \begin{equation*}
+    L = \{w \in \{0,1\}* | \text{w contiene almeno uno 0 oppure almeno un 1}\}
+  \end{equation*}
+
+  \section{Espressioni Regolari}
+  Le espressioni regolari permettono di definire, utilizzando una notazione algebrica, un linguaggio regolare e vengono utilizzate
+  per estrarre parole da un testo ed altre notevole applicazioni, che verranno analizzate nel corso dei paragrafi.
+
+  Per riuscire a definire in maniera formale le espressioni regolari dobbiamo definire le seguenti operazioni sui linguaggi regolari:
+  \begin{itemize}
+  \item Unione: dati $L,M \subseteq \Sigma*$ si definisce $L \cup M = \{w \in \Sigma* | w \in L \vee w \in M\}$
+    Esempio: $L = \{001, 10, 111\}$ e $M = \{\epsilon, 001\}$ risulta $L \cup M = \{\epsilon, 10, 001, 111\}$
+
+  \item Concatenazione: dati due linguaggi $L, M \subseteq \Sigma*$ si ha $L \circ M = LM$, ossia linguaggio formato da tutte le strighe
+    ottenute concatenando le stringhe in $L$ con le stringhe in $M$.
+    Esempio: $L = \{001,10\}$ e $M = \{\epsilon, 111\}$ risulta $L \circ M = \{001, 10, 001111, 10111\}$
+    
+  \item Chiusura di Kleene: dato un linguaggio $L$ si ha $L*$ definito induttivamente come:
+    \begin{equation*}
+    \begin{align}
+      L^0 = \{epsilon\}
+      L^1 = L \\
+      L^2 = L \circ L \\
+      \dots \\
+      L^i = L^{i-1} \circ L\\
+      L^* = L^0 \cup L^1 \cup L^2 \cup \dots \\
+      L^+ = L^* - \{epsilon\} \\
+    \end{align}
+    \end{equation*}
+    Esempio: dato $L = \{0,1\}$ abbiamo:
+    \begin{equation*}
+    \begin{align}
+      L^0 = \{epsilon\}\\
+      L^1 = \{0, 1\}\\
+      L^2 = \{00, 01, 10, 11\}\\
+      L^3 = \{0000, 0001, 0010, 0011, 0100, 0101, 0110, 0111, 1000, 1001, 1010, 1011, 1100, 1101, 1110, 1111\} \\
+    \end{align}
+    \end{equation*}
+    Il linguaggio $L*$ è generalmente un linguaggio infinito in quanto è l'unione di un numero infinito di linguaggi finiti
+    ma esistono due linguaggi la cui chiusura è finita, che analizziamo ora:
+    \begin{itemize}
+    \item il linguaggio $L = \{0\}$ la sua chiusura di kleene è finita dato che si ha:
+      \begin{equation*}
+      \begin{align}
+        L^0 = \epsilon \\
+        L^1 = L\\
+        L^2 = L \circ L = L\\
+        L^3 = L^2 \circ L = L\\
+        L^i = L^{i-1} \circ L = L \\
+        L^* = L^0 \cup L^1 \cup L^2 \cup \dots = L \cup {epsilon} = L\\
+      \end{align}
+      \end{equation*}
+    \item il linguaggio $L = \emptyset$ la sua chiusera di kleene è finita in quanto:
+      \begin{equation*}
+      \begin{align}
+      L^0 = \epsilon \\
+      L^1 = \emptyset \\
+      L^2 = \emptyset \circ \emptyset = \emptyset \\
+      L^i = \emptyset^i \circ \emptyset = \emptyset \\
+      L^* = \emptyset \cup \{\epsilon\} = \{epsilon} \\
+      \end{align}
+      \end{equation*}
+    \end{itemize}
+
+    Dopo aver definito le operazioni sui linguaggi regolari, definiamo ora:
+    \begin{defi}
+      Si definisce \emph{espressione regolare} induttivamente come segue, considerando anche il linguaggio che generano:
+      \begin{description}
+      \item [caso base]: la base consiste in 3 parti:
+        \begin{enumerate}
+        \item $\epsilon$ e $\emptyset$ sono RegEx e generano $L(\epsilon) = \{epsilon\}$, $L(\emptyset) = \emptyset$
+        \item se $a$ è un simbolo allora $a$ è una Regex e questa espressione genera $L(a) = \{a\}$
+        \item una variabile, rappresentanti linguaggi regolari, sono RegEx, e generano $L(L) = L$
+          \end{enumerate}
+
+      \item [caso induttivo]: la parte induttiva delle espressioni regolari sono composte da 4 tipologie:
+        \begin{enumerate}
+        \item se $E$ e $F$ sono delle RegEx allora $E + F$ è una RegEx e rappresentano $L(E + F) = L(E) \cup L(F)$
+        \item se $E$ e $F$ sono delle RegEx allora $E \circ F = EF$ è una RegEx per cui rappresentano $L(EF) = L(E)L(F)$
+        \item se $E$ è una RegEx allora $E*$ è una RegEx, che denota la chiusura di $L(E)$ infatti $L(E^*) = (L(E))^*$
+        \item se $E$ è una RegEx allora $(E)$ è una RegEx in cui $L((E)) = L(E)$.
+        \end{enumerate}
+      \end{description}
+   \end{defi}
+            
 \end{document}
