@@ -1,1 +1,7 @@
 Fare esempi di programmi logici, imperativi e funzionali
+Inserire esempi di Base di Conoscenza e di come rappresentare le relazioni in Prolog
+Introdurre il concetto di Semantica in Prolog
+Inserire esempi di risoluzione in tempo lineare e di aritmetica in prolog
+Rivedere la parte delle meta variabili e meta interpreti
+Definire gli alberi, gli stack, gli algoritmi di ordinamento in Prolog
+
