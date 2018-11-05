@@ -11,8 +11,7 @@
 \usepackage{pgfplots}%per i grafici
 \usepackage{rotating}%per effettuare le rotazioni delle immagini e grafici
 \usepackage{microtype}%per effettuare un aggiustamento della spaziatura tra caratteri e del font
-%\usepackage{pygmentize}%Package necessario per far funzionare minted
-\usepackage[cache = false]{minted}
+\usepackage{minted}
 \usepackage{color}
 \usepackage{framed}
 \usepackage{listings}
@@ -40,12 +39,12 @@ Nel corso di Linguaggi di Programmazione ci occupiamo di 3 importanti paradigmi 
 di linguaggi quali i linguaggi logici, linguaggi funzionali e linguaggi predicativi.
 
 Durante il corso, e soprattutto durante la vita futura lavorativa, si devono rispettare le regole
-standard di formattazione dei programmi come le regole google, regole gnu ed ecc... ossia nei programmi
+standard di formattazione dei programmi come le regole Google, regole GNU ed ecc... ossia nei programmi
 devono essere rispettate le seguenti regole:
 \begin{itemize}
-\item usare Emacs come editor in quanto indenta lui al meglio
+\item ``Usare Emacs come editor in quanto indenta lui al meglio'' cit Antoniotti
 \item le linee di codice non devono essere più lunghe di 80 colonne
-\item inserire spazi tra gli operatori e uno spazio dopo , e punto e virgola  ossia \textbf{2 + 3 e (4, 5)}.
+\item inserire spazi tra gli operatori e uno spazio dopo virgola  e punto e virgola  ossia \textbf{2 + 3} e \textbf{(4, 5)}.
 \item non inserire uno spazio tra il nome di una funzione/predicato e le parentesi ossia \textbf{foo(4)}.
 \item inserire uno spazio tra un istruzione di controllo e logica  e le parentesi ossia \textbf{if (4 || 5)}
 \item non usare i commenti all'interno di un box perchè difficilmente mantenibile
@@ -53,29 +52,28 @@ devono essere rispettate le seguenti regole:
 I linguaggi di programmazione vengono classificati in base a dei paradigmi, ossia un modello di riferimento
 su come strutturare un programma, al fine di facilitare l'apprendimento di linguaggi similari:
 \begin{itemize}
-\item Imperative Languages: linguaggi basati sull'architettura di Von Neumann, base di tutti i calcolatori moderni,
+\item Imperative Languages: linguaggi basati sull'architettura di Von Neumann, utilizzata da tutti i calcolatori moderni,
       in cui il processore ha il compito di leggere e scrivere le celle di memoria durante l'esecuzione della computazione.\newline
       Questa tipologia di linguaggi utilizza uno stile prescrittivo, ossia i programmi iterativi specificano una sequenza
       di istruzioni da eseguire per modificare lo stato del sistema e questo flusso può essere modificato soltanto con
       le strutture di controllo.\newline
       Fanno parte di questo paradigma il C/C++, i linguaggi Assembler, Pascal, Python, ...
-\item Logic Languages: linguaggi in cui un programma è una deduzione logica ossia ogni istruzione è una formula del linguaggio
-      e noi interroghiamo il sistema per sapere se una formula del linguaggio fa parte della conoscenza rappresentata nel programma;
+\item Logic Languages: linguaggi in cui un programma è una deduzione logica, ossia ogni istruzione è una formula del linguaggio
+      e noi interroghiamo il sistema per sapere se essa fa parte della conoscenza rappresentata nel programma;
       questo paradigma viene utilizzato per la dimostrazione della correttezza di un programma, per rappresentare i database
       ed infine sta avendo un notevole utilizzo ultimamente nel campo dell'AI(Artificial Intelligence).\newline
-      Fa parte di questo paradigma principalmente solo il Prolog e i suoi derivati.
-\item Functional Languages: linguaggi in cui il concetto di funzione è l'unica cosa importante per cui i programmi definiscono
-      funzioni e l'esecuzione consiste nell'applicazione di uno o più funzioni agli argomenti.\newline
+      Fa parte di questo paradigma principalmente solo il Prolog e i suoi derivati, infatti noi useremo il SWI-Prolog.
+\item Functional Languages: linguaggi in cui il concetto di funzione è l'unica cosa importante infatti i programmi 
+      consistono nell'applicazione di uno o più funzioni agli argomenti.\newline
       Fanno parte di codesto paradigma i linguaggi Lisp, Common Lisp, Scheme, Javascript, ML, Ocaml, Haskell, R, ...
 \end{itemize}
-Ogni dei seguenti paradigmi può avere la presenza di linguaggi object oriented, come Java, C++, Comon Lisp, Python, ...,
-infatti il paradigma ad oggetti è ortogonale alla definizione dei seguenti paradigmi, anche se presume alcune features tipiche
+Ogni dei seguenti paradigmi può avere la presenza di linguaggi object oriented, come Java, C++, Common Lisp, Python, ...,
+infatti il paradigma ad oggetti è ortogonale alla definizione dei seguenti paradigmi, anche se presume alcune caratteristiche tipiche
 dei linguaggi imperativi.
 
 \section{Paradigma Imperativo}
 Il paradigma imperativo, come già visto durante la definizione dei diversi paradigmi, si occupa di eseguire una sequenza di istruzioni
-per effettuare la computazione infatti il paradigma imperativo è stato inventato più per la computazione ``numerica'' rispetto agli
-altri paradigmi.
+infatti il paradigma imperativo è stato inventato per la computazione ``numerica'' rispetto agli altri paradigmi.
 
 La struttura del programma è composta da due componenti, una per rappresentare le strutture dati e l'altra per gli algoritmi:
 \begin{itemize}
@@ -84,44 +82,43 @@ La struttura del programma è composta da due componenti, una per rappresentare 
 \item definizione: istruzioni in cui vengono implementati gli algoritmi, per eseguire correttamente la computazione, attraverso
   l'utilizzo di istruzione facenti parte del linguaggio.
 \end{itemize}
-
+Il paradigma imperativo ha spopolato fino agli anni '70/80 fino a quando è stato spodestato dal paradigma ad Oggetti e noi lo abbiamo già
+affrontato e studiato durante il corso Programmazione 1 e in sto corso vedremo soltanto alcune peculiarità del linguaggio C.
 %Inserire esempio di Programma Imperativo
 
 \section{Paradigma Logico}
 La necessità di gestire le applicazione ad un maggiore livello di astrazione e di scrivere programmi il più concisi possibile ha spinto
 alla creazione di nuovi paradigmi, come quello logico che analizzeremo ora.
 
-Il paradigma logico non è più basato sull'architettura di Von Neumann ma su concetti matematici, come la logica matematica,
-ed utilizza uno stile di programmazione descrittivo, ossia viene definito cosa fa parte e cosa no del problema da rappresentare.
+Il paradigma logico non è più basato sull'architettura di Von Neumann ma sulla logica matematica, anche se quando viene implementato sui
+calcolatori alcune caratteristiche sono derivate dall'architettura di Von Neumann, ed utilizza uno stile di programmazione descrittivo,
+ossia viene definito cosa fa parte e cosa no del problema da rappresentare.
 
 Inoltre nella programmazione logica non è presente alcuna separazione netta tra gli algoritmi e le strutture dati e, come già
-visto nella separazione tra i vari paradigmi, un programma consiste nel descrivere un problema come una serie di sentenze del linguaggio
+visto nella definizione dei vari paradigmi, un programma consiste nel descrivere un problema come una serie di sentenze del linguaggio
 ed interrogare il sistema, il quale effettua una deduzione sulla base della conoscenza rappresentata.
 
 Un esempio di programma logico è il seguente:
-\inputminted{Prolog}{/esempi/employees.pl}
+\inputminted{Prolog}{esempi/employees.pl}
 Questo programma implementa la regolazione di lavorare per una compagnia e se due persone sono colleghi, anche se una trattazione
 completa del significato del codice presentato verrà dato nei successivi paragrafi.
 \section{Paradigma Funzionale}
-Il paradigma funzionale, come visto nel paradigma logico, viene usato per una programmazione simbolica, è basata su concetti matematici,
+Il paradigma funzionale, come visto nel paradigma logico, viene usato per una programmazione simbolica, 
 adotta solitamente uno stile descrittivo di programmazione ed infine non vi è una completa separazione tra strutture dati ed algoritmi.
 
-Il concetto fondamentale di questo paradigma è la funzione, che è una relazione tra due insiemi che associa un elemento del dominio uno e
+Il concetto fondamentale di questo paradigma è la funzione, relazione definita su due insiemi che associa ad un elemento del dominio uno e
 un solo elemento del codominio.
 
-Dopo che è stata definita una funzione, possiamo applicarla su un elemento del dominio per ottenere un valutazione della funzione per cui
-un programma funzionale si riduce alla valutazione di una funzione per ottenere un valore, in cui in un linguaggio funzionale puro esso è
-determinato soltanto dalla funzione e non da i valori in memoria.\newline
-Questa assenza di effetti dati dalla memoria consiste nel definire una variabile come una costante matematica ossia il valore non è mutabile
+Dopo che sono state definite le funzioni necessarie per la computazione, possiamo applicarla su un elemento del dominio
+per ottenere un valutazione della funzione e ciò è cosa viene definito per computazione nel paradigma funzionale.\newline
+In un linguaggio funzionale puro la valutazione di una funzione viene determinato soltanto dalla funzione e non da i valori in memoria e
+questa assenza di effetti causati dalla memoria permette di definire una variabile come una costante matematica ossia il valore non è mutabile
 a differenza delle variabili nei linguaggi imperativi che sono una astrazione di una locazione in memoria.
-
-Un programma funzionale, come già visto nella definizione dei vari paradigmi, consiste nella definizione di un insieme di funzioni,
-eventualmente ricorsive, e l'esecuzione di un programma consiste nell'applicazione di una funzione agli argomenti.
 
 Esempio di programma funzionale:
 
 \section{Richiami sugli ambienti RunTime e architettura degli elaboratori}
-Per eseguire un programma in un qualsiasi linguaggio il sistema (ovvero il sistema operativo) deve mettere a disposizione
+Per eseguire un programma in un qualsiasi linguaggio il sistema operativo deve mettere a disposizione
 un ambiente \textit{run time}, che può essere anche una macchina virtuale, il quale fornisce almeno due funzionalità:
 \begin{itemize}
 \item mantenimento dello stato della computazione (program counter, limiti di memoria etc)
@@ -130,10 +127,10 @@ un ambiente \textit{run time}, che può essere anche una macchina virtuale, il q
 
 La gestione della memoria avviene usando due aree concettualmente ben distinte con funzioni diverse:
 \begin{itemize}
-\item lo \textit{Stack}  serve per la gestione delle chiamate (soprattutto ricorsive) a procedure, metodi, funzioni etc...(record di attivazione).
+\item lo \textit{Stack}  serve per la gestione delle chiamate (soprattutto ricorsive) a procedure attraverso record di attivazione.
 \item lo \textit{Heap} serve per la gestione di strutture dati dinamiche (liste, alberi etc...)
 \end{itemize}
-I linguaggi logici e funzionali (ma anche Java) utilizzano pesantemente lo Heap dato che forniscono come strutture dati built-in 
+I linguaggi logici e funzionali (ma anche Java) utilizzano pesantemente lo Heap dato che forniscono come strutture dati default 
 liste e spesso vettori di dimensione variabile.
 
 La gestione dei record di attivazione è stata affrontata nei corsi di Programmazione ed Architettura, a cui si può consultare i
@@ -141,15 +138,14 @@ libri e gli appunti per rinfrescare la memoria.
 
 La gestione della memoria, in particolare quella dinamica, può avvenire in maniera automatica, attraverso il \emph{Garbage Collector} che è
 usato da Python, Java, Lisp, Prolog ed altri, oppure in maniera manuale, come in C/C++ attraverso i comandi malloc(new) e free(delete).
-
+%Inserire esempi
 \chapter{Logica Proposizionale e Predicativa}
 Effettuiamo ora un ripasso della logica proposizionale e predicativa, affrontata nel corso Fondamenti dell'Informatica, al fine di rivedere
 e perfezionare i concetti di logica necessari per la comprensione e la scrittura di programmi logici.
 
 Partiamo con l'esempio di una semplice dimostrazione geometrica effettuata con le regole della logica:
 \begin{teorema}
-  Dato un triangolo isoscele (con $\overline{AB}=\overline{BC}$) si ha che $\angle A$, ovvero l'angolo in $A$,
-  e $\angle C$, ovvero l'angolo in $C$, sono uguali.
+  Dato un triangolo isoscele (con $\overline{AB}=\overline{BC}$) si ha che $\angle A$ e $\angle C$, ovvero l'angolo in $C$, sono uguali.
 \begin{center}
 \includegraphics[scale=0.5]{img/tri.png}
 \end{center}
@@ -222,18 +218,18 @@ con:
 \end{itemize}
 \end{defi}
 Un insieme di regole di inferenza costituisce la base di un calcolo logico, il quale ha lo scopo di manipolare le formule in modo
-unicamente sintattico al fine di stabilire una connessione tra un insieme di formule di partenza, dette assiemi e un insieme di conclusioni.
+unicamente sintattico al fine di stabilire una connessione tra un insieme di formule di partenza, dette assiomi e un insieme di conclusioni.
 
-\subsection{Logica Proporzionale}
-La logica proposizionale si occupa delle conclusioni che si possono trarre da un insieme di proposizioni, che definiscono sintatticamente la logica
-proposizionale, ma purtroppo è un linguaggio limitato che non si può generalizzare le proposizioni.
+\section{Logica Proporzionale}
+La logica proposizionale si occupa delle conclusioni che si possono trarre da un insieme di proposizioni, 
+ma purtroppo è un linguaggio limitato in quanto non si può generalizzare le proposizioni e/o definire delle proprietà.
 
 La sintassi di un linguaggio è composta da una serie di formule ben formate($FBF$) definite induttivamente nel seguente modo:
 %definizione formule ben formate
 \begin{enumerate}
   \item Le costanti e le variabili proposizionali $\in FBF$(chiamate atomi o letterali).
   \item Se $A$ e $B \in FBF$ allora $(A \land B)$,$(A \lor B)$,$(\neg A)$,$(A \rightarrow B)$,
-        $(A \iff B)$,$TA$ e $FA$ sono delle formule ben formate.
+        $TA$ e $FA$ sono delle formule ben formate.
   \item nient'altro è una formula
 \end{enumerate}
 
@@ -249,22 +245,22 @@ La semantica di una logica consente di dare un significato e un interpretazione 
 \end{defi}
 I connettivi della Logica Proposizionale hanno i seguenti valori di verità:
 %Tabella di Verità degli operatori
-$\begin{array}{ccccccc}
+$\begin{array}{cccccc}
 \toprule
-\text{A} & \text{B} & A \land B & A \lor B & \neg A & A \Rightarrow B & A \iff B \\
+\text{A} & \text{B} & A \land B & A \lor B & \neg A & A \rightarrow B\\
 \midrule
-    F & F & F & F & T & T & T \\
-    F & T & F & T & T & T & F \\
-    T & F & F & T & F & F & F \\
-    T & T & T & T & F & T & T \\
+    F & F & F & F & T & T\\
+    F & T & F & T & T & T\\
+    T & F & F & T & F & F\\
+    T & T & T & T & F & T\\
 \bottomrule
 \end{array}$
 
 La tavola di verità costituisce la semantica di un insieme di proposizioni mentre un calcolo logico dice come generare nuove formule logiche,
 ovvero espressioni sintattiche, a partire dagli assiomi e questo processo di generazione si chiama dimostrazione.
 
-Per ottenere nuove formule dagli assiomi si usa il calcolo proposizionale, che si base su regole di inferenza, ossia regole attraverso
-i quali si può derivare una nuova formula ben formata.\newline
+Per ottenere nuove formule dagli assiomi si usa il calcolo proposizionale, che si base sulle regole di inferenza, ossia regole attraverso
+cui si può derivare una nuova formula ben formata.\newline
 Le regole di inferenza analizzate sono le seguenti:
 \begin{itemize}
 \item \textbf{Modus Ponens:}
@@ -275,12 +271,14 @@ Le regole di inferenza analizzate sono le seguenti:
   \begin{equation*}
     \frac{a\to b, \neg b}{\neg a}
   \end{equation*}
-\item \textbf{Eliminazione e Introduzione di $\land$:}
+\item \textbf{Eliminazione $\land$:}
   \begin{equation*}
-    \frac{P_1\land P_2 \land ... \land P_n}{P_i}\,\,[\mbox{Eliminazione di }\land]
+    \frac{P_1\land P_2 \land ... \land P_n}{P_i}\,\,
   \end{equation*}
-\item $\frac{P_1, P_2,...,P_n}{P_1\land P_2 \land ... \land P_n}\,\,[\mbox{Introduzione di }\land]$
-
+\item \textbf{Introduzione di $\land$}:
+  \begin{equation*}
+    \frac{P_1, P_2,...,P_n}{P_1\land P_2 \land ... \land P_n}\,\,
+  \end{equation*}
 \item \textbf{Introduzione di $\lor$:}
   \begin{equation*}
     \frac{a}{a \lor b}
@@ -293,12 +291,12 @@ Ecco altre regole utili:
     \frac{a \lor \neg a}{vero}
   \end{equation*}
   
-\item \textbf{Eliminazione di} $\neg$:
+\item \textbf{Eliminazione di $\neg$}:
   \begin{equation*}
     \frac{\neg \neg a}{a}
   \end{equation*}
   
-\item \textbf{Eliminazione di} $\land$:
+\item \textbf{Eliminazione di $\land$}:
   \begin{equation*}
     \frac{a \land vero}{a}
   \end{equation*}
@@ -319,10 +317,10 @@ Una formula nella logica proposizionale può essere di tre diversi tipi:
 %Tipologie di formule
 \begin{description}
     \item[valida o tautologica]: la formula è soddisfatta da qualsiasi valutazione della Formula
-    \item[Soddisfacibile non Tautologica]:la formula è soddisfatta da qualche valutazione
+    \item[soddisfacibile non tautologica]:la formula è soddisfatta da qualche valutazione
                         della formula ma non da tutte.
     \item[falsibicabile]:la formula non è soddisfatta da qualche valutazione della formula.
-    \item[Contraddizione]:la formula non viene mai soddisfatta
+    \item[contraddizione]:la formula non viene mai soddisfatta
 \end{description}
 
 \begin{teorema}
@@ -341,15 +339,9 @@ In particolare il verificare se una proposizione è tautologica o meno è l’op
 nel calcolo proposizonale.
 
 \begin{defi}
-    Se $M \models A$ per tutti gli $M$, allora $A$ è una tautologia e si indica $\models A$
-\end{defi}
-
-\begin{defi}
-    Se $M \models A$ per qualche $M$, allora $A$ è soddisfacibile
-\end{defi}
-
-\begin{defi}
-Se $M \models A$ non è soddisfatta da nessun $M$, allora $A$ è insoddisfacibile
+    Se $M \models A$ per tutti gli $M$, allora $A$ è una tautologia e si indica $\models A$.\newline
+    Se $M \models A$ per qualche $M$, allora $A$ è soddisfacibile.\newline
+    Se $M \models A$ non è soddisfatta da nessun $M$, allora $A$ è insoddisfacibile.
 \end{defi}
 
 Una dimostrazione di una formula di una logica può venire tramite:
@@ -363,15 +355,14 @@ Una dimostrazione di una formula di una logica può venire tramite:
 
 \begin{teorema}
     Un apparato deduttivo $R$ è completo se, per ogni formula $A \in Fbf$, $\vdash A$
-    implica $\models A$
-\end{teorema}
-
-\begin{teorema}
+    implica $\models A$.\newline
     Un apparato deduttivo $R$ è corretto se, per ogni formula $A \in Fbf$, $\models A$
     implica $\vdash A$
 \end{teorema}
+La logica proposizionale è completa e corretta per cui data una formula ben formata, sia utilizzando i sistemi deduttivi sia analizzando
+la semantica, si è in grado di stabilire se una formula è tautologica, soddisfacibile o falsificabile.
 
-\subsection{Logica del primo ordine}
+\section{Logica del primo ordine}
 La logica del primo ordine, chiamata anche logica predicativa, permette di quantificare i vari fatti ed introduce il concetto di funzione e
 predicato per poter esprimere delle proprietà su una serie di individui.
 
@@ -408,12 +399,12 @@ l'insieme di termini e le formule atomiche.
 \begin{defi}
     L'insieme $TERM$ dei termini è definito induttivamente come segue
     \begin{enumerate}
-        \item Ogni variabile e costante sono dei Termini
+        \item Ogni variabile e costante è un termine
         \item Se $t_1 \dots t_n$ sono dei termini e $f$ è un simbolo di funzione di arietà $n$
               allora $f(t_1,\dots,t_n)$ è un termine
     \end{enumerate}
 \end{defi}
-
+%Inserire esempi
 \begin{defi}
     L'insieme $ATOM$ delle formule atomiche è definito come:
     \begin{enumerate}
@@ -423,7 +414,7 @@ l'insieme di termini e le formule atomiche.
               allora $P(t_1,\dots,t_n)$ è un atomo.
     \end{enumerate}
 \end{defi}
-
+%Inserire esempi
 \begin{defi}
     L'insieme delle formule ben formate($FBF$) di $L$ è definito induttivamente come
     \begin{enumerate}
@@ -435,6 +426,7 @@ l'insieme di termini e le formule atomiche.
         \item Nient'altro è una formula
     \end{enumerate}
 \end{defi}
+%Inserire esempi
 
 %Variabili legate e chiuse
 \begin{defi}
@@ -446,16 +438,12 @@ l'insieme di termini e le formule atomiche.
         \item $var(R(t_1,\dots,t_n)) = \bigcup _{i = 1} ^ n var(t_i)$
     \end{itemize}
 \end{defi}
-
-%Termini chiusi ed aperti
-Si definisce come \emph{aperto} un termine che non contiene variabili altrimenti
-si definisce il termine come \emph{chiuso}.\newline
+Si definisce come \emph{aperto} un termine che non contiene variabili altrimenti si definisce il termine come \emph{chiuso}.\newline
 Le variabili nei termini e nelle formule atomiche possono essere libere
 in quanto gli unici operatori che "legano" le variabili sono i quantificatori.
 
-Il campo di azione dei quantificatori si riferisce soltanto alla parte in cui
-si applica il quantificatore per cui una variabile si dice \emph{libera}
-se non ricade nel campo di azione di un quantificatore altrimenti la variabile si dice \emph{vincolata}.
+Il campo di azione dei quantificatori si riferisce soltanto alla parte in cui si applica il quantificatore per cui
+una variabile si dice \emph{libera} se non ricade nel campo di azione di un quantificatore altrimenti la variabile si dice \emph{vincolata}.
 
 Si aggiunge una nuova regola d'inferenza per la logica dei predicati, l'eliminazione del quantificatore universale $\forall$:
 \begin{equation*}
@@ -464,7 +452,7 @@ Si aggiunge una nuova regola d'inferenza per la logica dei predicati, l'eliminaz
 
 Abbiamo altre regole di inferenza per il quantificatore esistenziale:
 \begin{itemize}
-\item Introduzione del quantificatore esistenziale $\exists$:
+\item \textbf{Introduzione del quantificatore esistenziale $\exists$}:
   \begin{equation*}
     \frac{T(...,c,...), c\in C}{\exists x, T(...,x,...)}
   \end{equation*}
@@ -483,11 +471,10 @@ le basi del PROLOG (PROgramming in LOGic) sono state poste da Robert Kowalski e 
 avvenuta nel 1972 a Marsiglia attraverso Alain Colmerauer e Philippe Roussel.
 
 Si tratta di un linguaggio di programmazione logica basato sulle Clausole di Horn, ovvero un insieme di procedure attivate
-da una asserzione iniziale d’obiettivo e la procedura utilizzata da prolog per la computazione è il principio di risoluzione.
+da una asserzione iniziale d’obiettivo e la procedura utilizzata dal Prolog per la computazione è il principio di risoluzione.
 
-Un programma prolog è un formato da un insieme di istruzioni, rappresentanti un sottoinsieme di frasi ben formate della logica del primo ordine
-e il sistema prolog ha il fine di determinare se una data assunzione è verificata o meno nel programma e sotto quali eventuali vincoli
-ciò risulta  verificato.
+Un programma logico è un formato da un insieme di istruzioni, rappresentanti un sottoinsieme di frasi ben formate della logica del primo ordine
+e l'ambiente Prolog determina se una data assunzione è verificata o meno nel programma e sotto quali eventuali vincoli avviene.
 
 I componenti basilari di un programma prolog, rappresentanti tutti una clausola di Horn, sono:
 \begin{description}
@@ -507,40 +494,43 @@ I componenti basilari di un programma prolog, rappresentanti tutti una clausola 
                   parent(X, Y) :- father(X, Y).
                 \end{minted}
                 la testa della regola $A$, viene detta conseguenza mentre il corpo $B_1, B_2, \dots, B_n$ sono l'antecedente
-                e il simbolo $:-$ indica il simbolo logico di implicazione.\newline
+                e il simbolo :- indica il simbolo logico di implicazione.\newline
                 Una relazione può essere definita ricorsiva, e in questo caso necessita di due regole, una per il caso base e
                 una per il caso passo.
-                
+                \begin{minted{Prolog}
+                    natural_number(0).
+                    natural_number(s(X)) :- natural_number(X).
+                \end{minted}
 \end{description}
 I fatti e le regole sono quantificate universalmente mentre una query si intende sempre quantificata esistenzialmente, per cui una query
 risponde true se esiste un instanza $\alpha$ che verifica la query altrimenti risponde false.
 
 Le query e le regole le abbiamo definite nella forma generale, ossia possiamo definire regole e query su congiunzioni di termini,
-infatti il simbolo ``,'' rappresenta l'operatore logico and, perciò in caso più termini hanno lo stesso simbolo di variabile
+infatti il simbolo \textbf{``,''} rappresenta l'operatore logico and, perciò in caso più termini hanno lo stesso simbolo di variabile
 l'instanza $\alpha$ deve essere la stessa per stabilire se una query è una conseguenza diretta del programma.
 
-Le regole stabiliscono una relazione di implicazione, indicato con il simbolo :-, infatti definiamo che risulta A se risulta verificato
-$B_1, B_2, \dots, B_n$, ovviamente sempre dal punto di vista sintattico.
+Le regole stabiliscono una relazione di implicazione, indicato con il simbolo \textbf{:-}, infatti definiamo che risulta A se risulta verificato
+$B_1, B_2, \dots, B_n$, ovviamente sempre dal punto di vista sintattico.\newline
 Per vedere al meglio questo concetto di implicazione vediamo la definizione del concetto di nonno nel linguaggio Prolog:
 \begin{minted}{prolog}
   grandfather(X, Y) :- father(X, Z), parent(Z, Y).
 \end{minted}
 Questa relazione stabilisce che X è il nonno di Y se risulta che esiste un Z tale che X è padre di Z e Z è genitore di Y.
 
-Ogni espressione prolog viene chiamata \emph{Termine}, che può essere della seguente tipologia:
+Ogni espressione prolog viene chiamata \emph{termine}, che può essere della seguente tipologia:
 \begin{description}
 \item [atomi] : elemento base del sistema prolog e può essere rappresentato da un numero, qualsiasi sequenza racchiusa da (' '),
-  una sequenza di caratteri alfanumerici, con la lettera minuscola iniziale, e nel swprolog anche una stringa indica un atomo.
-
+       una sequenza di caratteri alfanumerici, con la lettera minuscola iniziale, e nel SWI-prolog anche una stringa indica un atomo.
+   
 \item [variabili] : sequenza di caratteri alfanumerici, iniziata con la lettera maiuscola oppure con \_ e vengono inizializzate
-  quando il sistema prova a dimostrare una query.\newline
-                    Una variabile composta soltanto dal simbolo \_ viene detta \emph{anonymous}.
+                    quando il sistema prova a dimostrare una query.\newline
+                    Una variabile composta soltanto dal simbolo \_ viene detta \emph{anonima}.
 
 \item [termini composti]: termine composto da un funtore, simbolo rappresentante il nome di una funzione o predicato, e da una sequenza
                           di termini all'interno di parentesi e separati da una virgola.                    
 \end{description}
 
-Un programma caricato nel sistema prolog rappresenta una base di conoscenza e questa base può venire rappresentata in vari modi:
+Un programma caricato nel sistema prolog rappresenta una base di conoscenza, rappresentabile nei seguenti modi:
 \begin{itemize}
 \item tutte le informazioni vengono rappresentate come argomenti in un'unica relazione e ciò può essere comodo solo per
   piccole relazioni dato che è difficile da mantenere e coprendere una relazione così definita.
@@ -557,7 +547,7 @@ unificare le variabili presenti in una formula del programma.
 \section{Principio di Risoluzione}
 Il principio di risoluzione è una regola di inferenza generalizzata semplice e facilmente implementabile in un calcolatore, assieme all'
 algoritmo di unificazione, che opera su formule ben formate nella forma normale congiuntiva, in cui i letterali si chiamano clausole,
-e viene utilizzata per la dimostrazione di formule ben formate attraverso la refutazione per assurdo.
+e viene utilizzata per la dimostrazione di formule ben formate attraverso la refutazione per assurdo.\newline
 La regola di inferenza ha la seguente forma:
 \begin{equation*}
   \frac{p\vee r,\, s\lor r}{p\vee s}\,\,\,\,\,\,\,\,\,\,\frac{\neg r,\, r}{\perp}
@@ -582,13 +572,11 @@ o anche:
 Come esempio si può avere:
 \begin{itemize}
 \item non piove, piove e c'è il sole
-\item c'è il sole
+\item si desume quindi che c'è il sole
 \end{itemize}
-
 Prolog per stabilire se un goal e/o regola risulta verificata utilizza la refutazione per assurdo, ossia data una proposizione P suppone che
-sia falsa ed applicando le regole di inferenza se risulta che $\neg P$ sarebbe assurdo afferma che $P$ è verificata.
+sia falsa ed applicando le regole di inferenza se risulta che $\neg P$ fosse assurdo allora afferma che $P$ è verificata.
 
-Le formule del linguaggio Prolog sono \emph{clausole di Horn}, definite nelle seguenti regole.
 Ogni FBF può essere in \emph{forma normale a clausola}:
 \begin{itemize}
 \item \emph{formula normale congiunta:} congiunzione di disgiunzioni o di negazione di predicati (sia positivi che negativi):
@@ -598,8 +586,8 @@ Ogni FBF può essere in \emph{forma normale a clausola}:
 \begin{esempio}
 ecco degli esempi:
 \begin{itemize}
-\item $(p(x)\vee q(x,y)\vee \neg t(z))\wedge(p(w)\vee\neg s((u)\vee \neg r(v))$
-\item $(\neg t(z))\vee (p(w)\vee\neg s(u))\wedge (p(x)\vee s(x)\vee q(y))$
+\item $(p(x)\lor q(x,y)\lor \neg t(z))\land(p(w)\lor \neg s((u)\lor \neg r(v))$
+\item $(\neg t(z))\lor (p(w)\lor \neg s(u))\land (p(x)\lor s(x)\lor q(y))$
 \end{itemize}
 che sono riscrivibili come:
 \begin{equation*}
@@ -617,17 +605,18 @@ e
   \end{equation*}
 \end{itemize}
 Le clausole con un solo letterale positivo solo le \textit{clausole di Horn}, con lo presenza o meno di letterali negativi,
-e un programma in prolog è una collezione di \textit{clausole di Horn}.\newline
+e un programma in prolog è una collezione di codeste clausole.\newline
 Ovviamente non tutte le formule ben formate possono rappresentate tramite le clausole di Horn per cui il Prolog è un sottoinsieme
 della logica del Primo Ordine.\newline
 Attraverso questa restrizione nel 1974 Kowalski produsse un interpretazione procedurale delle dimostrazione e ciò diventò la base
 della semantica di ogni sistema prolog.
-
+%Semantica in Prolog
 \section{Principio di Unificazione}
 Il principio di unificazione è il cuore del modello di computazione dei programmi logici ed è alla base della deduzione automatica
 e dell'uso dell'inferenza logica nell'intelligenza artificiale.
 
-Per poter definire il principio di unificazione introduciamo le seguenti definizioni:
+Per poter definirlo dobbiamo introdurre le seguenti definizioni:
+\begin{defi}
 \begin{itemize}
   \item Un termine $t$ è un instanza comune  di $t_1$ e $t_2$ se esistono le sostituzioni $\alpha_1$ e $\alpha_2$
         che rendono $t$ uguale a $\alpha_1t_1$ e a $\alpha_2t_2$.
@@ -635,27 +624,27 @@ Per poter definire il principio di unificazione introduciamo le seguenti definiz
 
   \item Un termine $s$ è una variante alfabetica del termine $t$ se $t$ è un istanza di $s$ e $s$ è un istanza di $t$.
 \end{itemize}
+\end{defi}
 L'unificazione tra due termini consiste nell'effettuare una sostituzione che rende i due termini identici
 per cui c'è una relazione chiusa con l'instanza comune di due termini.
 
 Il principio di unificazione consiste nel trovare il \emph{mgu}(Most general unifier),
-l'unificazione la cui instanza comune è un termine generale, e in caso non lo trova riporta un fallimento.
+l'unificazione la cui instanza comune è un termine generale, e in caso non lo trova riporta un fallimento.\newline
 Presentiamo ora alcuni esempi per capire come funziona il Mgu:
 \begin{minted}{prolog}
 Mgu(42, 42) % ->{} non serve nessuna sostituzione
 Mgu(42, X) % ->{X/42} ovvero X deve essere 42
 Mgu(X,42) % ->{X/42} ovvero X deve essere 42
 Mgu(foo(bar, 42), foo(bar, X)) % ->{X/42} ovvero X deve essere 42
-Mgu(foo(X, 42), foo(bar, X)) % ->{Y/bar, X/42} ovvero X deve essere 42
-
+Mgu(foo(Y, 42), foo(bar, X)) % ->{Y/bar, X/42} ovvero X deve essere 42
 Mgu(foo(bar(42), baz), foo(X, Y))  /* ->{X/bar (42), Y/baz}
  ovvero X deve essere  bar(42) e Y baz*/
 Mgu(foo(X), foo(bar(Y))) 
 Mgu(foo(bar(42), baz), foo(X, Y))  /* ->{X/bar (y), Y_:G001}
  ovvero non si ha soluzione */
 \end{minted}
-L'Mgu non è altro che il risultato finale della procedura di valutazione del Prolog;il modo più semplice per vedere
-se l'unificazione funziona è usare "=", ovvero, ricollegandoci al codice sopra:
+L'Mgu non è altro che il risultato finale della procedura di valutazione del Prolog ed il modo più semplice per vedere
+se l'unificazione è corretta usiamo "=", ovvero, ricollegandoci al codice sopra:
 \begin{minted}{prolog}
 ?- 42 = 42.
 Yes
@@ -686,10 +675,9 @@ Yes
 ?- foo(42, bar(X), trillian) = foo(Y, bar(Y), X).
 No
 \end{minted}
-
-Si definisce una lista in Prolog racchiudendo gli elementi (termini e/o variabili logiche) della lista tra parentesi quadre \textit{[} e \textit{]}
-e separandoli da virgole. Gli elementi di una lista in Prolog possono essere termini
-qualsiasi o liste. La lista vuota si indica con \textit{[]}.
+Si definisce una lista in Prolog racchiudendo gli elementi (termini e/o variabili logiche) della lista tra parentesi quadre [ e ]
+e separandoli da virgole.\newline
+Gli elementi di una lista in Prolog possono essere termini qualsiasi o liste e la lista vuota si indica con [].\newline
 Una lista non vuota si può dividere in \textit{testa} e \textit{coda}:
 \begin{itemize}
 \item la testa è il primo elemento della lista
@@ -704,7 +692,7 @@ Presentiamo ora degli esempi di liste in Prolog:
 [[a, b], c] % [a, b] è la testa e [c] la coda
 [[a, b], [c], d] % [a, b] è la testa e [[c], d] la coda
 \end{minted}
-Prolog possiede uno speciale operatore usato per distinguere tra l'inizio e la coda di una lista: l'operatore \textit{|}:
+Prolog possiede uno speciale operatore usato per distinguere tra l'inizio e la coda di una lista: l'operatore \textbf{|}:
 \begin{minted}{prolog}
 ?- [X | Ys] = [mia, vincent, jules, yolanda].
 X = mia
@@ -721,19 +709,18 @@ Yes
 X = 41
 Yes
 \end{minted}
-La lista vuota \textit{[]} in prolog è gestita come una lista speciale:
+La lista vuota in prolog è gestita come una lista speciale infatti risulta:
 \begin{minted}{prolog}
 ?- [X | Ys] = [].
 No
 \end{minted}
-Nonostante le liste sono definite di default in Prolog, con anche molte operazioni implementate come append, length ed ecc..., si può
-definire una libreria personale per gestire le liste infatti questo è il codice per implementare una lista in Prolog:
+Nonostante le liste sono definite di default in Prolog, con anche molte operazioni implementate come append, length ed ecc..., 
+definiamo una libreria personale per gestire le liste infatti questo è il codice per implementare una lista in Prolog:
 \inputminted{Prolog}{esempi/liste.pl}
-
-In Prolog la base di conoscenza è nascosta ed è accessibile solo tramite opportuni comandi o tramite ambiente di programmazione
-per cui bisogna poter caricare un insieme di fatti e regole nell'ambiente Prolog, nel nostro caso SW-Prolog.
+In Prolog la base di conoscenza è nascosta ed è accessibile solo tramite opportuni comandi per cui
+bisogna poter caricare un insieme di fatti e regole nell'ambiente Prolog, nel nostro caso SW-Prolog.\newline
 Per farlo si ha il comando \textit{consult}, che appare come un predicato da valutare (un goal) e prende almeno un termine che denota un file
-come argomento, file che deve contenere fatti e regole
+come argomento, contenente la nostra base di conoscenza.
 \begin{minted}{prolog}
 ?- consult(’guida-astrostoppista.pl’).
 Yes
@@ -741,8 +728,7 @@ Yes
 ?- consult(’Projects/Lang/Prolog/Code/esempi-liste.pl’).
 Yes
 \end{minted}
-
-il predicato \textit{reconsult} deve invece essere usato quando si vuole ricaricare un file (ovvero un data o knowledge base) nell'ambiente Prolog.
+Il predicato \textbf{reconsult} viene usato quando si vuole ricaricare un file (ovvero una base di conoscenza) nell'ambiente Prolog.\newline
 L’effetto è di prendere i predicati presenti nel file, rimuoverli completamente dal data base interno
 e di reinstallarli utilizzando le nuove definizioni:
 \begin{minted}{prolog}
@@ -763,16 +749,12 @@ Yes
 W = trillian
 Yes
 \end{minted}
-
-Il Prolot lavora su strutture ad albero e anche i programmi sono strutture dati manipolabili con predicati \textit{extra-logici}
-per cui il prolog usa la ricorsione invece dell'assegnamento.
-
 Vediamo ora un programma che effettua la somma tra due numeri naturali:
 \begin{minted}{prolog}
 sum(0, X, X).
 sum(s(X), y, s(Z)) -: sum(X, Y, Z).
 \end{minted}
-con $s(n)$ interpretato come il successore ($0=0,\, s(0)=1, \,s(s(0))=2,... $).\newline
+con $s(n)$ interpretato come il successore ($0=0,\, s(0)=1, \,s(s(0))=2,\dots $).\newline
 Quando viene specificato un goal esso viene confrontato con tutte le clausole di programma, che usa il procedimento di negazione
 e di trasformazione in sintassi Prolog come viene mostrato in dettaglio con questo esempio:
 \begin{itemize}
@@ -789,9 +771,8 @@ dove $\{X\,/\, s(0)\}$ e $\{W\,/\, s(s(s(0)))\}$ sono le sostituzioni che rappre
 :- sum(s(0), 0, N).    %{N / s(0)}
 :- sum (s(s(0)), s(0), W).     %{W / s(s(s(0)))}
 \end{minted}
-con $\{N\, /\, s(0)\}$ e $\{W \,/\, s(s(s(0)))\}$ che sono le \textbf{sostituzioni}.
+con $\{N\, /\, s(0)\}$ e $\{W \,/\, s(s(s(0)))\}$ che sono le sostituzioni.
 \end{itemize}
-
 Una computazione corrisponde al tentativo di dimostrare, tramite la regola di risoluzione, che una formula segue logicamente da un programma
 e si ha inoltre che si deve determinare una sostituzione per le variabili del goal per cui la query segue  logicamente dal programma:
 \begin{esempio}
@@ -805,7 +786,7 @@ se \textbf{X1,..., Xn} sono le variabili in \textbf{t1,..., tm}, il significato 
 \end{equation*}
 e si cerca una sostituzione:
 \begin{equation*}
-  s=\{X1\,/\,s1,...,\, Xn\,/\,sn
+  s=\{X1\,/\,s1,...,\, Xn\,/\,sn\}
 \end{equation*}
 con gli $s\,i$ termini tali per cui:
 \begin{equation*}
@@ -813,15 +794,14 @@ con gli $s\,i$ termini tali per cui:
 \end{equation*}
 \end{esempio}
 Dato un insieme di clausole di Horn è possibile derivare la clausola vuota solo se c'è almeno una clausola senza testa, ovvero una query $G_0$
-, in cui si deve dimostrare che da $P \cup G_0$ si può derivare la clausola e ciò avviene per assurdo col principio di risoluzione.
-
+, in cui si deve dimostrare che da $P \cup G_0$ si può derivare la clausola e ciò avviene per assurdo col principio di risoluzione.\newline
 Nel prossimo sottoparagrafo vediamo come effuttua la risoluzione il sistema Prolog, che per efficienza usa una forma particolare di risoluzione.
 \subsection{Risoluzione ad Input Lineare (SLD)}
-Il sistema Prolog dimostra la veridicità di un goal eseguendo una sequenza di passi di risoluzione, il cui ordine di esecuzione
-determina sistemi di prova più o meno efficienti.\newline
+Il sistema Prolog per dimostrare la veridicità di un goal esegue una sequenza di passi di risoluzione,
+il cui ordine di esecuzione determina sistemi di prova più o meno efficienti.\newline
 In Prolog la risoluzione avviene sempre fra l’ultimo goal derivato in ciascun passo e una \emph{clausola di programma}
 e questa forma è detta \emph{Risoluzione-SLD}, dove le sentenze lineari sono le clausole di Horn.
-\begin{esempio}
+\begin{defi}
   partiamo dal goal $G_i$:
 \begin{equation*}
   G_i\equiv \,\,\,?-\, A_{i,\, 1}, ...,  A_{i,\, m}.
@@ -836,8 +816,8 @@ se esiste un unificatore $\sigma$ tale che $\sigma[A_r]=\sigma[A_{i,\,1}]$ allor
 \end{equation*}
 che è un passo di risoluzione eseguito dal sistema Prolog (con $\sigma[A_{i,\,m}]=A^{'}_{i,\,m}$ 4 $\sigma[B_{i,\,m}]=B^{'}_{i,\,m}$.
 La scelta di unificare il primo sottogoal di $G_i$ è arbitraria infatti si sarebbe potuto scegliere un arbitario sottogoal di $G_i$.
-\end{esempio}
-\begin{esempio}
+\end{defi}
+\begin{defi}
 partiamo dal goal $G_i$:
 \begin{equation*}
   G_i\equiv \,\,\,?-\, A_{i,\, 1}, ...,  A_{i,\, m}.
@@ -848,12 +828,13 @@ se esiste un unificatore $\sigma$ tale che $\sigma[A_r]=\sigma[A_{i,\,1}]$ allor
   G_{i+1}\equiv\,\,\,A^{'}_{i,\, 2}, ...,  A^{'}_{i,\, m}.
 \end{equation*}
 che ha dimensioni minori di $G_i$ avendo $m-1$ sottogoal
-\end{esempio}
+\end{defi}
 Nella risoluzione SLD si possono avere i seguenti risultati:
 \begin{itemize}
 \item \textbf{successo:} si genera la clausola vuota, ovvero se per $n$ finito $G_n$ è uguale alla clausola vuota $G_:n\equiv\,\,\,:-$
-\item \textbf{insuccesso finito}: se per $n$ finito $G_n$  non è uguale alla clausola vuota $G_:n\equiv\,\,\,:-$ e non è più possibile derivare un nuovo \textit{risolvente} da $G_n$ ed una clausola d programma
-\item \textbf{successo infinito: }se è sempre possibile derivare nuovi risolventi tutti diversi dalla clausola vuota
+\item \textbf{insuccesso finito}: se per $n$ finito $G_n$  non è uguale alla clausola vuota $G_:n\equiv\,\,\,:-$
+              e non è più possibile derivare un nuovo \textit{risolvente} da $G_n$ ed una clausola d programma.
+\item \textbf{successo infinito: }se è sempre possibile derivare nuovi risolventi tutti diversi dalla clausola vuota.
 \end{itemize}
 La \textbf{sostituzione di risposta} è la sequenza di unificatori usati ed applicata alle variabili nei termini del goal iniziale
 determina la risposta finale restituita dal sistema Prolog.\newline
@@ -873,12 +854,12 @@ Possono esserci più clausole di programma utilizzabili per applicare la risoluz
 \item \textbf{in ampiezza (Breadth First)}: si considerano in parallelo tutte le possibili alternative
 \end{itemize}
 Ogni sistema di programmazione logica sceglie la propria strategia e il Prolog ha deciso di adottare una strategia di risoluzione
-in profondità con Backtracking, ossia la possibilità di ritornare indietro e provare tutte le possibilità, al fine di avere così
+in profondità con backtracking, ossia la possibilità di ritornare indietro e provare tutte le possibilità, al fine di avere così
 un risparmio di memoria anche se non è una strategia completa per le clausole di Horn.
 
 Introduciamo ora l'importante argomento degli alberi di derivazione, per analizzare come un sistema Prolog effettua la computazione
 e quali passi esegue per riuscire a stabilire se una data query deriva dal programma o meno.
-
+\begin{defi}
 Dato un programma logico $P$, un goal $G_i$ e una regola di calcolo $R$ si ha che un \textit{albero SLD} per $P\cup G_i$ via $R$
 è definito sulla base del processo di prova visto precedentemente:
 \begin{itemize}
@@ -887,24 +868,31 @@ Dato un programma logico $P$, un goal $G_i$ e una regola di calcolo $R$ si ha ch
 \item dato il nodo: $:-\,\,\, A_1,...,A_{m-1},A_m,A_{m+1},...,A_k$
   se $A_m$ è il sottogoal selezionato dalla regola di calcolo $R$, allora questo nodo (genitore) ha un nodo figlio
   per ciascuna clausola del tipo:
-$$C_i\equiv A_i\,\,\, :-\,\,\, B_{i,\,1},...,B_{i,\,q}$$
-$$C_k\equiv A_k$$
-di $P$ tale che $A_i$ e $A_M$ ($A_K$ e $A_m$) sono unificabili attraverso la sostituzione più generale $\sigma$.\newline
+  \begin{equation*}
+    \begin{split}
+      C_i\equiv A_i\,\,\, :-\,\,\, B_{i,\,1},...,B_{i,\,q}\\
+      C_k \equiv A_k \\
+    \end{split}
+  \end{equation*}
+di $P$ tale che $A_i$ e $A_m$ ($A_K$ e $A_m$) sono unificabili attraverso la sostituzione più generale $\sigma$.\newline
 Il nodo figlio è etichettato con la clausola goal
-$$:-\,\,\,\sigma[A_1,...,A_{m-1},B_{i,\,i},...,B_{i,\,q},A_{m+1},...,A_k]$$
-$$:-\,\,\,\sigma[A_1,...,A_{m-1},A_m,A_{m+1},...,A_k]$$
-e il ramo dal nodo padre al figlio è etichettato dalla sostituzione $\sigma$ e dalla clausola selezionata $C_i$ o $C_k$.\\
-Il nuovo nodo $:-$ non ha figli.
+\begin{equation*}
+\begin{split}
+      :-\,\,\,\sigma[A_1,...,A_{m-1},B_{i,\,i},...,B_{i,\,q},A_{m+1},...,A_k]\\
+      :-\,\,\,\sigma[A_1,...,A_{m-1},A_m,A_{m+1},...,A_k]\\
+\end{split}
+\end{equation*}
+e il ramo dal nodo padre al figlio è etichettato dalla sostituzione $\sigma$ e dalla clausola selezionata $C_i$ o $C_k$
+ed infine si ha che il nodo $:-$ non ha figli.
 \end{itemize}
-La regola $R$ è variabile. Si ha:
+La regola $R$ è variabile e le più comuni utilizzate sono:
 \begin{itemize}
-\item \textbf{regola Left-most}: ovvero si ha la scelta del sottogoal più a sinistra 
-\item \textbf{regola Right-most}: ovvero si ha la scelta del sottogoal più a destra
+\item \textbf{regola Left-most}: si sceglie sempre il sottogoal più a sinistra 
+\item \textbf{regola Right-most}: si sceglie sempre il sottogoal più a destra
 \item si può avere la scelta di un sottogoal a caso
 \item se si ha un modo per decider il miglior sottogoal  
 \end{itemize}
-Ogni sistema logico decide la propria modalità di applicazione della regola e il sistema Prolog utilizza sempre la regola left-most.
-
+Ogni sistema logico decide la propria modalità di applicazione della regola e il sistema Prolog utilizza sempre la regola left-most.\newline
 L'albero SLD, generato implicitamente dal sistema Prolog, ordina i figli di un nodo secondo l'ordine dall'alto verso il basso
 delle regole e dei fatti del programma P. 
 \begin{esempio}
@@ -915,7 +903,6 @@ Ecco un esempio:
 \end{esempio}
 Ad ogni ramo di un albero SLD corrisponde una derivazione SLD e ogni ramo che termina con il nodo vuoto $:-$; la regola di calcolo
 influisce sulla struttura dell'albero per quanto riguarda l'ampiezza e la profondità ma tuttavia non influisce sulla correttezza e completezza.
-
 \begin{esempio}
   Ecco un altro esempio, con fallimento infinito, dove la clausola vuota può essere generata ma il Prolog non è in grado di trovare
   questa soluzione dato che la sua strategia di percorrimento dell’albero (implicito) di soluzioni è depth-first con backtracking :
@@ -923,18 +910,14 @@ influisce sulla struttura dell'albero per quanto riguarda l'ampiezza e la profon
 \includegraphics[scale=0.7]{img/alb2.png}
 \end{center}
 \end{esempio}
-\begin{esempio}
-%aggiungi esempio
-\end{esempio}
 \subsection{Cut e Backtracking}
-Introduciamo ora il predicato \emph{Cut}, il quale permette di controllare il backtracking, in quanto si tagliano certe possibilità
-di ritornare indietro nelle scelte durante la computazione.
-
+Introduciamo ora il predicato \emph{Cut}, attraverso cui possiamo controllare il backtracking, in quanto si tagliano certe possibilità
+di ritornare indietro nelle scelte durante la computazione.\newline
 Il predicato cut si indica con $!$ e il Prolog effettua un'interpretazione procedurale, sempre per il fatto che viene eseguito su un calcolatore.
 
 Come abbiamo affermato precedentemente, le clausole nel data base di un programma Prolog vengono considerate “da sinistra, verso destra”
 e “dall'alto al basso” per cui se un (sotto)goal fallisce, allora il dimostratore Prolog, sceglie un'alternativa,
-scandendo “dall'alto” verso “il basso” la lista delle clausole.
+scandendo “dall'alto” verso “il basso” la lista delle clausole.\newline
 Questa procedurà può venire controllata dal \textit{cut} infatti per esempio:
 \begin{minted}{prolog}
 a :- b1, b2, ..., bk, !, ..., bn.
@@ -950,8 +933,9 @@ Questo è l'effetto del cut:
 \end{itemize}
 Il Prolog per la gestione della computazione utilizza due stack, struttura dati di tipo lifo:
 \begin{itemize}
-\item stack delle scelte:
-\item stack delle computazioni:
+\item stack delle scelte: contiene l'insieme delle scelte possibili;ad ogni fase della valutazione contiene i puntatori alle
+      scelte aperte nelle fasi precedenti della dimostrazione
+\item stack di esecuzionei: contiene i record di attivazione delle varie procedure, ovvero le sostituzioni per l'unificazione delle varie regole.
 \end{itemize}
 vediamo un albero di derivazione in caso di cut:
 \begin{center}
@@ -959,10 +943,11 @@ vediamo un albero di derivazione in caso di cut:
 \end{center}
 Si hanno due tipi di cut:
 \begin{itemize}
-\item \textbf{green cut: } utili per esprimere “determinismo” (e quindi per rendere più efficiente il programma)
-\item \textbf{red cut: } usati per soli scopi di efficienza, hanno per caratteristica principale quella di omettere
-  alcune condizioni esplicite in un programma e, soprattutto, quella di modificare la semantica del programma equivalente senza cuts.
-  Hanno degli effetti indesiderabili ma sono utili per cui vanno maneggiati con cura per evitare gli effetti negativi.
+\item \textbf{green cut:} utili per esprimere “determinismo” e quindi per rendere più efficiente il programma in quanto non vengono analizzate
+                          clausole certamente false.
+\item \textbf{red cut:} usati per soli scopi di efficienza, hanno per caratteristica principale quella di omettere alcune condizioni
+                        esplicite in un programma e, soprattutto, quella di modificare la semantica del programma equivalente senza cuts.\newline
+       Hanno degli effetti indesiderabili ma sono utili per cui vanno maneggiati con cura per evitare di effettuare dei danni.
 \end{itemize}
 consideriamo il seguente codice:
 \begin{minted}{prolog}
@@ -981,7 +966,6 @@ merge([], Ys, Ys).
 merge(Xs, [], Xs).
 
 /+ minimo tra due numeri */
-
 minimum(X, Y, X) :- X =< Y.
 minimum(X, Y, Y) :- Y < X.
 \end{minted}
@@ -999,7 +983,8 @@ False.
 \end{lstlisting}
 \end{shaded}
 si ha una soluzione di troppo.
-Un programma Prolog si dice \textbf{deterministico} quando una sola delle clausole serve (o si vorrebbe servisse) per provare un dato goal. Si usano quindi i green cuts:
+Un programma Prolog si dice \textbf{deterministico} quando una sola delle clausole serve (o si vorrebbe servisse) per provare un dato goal.\newline
+Si usano quindi i green cuts:
 \begin{minted}{prolog}
 merge([X | Xs], [Y | Ys], [X | Zs]) :-
 	X < Y, !,
@@ -1009,7 +994,7 @@ merge([X | Xs], [Y | Ys], [X, Y | Zs]) :-
 	merge(Xs, Ys, Zs).
 merge([X | Xs], [Y | Ys], [Y | Zs]) :-
 	X > Y, !,
-ui	merge([X | Xs], Ys, Zs).
+	merge([X | Xs], Ys, Zs).
 merge([], Ys, Ys) :- !.
 merge(Xs, [], Xs) :- !.
 \end{minted}
@@ -1028,9 +1013,8 @@ ovvero:
 il programma del minimo diventa:
 \begin{minted}{prolog}
 minimum(X, Y, X) :- X =< Y, !.
-minimum(X, Y, Y) :- Y < X, !.
+minimum(X, Y, Y) :- Y < X, !.%è ridontante ma viene inserito per simmetria
 \end{minted}
-\textit{qui il secondo cut è ridondante ma viene messo per simmetria}.\newline
 Una volta che il programma ha fallito la prima clausola (ovvero il test X =< Y) al sistema Prolog non rimane che controllare la
 clausola seguente.\newline
 Riscrivo in maniera non simmetrica:
@@ -1039,11 +1023,13 @@ minimum(X, Y, X) :- X =< Y, !.
 minimum(X, Y, Y).
 \end{minted}
 Qui si ha un red cut dato che taglia solo delle soluzioni, portando anche a risultati errati, infatti $minimum(2, 5, 5)$ risulta verificato.
-
-\section{Aritmetica in Prolog}
+\section{Caratteristiche particolari del sistema Prolog}
+Dopo aver visto i background teorici e alcuni esempi basilari di programmi logici, introduciamo alcune caratteristiche più avanzate
+per poter semplificare e rendere più efficiente un programma prolog, ed incominciamo dall'aritmetica.
+\subsection{Aritmetica in Prolog}
 Il Prolog fornisce dei predicati standard per gestire ed effettuare le operazioni aritmetiche, i quali a differenza dei soliti predicati
-che derivano dalla logica, questi effettuano ed eseguono le operazioni direttamente usando l’hardware, perdendo la possibilità di effettuare
-l’instanzazione tramite l’unificazione ma dovendola fare direttamente alla chiamata dei predicati aritmetici.
+che derivano dalla logica, questi effettuano ed eseguono  direttamente usando l’hardware, perdendo la possibilità di effettuare
+l’instanzazione tramite l’unificazione ma dovendola fare direttamente alla chiamata dei predicati aritmetici.\newline
 Il Prolog prevede ed usa gli operatori matematici, con la loro relativa precedenza, $+ - * /$ 
 I predicati standard comunemente usato per la gestione dell’aritmetica sono i seguenti:
 \begin{itemize}
@@ -1187,4 +1173,277 @@ X = _1
 Kids = [abraham, haran, lot, yiscah, nachor, isaac, milcah];
 NO.
 \end{minted}
+
+Buona parte dei predicati di ordine superiori, introdotti precedentemente con i predicati bagof, setof, ed ecc..., funziona grazie al meccanismo
+delle meta-variabili, ovvero variabili interpretabili come goals.\newline
+Per esempio si ha il predicato \textit{call}:
+\begin{minted}{prolog}
+call(G) :- G.
+\end{minted}
+Possiamo quindi definire il predicato \textit{applica }che valuta una query composta da un funtore e da una lista di argomenti:
+\begin{minted}{prolog}
+applica(P, Argomenti) :-
+  P =.. PL, append(PL, Argomenti, GL), Goal =.. GL, call(Goal).
+\end{minted}
+\begin{shaded}
+\begin{lstlisting}[language=prolog]
+?- applica(father, [X, C]).
+X = terach
+C = abraham;
+X = terach
+C = nachor;
+false
+
+?- applica(father(terach), [C]).
+C = abraham;
+C = nachor;
+false
+\end{lstlisting}
+\end{shaded}
+\subsection{Manipolazine della base di Dati}
+Un programma Prolog è costituito da una base di dati (o knowledge base) che contiene \textbf{fatti} e \textbf{regole},
+su cui il programma interroga il sistema per sapere se una data query risulta verificata nella base di dati.\newline
+Il Prolog però mette a disposizione anche altri predicati che servono a manipolare direttamente la base di dati ma ovviamente,
+questi predicati vanno usati con molta attenzione, dato che modificano dinamicamente lo stato del programma:
+\begin{itemize}
+\item listing: per mostrare tutti gli elementi della base di conoscenza
+\item assert, asserta, assertz: per effettuare un'asserzione ossia inserire elementi nella nostra base di conoscenza
+\item \textit{retract}: per eliminare gli elementi in una base di conoscenza
+\item \textit{abolish}: per abolire degli elementi
+\end{itemize}
+se si ha una knowledge base vuota si avrà:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- listing.
+Yes
+\end{lstlisting}
+\end{shaded}
+ovvero solo yes e il \textit{listing} è vuoto.\newline
+Aggiungo ora qualcosa alla base dati con:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- assert(happy(maya)).
+true
+\end{lstlisting}
+\end{shaded}
+che risponderà sempre \textit{true}, ora si avrà:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- listing.
+happy(maya).
+true
+\end{lstlisting}
+\end{shaded}
+e la base dati non sarà più vuota.\newline
+Aggiungo altro alla base dati:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- assert(happy(vincent)).
+true
+
+?- assert(happy(marcellus)).
+true
+
+?- assert(happy(butch)).
+true
+
+?- assert(happy(vincent)).
+true
+\end{lstlisting}
+\end{shaded}
+il \textit{listing} ora darà:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- listing.
+happy(mia).
+happy(vincent).
+happy(marcellus).
+happy(butch).
+happy(vincent).
+true
+\end{lstlisting}
+\end{shaded}
+Si possono anche asserire regole usando assert e mettendo la regola tra parentesi:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- assert( (naive(X) :- happy(X)) ).
+true
+
+?- listing.
+happy(mia).
+happy(vincent).
+happy(marcellus).
+happy(butch).
+happy(vincent).
+naive(A) :-
+happy(A).
+true
+\end{lstlisting}
+\end{shaded}
+possiamo anche rimuovere fatti e regole con retract, riprendendo dagli esempi sopra:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- retract(happy(marcellus)).
+true
+
+?- listing.
+happy(mia).
+happy(vincent).
+happy(butch).
+happy(vincent).
+naive(A) :-
+happy(A).
+true
+\end{lstlisting}
+\end{shaded}
+inoltre si ha che retract rimuove solo la prima occorrenza:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- listing.
+happy(mia).
+happy(vincent).
+happy(butch).
+happy(vincent).
+naive(A) :-
+happy(A).
+true
+
+?- retract(happy(vincent)).
+true
+
+?- listing.
+happy(mia).
+happy(butch).
+happy(vincent).
+naive(A) :-
+happy(A).
+true
+\end{lstlisting}
+\end{shaded}
+Per rimuovere tutte le nostre asserzioni possiamo usare una variabile:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- retract(happy(X)).
+X = mia;
+X = butch;
+X = vincent;
+false
+
+?- listing.
+naive(A) :-
+happy(A)
+true
+\end{lstlisting}
+\end{shaded}
+Per avere più controllo su dove vengono aggiunti fatti e regole possiamo usare le due varianti di assert:
+\begin{enumerate}
+\item assertz: inserisce l’asserzione alla fine della knowledge base
+\item asserta: inserisce l’asserzione all'inizio della knowledge base
+\end{enumerate}
+ovvero, partendo da una base dari vuota:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- assert(p(b)), assertz(p(c)), asserta(p(a)).
+true
+
+?- listing.
+p(a).
+p(b).
+p(c).
+true
+\end{lstlisting}
+\end{shaded}
+La manipolazione dati può essere usata per memorizzare i risultati intermedi di varie computazioni, in modo da non dover rifare
+delle queries dispendiose in futuro: semplicemente si ricerca direttamente il fatto appena asserito;
+questa tecnica si chiama \textbf{memorization} o \textbf{caching}.
+\begin{esempio}
+Creiamo una tavola di addizioni manipolando la knowledge base:
+\begin{minted}{prolog}
+addition_table(A) :-
+  member(B, A),
+  member(C, A),
+  D is B + C,
+  assert(sum(B, C, D)),
+  fail.
+\end{minted}
+dove \textit{member(X, Y)} controlla che il predicato X appartenga alla lista Y.\\
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- addition_table([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]).
+false
+\end{lstlisting}
+\end{shaded}
+La risposta è false; ma non è la risposta che ci interessa, bensì l’effetto (collaterale) che l’interrogazione ha sulla knowledge base:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- listing(sum).
+sum(0, 0, 0).
+sum(0, 1, 1).
+sum(0, 2, 2).
+sum(0, 3, 3).
+...
+sum(9, 9, 18).
+true
+\end{lstlisting}
+\end{shaded}
+potremmo ora rimuovere tutti questi fatti non con il solito 
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- retract(sum(X, Y, Z)).
+\end{lstlisting}
+\end{shaded}
+che dovremmo ripetere ogni volta per ogni fatto ma con:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- retract(sum(_, _, _)), fail.
+false
+\end{lstlisting}
+\end{shaded}
+Ancora una volta, lo scopo del \emph{fail} è di forzare il backtracking infatti il Prolog rimuove il primo fatto con funtore sum dalla base di dati
+e poi fallisce.\newline
+Quindi fa bactrack e rimuove il fatto successivo e così via per cui alla fine, dopo aver rimosso tutti i fatti con funtore sum,
+la query fallirà completamente ed il Prolog risponderà (correttamente) con un false.\newline
+Ma anche in questo caso a noi interessa unicamente l’effetto collaterale sulla knowledge base.
+\end{esempio}
+\section{Input e Output in Prolog}
+I predicati primitivi principali per la gestione dell'I/O in Prolog sono essenzialmente due, \textbf{read} e \textbf{write},
+a cui si aggiungono i vari predicati per la gestione dei files e degli streams: \textbf{open, close, seek}, etc...
+Il predicato write è l'equivalente del metodo \emph{toString} in Java su un oggetto di classe "termine" mentre \emph{read} invoca il parser prolog:
+\begin{shaded}
+\begin{minted}{Prolog}
+?- write(42).
+42
+true
+
+?- foo(bar) = X, write(X).
+foo(bar)
+X = foo(bar)
+?- read(What).
+|: foo(42, Bar).
+What = foo(42, _G270).
+
+?- read(What), write('I just read: '), write(What).
+|: read(What).
+I just read: read(_G301)
+What = read(_G301).
+
+?- open(``some/file/here.txt'', write, Out),
+write(Out, foo(bar)), put(Out, 0’.), nl(Out),
+close(Out).
+true % But file ”some/file/here.txt” now contains the term ’foo
+(bar).’
+
+?- open(’some/file/here.txt’, read, In),
+read(In, What)
+close(In).
+What = foo(bar)
+\end{minted}
+\end{shaded}
+\textbf{open} e \textbf{close} servono per leggere e scrivere files; la versione più semplice di open ha con tre argomenti:
+un atomo che rappresenta il nome del file, una “modalità” con cui si apre il file ed un terzo argomento a cui si associa l’identificatore del file.
+
+Esiste anche il predicato \textbf{put} che emette un carattere sullo stream ed il predicato nl che mette un ‘newline’ sullo stream
+ed il Prolog usa la notazione \textit{0'c} per rappresentare i caratteri come termini.
+\subsection{Interpreti in Prolog}
+
 \end{document}

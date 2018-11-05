@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.21)  4 NOV 2018 22:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.21)  5 NOV 2018 21:55
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -929,27 +929,27 @@ runsystem(rm appunti.aex)...executed.
  (./appunti.aux)
 \openout1 = `appunti.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 28.
 
 (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Info: Redefining \it@ocap on input line 29.
-LaTeX Info: Redefining \it@ccap on input line 29.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Info: Redefining \it@ocap on input line 28.
+LaTeX Info: Redefining \it@ccap on input line 28.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -989,9 +989,9 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 29.
+ on input line 28.
 
-LaTeX Info: Redefining \microtypecontext on input line 29.
+LaTeX Info: Redefining \microtypecontext on input line 28.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1006,7 +1006,7 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 (RS)
 )
 \c@lstlisting=\count191
-LaTeX Font Info:    Try loading font information for U+msa on input line 34.
+LaTeX Font Info:    Try loading font information for U+msa on input line 33.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1014,7 +1014,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 34.
+LaTeX Font Info:    Try loading font information for U+msb on input line 33.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1033,7 +1033,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 Capitolo 1.
 [2
 
-]
+] [3]
 runsystem(pygmentize -S default -f latex -P commandprefix=PYG > appunti.out.pyg
 )...executed.
 
@@ -1042,37 +1042,46 @@ runsystem(pygmentize -S default -f latex -P commandprefix=PYGdefault > appunti.
 out.pyg)...executed.
 
  (./appunti.out.pyg)
-runsystem(pygmentize -l Prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
-ppunti.out.pyg /esempi/employees.pl)...executed.
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg esempi/employees.pl)...executed.
 
- (./appunti.out.pyg) [3] [4]
-[5]
+ (./appunti.out.pyg
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1.
+
+(/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+) [4] [5]
 Capitolo 2.
-<img/tri.png, id=33, 178.6675pt x 247.92625pt>
+<img/tri.png, id=35, 178.6675pt x 247.92625pt>
 File: img/tri.png Graphic file (type png)
 <use img/tri.png>
-Package pdftex.def Info: img/tri.png  used on input line 154.
+Package pdftex.def Info: img/tri.png  used on input line 150.
 (pdftex.def)             Requested size: 89.33353pt x 123.96281pt.
-<img/tri2.png, id=35, 224.84pt x 252.945pt>
+<img/tri2.png, id=37, 224.84pt x 252.945pt>
 File: img/tri2.png Graphic file (type png)
 <use img/tri2.png>
-Package pdftex.def Info: img/tri2.png  used on input line 164.
+Package pdftex.def Info: img/tri2.png  used on input line 160.
 (pdftex.def)             Requested size: 112.41972pt x 126.47218pt.
 [6
 
  <./img/tri.png>] [7 <./img/tri2.png>]
-Overfull \hbox (12.59009pt too wide) in paragraph at lines 231--233
+Overfull \hbox (12.59009pt too wide) in paragraph at lines 227--229
 []\T1/cmr/m/n/10 (-20) La sin-tas-si di un lin-guag-gio è com-po-sta da una se-
 rie di for-mu-le ben formate($\OML/cmm/m/it/10 FBF$\T1/cmr/m/n/10 (-20) )
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--243
+Underfull \hbox (badness 10000) in paragraph at lines 236--239
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--245
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
 
  []
 
@@ -1083,22 +1092,6 @@ Capitolo 3.
 runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
-(./appunti.out.pyg
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1.
- (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-)
-\openout4 = `appunti.pyg'.
-
-runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
-ppunti.out.pyg appunti.pyg)...executed.
-
-
 (./appunti.out.pyg)
 \openout4 = `appunti.pyg'.
 
@@ -1106,7 +1099,19 @@ runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
  (./appunti.out.pyg)
-Overfull \hbox (8.33739pt too wide) in paragraph at lines 509--513
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg
+Overfull \hbox (8.33739pt too wide) in paragraph at lines 496--1
 \T1/cmr/m/n/10 (-20) la te-sta del-la re-go-la $\OML/cmm/m/it/10 A$\T1/cmr/m/n/
 10 (-20) , vie-ne det-ta con-se-guen-za men-tre il cor-po $\OML/cmm/m/it/10 B[]
 ; B[]; [] ; B[]$
@@ -1114,7 +1119,7 @@ Overfull \hbox (8.33739pt too wide) in paragraph at lines 509--513
 
 [13
 
-]
+])
 \openout4 = `appunti.pyg'.
 
 runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
@@ -1134,7 +1139,6 @@ ppunti.out.pyg appunti.pyg)...executed.
 
  (./appunti.out.pyg
 LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 6.
-
 (/usr/share/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -1193,7 +1197,7 @@ runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
 
-(./appunti.out.pyg [20])
+(./appunti.out.pyg) [20]
 \openout4 = `appunti.pyg'.
 
 runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
@@ -1206,24 +1210,24 @@ runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
  (./appunti.out.pyg) [22]
-<img/alb.png, id=109, 665.48625pt x 381.425pt>
+<img/alb.png, id=107, 665.48625pt x 381.425pt>
 File: img/alb.png Graphic file (type png)
 <use img/alb.png>
-Package pdftex.def Info: img/alb.png  used on input line 913.
+Package pdftex.def Info: img/alb.png  used on input line 902.
 (pdftex.def)             Requested size: 465.83719pt x 266.99567pt.
 
-Overfull \hbox (120.83719pt too wide) in paragraph at lines 913--914
+Overfull \hbox (120.83719pt too wide) in paragraph at lines 902--903
  [] 
  []
 
 [23]
-<img/alb2.png, id=113, 644.4075pt x 395.4775pt>
+<img/alb2.png, id=111, 644.4075pt x 395.4775pt>
 File: img/alb2.png Graphic file (type png)
 <use img/alb2.png>
-Package pdftex.def Info: img/alb2.png  used on input line 923.
+Package pdftex.def Info: img/alb2.png  used on input line 911.
 (pdftex.def)             Requested size: 451.08218pt x 276.83235pt.
 
-Overfull \hbox (106.08218pt too wide) in paragraph at lines 923--924
+Overfull \hbox (106.08218pt too wide) in paragraph at lines 911--912
  [] 
  []
 
@@ -1234,13 +1238,13 @@ runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
  (./appunti.out.pyg) [25 <./img/alb2.png>]
-<img/cut.png, id=123, 439.6425pt x 281.55188pt>
+<img/cut.png, id=121, 439.6425pt x 281.55188pt>
 File: img/cut.png Graphic file (type png)
 <use img/cut.png>
-Package pdftex.def Info: img/cut.png  used on input line 958.
+Package pdftex.def Info: img/cut.png  used on input line 943.
 (pdftex.def)             Requested size: 351.71446pt x 225.24179pt.
 
-Overfull \hbox (6.71446pt too wide) in paragraph at lines 958--959
+Overfull \hbox (6.71446pt too wide) in paragraph at lines 943--944
  [] 
  []
 
@@ -1250,13 +1254,13 @@ runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
 (./appunti.out.pyg [26 <./img/cut.png>])
-<img/cut2.png, id=127, 447.92343pt x 217.5628pt>
+<img/cut2.png, id=125, 447.92343pt x 217.5628pt>
 File: img/cut2.png Graphic file (type png)
 <use img/cut2.png>
-Package pdftex.def Info: img/cut2.png  used on input line 990.
+Package pdftex.def Info: img/cut2.png  used on input line 975.
 (pdftex.def)             Requested size: 358.33922pt x 174.05048pt.
 
-Overfull \hbox (13.33922pt too wide) in paragraph at lines 990--991
+Overfull \hbox (13.33922pt too wide) in paragraph at lines 975--976
  [] 
  []
 
@@ -1273,10 +1277,10 @@ ppunti.out.pyg appunti.pyg)...executed.
 
  (./appunti.out.pyg
 [27 <./img/cut2.png>])
-<img/cut3.png, id=131, 426.84468pt x 220.57407pt>
+<img/cut3.png, id=129, 426.84468pt x 220.57407pt>
 File: img/cut3.png Graphic file (type png)
 <use img/cut3.png>
-Package pdftex.def Info: img/cut3.png  used on input line 1026.
+Package pdftex.def Info: img/cut3.png  used on input line 1012.
 (pdftex.def)             Requested size: 341.47621pt x 176.45947pt.
 \openout4 = `appunti.pyg'.
 
@@ -1298,7 +1302,7 @@ ppunti.out.pyg appunti.pyg)...executed.
  (./appunti.out.pyg)
 \openout4 = `appunti.pyg'.
 
-runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+runsystem(pygmentize -l Prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
  (./appunti.out.pyg [29])
@@ -1313,6 +1317,18 @@ ppunti.out.pyg appunti.pyg)...executed.
 runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
+
+(./appunti.out.pyg)
+Overfull \hbox (1.03831pt too wide) in paragraph at lines 1113--1115
+[]\T1/cmr/bx/n/10 functor(Term, F, Ari-ty)\T1/cmr/m/n/10 (-20) , ve-ro se \T1/c
+mr/m/it/10 (-20) Term \T1/cmr/m/n/10 (-20) è un ter-mi-ne, con \T1/cmr/m/it/10 
+(-20) Ari-ty\T1/cmr/m/n/10 (-20) argomenti,
+ []
+
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
 
 (./appunti.out.pyg [30])
 \openout4 = `appunti.pyg'.
@@ -1346,55 +1362,110 @@ ppunti.out.pyg appunti.pyg)...executed.
 
 
 (./appunti.out.pyg)
-Underfull \hbox (badness 10000) in paragraph at lines 1383--1384
+Underfull \hbox (badness 10000) in paragraph at lines 1387--1388
 
  []
 
 [36]
 \openout4 = `appunti.pyg'.
 
-runsystem(pygmentize -l Prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
- (./appunti.out.pyg) [37] [38] (./appunti.aux)
+ (./appunti.out.pyg) [37]
+<img/aut.png, id=162, 256.96pt x 86.3225pt>
+File: img/aut.png Graphic file (type png)
+<use img/aut.png>
+Package pdftex.def Info: img/aut.png  used on input line 1477.
+(pdftex.def)             Requested size: 205.56827pt x 69.05807pt.
+ [38]
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg
+[39 <./img/aut.png>])
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+
+(./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg)
+\openout4 = `appunti.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
+ppunti.out.pyg appunti.pyg)...executed.
+
+ (./appunti.out.pyg
+[40]) [41] (./appunti.aux)
 runsystem(rm appunti.pyg)...executed.
 
 runsystem(rm appunti.out.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 30251 strings out of 492642
- 706708 string characters out of 6135565
- 1124975 words of memory out of 5000000
- 33362 multiletter control sequences out of 15000+600000
- 28250 words of font info for 132 fonts, out of 8000000 for 9000
+ 30281 strings out of 492642
+ 707162 string characters out of 6135565
+ 1126580 words of memory out of 5000000
+ 33369 multiletter control sequences out of 15000+600000
+ 28505 words of font info for 133 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,14n,96p,878b,1142s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,96p,878b,1142s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/
 texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></u
-sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/font
-s/type1/public/cm-super/sfbi1000.pfb></usr/share/texmf-dist/fonts/type1/public/
-cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx12
-00.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/sh
-are/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/
-fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/cm-super/sfit1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
-rm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></us
-r/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf-d
-ist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1
-/public/cm-super/sftt1000.pfb>
-Output written on appunti.pdf (39 pages, 555734 bytes).
+mmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
+pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share
+/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fon
+ts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public
+/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2
+074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/share/texmf-dist
+/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/s
+frm1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></u
+sr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on appunti.pdf (42 pages, 554001 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
+ 251 PDF objects out of 1000 (max. 8388607)
  172 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 23088 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 23093 words of extra memory for PDF output out of 24883 (max. 10000000)
 
