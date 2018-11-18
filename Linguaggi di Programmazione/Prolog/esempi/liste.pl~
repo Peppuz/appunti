@@ -48,28 +48,20 @@ search(X, [Y | Ys]) :-
     search(X, Ys).
 
 %predicato min/2 per calcolare il minimo degli elementi di una lista
-min([X], X).
+min(X, X).
 min([X | Xs], X) :-
     min(Xs, Z),
-    number(X),
-    number(Z),
     X < Z.
 min([X | Xs], Z):-
     min(Xs, Z),
-    number(X),
-    number(Z),
     Z < X.
 
 %predicato max/2 per calcolare il massimo degli elementi di una lista
-max([X], X) :- number(X).
+max(X, X).
 max([X | Xs], X) :-
     max(Xs, Z),
-    number(X),
-    number(Z),
     X > Z.
 max([X | Xs], Z) :-
     max(Xs, Z),
-    number(Z),
-    number(X),
     Z > X.
 %% end of file lists.pl

@@ -1,23 +1,24 @@
 \babel@toc {italian}{}
 \babel@toc {italian}{}
-\contentsline {chapter}{\numberline {1}Introduzione ai Paradigmi di Programmazione}{2}
-\contentsline {section}{\numberline {1.1}Paradigma Imperativo}{3}
-\contentsline {section}{\numberline {1.2}Paradigma Logico}{3}
-\contentsline {section}{\numberline {1.3}Paradigma Funzionale}{4}
-\contentsline {section}{\numberline {1.4}Richiami sugli ambienti RunTime e architettura degli elaboratori}{5}
-\contentsline {chapter}{\numberline {2}Logica Proposizionale e Predicativa}{6}
-\contentsline {section}{\numberline {2.1}Logica Proporzionale}{8}
-\contentsline {section}{\numberline {2.2}Logica del primo ordine}{11}
-\contentsline {chapter}{\numberline {3}Prolog:Programmazione Logica}{13}
-\contentsline {section}{\numberline {3.1}Principio di Risoluzione}{15}
-\contentsline {section}{\numberline {3.2}Principio di Unificazione}{16}
-\contentsline {subsection}{\numberline {3.2.1}Risoluzione ad Input Lineare (SLD)}{21}
-\contentsline {subsection}{\numberline {3.2.2}Cut e Backtracking}{25}
-\contentsline {section}{\numberline {3.3}Caratteristiche particolari del sistema Prolog}{28}
-\contentsline {subsection}{\numberline {3.3.1}Aritmetica in Prolog}{29}
-\contentsline {subsection}{\numberline {3.3.2}Predicati Meta-Logici}{29}
-\contentsline {subsection}{\numberline {3.3.3}Programmazione di ordine superiore}{31}
-\contentsline {subsection}{\numberline {3.3.4}Manipolazine della base di Dati}{33}
-\contentsline {subsection}{\numberline {3.3.5}Input e Output in Prolog}{37}
-\contentsline {section}{\numberline {3.4}Interpreti in Prolog}{38}
-\contentsline {subsection}{\numberline {3.4.1}Interprete degli automi a stati finiti}{39}
+\contentsline {chapter}{\numberline {1}Introduzione ai Paradigmi di Programmazione}{5}
+\contentsline {section}{\numberline {1.1}Paradigma Imperativo}{6}
+\contentsline {section}{\numberline {1.2}Paradigma Logico}{7}
+\contentsline {section}{\numberline {1.3}Paradigma Funzionale}{7}
+\contentsline {section}{\numberline {1.4}Richiami sugli ambienti RunTime}{8}
+\contentsline {chapter}{\numberline {2}Logica}{9}
+\contentsline {section}{\numberline {2.1}Logica Proporzionale}{11}
+\contentsline {section}{\numberline {2.2}Logica del primo ordine}{13}
+\contentsline {chapter}{\numberline {3}Programming in Logic}{17}
+\contentsline {section}{\numberline {3.1}Principio di Risoluzione}{19}
+\contentsline {section}{\numberline {3.2}Principio di Unificazione}{20}
+\contentsline {subsection}{\numberline {3.2.1}Risoluzione ad Input Lineare (SLD)}{22}
+\contentsline {subsection}{\numberline {3.2.2}Cut e Backtracking}{26}
+\contentsline {section}{\numberline {3.3}Strutture Dati ed ambiente Prolog}{29}
+\contentsline {section}{\numberline {3.4}Caratteristiche particolari del sistema Prolog}{32}
+\contentsline {subsection}{\numberline {3.4.1}Aritmetica in Prolog}{33}
+\contentsline {subsection}{\numberline {3.4.2}Predicati Meta-Logici}{33}
+\contentsline {subsection}{\numberline {3.4.3}Programmazione di ordine superiore}{35}
+\contentsline {subsection}{\numberline {3.4.4}Manipolazine della base di Dati}{37}
+\contentsline {subsection}{\numberline {3.4.5}Input e Output in Prolog}{41}
+\contentsline {section}{\numberline {3.5}Interpreti in Prolog}{42}
+\contentsline {subsection}{\numberline {3.5.1}Interprete degli automi a stati finiti}{43}

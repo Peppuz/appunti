@@ -14,5 +14,5 @@ worksFor(ciro, samsung).
 worksForAnEvilCompany(X, Y) :- worksFor(X, trenord).
 
 :- colleague(X, Y).
-%%%% End of file employees.pl
+
     
