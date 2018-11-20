@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 Sistemare esempi delle grammatiche, espressioni regolari, automi
 sistemare alberi sintattici usando libreria forest
 sistemare gli automi disegnati come esercizi
 fare e sistemare gli appunti sugli automi
 fare immagine della gerarchia delle grammatiche
 Fare dimostrazione linguaggi con il contesto con la dimostrazione pag 14 di Lorenzo Soligo.
+=======
+inserire immagine tipologie di derivazioni
+dimostrazione equivalenza tra tipologie di derivazioni
+dimostrazione ambiguità di una grammatica
+aggiunta esempi sulle grammatiche context-free
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342

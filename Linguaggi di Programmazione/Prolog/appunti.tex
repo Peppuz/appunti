@@ -61,11 +61,11 @@ usato per strutturare un programma, al fine di facilitare l'apprendimento di lin
       Ne fanno parte il C/C++, i linguaggi Assembler, Pascal, Python, \dots
 \item \textbf{Logic Languages}: paradigma in cui un programma è una deduzione logica, ossia ogni istruzione è una formula del linguaggio
   e la computazione consiste nell'interrogare il sistema per sapere se l'interrogazione fa parte della conoscenza rappresentata dal programma.
-  
+
       Questo paradigma viene utilizzato principalmente per la dimostrazione della correttezza di un programma, per rappresentare i database
       ed infine sta avendo un notevole utilizzo ultimamente nel campo dell'AI(Artificial Intelligence).\newline
       Fa parte di questo paradigma principalmente solo il Prolog e i suoi derivati, infatti noi useremo il SWI-Prolog.
-\item \textbf{Functional Languages}: paradigma in cui il concetto di funzione è l'unica cosa importante infatti i programmi 
+\item \textbf{Functional Languages}: paradigma in cui il concetto di funzione è l'unica cosa importante infatti i programmi
       consistono nell'applicazione e nella definizione di una serie di funzioni.\newline
       Ne fanno parte i linguaggi Lisp, Common Lisp, Scheme, Javascript, ML, Ocaml, Haskell, R e pochi altri.
 \end{itemize}
@@ -105,7 +105,7 @@ Un esempio di programma logico è il seguente:
 Questo programma implementa la regolazione di lavorare per una compagnia e se due persone sono colleghi, anche se una trattazione
 completa della semantica verrà fornita nei successivi paragrafi.
 \section{Paradigma Funzionale}
-Il paradigma funzionale, come già notato nel paradigma logico, viene usato per una programmazione simbolica, 
+Il paradigma funzionale, come già notato nel paradigma logico, viene usato per una programmazione simbolica,
 in cui si adotta solitamente uno stile descrittivo ed infine non vi è una completa separazione tra strutture dati ed algoritmi.
 
 Il concetto fondamentale di questo paradigma è la funzione, relazione definita su due insiemi che associa ad un elemento del dominio uno e
@@ -123,17 +123,17 @@ Esempio di programma funzionale:
 Per eseguire un programma in un qualsiasi linguaggio il sistema operativo deve mettere a disposizione
 un ambiente \textit{run time}, anche una macchina virtuale, il quale fornisce almeno due funzionalità:
 \begin{itemize}
-\item mantenimento dello stato della computazione attraverso program counter, limiti di memoria ed etc\dots 
+\item mantenimento dello stato della computazione attraverso program counter, limiti di memoria ed etc\dots
 \item gestione della memoria disponibile, fisica e virtuale, il quale avviene usando due aree distinte con funzioni diverse:
       \begin{itemize}
       \item lo \textbf{Stack}  serve per la gestione delle chiamate, soprattutto ricorsive, a procedure attraverso i record di attivazione.
       \item lo \textbf{Heap} serve per la gestione di strutture dati dinamiche, quali liste, alberi, dizionari ed etc \dots
       \end{itemize}
 \end{itemize}
-I linguaggi logici e funzionali (ma anche Java) utilizzano pesantemente lo Heap dato che forniscono come strutture dati built-in 
+I linguaggi logici e funzionali (ma anche Java) utilizzano pesantemente lo Heap dato che forniscono come strutture dati built-in
 liste e spesso vettori di dimensione variabile.
 
-La gestione dei record di attivazione è stata affrontata nei corsi di Programmazione ed Architettura, a cui si può consultare 
+La gestione dei record di attivazione è stata affrontata nei corsi di Programmazione ed Architettura, a cui si può consultare
 libri e gli appunti per rinfrescarne la memoria.
 
 La gestione della memoria, in particolare quella dinamica, può avvenire in maniera automatica, attraverso il \emph{Garbage Collector}
@@ -146,23 +146,35 @@ e perfezionare i concetti necessari per la comprensione e la scrittura di progra
 Partiamo con l'esempio di una semplice dimostrazione geometrica:
 \begin{teorema}
   Dato un triangolo isoscele (con $\overline{AB}=\overline{BC}$) si ha che $\angle A$ e $\angle C$, ovvero l'angolo in $C$, sono uguali.
+<<<<<<< HEAD
 \begin{figure}
 \caption{Triangolo Isoscele}
 \includegraphics[scale=0.5]{img/tri.png}
 \end{figure}
+=======
+\begin{center}
+\includegraphics[scale=0.5]{img/tri.png}
+\end{center}
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \end{teorema}
 \begin{proof}
-  
-Si comincia la dimostrazione con l'elenco delle conoscenze pregresse: 
+
+Si comincia la dimostrazione con l'elenco delle conoscenze pregresse:
 \begin{enumerate}
 \item se due triangoli sono uguali essi hanno lati e angoli uguali
 \item se due triangoli hanno due lati e l'angolo sotteso uguale allora i due triangoli sono uguali
 \item se viene definita la bisettrice di $\angle B$, $\overline{BH}$, si ha che $\angle ABH = \angle HBC$
+<<<<<<< HEAD
 \begin{figure}
 \centering
 \caption{Triangolo isoscele scomposto in due triangoli rettangoli}
 \includegraphics[scale=0.5]{img/tri2.png}
 \end{figure}
+=======
+\begin{center}
+\includegraphics[scale=0.5]{img/tri2.png}
+\end{center}
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \end{enumerate}
 Procediamo ora coi passi della dimostrazione:
 \begin{enumerate}
@@ -170,7 +182,7 @@ Procediamo ora coi passi della dimostrazione:
 \item $\angle ABH = \angle HBC$ per la terza conoscenza pregressa
 \item $HBC = ABH$ per la seconda conoscenza pregressa in quanto due lati sono uguali per ipotesi e dal passo precedente
       l'angolo sotteso ai due lati uguali è uguale in ambedue i triangoli.
-\item $\angle A= \angle C$ per la prima conoscenza pregressa dato che $HBC = ABH$ 
+\item $\angle A= \angle C$ per la prima conoscenza pregressa dato che $HBC = ABH$
 \end{enumerate}
 Siamo così giunti alla fine della dimostrazione ma adesso vogliamo rappresentarla attraverso gli strumenti della logica al fine di renderla
 totalmente formale per cui si effettua i seguenti passaggi:
@@ -202,7 +214,7 @@ per ottenere $\overline{AB} = \overline{BC} \vdash \angle A = \angle C$ bisogna 
 \item [P5] $ABH = HBC$ da \textbf{P4}, dalla \textbf{regola 2}  attraverso l'applicazione del \textbf{modus ponens}.
 \item [P6] $\overline{AB} = \overline{BC} \land \overline{BH} = \overline{BH} \land \overline{AH} = \overline{HC} \land \newline
   \angle ABH = \angle HBC \land \angle AHB = \angle CBH \land \angle A=\angle C$ da \textbf{P5}, dalla \textbf{regola 1} attraverso Modus Ponens.
-\item [P7] $\angle A=\angle C$ da \textbf{P6} attraverso \textbf{eliminazione della congiunzione} 
+\item [P7] $\angle A=\angle C$ da \textbf{P6} attraverso \textbf{eliminazione della congiunzione}
 \end{description}
 \end{proof}
 \begin{defi}
@@ -220,7 +232,7 @@ Un insieme di regole di inferenza costituisce la base di un calcolo logico, il q
 unicamente sintattico al fine di stabilire una connessione tra un insieme di formule di partenza, dette assiomi e un insieme di conclusioni.
 
 \section{Logica Proporzionale}
-La logica proposizionale si occupa delle conclusioni che si possono trarre da un insieme di proposizioni, 
+La logica proposizionale si occupa delle conclusioni che si possono trarre da un insieme di proposizioni,
 ma purtroppo è un linguaggio limitato in quanto non si può generalizzare le proposizioni e/o definire delle proprietà.
 
 La sintassi di un linguaggio è composta da una serie di formule ben formate($FBF$) definite induttivamente nel seguente modo:
@@ -244,7 +256,10 @@ La semantica di una logica consente di dare un significato e un interpretazione 
 \end{defi}
 I connettivi della Logica Proposizionale hanno i seguenti valori di verità:
 %Tabella di Verità degli operatori
+<<<<<<< HEAD
 \begin{table}
+=======
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 $\begin{array}{cccccc}
 \toprule
 \text{A} & \text{B} & A \land B & A \lor B & \neg A & A \rightarrow B\\
@@ -255,7 +270,11 @@ $\begin{array}{cccccc}
     T & T & T & T & F & T\\
 \bottomrule
 \end{array}$
+<<<<<<< HEAD
 \end{table}
+=======
+
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 La tavola di verità costituisce la semantica di un insieme di proposizioni mentre un calcolo logico dice come generare nuove formule logiche,
 ovvero espressioni sintattiche, a partire dagli assiomi e questo processo di generazione si chiama dimostrazione.
 
@@ -287,12 +306,12 @@ Le regole di inferenza analizzate sono le seguenti:
   \begin{equation*}
     \frac{a \lor \neg a}{vero}
   \end{equation*}
-  
+
 \item \textbf{Eliminazione di $\neg$}:
   \begin{equation*}
     \frac{\neg \neg a}{a}
   \end{equation*}
-  
+
 \item \textbf{Eliminazione di $\land$}:
   \begin{equation*}
     \frac{a \land vero}{a}
@@ -461,7 +480,7 @@ I componenti basilari di un programma Prolog, rappresentanti tutti una clausola 
                \begin{minted}{prolog}
                  :- worksFor(paolo, trenord).
                \end{minted}
- 
+
 \item [Regole]: definisce una nuova relazione esistente tra gli oggetti, ossia permette di derivare una nuova conclusione dalla base di conoscenza.
                 \begin{minted}{prolog}
                   parent(X, Y) :- father(X, Y).
@@ -492,7 +511,7 @@ Ogni espressione prolog viene chiamata \emph{termine}, che può essere della seg
 \begin{description}
 \item [atomi] : elemento base del Prolog rappresentato da un numero, qualsiasi sequenza racchiusa tra ' ',
        una sequenza di caratteri alfanumerici, con la lettera minuscola iniziale, e nel SWI-Prolog anche una stringa indica un atomo.
-   
+
 \item [variabili] : sequenza di caratteri alfanumerici, iniziata con la lettera maiuscola oppure con \_ e vengono inizializzate
                     quando il sistema prova a dimostrare una query.\newline
                     Una variabile composta soltanto dal simbolo \_ viene detta \emph{anonima}.
@@ -599,7 +618,7 @@ Mgu(foo(bar, 42), foo(bar, X)) % ->{X/42} ovvero X deve essere 42
 Mgu(foo(Y, 42), foo(bar, X)) % ->{Y/bar, X/42} ovvero X deve essere 42
 Mgu(foo(bar(42), baz), foo(X, Y))  /* ->{X/bar (42), Y/baz}
  ovvero X deve essere  bar(42) e Y baz*/
-Mgu(foo(X), foo(bar(Y))) 
+Mgu(foo(X), foo(bar(Y)))
 Mgu(foo(bar(42), baz), foo(X, Y))  /* ->{X/bar (y), Y_:G001}
  ovvero non si ha soluzione */
 \end{minted}
@@ -775,15 +794,15 @@ ed infine si ha che il nodo $:-$ non ha figli.
 \end{defi}
 La regola $R$ è variabile e le più comuni utilizzate sono:
 \begin{itemize}
-\item \textbf{Left-most}: si sceglie sempre di risolvereil sottogoal più a sinistra 
+\item \textbf{Left-most}: si sceglie sempre di risolvereil sottogoal più a sinistra
 \item \textbf{Right-most}: si sceglie sempre la risoluzione del sottogoal più a destra
 \item si può avere la scelta di un sottogoal a caso
-\item se si ha un modo per decider il miglior sottogoal  
+\item se si ha un modo per decider il miglior sottogoal
 \end{itemize}
 Ogni sistema logico decide la propria modalità di applicazione della regola e il sistema Prolog ha deciso di
 usare sempre la regola left-most.\newline
 L'albero SLD, generato implicitamente dal sistema Prolog, ordina i figli di un nodo secondo l'ordine dall'alto verso il basso
-delle regole e dei fatti del programma P, come si nota nell'esempio mostrato di seguito. 
+delle regole e dei fatti del programma P, come si nota nell'esempio mostrato di seguito.
 \begin{esempio}
 Ecco un esempio:
 \begin{center}
@@ -951,7 +970,7 @@ La lista vuota in prolog è gestita come una lista speciale infatti risulta:
 ?- [X | Ys] = [].
 No
 \end{minted}
-Nonostante le liste sono definite di default in Prolog, con anche molte operazioni implementate come append, length ed ecc..., 
+Nonostante le liste sono definite di default in Prolog, con anche molte operazioni implementate come append, length ed ecc...,
 definiamo una libreria personale per gestire le liste infatti questo è il codice per implementare una lista in Prolog:
 \inputminted{Prolog}{esempi/liste.pl}
 In Prolog la base di conoscenza è nascosta al controllo diretto degli utenti ed è accessibile solo tramite opportuni comandi per cui
@@ -994,7 +1013,7 @@ per poter semplificare e rendere più efficiente un programma prolog, ed incomin
 Il Prolog fornisce dei predicati standard per gestire ed effettuare le operazioni aritmetiche, i quali a differenza dei soliti predicati
 che derivano dalla logica, questi effettuano ed eseguono  direttamente usando l’hardware, perdendo la possibilità di effettuare
 l’instanzazione tramite l’unificazione ma dovendola fare direttamente alla chiamata dei predicati aritmetici.\newline
-Il Prolog prevede ed usa gli operatori matematici, con la loro relativa precedenza, $+ - * /$.\newline 
+Il Prolog prevede ed usa gli operatori matematici, con la loro relativa precedenza, $+ - * /$.\newline
 I predicati standard comunemente usato per la gestione dell’aritmetica sono i seguenti:
 \begin{itemize}
     \item $>$(Expr1, Expr2): stabilisce se Expr1 è maggiore dell’Expr2
@@ -1047,9 +1066,9 @@ False
 \end{minted}
 il nostro programma dei gradi diventa:
 \begin{minted}{prolog}
-celsius_fahrenheit(C, F) :- 
+celsius_fahrenheit(C, F) :-
 	var(C), nonvar(F), C is 5/9 * (F - 32).
-celsius_fahrenheit(C, F) :- 
+celsius_fahrenheit(C, F) :-
 	var(F), nonvar(C), F is (9/5 * C) + 32
 \end{minted}
 con var decido che clausola usare e l'uso di questi predicati ci permette di scrivere programmi efficienti e semanticamente corretti.
@@ -1058,7 +1077,7 @@ Posso chiedere a prolog se ho a che fare con termini atomici o scomposti, con i 
 \begin{itemize}
 \item \textit{atomic(X):}vero se \textit{X} è un numero od una costante
 \item \textit{compound(X):} vero se non \textit{atomic(X)}
-\item \textit{atom(X)}: verificato se e solo se X è una costante ma non accettale stringhe 
+\item \textit{atom(X)}: verificato se e solo se X è una costante ma non accettale stringhe
 \end{itemize}
 Esempi:
 \begin{minted}{prolog}
@@ -1109,7 +1128,7 @@ Quando si formula una domanda per il sistema Prolog, ci si aspetta una risposta 
 e col backtracking ne otteniamo una alla volta, ma se io volessi tutte le risposte si entrerebbe nel campo della logica del secondo ordine.\newline
 Per risolvere questo problema il sistema Prolog fornisce i seguenti predicati:
 \begin{itemize}
-\item \textbf{findall(Template, Goal, Set):} 
+\item \textbf{findall(Template, Goal, Set):}
 \begin{itemize}
 \item Vero se Set contiene tutte le istanze di Template che soddisfano Goal
 \item \textit{Le istanze di Template vengono ottenute mediante backtracking}
@@ -1367,7 +1386,7 @@ sum(9, 9, 18).
 true
 \end{lstlisting}
 \end{shaded}
-potremmo ora rimuovere tutti questi fatti non con il solito 
+potremmo ora rimuovere tutti questi fatti non con il solito
 \begin{shaded}
 \begin{lstlisting}[language=bash]
 ?- retract(sum(X, Y, Z)).
@@ -1504,7 +1523,7 @@ se accettiamo di rappresentare i programmi, usando una sintassi leggermente dive
 rule(append([], X, X)).
 rule(append([X | Xs], Ys, [X | Zs]), [append(Xs, Ys, Zs)]).
 
-solve(Goal) :- solve(Goal, []). /* lista goal e lista di appoggio 
+solve(Goal) :- solve(Goal, []). /* lista goal e lista di appoggio
                                     dove mettere i goal restanti */
 
 solve([], []). % clausola di uscita

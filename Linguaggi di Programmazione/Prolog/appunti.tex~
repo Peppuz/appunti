@@ -546,7 +546,11 @@ Ogni FBF può essere in \emph{forma normale a clausola}:
 \begin{itemize}
 \item \emph{formula normale congiunta:} congiunzione di disgiunzioni o di negazione di predicati (sia positivi che negativi):
   \begin{equation*}
+<<<<<<< HEAD
     \bigwedge_i(\bigvee_iL_{ij})
+=======
+    \land_i(\lor_iL_{ij})
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
   \end{equation*}
 \begin{esempio}
 ecco degli esempi:
@@ -554,10 +558,22 @@ ecco degli esempi:
 \item $(p(x)\lor q(x,y)\lor \neg t(z))\land(p(w)\lor \neg s((u)\lor \neg r(v))$
 \item $(\neg t(z))\lor (p(w)\lor \neg s(u))\land (p(x)\lor s(x)\lor q(y))$
 \end{itemize}
+<<<<<<< HEAD
+=======
+che sono riscrivibili come:
+\begin{equation*}
+  t(z)\to p(x)\vee q(x,y)
+\end{equation*} 
+e
+\begin{equation*}
+  s(u)\wedge r(v)\to p(w)
+\end{equation*}
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \end{esempio}
 
 \item \textit{forma normale disgiunta}: disgiunzione di congiunzioni o di negazione di predicati (sia positivi che negativi)
   \begin{equation*}
+<<<<<<< HEAD
     \bigvee_i(\bigwedge_j L_{ij})
   \end{equation*}
 \end{itemize}
@@ -567,6 +583,17 @@ Ovviamente non tutte le formule ben formate possono essere rappresentate tramite
 della logica del Primo Ordine.\newline
 Attraverso questa restrizione nel 1974 Kowalski produsse un interpretazione procedurale delle dimostrazione e ciò diventò la base
 della semantica del Prolog.
+=======
+    \lor_i(\land_i L_{ij})
+  \end{equation*}
+\end{itemize}
+Le clausole con un solo letterale positivo solo le \textit{clausole di Horn}, con lo presenza o meno di letterali negativi,
+e un programma in prolog è una collezione di codeste clausole.\newline
+Ovviamente non tutte le formule ben formate possono rappresentate tramite le clausole di Horn per cui il Prolog è un sottoinsieme
+della logica del Primo Ordine.\newline
+Attraverso questa restrizione nel 1974 Kowalski produsse un interpretazione procedurale delle dimostrazione e ciò diventò la base
+della semantica di ogni sistema prolog.
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 %Semantica in Prolog
 \section{Principio di Unificazione}
 Il principio di unificazione è il cuore del modello di computazione dei programmi logici ed è alla base della deduzione automatica
@@ -574,10 +601,20 @@ e dell'uso dell'inferenza logica nell'intelligenza artificiale.
 
 Per poter definirlo dobbiamo introdurre le seguenti definizioni:
 \begin{defi}
+<<<<<<< HEAD
 Un termine $t$ è un instanza comune  di $t_1$ e $t_2$ se esistono le sostituzioni $\alpha_1$ e $\alpha_2$
 che rendono $t$ uguale a $\alpha_1t_1$ e a $\alpha_2t_2$.\newline
 Un termine $s$ è un termine generale del termine $t$ se $t$ è un'istanza di $s$ ma $s$ non è un istanza di $t$.\newline
 Un termine $s$ è una variante alfabetica del termine $t$ se $t$ è un istanza di $s$ e $s$ è un istanza di $t$.
+=======
+\begin{itemize}
+  \item Un termine $t$ è un instanza comune  di $t_1$ e $t_2$ se esistono le sostituzioni $\alpha_1$ e $\alpha_2$
+        che rendono $t$ uguale a $\alpha_1t_1$ e a $\alpha_2t_2$.
+  \item Un termine $s$ è un termine generale del termine $t$ se $t$ è un'istanza di $s$ ma $s$ non è un istanza di $t$.
+
+  \item Un termine $s$ è una variante alfabetica del termine $t$ se $t$ è un istanza di $s$ e $s$ è un istanza di $t$.
+\end{itemize}
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \end{defi}
 L'unificazione tra due termini consiste nell'effettuare una sostituzione che rende i due termini identici
 per cui c'è una relazione chiusa con l'instanza comune di due termini.
@@ -598,7 +635,11 @@ Mgu(foo(bar(42), baz), foo(X, Y))  /* ->{X/bar (y), Y_:G001}
  ovvero non si ha soluzione */
 \end{minted}
 L'Mgu non è altro che il risultato finale della procedura di valutazione del Prolog ed il modo più semplice per vedere
+<<<<<<< HEAD
 se l'unificazione è corretta effettuiamo le seguenti interrogazioni al sistema Prolog:
+=======
+se l'unificazione è corretta usiamo "=", ovvero, ricollegandoci al codice sopra:
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{minted}{prolog}
 ?- 42 = 42.
 Yes
@@ -629,7 +670,84 @@ Yes
 ?- foo(42, bar(X), trillian) = foo(Y, bar(Y), X).
 No
 \end{minted}
+<<<<<<< HEAD
 
+=======
+Si definisce una lista in Prolog racchiudendo gli elementi (termini e/o variabili logiche) della lista tra parentesi quadre [ e ]
+e separandoli da virgole.\newline
+Gli elementi di una lista in Prolog possono essere termini qualsiasi o liste e la lista vuota si indica con [].\newline
+Una lista non vuota si può dividere in \textit{testa} e \textit{coda}:
+\begin{itemize}
+\item la testa è il primo elemento della lista
+\item la coda rappresenta tutto il resto ed è sempre una lista
+\end{itemize}
+Presentiamo ora degli esempi di liste in Prolog:
+\begin{minted}{prolog}
+[a, b, c] % a è la testa e [b, c] la coda
+[a, b] % a è la testa e [b] la coda
+[a] % a è la testa e [] la coda
+[[a]] % [a] è la testa e [] la coda
+[[a, b], c] % [a, b] è la testa e [c] la coda
+[[a, b], [c], d] % [a, b] è la testa e [[c], d] la coda
+\end{minted}
+Prolog possiede uno speciale operatore usato per distinguere tra l'inizio e la coda di una lista: l'operatore \textbf{|}:
+\begin{minted}{prolog}
+?- [X | Ys] = [mia, vincent, jules, yolanda].
+X = mia
+Ys = [vincent, jules, yolanda]
+Yes
+
+?- [X, Y | Zs] = [the, answer, is, 42].
+X = the
+Y = answer
+Zs = [is, 42]
+Yes
+
+?- [X, 42 | _] = [41, 42, 43, foo(bar)].
+X = 41
+Yes
+\end{minted}
+La lista vuota in prolog è gestita come una lista speciale infatti risulta:
+\begin{minted}{prolog}
+?- [X | Ys] = [].
+No
+\end{minted}
+Nonostante le liste sono definite di default in Prolog, con anche molte operazioni implementate come append, length ed ecc..., 
+definiamo una libreria personale per gestire le liste infatti questo è il codice per implementare una lista in Prolog:
+\inputminted{Prolog}{esempi/liste.pl}
+In Prolog la base di conoscenza è nascosta ed è accessibile solo tramite opportuni comandi per cui
+bisogna poter caricare un insieme di fatti e regole nell'ambiente Prolog, nel nostro caso SW-Prolog.\newline
+Per farlo si ha il comando \textit{consult}, che appare come un predicato da valutare (un goal) e prende almeno un termine che denota un file
+come argomento, contenente la nostra base di conoscenza.
+\begin{minted}{prolog}
+?- consult(’guida-astrostoppista.pl’).
+Yes
+
+?- consult(’Projects/Lang/Prolog/Code/esempi-liste.pl’).
+Yes
+\end{minted}
+Il predicato \textbf{reconsult} viene usato quando si vuole ricaricare un file (ovvero una base di conoscenza) nell'ambiente Prolog.\newline
+L’effetto è di prendere i predicati presenti nel file, rimuoverli completamente dal data base interno
+e di reinstallarli utilizzando le nuove definizioni:
+\begin{minted}{prolog}
+?- reconsult(’guida-astrostoppista.pl’).
+Yes
+% A questo punto la base di dati Prolog contiene il
+% nuovo contenuto del file.
+
+?- reconsult(user). % Notare il sotto-prompt.
+|- foo(42).
+|- friends(zaphod, trillian).
+|- ^D
+Yes
+
+% A questo punto la base di dati Prolog contiene i due
+% fatti inseriti manualmente.
+?- friends(zaphod, W).
+W = trillian
+Yes
+\end{minted}
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 Vediamo ora un programma che effettua la somma tra due numeri naturali:
 \begin{minted}{prolog}
 sum(0, X, X).
@@ -676,6 +794,7 @@ con gli $s\,i$ termini tali per cui:
 \end{esempio}
 Dato un insieme di clausole di Horn è possibile derivare la clausola vuota solo se c'è almeno una clausola senza testa, ovvero una query $G_0$
 , in cui si deve dimostrare che da $P \cup G_0$ si può derivare la clausola e ciò avviene per assurdo col principio di risoluzione.\newline
+<<<<<<< HEAD
 Nel prossimo paragrafo vediamo come effuttua la risoluzione il sistema Prolog, che per efficienza usa una forma particolare di risoluzione.
 \subsection{Risoluzione ad Input Lineare (SLD)}
 Come già visto, il sistema Prolog per dimostrare la veridicità di un goal esegue una sequenza di passi di risoluzione,
@@ -684,6 +803,16 @@ In Prolog la risoluzione avviene sempre fra l’ultimo goal derivato in ciascun 
 e questa forma è detta \emph{Risoluzione-SLD}, dove le sentenze lineari sono le clausole di Horn.
 \begin{defi}
 Partiamo dal goal $G_i$:
+=======
+Nel prossimo sottoparagrafo vediamo come effuttua la risoluzione il sistema Prolog, che per efficienza usa una forma particolare di risoluzione.
+\subsection{Risoluzione ad Input Lineare (SLD)}
+Il sistema Prolog per dimostrare la veridicità di un goal esegue una sequenza di passi di risoluzione,
+il cui ordine di esecuzione determina sistemi di prova più o meno efficienti.\newline
+In Prolog la risoluzione avviene sempre fra l’ultimo goal derivato in ciascun passo e una \emph{clausola di programma}
+e questa forma è detta \emph{Risoluzione-SLD}, dove le sentenze lineari sono le clausole di Horn.
+\begin{defi}
+  partiamo dal goal $G_i$:
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{equation*}
   G_i\equiv \,\,\,?-\, A_{i,\, 1}, ...,  A_{i,\, m}.
 \end{equation*}
@@ -691,6 +820,7 @@ e dalla regola:
 \begin{equation*}
   A_r\,\,\,:-\,\,\, B_{r,\,1},..., B_{r,\,k}.
 \end{equation*}
+<<<<<<< HEAD
 Se esiste un unificatore $\sigma$ tale che $\sigma[A_r]=\sigma[A_{i,\,1}]$ allora si ottiene il nuovo goal:
 \begin{equation*}
   G_{i+1}\equiv\,\,\,B^{'}_{r,\,1},..., B^{'}_{r,\,k},A^{'}_{i,\, 1}, ...,  A^{'}_{i,\, m}.
@@ -699,6 +829,17 @@ che è un passo di risoluzione eseguito dal sistema Prolog (con $\sigma[A_{i,\,m
 La scelta di unificare il primo sottogoal di $G_i$ è arbitraria infatti si sarebbe potuto scegliere un arbitario sottogoal di $G_i$.
 
 Partiamo dal goal $G_i$:
+=======
+se esiste un unificatore $\sigma$ tale che $\sigma[A_r]=\sigma[A_{i,\,1}]$ allora si ottiene il nuovo goal:
+\begin{equation*}
+  G_{i+1}\equiv\,\,\,B^{'}_{r,\,1},..., B^{'}_{r,\,k},A^{'}_{i,\, 1}, ...,  A^{'}_{i,\, m}.
+\end{equation*}
+che è un passo di risoluzione eseguito dal sistema Prolog (con $\sigma[A_{i,\,m}]=A^{'}_{i,\,m}$ 4 $\sigma[B_{i,\,m}]=B^{'}_{i,\,m}$.
+La scelta di unificare il primo sottogoal di $G_i$ è arbitraria infatti si sarebbe potuto scegliere un arbitario sottogoal di $G_i$.
+\end{defi}
+\begin{defi}
+partiamo dal goal $G_i$:
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{equation*}
   G_i\equiv \,\,\,?-\, A_{i,\, 1}, ...,  A_{i,\, m}.
 \end{equation*}
@@ -714,7 +855,11 @@ Nella risoluzione SLD si possono avere i seguenti risultati:
 \item \textbf{successo:} si genera la clausola vuota, ovvero se per $n$ finito $G_n$ è uguale alla clausola vuota $G_:n\equiv\,\,\,:-$
 \item \textbf{insuccesso finito}: se per $n$ finito $G_n$  non è uguale alla clausola vuota $G_:n\equiv\,\,\,:-$
               e non è più possibile derivare un nuovo \textit{risolvente} da $G_n$ ed una clausola d programma.
+<<<<<<< HEAD
 \item \textbf{insuccesso infinito: }se è sempre possibile derivare nuovi risolventi tutti diversi dalla clausola vuota.
+=======
+\item \textbf{successo infinito: }se è sempre possibile derivare nuovi risolventi tutti diversi dalla clausola vuota.
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \end{itemize}
 La \textbf{sostituzione di risposta} è la sequenza di unificatori usati ed applicata alle variabili nei termini del goal iniziale
 determina la risposta finale restituita dal sistema Prolog.\newline
@@ -730,6 +875,7 @@ p(X1) :- q(X1, g(FooFrobboz)).
 \end{esempio}
 Possono esserci più clausole di programma utilizzabili per applicare la risoluzione con il goal corrente ed esistono diverse strategie di ricerca:
 \begin{itemize}
+<<<<<<< HEAD
 \item \textbf{in profondità (Depth First)}: si sceglie una clausola e si mantiene fissa questa scelta, finché non si arriva alla clausola vuota
   o alla impossibilità di fare nuove risoluzioni: in questo ultimo caso si riconsiderano le scelte fatte precedentemente e si riparte a dimostrare
   in profondità fino a quando è possibile effettuare delle scelte.
@@ -737,6 +883,14 @@ Possono esserci più clausole di programma utilizzabili per applicare la risoluz
 \end{itemize}
 Ogni sistema di programmazione logica sceglie la propria strategia e il Prolog ha deciso di adottare una strategia di risoluzione
 in profondità con backtracking, ossia la possibilità di ritornare indietro e provare tutte le possibilità.
+=======
+\item \textbf{in profondità (Depth First)}: si sceglie una clausola e si mantiene fissa questa scelta, finché non si arriva alla clausola vuota o alla impossibilità di fare nuove risoluzioni; in questo ultimo caso si riconsiderano le scelte fatte precedentemente
+\item \textbf{in ampiezza (Breadth First)}: si considerano in parallelo tutte le possibili alternative
+\end{itemize}
+Ogni sistema di programmazione logica sceglie la propria strategia e il Prolog ha deciso di adottare una strategia di risoluzione
+in profondità con backtracking, ossia la possibilità di ritornare indietro e provare tutte le possibilità, al fine di avere così
+un risparmio di memoria anche se non è una strategia completa per le clausole di Horn.
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 
 Introduciamo ora l'importante argomento degli alberi di derivazione, per analizzare come un sistema Prolog effettua la computazione
 e quali passi esegue per riuscire a stabilire se una data query deriva dal programma o meno.
@@ -769,6 +923,7 @@ ed infine si ha che il nodo $:-$ non ha figli.
 \end{defi}
 La regola $R$ è variabile e le più comuni utilizzate sono:
 \begin{itemize}
+<<<<<<< HEAD
 \item \textbf{Left-most}: si sceglie sempre di risolvereil sottogoal più a sinistra 
 \item \textbf{Right-most}: si sceglie sempre la risoluzione del sottogoal più a destra
 \item si può avere la scelta di un sottogoal a caso
@@ -778,16 +933,31 @@ Ogni sistema logico decide la propria modalità di applicazione della regola e i
 usare sempre la regola left-most.\newline
 L'albero SLD, generato implicitamente dal sistema Prolog, ordina i figli di un nodo secondo l'ordine dall'alto verso il basso
 delle regole e dei fatti del programma P, come si nota nell'esempio mostrato di seguito. 
+=======
+\item \textbf{regola Left-most}: si sceglie sempre il sottogoal più a sinistra 
+\item \textbf{regola Right-most}: si sceglie sempre il sottogoal più a destra
+\item si può avere la scelta di un sottogoal a caso
+\item se si ha un modo per decider il miglior sottogoal  
+\end{itemize}
+Ogni sistema logico decide la propria modalità di applicazione della regola e il sistema Prolog utilizza sempre la regola left-most.\newline
+L'albero SLD, generato implicitamente dal sistema Prolog, ordina i figli di un nodo secondo l'ordine dall'alto verso il basso
+delle regole e dei fatti del programma P. 
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{esempio}
 Ecco un esempio:
 \begin{center}
 \includegraphics[scale=0.7]{img/alb.png}
 \end{center}
 \end{esempio}
+<<<<<<< HEAD
 Ad ogni ramo di un albero SLD corrisponde una derivazione SLD e ogni ramo che termina con il nodo vuoto $:-$.\newline
 La regola di calcolo influisce sulla struttura dell'albero per quanto riguarda l'ampiezza e la profondità ma non influisce
 sulla correttezza e completezza, infatti tra un albero left-most e un albero right-most cambia solo l'ordine e il tempo necessario
 per stabilire se un ramo è un successo oppure no.
+=======
+Ad ogni ramo di un albero SLD corrisponde una derivazione SLD e ogni ramo che termina con il nodo vuoto $:-$; la regola di calcolo
+influisce sulla struttura dell'albero per quanto riguarda l'ampiezza e la profondità ma tuttavia non influisce sulla correttezza e completezza.
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{esempio}
   Ecco un altro esempio, con fallimento infinito, dove la clausola vuota può essere generata ma il Prolog non è in grado di trovare
   questa soluzione dato che la sua strategia di percorrimento dell’albero (implicito) di soluzioni è depth-first con backtracking :
@@ -816,6 +986,7 @@ Questo è l'effetto del cut:
 \item quando il backtracking raggiunge il cut, allora il cut fallisce e la ricerca procede dall’ultimo punto di scelta
       prima che \textit{G} scegliesse \textit{C}
 \end{itemize}
+<<<<<<< HEAD
 Il Prolog per la gestione della computazione utilizza due stack:
 \begin{itemize}
 \item stack delle scelte: contiene l'insieme delle scelte possibili ed ad ogni fase della valutazione contiene i puntatori alle
@@ -823,17 +994,36 @@ Il Prolog per la gestione della computazione utilizza due stack:
 \item stack di esecuzione: contiene i record di attivazione delle varie procedure, ovvero le sostituzioni per l'unificazione delle varie regole.
 \end{itemize}
 Vediamo un albero di derivazione in caso di cut:
+=======
+Il Prolog per la gestione della computazione utilizza due stack, struttura dati di tipo lifo:
+\begin{itemize}
+\item stack delle scelte: contiene l'insieme delle scelte possibili;ad ogni fase della valutazione contiene i puntatori alle
+      scelte aperte nelle fasi precedenti della dimostrazione
+\item stack di esecuzionei: contiene i record di attivazione delle varie procedure, ovvero le sostituzioni per l'unificazione delle varie regole.
+\end{itemize}
+vediamo un albero di derivazione in caso di cut:
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{center}
 	\includegraphics[scale=0.8]{img/cut.png}
 \end{center}
 Si hanno due tipi di cut:
 \begin{itemize}
+<<<<<<< HEAD
 \item \textbf{green cut:} utili per esprimere il “determinismo”, come vedremo ora, e quindi per rendere più efficiente il programma
   in quanto non vengono analizzate clausole certamente false.
 \item \textbf{red cut:} usati per soli scopi di efficienza ed hanno come caratteristica principale quella di omettere alcune condizioni
                         esplicite in un programma, ma soprattutto  quella di modificare la semantica del programma.
 \end{itemize}
 Per capire l'importanza e l'utilizzo del cut, consideriamo ora il seguente codice:
+=======
+\item \textbf{green cut:} utili per esprimere “determinismo” e quindi per rendere più efficiente il programma in quanto non vengono analizzate
+                          clausole certamente false.
+\item \textbf{red cut:} usati per soli scopi di efficienza, hanno per caratteristica principale quella di omettere alcune condizioni
+                        esplicite in un programma e, soprattutto, quella di modificare la semantica del programma equivalente senza cuts.\newline
+       Hanno degli effetti indesiderabili ma sono utili per cui vanno maneggiati con cura per evitare di effettuare dei danni.
+\end{itemize}
+consideriamo il seguente codice:
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{minted}{prolog}
 /* merge di due liste ordinate*/
 
@@ -853,20 +1043,37 @@ merge(Xs, [], Xs).
 minimum(X, Y, X) :- X =< Y.
 minimum(X, Y, Y) :- Y < X.
 \end{minted}
+<<<<<<< HEAD
 Vediamo cosa succede come computazione nell'interprete Prolog:
+=======
+vediamo cosa succede:
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{center}
 \includegraphics[scale=0.8]{img/cut2.png}
 \end{center}
 consideriamo la seguente query:
+<<<<<<< HEAD
 \begin{minted}{Prolog}
+=======
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 ?- merge([], [], Xs).
 Xs = [];
 Xs = [];
 False.
+<<<<<<< HEAD
 \end{minted}
 Questa implementazione del merge ha purtroppo una soluzione di troppo e questo è un esempio di determinismo, ossia
 quando una sola delle clausole serve (o si vorrebbe servisse) per provare un dato goal.\newline
 Si usano quindi i seguenti green cuts:
+=======
+\end{lstlisting}
+\end{shaded}
+si ha una soluzione di troppo.
+Un programma Prolog si dice \textbf{deterministico} quando una sola delle clausole serve (o si vorrebbe servisse) per provare un dato goal.\newline
+Si usano quindi i green cuts:
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{minted}{prolog}
 merge([X | Xs], [Y | Ys], [X | Zs]) :-
 	X < Y, !,
@@ -880,6 +1087,7 @@ merge([X | Xs], [Y | Ys], [Y | Zs]) :-
 merge([], Ys, Ys) :- !.
 merge(Xs, [], Xs) :- !.
 \end{minted}
+<<<<<<< HEAD
 Interrogando il sistema Prolog come il seguente esempio otteniamo:
 \begin{minted}{Prolog}
 ?- merge([], [], Xs).
@@ -891,6 +1099,21 @@ Guardando ai passi necessari, effettuati dall'interprete Prolog, per rispondere 
 \includegraphics[scale=0.8]{img/cut3.png}
 \end{center}
 Il predicato per calcolare il minimo diventa:
+=======
+ottenendo:
+\begin{shaded}
+\begin{lstlisting}[language=bash]
+?- merge([], [], Xs).
+Xs = [];
+False.
+\end{lstlisting}
+\end{shaded}
+ovvero:
+\begin{center}
+\includegraphics[scale=0.8]{img/cut3.png}
+\end{center}
+il programma del minimo diventa:
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \begin{minted}{prolog}
 minimum(X, Y, X) :- X =< Y, !.
 minimum(X, Y, Y) :- Y < X, !.%è ridontante ma viene inserito per simmetria
@@ -902,6 +1125,7 @@ Riscrivo in maniera non simmetrica:
 minimum(X, Y, X) :- X =< Y, !.
 minimum(X, Y, Y).
 \end{minted}
+<<<<<<< HEAD
 Qui si ha un red cut dato che taglia solo delle soluzioni, portando anche a risultati errati, infatti $minimum(2, 5, 5)$ risulta verificato
 dato che il secondo termine è un fatto sempre verificato.
 
@@ -981,6 +1205,9 @@ W = trillian
 Yes
 \end{minted}
 
+=======
+Qui si ha un red cut dato che taglia solo delle soluzioni, portando anche a risultati errati, infatti $minimum(2, 5, 5)$ risulta verificato.
+>>>>>>> 6dce03e48312df68955becb5927d04e110d17342
 \section{Caratteristiche particolari del sistema Prolog}
 Dopo aver visto i background teorici e alcuni esempi basilari di programmi logici, introduciamo alcune caratteristiche più avanzate
 per poter semplificare e rendere più efficiente un programma prolog, ed incominciamo dall'aritmetica.
