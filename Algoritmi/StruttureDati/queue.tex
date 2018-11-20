@@ -17,7 +17,7 @@ per cui noi utilizziamo una lista bidirezionale per implementare una coda.
 Il metodo $\proc{isEmpty}$ indica se la coda contiene o meno degli elementi
 \begin{codebox}
 \Procname{$\proc{isEmpty}()$}
-\li \Return 
+\li \Return ($\attrib{Q}{head} \isequal \const{nil}$)
 \end{codebox}
 Il metodo $\proc{enqueue}(Q,x)$ inserisce un elemento nella coda e si assume che $x$ sia un elemento
 definito prima della chiamata al metodo.
@@ -31,8 +31,8 @@ l'inserimento in una coda richiede un tempo costante.
 
 Il metodo $\proc{dequeue()}$ estra il primo elemento della coda ed è implementato come
 \begin{codebox}
-\Procname{$\proc{Dequeue()}$}
-\li \If $\proc{isEmpty()}$
+\Procname{$\proc{Dequeue}()$}
+\li \If $\proc{isEmpty}()$
     \Then
 \li           \Return $\const{nil}$
 \li $\id{temp} \gets \attrib{Q}{head}{element}$
@@ -41,4 +41,33 @@ Il metodo $\proc{dequeue()}$ estra il primo elemento della coda ed è implementa
 \end{codebox}
 L'operazione $\proc{dequeue}$ richede un tempo costante $\Theta(1)$ per effettuare la rimozione.
 
-%Coda tramite Vettore(guardare il Cormen)
+%Coda tramite Vettore
+Dopo aver visto come viene implementata una coda tramite puntatori, consideriamo
+l'implementazione tramite un vettore $Q[1 \twodots n]$ e ai
+campi $\attrib{Q}{head}$ e $\attrib{Q}{tail}$ per accedere all'elemento in testa e in coda
+ai vettore della coda;lo pseudocodice della coda tramite un vettore è il seguente:
+\begin{codebox}
+\Procname{$\proc{enqueue}(Q,x)$}
+\li $Q[\attrib{Q}{tail}] \gets x$
+\li \If $\attrib{Q}{tail} \isequal \attrib{Q}{length}$
+\li    \Then $\attrib{Q}{tail} \gets 1$
+\li \Else $\attrib{Q}{tail} \gets \attrib{Q}{tail} + 1$
+\end{codebox}
+
+\begin{codebox}
+\Procname{$\proc{dequeue}(Q)$}
+\li $x \gets Q[\attrib{Q}{head}]$
+\li \If $\attrib{Q}{head} \isequal \attrib{Q}{length}$
+\li \Then $\attrib{Q}{head} \gets 1$
+\li \Else $\attrib{Q}{head} \gets \attrib{Q}{head} + 1$
+\li \Return x
+\end{codebox}
+
+\begin{codebox}
+\Procname{$\proc{queue-Empty}(Q)$}
+\li \Return ($\attrib{Q}{head} \leq 0$)
+\end{codebox}
+
+Il tempo di esecuzione delle seguente procedure è sempre costante $\Theta(1)$
+come anche la coda tramite sequenza ma ha senso implementare tramite vettore se e soltanto se
+si sa determinare il numero degli elementi per evitare uno spreco di memoria.

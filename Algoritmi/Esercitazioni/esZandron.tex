@@ -1,0 +1,50 @@
+%Esercitazione sulle liste Claudio Zandron
+Dato un array di elementi interi costruire una lista doppiamente concatenata che è in ordinata crescentemente
+senza poter ordinare l'array
+
+List* ordina(int[] A)
+      #cerco il massimo del primo elemento
+      #inserisco in testa il massimo trovato
+      #finchè ci sono degli elementi cerco il massimo
+      #inserisco in testa il massimo trovato
+
+Richiede O(n^2) perchè cerco ad ogni elemento da inserire l'elemento min per inserirlo in testa
+
+Creo la lista disordinata  O(n)
+Ordino la lista tramite il quickSort impiegando O(n log n) con la particion di Lomuro si può ordinare una lista semplice
+
+
+Implementare un algoritmo ricorsiva per contare il numero di elementi di una lista uguali a un valore k
+
+int conta(List* p,int k)    p è un elemento della lista
+    if(p == null)
+           return 0
+    else
+           totale = conta(p.next,k)
+           if(p.key == k)
+                totale++
+           return totale
+
+Tempo di esecuzione
+
+
+Implementare un algoritmo ricorsivo quanti valori consecutivi sono presenti in una lista
+
+\begin{codebox}
+\Procname{$\proc{contaCoppie}(p)$}
+\li \If (p )
+int contaCoppie(List* p)
+    if p == null or p.next == null
+            return 0
+    else
+            totale = contaCoppie(p.next)
+            if p.key == p.next.key
+               totale++
+            return totale
+
+
+Algoritmi di ordinamento sulla lista
+
+QuickSort SI (doppiamente con procedura di Hoare singolarmente con la procedura di Lomuro)
+MergeSort NO
+InsertionSort SI( sia doppiamente che singolarmente)

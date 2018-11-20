@@ -1,9 +1,9 @@
-2 Inserire esempi di Alberi di Ricorsione
-6 fare analisi caso medio del QuickSort
-7 fare la partition di Hoare per il QuickSort
+3 Inserire esempi metodo di Sostituzione
+6 fare analisi caso medio del QuickSort(farla quando conosco la distribuzione di probabilità)
 8 fare l'Ordinamento in tempo lineare
 10 inserire immagini di liste con spiegazioni delle diverse tipologie di liste
    tramite prelievo dell'immagine con paint.
-11 inserire spiegazione sentinelle nelle liste
-12 fare pseudocodice delle operazioni delle pile e delle code
-13 Fare Heap ed Albero binario ed albero binario di Ricerca.
+13 Fare Heap ed Albero binario
+14 fare immagini albero binario di ricerca e analisi tempo procedure albero binario di ricerca
+15 fare procedure di inserimento e cancellazione nodo albero di ricerca
+16 fare Tabelle Hash e Alberi Rosso Neri

@@ -3,10 +3,10 @@
 Nello sviluppo dell'algoritmo $\proc{Insertion-Sort}$ abbiamo utilizzato una
 struttura incrementale, detta anche iterativa, ma in informatica per sviluppare
 gli algoritmi si può utilizzare una forma alternativa, chiamata \emph{Divide et Impera},
-come specificato in questo paragrafo.
+come verrà specificato in questo paragrafo.
 
 Molti utili algoritmi sono ricorsivi, ossia per risolvere un particolare problema
-questi algoritmi chiamano se stessi per risolvere sottoproblemi dello stesso tipo.
+chiamano se stessi su sottoproblemi dello stesso tipo.
 Generalmente gli algoritmi ricorsivi adottano un approccio \textbf{divide et impera},
 il quale prevede tre passi a ogni livello di ricorsione:
 \begin{description}
@@ -25,16 +25,12 @@ in funzione del tempo di esecuzione dei sottoproblemi, vi sono 4 metodi:
 \begin{description}
     \item[Metodo di Sostituzione]:ipotiziamo un tempo di esecuzione e utilizziamo
                 l'induzione matematica per dimostrare la correttezza dell'ipotesi
-    \item[Metodo dell'albero di Ricorsione]:converte l'equazione in un albero i cui
-          nodi rappresentano i costi ai vari livelli della ricorsione
     \item[Metodo dell'Esperto]:fornisce i limiti dell'equazioni di ricorrenza che
           rispettano determinate condizioni(Analizzato nei prossimi paragrafi)
     \item[Metodo di espansione] si espande l'equazione di ricorrenza fino ad arrivare ai casi base
-          ad esempio $T(n) = T(n-1) + 3$ si espande $T(n-1),T(n-2)$ fino ad arrivare al caso base.
+          ad esempio $T(n) = T(n-1) + 3$ si espande $T(n-1),T(n-2)$ fino ad arrivare a $T(1)$.
 \end{description}
 
 \input{Divide/sostituzione}%Paragrafo sul metodo di sostituzione
-
-\input{Divide/alberoRicorsione}%Paragrafo sul metodo dell'albero di Ricorsione
 
 \input{Divide/esperto}%Paragrafo sul metodo dell'Esperto

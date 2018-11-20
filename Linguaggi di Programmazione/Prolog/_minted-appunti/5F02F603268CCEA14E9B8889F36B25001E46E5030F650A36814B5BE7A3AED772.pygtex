@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{} \PYGZhy{}* mode:Prolog \PYGZhy{}*\PYGZhy{}}
+
+\PYG{n+nf}{colleague}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,} \PYG{n+nv}{Y}\PYG{p}{):\PYGZhy{}}
+    \PYG{n+nf}{worksFor}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,} \PYG{n+nv}{Z}\PYG{p}{),}
+    \PYG{n+nf}{worksFor}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{,} \PYG{n+nv}{Z}\PYG{p}{),}
+    \PYG{n+nv}{X} \PYG{l+s+sAtom}{\PYGZbs{}=} \PYG{n+nv}{Y}\PYG{p}{.} \PYG{c+c1}{\PYGZpc{}Utilizzato per dire che X != Y}
+
+\PYG{n+nf}{worksFor}\PYG{p}{(}\PYG{l+s+sAtom}{ugo}\PYG{p}{,} \PYG{l+s+sAtom}{ibm}\PYG{p}{).}
+\PYG{n+nf}{worksFor}\PYG{p}{(}\PYG{l+s+sAtom}{gino}\PYG{p}{,} \PYG{l+s+sAtom}{ibm}\PYG{p}{).}
+\PYG{n+nf}{worksFor}\PYG{p}{(}\PYG{l+s+sAtom}{enrica}\PYG{p}{,} \PYG{l+s+sAtom}{samsung}\PYG{p}{).}
+\PYG{n+nf}{worksFor}\PYG{p}{(}\PYG{l+s+sAtom}{salvo}\PYG{p}{,} \PYG{l+s+sAtom}{olivetti}\PYG{p}{).}
+\PYG{n+nf}{worksFor}\PYG{p}{(}\PYG{l+s+sAtom}{ciro}\PYG{p}{,} \PYG{l+s+sAtom}{samsung}\PYG{p}{).}
+
+\PYG{n+nf}{worksForAnEvilCompany}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,} \PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:\PYGZhy{}} \PYG{n+nf}{worksFor}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,} \PYG{l+s+sAtom}{trenord}\PYG{p}{).}
+
+\PYG{p}{:\PYGZhy{}} \PYG{n+nf}{colleague}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,} \PYG{n+nv}{Y}\PYG{p}{).}
+
+    
+\end{Verbatim}

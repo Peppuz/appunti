@@ -4,7 +4,8 @@ Il primo algoritmo di ricerca analizzato è il $\proc{linearSearch}$ che risolve
   \item[Input:] una sequenza di valori interi $A[1 \twodots n]$ e un valore intero $\id{key}$
   \item[Output:] un indice $i$ tale che $A[i] \gets \id{key}$ altrimenti ritorna $\const{nil}$
 \end{description}
-
+La ricerca lineare analizza tutti gli elementi fino a quando non trova l'elemento da
+ricercare per cui lo pseudocodice è il seguente:
 %pseudocodice
 \begin{codebox}
 \Procname{$\proc{linearSearch}(A,\id{key})$}
@@ -17,6 +18,20 @@ Il primo algoritmo di ricerca analizzato è il $\proc{linearSearch}$ che risolve
     \End
 \li \Return $\const{nil}$
 \end{codebox}
+
+%Dimostrazione correttezza dell'algoritmo
+L'invariante di ciclo della ricerca lineare afferma che al termine del ciclo for
+si abbia il valore dell'indice nella sequenza del valore ricercato:
+\begin{description}
+  \item[Inizializzazione]:nella prima iterazione del ciclo for, per $j = 1$ si ha
+        $A$ formato da un solo elemento che è ovviamente ordinato.
+  \item[Conservazione]:ad ogni iterazione del ciclo si ha che il valore dell'indice
+                       dell'elemento da trovare è $\const{nil}$ a meno che nell'esecuzione
+                       del ciclo venga trovato l'elemento e sia l'indice uguale a $j$.
+  \item[Conclusione]:al termine del ciclo, con $j = n$ si ha che l'indice del valore
+                     ricercato è $j$ in caso sia stato trovato l'elemento altrimenti $\const{nil}$.
+\end{description}
+
 Il tempo di esecuzione del $\proc{linearSearch}$ nei diversi casi è il seguente:
 \begin{description}
   \item[Caso migliore:] l'elemento $\id{key}$ viene trovato direttamente nel primo elemento

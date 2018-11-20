@@ -1,8 +1,7 @@
 %Strutture Dati Lista
 \section{Liste}
-Le liste sono una struttura dati elementare che implementa il concetto matematico
-di sequenza lineare di oggetti, in cui si possono eventualmente ripetere gli elementi
-all'interno della sequenza.\newline
+Le liste implementano il concetto matematico di sequenza lineare di oggetti,
+in cui si possono eventualmente ripetere gli elementi.\newline
 La lista è una struttura dati lineare dinamica in cui l'accesso all'elemento successivo
 della sequenza avviene tramite un puntatore all'elemento successivo ed un elemento
 è composto da un valore , chiamato $\id{element}$ e da due puntatori $\id{prev}$ e $\id{next}$,
@@ -24,6 +23,15 @@ maniera multipla ossia può possedere più di una proprietà, come si può notar
        per cui si può dire che la lista è un anello di elementi.
 \end{itemize}
 
+La specifica di una sequenza, qualsiasi implementazione abbia, è la seguente:
+\textbf{void} insert(\textbf{List} L,\textbf{Item} x):inserisce un elemento in una lista \newline
+\textbf{List*} delete(\textbf{List} L): elimina il primo elemento da una lista \newline
+\textbf{List*} search(\textbf{List} L,\textbf{Item} key): cerca l'elemento key all'interno della lista.\newline
+\textbf{Item} min(\textbf{List} L):calcola e restituisce l'elemento minimo della lista.\newline
+\textbf{Item} max(\textbf{List} L):calcola e restituisce l'elemento massimo della lista.\newline
+\textbf{Item} successor(\textbf{List} L,\textbf{Item} key):calcola l'elemento predecessore di un elemento della lista.\newline
+\textbf{Item} predecessor(\textbf{List} L,\textbf{Item} key):calcola il successore di un elemento della lista.\newline
+
 Forniamo ora un implementazione di una lista doppiamente concatenata non ordinata
 in cui un elemento della lista è composto da un dato chiamato $\id{element}$ e da due
 puntatori, chiamati $\id{prev}$ e $\id{next}$, che puntano all'elemento precedente e successivo.
@@ -40,7 +48,7 @@ Lo pseudocodice della ricerca di un elemento di una lista è il seguente:
     \Do
 \li                      $x \gets \attrib{x}{\id{next}}$
     \End
-\li \Return $\id{x}$
+\li \Return $x$
 \end{codebox}
 La ricerca di un elemento da una lista richiede il seguente tempo con i diversi casi:
 \begin{equation*}
@@ -57,7 +65,7 @@ La ricerca di un elemento da una lista richiede il seguente tempo con i diversi 
 
 %Pseudocodice Inserimento in una lista
 Il secondo metodo in una lista è $\proc{List-Insert}$ in cui si suppone che il valore
-dell'elemento da inserire sia stato già impostato ossia $\id{element}$ abbia il valore desiderato.
+dell'elemento da inserire sia stato già impostato ossia $\id{element}$ abbia già il valore desiderato.
 \begin{codebox}
 \Procname{$\proc{List-Insert}(L,x)$}
 \li $\attrib{x}{\id{next}} \gets \attrib{L}{\id{head}}$
@@ -94,6 +102,109 @@ Il tempo di esecuzione è $T(n) = 4c = \Theta(1)$ e tra il caso peggiore e migli
 nulla però va detto che se si volesse implementare la rimozione da un elemento qualsiasi
 della lista si avrebbe un tempo di esecuzione $\Theta(n)$ in quanto si avrebbe la chiamata
 alla procedura $\proc{List-Search}$ per stabilire l'elemento da rimuovere.
+
+%Pseudocodice Massimo e minimo della lista
+Per trovare il massimo e/o il minimo di una lista bisogna scansionare tutta la lista
+e scegliere l'elemento con valore massimo/minimo come si farebbe anche se si dovesse
+trovare il massimo di un array; lo pseudocodice del massimo e del minimo sono i seguenti:
+\begin{codebox}
+\Procname{\textbf{List*} $\proc{List-Max}(\textbf{List}L)$}
+\li \If $\attrib{L}{head} \isequal \const{nil}$
+    \Then
+\li                \Return $\const{nil}$
+\li $\id{max} \gets \attrib{L}{head}$
+\li $\id{elem} \gets \attribb{L}{head}{next}$
+\li \While $\id{elem} \neq \const{nil}$
+    \Do
+\li                 \If $\attrib{\id{elem}}{\id{value}} > \attrib{max}{value}$
+                    \Then
+\li                              $\id{max} \gets \id{elem}$
+                    \End
+\li                 $\id{elem} \gets \attrib{\id{elem}}{\id{next}}$
+    \End
+\li \Return $\id{max}$
+\end{codebox}
+Senza effettuare un'analisi linea per linea si può facilmente notare che il calcolo
+del massimo di una lista di $n$ elementi richieda $\Theta(n)$ in quanto bisogna
+scansionare tuttti gli elementi per poterne determinare il massimo.
+
+\begin{codebox}
+\Procname{$\textbf{List*} \proc{List-Min}(\textbf{List}L)$}
+\li \If $\attrib{L}{head} \isequal \const{nil}$
+    \Then
+\li                \Return $\const{nil}$
+\li $\id{min} \gets \attrib{L}{\id{head}}$
+\li $\id{elem} \gets \attribb{L}{\id{head}}{\id{next}}$
+\li \While $\id{elem} \neq \const{nil}$
+    \Do
+\li                 \If $\attrib{\id{elem}}{\id{value}} < \attrib{\id{min}}{\id{value}}$
+                    \Then
+\li                              $\id{min} \gets \id{elem}$
+                    \End
+\li                 $\id{elem} \gets \attrib{\id{elem}}{\id{next}}$
+    \End
+\li \Return $\id{min}$
+\end{codebox}
+
+Ovviamente, come anche già notato nel calcolo del massimo di una lista, il tempo di
+esecuzione per il calcolo del minimo è $\Theta(n)$ in quanto bisogna sempre scansionare la lista.
+
+%Pseudocodice Predecessore e successore della Lista
+Le ultime due procedure da implementare sono quello di trovare l'elemento successore
+e predecessore come valore di un elemento ossia viene definito come successore il più
+piccolo elemento più grande dell'elemento dato mentre il predecessore il più grande
+elemento più piccolo come valore dell'elemento dato;ovviamente, come anche già visto
+per il minimo e il massimo, bisogna scandirre tutta la lista per stabilire il prede/successore
+e lo pseudocodice è il seguente:
+\begin{codebox}
+\Procname{$\textbf{List*} \proc{List-Successor}(\textbf{List}L,\textbf{int} key)$}
+\li \If $\attrib{L}{head} \isequal \const{nil}$
+    \Then
+\li                \Return $\const{nil}$
+\li $\id{succ} \gets \attrib{L}{head}$
+\li \While $\id{succ} \neq \const{nil}$ and $\id{succ}{value} \leq \id{key}$
+    \Do
+           $\id{succ} \gets \attrib{\id{succ}}{\id{next}}$
+    \End
+\li \If $\id{succ} \isequal \const{nil}$ \Return $\const{nil}$
+\li $\id{elem} \gets \attrib{\id{succ}}{\id{next}}$
+\li \While $\id{elem} \neq \const{nil}$
+    \Do
+\li      \If $\attrib{\id{elem}}{\id{value}} > \id{key}$ and $\attrib{\id{elem}}{\id{value}} < \attrib{succ}{\id{value}}$
+         \Then
+\li                              $\id{succ} \gets \id{elem}$
+         \End
+\li      $\id{elem} \gets \attrib{\id{elem}}{\id{next}}$
+    \End
+\li \Return $\id{succ}$
+\end{codebox}
+Il tempo di esecuzione è $\Theta(n)$ in quanto sia nel caso migliore che in quello
+peggiore bisogna analizzare tutti gli elementi della lista.
+
+\begin{codebox}
+\Procname{$\textbf{List*} \proc{List-Predeccessor}(\textbf{List}L,\textbf{int} key)$}
+\li \If $\attrib{L}{head} \isequal \const{nil}$
+    \Then
+\li                \Return $\const{nil}$
+\li $\id{prev} \gets \attrib{L}{head}$
+\li \While $\id{prev} \neq \const{nil}$ and $\id{prev}{value} \geq \id{key}$
+    \Do
+           $\id{prev} \gets \attrib{\id{prev}}{\id{next}}$
+    \End
+\li \If $\id{prev} \isequal \const{nil}$ \Return $\const{nil}$
+\li $\id{elem} \gets \attrib{\id{prev}}{\id{next}}$
+\li \While $\id{elem} \neq \const{nil}$
+    \Do
+\li      \If $\attrib{\id{elem}}{\id{value}} < \id{key}$ and $\attrib{\id{elem}}{\id{value}} > \attrib{prev}{\id{value}}$
+         \Then
+\li                              $\id{prev} \gets \id{elem}$
+         \End
+\li      $\id{elem} \gets \attrib{\id{elem}}{\id{next}}$
+    \End
+\li \Return $\id{prev}$
+\end{codebox}
+Come anche per il successore, il tempo di esecuzione per trovare il predecessore di
+un elemento è $\Theta(n)$ in quanto bisogna analizzare tutti gli elementi di una lista.
 
 Le altre implementazioni delle diverse tipologie di liste sono similari soltanto
 che implementano o meno l'ordinamento tra gli elementi, considerano o meno il puntatore prev

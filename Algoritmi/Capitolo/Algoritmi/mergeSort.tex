@@ -1,9 +1,6 @@
 %Paragrafo sull'algoritmo mergeSort ed introduzione alla ricorsione
 \section{MergeSort}
-Un esempio del paradigma divide et impera viene dato dall'algoritmo $\proc{Merge-Sort}$,
-algoritmo che risolve il problema dell'ordinamento
-
-L'algoritmo $\proc{Merge-Sort}$ opera seguendo il paradigma divide et impera:
+L'algoritmo $\proc{Merge-Sort}$, che risolve il problema dell'ordinamento, opera seguendo il paradigma divide et impera:
 \begin{description}
     \item[Divide]divide la sequenza di $n$ elementi in due sottosequenze di $n/2$ elementi ciascuna.
     \item[Impera]ordina le due sottosequenze in maniera ricorsiva mediante l'algoritmo $\proc{Merge-Sort}$.
@@ -78,8 +75,8 @@ In caso un algoritmo contiene una chiamata a se stesso, il suo tempo di esecuzio
 spesso può essere espresso mediante un'\textbf{equazione di ricorrenza}, in cui
 si esprime il tempo di esecuzione totale in funzione del tempo di esecuzione dei sottoproblemi.
 
-Una ricorrenza per il tempo di esecuzione di un algoritmo divide et impera si basa
-sui 3 passi del paradigma di base; se la dimensione del problema è sufficientemente piccola,
+Una ricorrenza per un algoritmo divide et impera si basa sui 3 passi del paradigma di base;
+se la dimensione del problema è sufficientemente piccola,
 per esempio $n \leq c$ per qualche costante $c$, allora il tempo di esecuzione è
 costante, indicato con $\Theta(1)$.
 In caso contrario serve un tempo $aT(n/b)$ per risolvere i sottoproblemi, con $a$

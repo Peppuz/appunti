@@ -1,0 +1,13 @@
+Inserire la colorazione agli esempi delle regole standard di formattazione
+Inserire esempio di programma imperativo e funzionale
+Rivedere la definizione della gestione della memoria in C/C++
+Inserire le immagini, tabelle e programmi in ambienti float, in cui Latex decide autonomamente dove posizionarlo
+Inserire esempi di termini, atomi, formule ben formate, variabili nella logica predicativa
+Correggere presentazione regole di inferenza per la logica predicativa
+Inserire esempi su regole, termini, esempi di piccoli programmini in Prolog
+Inserire la definizione di semantica in Prolog
+Sistemare [] nelle liste
+Inserire l'implementazione di Stack, Code, Alberi e correggere la parte delle liste in Prolog
+Inserire albero di derivazione con Variabili
+Inserire colorazione ai red e green cut
+Inserire colore per il simbolo ! e a tutti i predicati presentati nel corso del capitolo

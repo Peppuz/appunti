@@ -12,4 +12,7 @@
 18 inserire immagine per spiegare organizzazione in memoria dei dati
 19 inserire esempi di rappresentazione delle informazioni
 20 fare la rappr. in virgola mobile, standard IEEE754
-21 fare operazione numeri interi e numeri in virgola
+21 fare operazione numeri interi e numeri in virgola mobile
+22 fare il datapath delle istruzioni R-type
+23 fare il datapath delle operazion sulla memoria e delle branch
+24 fare il datapath multiciclo tramite il PDF sul sito elearning.

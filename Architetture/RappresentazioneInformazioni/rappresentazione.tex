@@ -72,6 +72,12 @@ Per rappresentare i numeri con la virgola nei calcolatori vi sono due modalità:
         Per convertire la parte frazionaria in base B in base 2 si procede per
         moltiplicazioni successive come si può vedere nell'esempio:
         %Fare esempio conversione parte frazionaria
+        Esempio:Conversione del numero $0.50$ in binario
+        \begin{tabular}{c}
+          $0,50 X 2 = 1$\\
+          $0 X 2 = 0$\\
+        \end{tabular}
+        Il numero da rappresentare in binario risulta $0.10$
 
         %Esempio rappresentazione in virgola fissa
   \item[virgola mobile] sono comunemente utilizzati nei linguaggi di programmazione
@@ -90,10 +96,87 @@ Per rappresentare i numeri con la virgola nei calcolatori vi sono due modalità:
         al variare del numero mentre l'errore relativo, ossia la percentuale di errore commessa,
         rimane costante in tutto l'asse rappresentato.
 
-        %Fare standard IEEE754
+        Ovviamente se aumentiamo i bit relativi all'esponente aumenterà il range
+        dei numeri rappresentati mentre se aumentiamo i bit della mantissa viene
+        migliorata la precisione.
+        Negli anni ottanta vi era una rappresentazione dei numeri in virgola mobile
+        diversa da una macchina all'altra per questo venne deciso di creare uno standard
+        univoco, adottato da quasi tutte le macchine, lo IEEE754.
 \end{description}
+\subsection{IEEE754}
+Come accennato nel precedente paragrafo, lo standard IEEE754 ha permesso di standarizzare
+ed aumentare la facilità di sviluppare software e librerie riguardo ai numeri in virgola mobile
+per questo quasi tutti i calcolatori al mondo implementano ed utilizzano codesto standard.
 
-%Fare le operazioni
+FIGURA B.3
+
+Lo standard ha definito 3 formati:precisione singola(32 bit), precisione doppia(64 bit)
+e precisione estesa(80 bit);quest'ultimo viene utilizzato principalmente nelle unità Aritmetiche
+per questo non lo analizziamo.
+
+I primi due formati usano la base 2 per le frazioni e la notazione in eccesso per l'esponente
+(eccesso 127 per la precisione singola ed eccesso 1023 per la precisione doppia)
+e la ripartizione dei bit riservati per l'esponente e per la frazione si nota nella
+figura seguente
+FIGURA B.4
+
+Per eliminare l'ambiguità nella rappresentazione dei numeri in notazione scientifica
+è stato scelto di usare la forma normalizzata in cui ogni frazione comincia con 1
+poi il resto della frazione ma in quanto ogni numero comincia la frazione con 1 e la
+virgola si è deciso di sottoindenderli per risparmiare 2 bit e poter ottenere una maggiore precisione.
+
+FIGURA B.5 e B.6
+
+In caso si verifica un underflow, ossia non si riesce a rappresentare il numero in
+quanto è troppo piccolo, sono stati introdotto nello standard IEEE754 i numeri denormalizzati
+che prevedono l'esponente uguale a 0 e come frazione i successivi 23(52) bit e il bit
+esplicito non è più l'1 ma diventa lo 0.
+
+La frazione nei numeri denormalizzati permette di rappresentare numeri più piccoli
+fino a $2^{-149}$ nei numeri a precisione singola perchè al diminuire del risultato
+l'esponente rimane a 0 mentre si azzerano progressivamente i bit della frazione
+e questo permette di rendere netto il passaggio al numero zero.
+
+Sono state introdotte le rappresentazioni di infinito e not a number, ottenuto quest'ultimo
+quando si effettua una divisione tra due numeri infiniti, con la rappresentazione visibile
+nella figura.
+
+\section{Operazioni nei numeri in virgola mobile}
+In questo paragrafo analizziamo come si effettuano l'addizione e la moltiplicazione
+nei numeri in virgola mobile, evitando di analizzare la sottrazione e la divisione
+essendo le operazioni inverse delle altre due.
+
+\subsection{Addizione}
+L'addizione nei numeri in virgola prevede l'esecuzione dei seguenti passaggi:
+\begin{enumerate}
+  \item alligna il numero con il minor esponente al numero con il maggiore esponente
+        e ciò si verifica facilmente spostando verso destra la virgola.
+  \item effettua l'addizione tra le due frazioni e moltiplicata con l'esponente del numero
+        più grande si ottiene il numero desiderato.
+  \item si effettua la normalizzazione del numero ottenuto per ottenere la versione
+        normalizzata del numero comportando un aumento o una dimuzione dell'esponente.
+  \item si effettua l'eventuale arrotondamento delle cifre decimali per far stare
+        il numero nelle cifre predisposte per la parte frazionaria.
+\end{enumerate}
+
+Esempio:
+
+
+\subsection{Moltiplicazione}
+La moltiplicazione nei numeri in virgola mobile prevede la seguente procedura:
+\begin{enumerate}
+  \item calcoliamo l'esponente del prodotto tramite la somma degli esponenti degli operandi
+  \item si effettua la moltiplicazione tra le due frazioni e moltiplicando per l'esponente
+        calcolato al punto 1 si ottiene il risultato della moltiplicazione
+  \item si normalizza il numero ottenuto attraverso lo spostamento verso sinistra o destra
+        del numero comportando un aggiustamento dell'esponente.
+  \item si effettua l'eventuale arrotondamento delle cifre decimali per far stare
+        il numero nelle cifre predisposte per la parte frazionaria.
+  \item il segno del prodotto è determinato tramite la regola dei segni, imparata già alle elementari.
+\end{enumerate}
+
+Esempio:
+
 \section{Rappresentazione dei caratteri e stringhe}
 I caratteri e le stringhe, sequenza di caratteri, vengono rappresentati nei calcolatori
 come numeri e attraverso una serie di convenzioni sono trasformati nel carattere desiderato.\newline
