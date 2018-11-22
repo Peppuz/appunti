@@ -2,6 +2,10 @@
 Sistemare esempi delle grammatiche, espressioni regolari, automi
 sistemare alberi sintattici usando libreria forest
 sistemare gli automi disegnati come esercizi
-fare e sistemare gli appunti sugli automi
+sistemare trasformazione da NFA a DFA
+sistemare e fare esempio del paragrafo 2.3.5 e 2.3.6
+fare definizione delta-cappuccio in Epsilon-NFA e il linguaggio accettato da un epsilon-NFA
+fare maggiori esempi delle espressioni regolari
+inserire e sistemare il teorema delle grammatiche context-free
 fare immagine della gerarchia delle grammatiche
 Fare dimostrazione linguaggi con il contesto con la dimostrazione pag 14 di Lorenzo Soligo.

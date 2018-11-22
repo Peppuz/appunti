@@ -1,0 +1,11 @@
+\BOOKMARK [0][]{chapter.1}{1 Grammatiche di tipo 2}{}% 1
+\BOOKMARK [1][-]{section.1.1}{1.1 Alberi di Derivazione}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{1.2 Equivalenza tra le derivazioni}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{1.3 Grammatiche e Linguaggi Ambigui}{chapter.1}% 4
+\BOOKMARK [0][]{chapter.2}{2 Linguaggi e grammatiche dipendenti dal contesto}{}% 5
+\BOOKMARK [0][]{chapter.3}{3 Linguaggi Regolari}{}% 6
+\BOOKMARK [1][-]{section.3.1}{3.1 Espressioni Regolari}{chapter.3}% 7
+\BOOKMARK [0][]{chapter.4}{4 Automi a stati finiti}{}% 8
+\BOOKMARK [1][-]{section.4.1}{4.1 Automi deterministici}{chapter.4}% 9
+\BOOKMARK [1][-]{section.4.2}{4.2 Automi non deterministici}{chapter.4}% 10
+\BOOKMARK [1][-]{section.4.3}{4.3 Automi -NFA}{chapter.4}% 11

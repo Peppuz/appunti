@@ -126,4 +126,272 @@ $$Y\to cYd|W$$
 $$W\to yWd|X$$
 $$Z\to zZ|\varepsilon$$
 \end{esempio}
-\begin{esempio
+\begin{esempio}
+Sia $L=\{w\in\{a,b\}^*|\, \mbox{ w contiene lo stesso numero di a e b}\}$:
+\[ S\to aSbS|\,bSaS|\, \epsilon \]
+dimostro per induzione che è corretto:
+\begin{itemize}
+\item \textbf{caso base:} $|w|=0\to w=\varepsilon$
+\item \textbf{caso passo:} si supponga che $G$ produca tutte le stringhe (di lunghezza $<$ di $n$) di $\{a,b\}^*$ con lo stesso numero di \textit{a} e \textit{b} e dimostro che produce anche quelle di lunghezza $n$, sia:
+$$w\in \{a,b\}^* \mid\, |w|=n \mbox{ con\textit{ a} e \textit{b} in egual numero, }m(a)=m(b) \mbox{ con m() che indica il numero di caratteri}$$
+quindi si ha che:
+$$w=aw_1bw_2\mbox{ o } w=bw_1aw_2$$
+sia.
+$$k_1=m(a)\in w_1=m(b)\in w_1$$
+$$k_2=m(a)\in w_2=m(b)\in w_2$$
+allora:
+$$k_1+k_2+1=m(a)\in w= m(b)\in W$$
+sapendo che $|w_1|<n$ e $|w_2|<n$ allora $w_1$ e $w_2$ sono egnerati da G per ipotesi induttiva
+\end{itemize}
+\end{esempio}
+Trovo una grammatica lineare destra e una sinistra per $L=\{ab^ncd^me|\,n\geq 0\,,m> 0\}$:
+\begin{itemize}
+\item \textbf{lineare a destra:} si ha  si ha $G=(\{S,A,B,E\},\{a,b,c,d,e\},P,S)$ e quindi:
+$$S\to aA$$
+$$A\to bA|\,cB$$
+$$B\to dB|\, dE$$
+$$E\to e$$
+\item \textbf{lineare a sinistra:} si ha  si ha $G=(\{S,X,Y,Z\},\{a,b,c,d,e\},P,S)$ e quindi:
+$$S\to Xe$$
+$$A\to Xd|\,Yd$$
+$$B\to Zc$$
+$$E\to a|\,Zb$$
+\end{itemize}
+quindi se per esempio ho la stringa "ciao" si ha:
+\begin{itemize}
+\item \textbf{lineare a destra:}
+$$S\to Ao$$
+$$A\to Ba$$
+$$B\to Ei$$
+$$E\to c$$
+\item \textbf{lineare a sinistra:}
+$$S\to cA$$
+$$A\to iB$$
+$$B\to aE$$
+$$E\to o$$
+\end{itemize}
+\end{esempio}
+\begin{esempio}
+A partire da $G=(\{S,T\},\{0,1\},P,S)$ con:
+$$S\to\varepsilon|\,0S|\,1T$$
+$$T\to 0T|\,1S$$
+
+trovo come è fatto $L(G)$:
+$$L(G)=\{w\in\{0,1\}^*|\, w \mbox{ ha un numero di 1 pari}\}$$
+\end{esempio}
+\begin{esempio}
+fornire una grammatica regolare a destra e sinistra per:
+$$L=\{w\in\{0,1\}^*|\, w \mbox{ ha almeno uno 0 o almeno un 1}\}$$
+Si ah che tutte le stringhe tranne quella vuota ciontengono uno 0 o un 1
+quindi  $G=(\{S\},\{0,1\},P,S)$:
+\begin{itemize}
+\item \textbf{lineare a destra:}
+$$S\to 0|\,1|\,0S|\,1S$$
+\item \textbf{lineare a sinistra:}
+$$S\to 0|\,1|\,S0|\,S1$$
+\end{itemize}
+\end{esempio}
+\begin{esempio}
+Trovo automa per: $$L=\{w\in\{a,b\}^*|\mbox{ w che contiene un numero dispari di b}\}$$
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+	\node[state, initial] (q_0) {$q_0$};
+	\node[state, accepting] (q_1) [right=of q_0] {$q_1$};
+	\path[->]
+	(q_0) edge [bend left = 25] node {b} (q_1)
+	      edge [loop below] node {a} ()
+	(q_1) edge [bend left = 25] node {b} (q_0)
+	      edge [loop below] node {a} ();
+\end{tikzpicture}
+\end{center}
+ovvero se da $q_0$ vado a $q_1$ sono obbligato ab generare una sola $b$, dato che il nodo accettnate è $q_1$. In entrambi i nodi posso generare quante $a$ voglio e posso tornare da $q_1$ a $q_0$ per generare altre $b$.
+\end{esempio}
+\begin{esempio}
+Trovo automa per: $$L=\{w\in\{0,1\}^*| w= 0^n1^m\}$$
+vediamo i vari casi:
+\begin{itemize}
+\item $n,m\geq 0$:
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+   \node[state,initial, accepting] (q_0)   {$q_0$};
+   \node[state, accepting] (q_1) [right=of q_0] {$q_1$};
+   \node[state] (q_E) [right=of q_1] {$q_E$};
+   \path[->]
+   (q_0) edge  node {1} (q_1)
+         edge [loop below] node {0} ()
+   (q_1) edge  node  {} (q_E)
+         edge [loop below] node {1} ()
+   (q_E) edge [loop below] node {0,1} ();
+\end{tikzpicture}
+\end{center}
+ovvero posso non generare nulla e uscire subito con $q_0$, generare solo un 1 e passare a $q_1$ e uscire oppure generare 0 e 1 a piacere con l'ultimo stato o generare 0 a piacere dal primo e 1 a piacere dal secondo.
+\item $n\geq 0 \,\,m>0$:
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+   \node[state,initial] (q_0)   {$q_0$};
+   \node[state, accepting] (q_1) [right=of q_0] {$q_1$};
+   \node[state] (q_E) [right=of q_1] {$q_E$};
+   \path[->]
+   (q_0) edge  node {1} (q_1)
+         edge [loop below] node {0} ()
+   (q_1) edge  node  {} (q_E)
+         edge [loop below] node {1} ()
+   (q_E) edge [loop below] node {0,1} ();
+\end{tikzpicture}
+\end{center}
+ovvero come l'esempio sopra solo che non posso uscire in $q_0$ in quanto almeno un 1 deve essere per forza generato
+\item $n> 0\,\, m\geq 0$:
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+   \node[state,initial] (q_0)   {$q_0$};
+   \node[state, accepting] (q_1) [right=of q_0] {$q_1$};
+   \node[state, accepting] (q_2) [right=of q_1] {$q_2$};
+   \node[state] (q_E) [right=of q_2] {$q_E$};
+   \path[->]
+   (q_0) edge  node {0} (q_1)
+         edge [bend right] node {1} (q_E)
+   (q_1) edge  node {1} (q_2)
+         edge [loop above] node {0} ()
+   (q_2) edge node {0} (q_E)
+         edge [loop above] node {1} ()
+   (q_E) edge [loop below] node {0,1} ();
+\end{tikzpicture}
+\end{center}
+\textit{CHIARIRE}
+\item $n,m>0$:
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+   \node[state,initial] (q_0)   {$q_0$};
+   \node[state] (q_1) [right=of q_0] {$q_1$};
+   \node[state, accepting] (q_2) [right=of q_1] {$q_2$};
+   \node[state] (q_E) [right=of q_2] {$q_E$};
+   \path[->]
+   (q_0) edge  node {0} (q_1)
+         edge [bend right] node {1} (q_E)
+   (q_1) edge  node {1} (q_2)
+         edge [loop above] node {0} ()
+   (q_2) edge node {0} (q_E)
+         edge [loop above] node {1} ()
+   (q_E) edge [loop below] node {0,1} ();
+\end{tikzpicture}
+\end{center}
+\textit{CHIARIRE}
+\end{itemize}
+\end{esempio}
+\newpage
+\begin{esempio}
+Trovo automa per: $$L=\{w\in\{a,b\}^*|\mbox{ w che contiene un numero pari di a e dispari di b}\}$$
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+	\node[state, initial] (q_0) {$q_{pp}$};
+	\node[state] (q_1) [right=of q_0] {$q_{dp}$};
+	\node[state, accepting] (q_2) [below=of q_0] {$q_{pd}$};
+	\node[state] (q_3) [right=of q_2] {$q_{dd}$};
+	\path[->]
+	(q_0) edge [bend left = 25] node {a} (q_1)
+	      edge [bend right = 25] node [left] {b} (q_2)
+	(q_1) edge [bend left = 25] node {a} (q_0)
+	      edge [bend right = 25] node [left] {b} (q_3)
+	(q_2) edge [bend right = 25] node [right] {b} (q_0)
+	      edge [bend left = 25] node {a} (q_3)
+	(q_3) edge [bend right = 25] node [right] {b} (q_1)
+	      edge [bend left = 25] node {a} (q_2);
+\end{tikzpicture}
+\end{center}
+\end{esempio}
+\begin{esempio}
+Trovo automa per: $$L=\{w\in\{a,b\}^*|\mbox{ w che contiene un numero pari di a seguito da uno dispari di b}\}$$
+$$L=\{a^{2n}b^{2k+1}|j,k\geq 0\}$$
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+	\node[state, initial] (q_0) {$q_{0}$};
+	\node[state, accepting] (q_1) [right=of q_0] {$q_{1}$};
+	\node[state] (q_2) [below=of q_0] {$q_{2}$};
+	\node[state] (q_3) [right=of q_2] {$q_S$};
+	\node[state] (q_4) [right = of q_3] {$q_E$};
+	\path[->]
+	(q_0) edge [bend left = 25] node {b} (q_1)
+	      edge [bend right = 25] node [left] {a} (q_2)
+	(q_1) edge [bend left = 25] node {a} (q_4)
+	      edge [bend right = 25] node [left] {b} (q_3)
+	(q_2) edge [bend right = 25] node [below] {b} (q_4)
+	      edge [bend right = 25] node [right] {a} (q_0)
+	(q_3) edge [bend right = 25] node [right] {b} (q_1)
+	      edge [bend left = 25] node {a} (q_4);
+\end{tikzpicture}
+\end{center}
+ovvero in tabella:
+\begin{center}
+\begin{tabular}{c|c|c}
+$\delta$ & a & b \\
+\hline
+$\to\,q_0$ & $q_1$ & $q_2$\\
+\hline
+$q_1$ & $q_0$ & $q_E$\\
+\hline
+$*\,q_2$ & $q_E$ & $q_3$\\
+\hline
+$q_S$ & $q_E$ & $q_2$\\
+\hline
+$q_E$ & $q_E$ & $q_E$
+\end{tabular}
+\end{center}
+\end{esempio}
+\begin{esempio}
+Trovo automa per: $$L=\{a^{2k+1}b^{2h}|\, h,k\geq 0\}$$
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+	\node[state, initial] (q_0) {$q_{0}$};
+	\node[state, accepting] (q_1) [right=of q_0] {$q_{1}$};
+	\node[state] (q_3) [right=of q_1] {$q_{3}$};
+	\node[state] (q_2) [below= of q_1] {$q_{2}$};
+	\node[state, accepting] (q_4) [right = of q_2] {$q_4$};
+	\node[state] (q_5) [right=of q_4] {$q_E$};
+	\path[->]
+	(q_0) edge  node [bend left = 25] {a} (q_1)
+	(q_1) edge [bend left = 25] node {a} (q_2)
+	      edge node [bend left= 25] {b} (q_3)
+	(q_2) edge [bend left = 25] node [left] {a} (q_1)
+	(q_3) edge [bend right = 25] node [left] {b} (q_4)
+	(q_4) edge [bend right = 25] node {} (q_3);
+\end{tikzpicture}
+\end{center}
+\end{esempio}
+\begin{esempio}
+Trovo automa per: $$L=\{a^{2n+1}b^{2k+1}|\, n,k\geq 0\}$$
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+	\node[state, initial] (q_0) {$q_{0}$};
+	\node[state] (q_1) [right=of q_0] {$q_{1}$};
+	\node[state, accepting] (q_3) [right=of q_1] {$q_{3}$};
+	\node[state] (q_2) [below= of q_1] {$q_{2}$};
+	\node[state] (q_4) [right = of q_2] {$q_4$};
+	\node[state] (q_5) [right=of q_4] {$q_E$};
+	\path[->]
+	(q_0) edge  node [bend left = 25] {a} (q_1)
+	(q_1) edge [bend left = 25] node {a} (q_2)
+	      edge node [bend left= 25] {b} (q_3)
+	(q_2) edge [bend left = 25] node [left] {a} (q_1)
+	(q_3) edge [bend right = 25] node [left] {b} (q_4)
+	(q_4) edge [bend right = 25] node [right] {b} (q_3);
+\end{tikzpicture}
+\end{center}
+\end{esempio}
+\begin{esempio}
+Trovo automa per: $$L=\{x010y|\,x,y\in\{o,1\}^*\}$$
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+	\node[state, initial] (q_0) {$q_{0}$};
+	\node[state] (q_1) [right=of q_0] {$q_{1}$};
+	\node[state] (q_2) [right=of q_1] {$q_{2}$};
+	\node[state, accepting] (q_3) [right= of q_2] {$q_{3}$};
+	\path[->]
+	(q_0) edge  node {0} (q_1)
+	      edge [loop above] node {1} ()
+	(q_1) edge  node {1} (q_2)
+	      edge [loop above] node {0} ()
+	(q_2) edge  node {0} (q_3)
+	(q_3) edge [loop below] node {0,1} ();
+\end{tikzpicture}
+\end{center}
+\end{esempio}

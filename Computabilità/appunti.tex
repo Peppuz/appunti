@@ -1,4 +1,3 @@
-nes (1081 sloc) 54.4 KB
 %Appunti del Corso Computabilità
 \documentclass[a4paper]{book}
 \usepackage[T1]{fontenc}%per rappresentare i font italiani, come le lettere accentate, con la giusta spaziatura
@@ -379,13 +378,14 @@ Eseguendo la concatenazione delle stringhe foglia otteniamo una stringa $w$ appa
 Usiamo l'esempio delle stringhe palindrome:
 $$P\to 0P0|\,1P1|\epsilon$$
 sia il seguente albero sintatico:
+\end{esempio}
 
 \begin{esempio}
 Si ha:
 $$E\to I|\, E+E|\, E*E|\, (E)$$
 $$I\to a|\,b|\,Ia|\,Ib|\,I0|\,I1$$
 un albero sintattico per $a*(a+b00)$ può essere:
-
+\end{esempio}
 
 
 queste 5 proposizioni si implicano l'uni l'altra:
@@ -520,10 +520,10 @@ si possono avere due derivazioni:
 a generare problemi sono le stringhe con n=m perché possono essere prodotte in due modi diversi da entrambi i sottolinguaggi. Dato che l'intersezione tra i due sottolinguaggi non è vuota si ha che $L$ è ambiguo
 \end{esempio}
 
-\section{Linguaggi e grammatiche dipendenti dal contesto}
+\chapter{Linguaggi e grammatiche dipendenti dal contesto}
 vediamo un esempio di grammatica dipendente dal contesto:
-\[L=\{a^nb^nc^n|\, n\geq 1\} \text{la cui grammatiche che lo genera è la seguente:\} \]
-\[G=\{V,T,P,S\}=\{(S,B,C,X)\}=\{(a,b,c),P,S\}\].\newline
+\[L=\{a^nb^nc^n|\, n\geq 1\} \text{la cui grammatiche che lo genera è la seguente:} \]
+\[ G=\{V,T,P,S\}=\{(S,B,C,X)\}=\{(a,b,c),P,S\}\].\newline
 Ecco le regole di produzione, e le grammatiche di tipo 1 posso scambiare variabili a differenza delle context free:
 \begin{enumerate}
 \item $S\to aSBC$
@@ -536,18 +536,16 @@ Ecco le regole di produzione, e le grammatiche di tipo 1 posso scambiare variabi
 \item $bC\to bc$
 \item $cC\to cc$
 \end{enumerate}
-vediamo un esempio di derivazione:
+Vediamo un esempio di derivazione:
 per $n=1$ ho $abc$ ovvero $S \to aBC \to abC \to abc$.\newline
 con $n=2$ ho $aabbcc$:
 \[ S\to aSBC\to aaBCBC\to aaBXBC\to aaBXCC\to aaBBCC\to aabBCC\to aabbCC\to aabbcC\to aabbcc \]
 Vedere dimostrazione pag 14 di Lorenzo Soligo
 %vedere dimostrazione pag 14 soligo
-\end{esempio}
-\begin{esempio}
-vediamo un esempio di grammatica dipendente dal contesto:
-$$L=\{a^nb^mc^nd^m|\, n,m\geq 1\}$$
+Vediamo un esempio di grammatica dipendente dal contesto:
+\[ L=\{a^nb^mc^nd^m|\, n,m\geq 1\} \]
 Si ha:
-$$G=(\{S,X,C,D,Z\},\{a,b,c,d\},P,S)$$
+\[ G=(\{S,X,C,D,Z\},\{a,b,c,d\},P,S) \]
 con le seguenti regole di produzione:
 \begin{itemize}
 \item $S\to aSc|\, aXc$
@@ -561,41 +559,22 @@ con le seguenti regole di produzione:
 \item $cD\to cd$
 \item $dD\to dd$
 \end{itemize}
-provo a derivare $aabbbccddd$ quindi con $n=2,\,m=3$:\\
-$$S\to aSC\to aaXCC\to aabXDCC\to aabbXDDCC\to $$
-$$aabbbDDDCC\to aabbbCCDDD\to aabbbccddd$$
-\end{esempio}
-\begin{esempio}
-Sia $L=\{w\in\{a,b\}^*|\, \mbox{ w contiene lo stesso numero di a e b}\}$:
-$$S\to aSbS|\,bSaS|\, \varepsilon$$
-dimostro per induzione che è corretto:
-\begin{itemize}
-\item \textbf{caso base:} $|w|=0\to w=\varepsilon$
-\item \textbf{caso passo:} si supponga che $G$ produca tutte le stringhe (di lunghezza $<$ di $n$) di $\{a,b\}^*$ con lo stesso numero di \textit{a} e \textit{b} e dimostro che produce anche quelle di lunghezza $n$, sia:
-$$w\in \{a,b\}^* \mid\, |w|=n \mbox{ con\textit{ a} e \textit{b} in egual numero, }m(a)=m(b) \mbox{ con m() che indica il numero di caratteri}$$
-quindi si ha che:
-$$w=aw_1bw_2\mbox{ o } w=bw_1aw_2$$
-sia.
-$$k_1=m(a)\in w_1=m(b)\in w_1$$
-$$k_2=m(a)\in w_2=m(b)\in w_2$$
-allora:
-$$k_1+k_2+1=m(a)\in w= m(b)\in W$$
-sapendo che $|w_1|<n$ e $|w_2|<n$ allora $w_1$ e $w_2$ sono egnerati da G per ipotesi induttiva
-\end{itemize}
-\end{esempio}
+Provo a derivare $aabbbccddd$ quindi con $n=2,\,m=3$:
+\[ S\to aSC\to aaXCC\to aabXDCC\to aabbXDDCC\to \]
+\[ aabbbDDDCC\to aabbbCCDDD\to aabbbccddd \]
 
 \chapter{Linguaggi Regolari}
-  Per definire le stringhe appartenenti ai linguaggi regolari, di tipo 3, vi può utilizzare le \emph{grammatiche regolari},
-  in cui vengono definite delle regole per stabilire se e quando una stringa appartiene al linguaggio, oppure le \emph{espressioni regolari}.
+Per definire le stringhe appartenenti ai linguaggi regolari, di tipo 3, vi può utilizzare le \emph{grammatiche regolari},
+in cui vengono definite delle regole per stabilire se e quando una stringa appartiene al linguaggio, oppure le \emph{espressioni regolari}.
 
-  Incominciamo a considerare le grammatiche regolari, sottoinsieme delle grammatiche di tipo 2 secondo la gerarchia di Choumsky,
-  utilizzate per generare i linguaggi regolari.
+Incominciamo a considerare le grammatiche regolari, sottoinsieme delle grammatiche di tipo 2 secondo la gerarchia di Choumsky,
+utilizzate per generare i linguaggi regolari.
 
-  Si ha la solita grammatica $G = (V, T, P, S)$ con però vincoli su $P$:
-  \begin{itemize}
+Si ha la solita grammatica $G = (V, T, P, S)$ con però vincoli su $P$:
+\begin{itemize}
   \item $\epsilon$ si può ottenere solo con $S\to \epsilon$
   \item le produzioni sono tutte lineari a destra ($A\to aA$ o $A\to a$) o a sinistra ($A\to Ba$ o $A\to a$)
-  \end{itemize}
+\end{itemize}
 \begin{esempio}
 $I\to a|\,b|\,Ia|\,Ib|\,I0|\,I1$ è una grammatica con le produzioni lineari a sinistra.\newline
 Potremmo pensarlo a destra $I\to a|\,b|\,aI|\,bI|\,0I|\,1I$.\newline
@@ -620,85 +599,35 @@ e questo è il modo corretto per passare da lineare sinistra a lineare destra
 \end{esempio}
 
 \begin{esempio}
-Sia $G=(\{S\},\{0,1\},P,S)$ con $S\to \epsilon|\,0|\,1|\,0S|\,1S$ e si ha quindi:
+Sia $G=(\{S\},\{0,1\},P,S)$ con $S\to \epsilon|\,0S|\,1S$ e si ha quindi:
 \[ L(G)=\{0,1\}^* \]
-Si hanno comunque due proposizioni ridondanti, riducendo trovo:
-\[ S\to \epsilon|\, 0S|\,1S \]
-con solo produzioni lineari a destra mentre usando le produzioni lineari a sinistra ottengo:
+Si hanno comunque solo produzioni lineari a destra mentre usando le produzioni lineari a sinistra ottengo:
 \[ S\to \epsilon|\, S0|\,S1 \]
 \end{esempio}
 \begin{esempio}
 Trovo una grammatica lineare destra e una sinistra per $L=\{a^nb^m|\,n,m\geq 0\}$:
 \begin{itemize}
 \item \textbf{lineare a destra:} si ha $G=(\{S,B\},\{a,b\},P,S)$ e quindi:
-$$S\to \varepsilon|\,aS|\,bB$$
-$$B\to bB|\,b$$
+\[ S\to \epsilon|\,aS|\,bB \]
+\[ B\to bB|\,b \]
 ma non si possono generare stringhe di sole $b$, infatti:
-$$S\to aS\to abB\to abbB\to abbb$$
+\[ S\Rightarrow aS\Rightarrow abB\Rightarrow abbB\Rightarrow abbb \]
 ma aggiungere $\varepsilon$ a B \textbf{non è lecito}. posso però produrre la stessa stringa da due derivazioni diverse:
-$$S\to \varepsilon|\,aS|\,bB|\,b$$
-$$B\to bB|\,b$$
+\[ S\to \varepsilon|\,aS|\,bB|\,b \]
+\[ B\to bB|\,b \]
 che risulta quindi la nostra lineare a destra
 \item \textbf{lineare a sinistra:} si ha $G=(\{S,A\},\{a,b\},P,S)$ e quindi:
-$$S\to \varepsilon|\,Sb|\,Ab|\,a$$
-$$A\to Aa|\,a$$
-\end{itemize}
-\end{esempio}
-\begin{esempio}
-Trovo una grammatica lineare destra e una sinistra per $L=\{ab^ncd^me|\,n\geq 0\,,m> 0\}$:
-\begin{itemize}
-\item \textbf{lineare a destra:} si ha  si ha $G=(\{S,A,B,E\},\{a,b,c,d,e\},P,S)$ e quindi:
-$$S\to aA$$
-$$A\to bA|\,cB$$
-$$B\to dB|\, dE$$
-$$E\to e$$
-\item \textbf{lineare a sinistra:} si ha  si ha $G=(\{S,X,Y,Z\},\{a,b,c,d,e\},P,S)$ e quindi:
-$$S\to Xe$$
-$$A\to Xd|\,Yd$$
-$$B\to Zc$$
-$$E\to a|\,Zb$$
-\end{itemize}
-quindi se per esempio ho la stringa "ciao" si ha:
-\begin{itemize}
-\item \textbf{lineare a destra:}
-$$S\to Ao$$
-$$A\to Ba$$
-$$B\to Ei$$
-$$E\to c$$
-\item \textbf{lineare a sinistra:}
-$$S\to cA$$
-$$A\to iB$$
-$$B\to aE$$
-$$E\to o$$
-\end{itemize}
-\end{esempio}
-\begin{esempio}
-A partire da $G=(\{S,T\},\{0,1\},P,S)$ con:
-$$S\to\varepsilon|\,0S|\,1T$$
-$$T\to 0T|\,1S$$
-
-trovo come è fatto $L(G)$:
-$$L(G)=\{w\in\{0,1\}^*|\, w \mbox{ ha un numero di 1 pari}\}$$
-\end{esempio}
-\begin{esempio}
-fornire una grammatica regolare a destra e sinistra per:
-$$L=\{w\in\{0,1\}^*|\, w \mbox{ ha almeno uno 0 o almeno un 1}\}$$
-Si ah che tutte le stringhe tranne quella vuota ciontengono uno 0 o un 1
-quindi  $G=(\{S\},\{0,1\},P,S)$:
-\begin{itemize}
-\item \textbf{lineare a destra:}
-$$S\to 0|\,1|\,0S|\,1S$$
-\item \textbf{lineare a sinistra:}
-$$S\to 0|\,1|\,S0|\,S1$$
+\[S\to \varepsilon|\,Sb|\,Ab|\,a \]
+\[ A\to Aa|\,a \]
 \end{itemize}
 \end{esempio}
 
 \section{Espressioni Regolari}
-  Le espressioni regolari permettono di definire, utilizzando una notazione algebrica, un linguaggio regolare e vengono utilizzate
-  per estrarre parole da un testo ed altre notevole applicazioni, che verranno analizzate nel corso dei paragrafi.
+Le espressioni regolari permettono di definire, utilizzando una notazione algebrica, un linguaggio regolare e vengono utilizzate
+per estrarre parole da un testo ed altre notevole applicazioni, che verranno analizzate nel corso dei paragrafi.
 
-  Per riuscire a definire in maniera formale le espressioni regolari dobbiamo definire le seguenti operazioni sui linguaggi regolari:
-  \begin{itemize}
+Per riuscire a definire in maniera formale le espressioni regolari dobbiamo definire le seguenti operazioni sui linguaggi regolari:
+\begin{itemize}
   \item Unione: dati due linguaggi $L,M \subseteq \Sigma*$ si definisce $L \cup M$ come:
     \[ L \cup M = \{w \in \Sigma* | w \in L \lor w \in M\} \]
     Esempio: $L = \{001, 10, 111\}$ e $M = \{\epsilon, 001\}$ risulta $L \cup M = \{\epsilon, 10, 001, 111\}$.\newline
@@ -757,8 +686,8 @@ $$S\to 0|\,1|\,S0|\,S1$$
     \end{itemize}%itemize dei linguaggi la cui chiusura è finita
   \end{itemize}%itemize delle operazioni dei linguaggi regolari
 
-  Dopo aver definito le operazioni sui linguaggi regolari, definiamo ora le espressioni regolari, molto utilizzate per rappresentare in
-  maniera algebrica la grammatica dei linguaggi regolari:
+Dopo aver definito le operazioni sui linguaggi regolari, definiamo ora le espressioni regolari, molto utilizzate per rappresentare in
+maniera algebrica la grammatica dei linguaggi regolari:
 \begin{defi}
 Si definisce \emph{espressione regolare} induttivamente come segue, considerando anche il linguaggio che generano:
    \begin{description}
@@ -797,26 +726,28 @@ Per sapere quali operazioni in una Regex viene eseguita, si introduce la precede
 
 Gli operatori delle espressioni regolari possiedono le seguenti proprietà:
 \begin{itemize}
-\item Unione: l'unione si può vedere come l'addizione nell'aritmetica dato che possiede le stesse proprietà infatti:
-  \begin{itemize}
-  \item \textbf{Commutatività}: dati due linguaggi $L$ e $M$ risulta $L + M = M + L$
-  \item \textbf{Associavità}: dati tre linguaggi $L, M$ e $N$ risulta $(L + M) + N = L + (M + N)$
-  \item \textbf{Identità}: l'identità per l'unione è l'insieme $\emptyset$ infatti risulta verificato $L + \emptyset = L = \emptyset + L$
-  \item \textbf{Idempotenza}: dato un linguaggio $L$ risulta $L + L = L$.
-  \end{itemize}
-\item la Concatenazione presenta delle analogie con la moltiplicazione infatti possiede le seguenti proprietà:
-  \begin{itemize}
-  \item \textbf{Associavità}: dati tre linguaggi $L, M$ e $N$ risulta $(LM)N = L(MN)$
-  \item \textbf{Identità}: l'identità per la concatenazione è l'$\epsilon$ attraverso cui risulta $\epsilon L = L = L \epsilon$
-  \item \textbf{Annichilatore}: l'annichilatore per la concatenazione è $\emptyset$ in quanto risulta $\emptyset L = \emptyset = L \emptyset$.
-    L'annichilatore risulta molto utile per effettuare delle utili ed importanti semplificazioni.
-  \end{itemize}
+  \item Unione: l'unione si può vedere come l'addizione nell'aritmetica dato che possiede le stesse proprietà infatti:
+    \begin{itemize}
+      \item \textbf{Commutatività}: dati due linguaggi $L$ e $M$ risulta $L + M = M + L$
+      \item \textbf{Associavità}: dati tre linguaggi $L, M$ e $N$ risulta $(L + M) + N = L + (M + N)$
+      \item \textbf{Identità}: l'identità per l'unione è l'insieme $\emptyset$ infatti risulta verificato $L + \emptyset = L = \emptyset + L$
+      \item \textbf{Idempotenza}: dato un linguaggio $L$ risulta $L + L = L$.
+      \end{itemize}
+
+  \item la Concatenazione presenta delle analogie con la moltiplicazione infatti possiede le seguenti proprietà:
+    \begin{itemize}
+      \item \textbf{Associavità}: dati tre linguaggi $L, M$ e $N$ risulta $(LM)N = L(MN)$
+      \item \textbf{Identità}: l'identità per la concatenazione è l'$\epsilon$ attraverso cui risulta $\epsilon L = L = L \epsilon$
+      \item \textbf{Annichilatore}: l'annichilatore per la concatenazione è $\emptyset$ in quanto risulta $\emptyset L = \emptyset = L \emptyset$.
+                                    L'annichilatore risulta molto utile per effettuare delle utili ed importanti semplificazioni.
+    \end{itemize}
   L'unione e la concatenazione possiedono le proprietà distributive della concatenazione rispetto all'unione:
   \begin{itemize}
-  \item $L(M + N) = LM + LN$ \quad (legge distribuitiva sinistra della concatenazione rispetto all'unione)
-  \item $(M + N)L = ML + NL$ \quad (legge distribuitiva destra della concatenazione rispetto all'unione)
+    \item $L(M + N) = LM + LN$ \quad (legge distribuitiva sinistra della concatenazione rispetto all'unione)
+    \item $(M + N)L = ML + NL$ \quad (legge distribuitiva destra della concatenazione rispetto all'unione)
   \end{itemize}
-\item la chiusura possiede le seguenti proprietà:
+
+  \item la chiusura possiede le seguenti proprietà:
   \begin{itemize}
   \item $(L^*)^* = L^*$
   \item $\emptyset ^ * = \epsilon$
@@ -833,86 +764,112 @@ Dato che si ha $n > 0$ ci sarà per forza una $a$ per cui per generare $a^n$ si 
 definire $d^m$ si usa $d*$.\newline
 Fatte codeste considerazioni si ottiene Regex = $aa^*bcd*$.
 
-Scrivere la regex del seguente linguaggio $L = \{ w \in {0,1\}^* | w = \text{stringhe in cui compare 10}\}$.\newline
-  La regex per generare il linguaggio è $(0+1)^*10(0+1)^*$ in quanto (0+1)^* mi genera una qualsiasi stringa di $0$ e $1$ mentre
+Scrivere la regex del seguente linguaggio $L = \{ w \in {0,1\}^* | w = \text{stringhe in cui compare 10}}$.\newline
+  La regex per generare il linguaggio è $(0+1)^*10(0+1)^*$ in quanto $(0+1)^*$ mi genera una qualsiasi stringa di $0$ e $1$ mentre
   $10$ mi assicura di avere tutte e sole le strighe in cui compare $10$.
+
 \chapter{Automi a stati finiti}
-Un automa a stati finiti
-Un automa a stati finiti ha un insieme di stati e un controllo che si muove da stato a stato in risposta a input esterni. Si ha una distinzione:
-\begin{itemize}
-\item \textbf{automi deterministici:} dove l'automa non può essere in più di uno stato per volta
-\item \textbf{automi non deterministici:} dove l'automa può trovarsi in più stati contemporaneamente
-\end{itemize}
-\subsection{Automi deterministici}
-Un automa a stati finiti deterministico (\textit{DFA}), un automa che dopo aver letto una qualunque sequenza di input si trova in un singolo stato. Il termine \textit{deterministico} concerne il fatto che per ogni input esiste un solo stato verso il quale l'automa passa dal suo stato corrente. Un automa a stati finiti deterministico consiste nelle seguenti parti:
+Un automa a stati finiti è un tipo di automa che permette di descrivere con precisione e in maniera formale il comportamento di molti sistemi.\newline
+Grazie alla sua semplicità e chiarezza questo modello è molto diffuso nell'ingegneria e nelle scienze, soprattutto nel campo dell'informatica
+ e della ricerca operativa e può essere utilizzato sia per modellare un sistema esistente
+  che per modellare un nuovo sistema formale in grado di risolvere alcuni nuovi problemi.
+Un automa a stati finiti permette di definire le stringhe accettabili in un linguaggio regolare
+e possiede un insieme di stati e un controllo che si muove da stato a stato in risposta a input esterni.\newline
+ Si ha una distinzione:
+\begin{description}
+\item [automi deterministici] dove l'automa non può essere in più di uno stato per volta
+\item [automi non deterministici] dove l'automa può trovarsi in più stati contemporaneamente
+\end{description}
+Iniziamo a parlare degli automi deterministici, facilmente implementabili da un calcolatore
+e su cui è possibile dimostrare la correttezza, per poi affrontare gli automi non deterministici,
+facili da disegnare e sviluppare dagli esseri umani.
+
+\section{Automi deterministici}
+Come già visto, un automa a stati finiti deterministico (\textit{DFA}), è un automa che dopo aver letto
+una qualunque sequenza di input si trova in un singolo stato.\newline
+Il termine \textit{deterministico} deriva dal fatto che per ogni input esiste un solo stato verso il quale l'automa passa dal suo stato corrente
+e dal punto di vista formale un DFA consiste nelle seguenti parti:
 \begin{itemize}
 \item un insieme finito di stati, spesso indicato con $Q$
 \item un insieme finito di simboli di input , spesso indicato con $\Sigma$
-\item una funzione di transizione, che prende come argomento uno stato e un simbolo di input e restituisce uno stato. La funzione di transizione sarà indicata comunemente con $\delta$. Nella rappresentazione grafica informale di automi $\delta$ è rappresentata dagli archi tra gli stati e dalle etichette sugli archi. Se $q$ è uno stato e $a$ è un simbolo di input, $\delta(q,a)$ è lo stato $p$ tale che esiste un arco etichettato con $a$ da $q$ a $p^2$
-\item uno stato iniziale, uno degli stati in $Q$
-\item un insieme di stati finali, o accettanti , $F$. L'insieme $F$ è un sottoinsieme di $Q$
+\item una funzione di transizione $\delta$, che prende come argomento uno stato e un simbolo di input e restituisce uno stato. \newline
+Nella rappresentazione grafica informale di automi $\delta$ è rappresentata dagli archi tra gli stati e dalle etichette sugli archi. Se $q$ è uno stato
+e $a$ è un simbolo di input, $\delta(q,a)$ è lo stato $p$ tale che esiste un arco etichettato con $a$ da $q$ a $p$
+\item uno stato iniziale $q_0$, corrispondente ad uno degli stati in $Q$
+\item un insieme $F \subseteq Q$ di stati finali o accettanti, in cui si accettano le stringhe
+      arrivate in quello stato
 \end{itemize}
 Nel complesso un DFA è rappresentato in maniera concisa con l'enumerazione dei suoi elementi, quindi con la quintupla:
-$$A=(Q,\Sigma,\delta,q_0,F)$$
-con $A$ nome del DFA, $Q$ insiem degli stati, $\Delta$ rappresentante i simboli di input, $\delta$ la sua funzione di transizione, $q_0$ il suo stato iniziale e $F$ l'insieme degli stati accettanti.\\
-Vediamo come decidere se accettare o meno una stringa (sequenza di caratteri) in input mediante un DFA.\\
-Ho una sequenza in input $a_1...a_n$. Parto dallo stato iniziale $q_0$, consultando la funzione di transizione $\delta$, per esempio  $\delta(q_0,a_1)=q_1$ e trovo lo stato in cui il DFA entra dopo aver letto $a_1$. Poi passo a $\delta(q_1,a_2)=q_2$ e così via, $\delta(q_{i-1},a_i)=q_i$ fino a ottenere $q_n$. Se $q_n$ è elemento di $F$ allora $a_1...a_n$ viene accettato, altrimenti viene rifiutato.
+\[ A=(Q,\Sigma,\delta,q_0,F) \]
+Vediamo come decidere se accettare o meno una stringa (sequenza di caratteri) in input mediante un DFA.\newline
+Ho una sequenza in input $a_1...a_n$. Parto dallo stato iniziale $q_0$, consultando la funzione di transizione $\delta$, per esempio
+$\delta(q_0,a_1)=q_1$ e trovo lo stato in cui il DFA entra dopo aver letto $a_1$.\newline
+Poi passo a $\delta(q_1,a_2)=q_2$ e così via, $\delta(q_{i-1},a_i)=q_i$ fino a ottenere $q_n$
+e se $q_n$ è elemento di $F$ allora $a_1...a_n$ viene accettato, altrimenti viene rifiutato.
+
+Vediamo ora un esempio per capire come si rappresenta e come si sviluppa un automa:
 \begin{esempio}
-specifico DFA che accetta tutte le strighe binarie in cui compare la sequenza 01:
-$$L=\{w|w \mbox{ è della forma x01y, con x e y pari a 0 o 1} \}=\{01,11010,100011,...\}$$
-o anche:
-$$L=\{x01y| x,y\in\{0,1\}^* \}$$
-abbiamo quindi:
-$$\Sigma=\{0,1\}$$
-ragioniamo sul fatto che $A$:
+Specifico un DFA che accetta tutte le strighe binarie in cui compare la sequenza 01:
+\[ L=\{w \in {0,1}^* |w  = x01y \,\, x,y \in {0,1}^*\}=\{01,11010,100011,...\} \]
+Ragioniamo sul fatto che $A$:
 \begin{enumerate}
 \item se ha "già visto" 01, accetterà qualsiasi input
 \item pur non avendo ancora visto 01, l'input più recente è stato 0, cosicché se ora vede un 1 avrà visto 01
 \item non ha ancora visto 01, ma l'input più recente è nullo (siamo all'inizio), in tal caso A non accetta finché non vede
 uno 0 e subito dopo un 1
 \end{enumerate}
-la terza condizione rappresenta lo stato iniziale. All'inizio bisogna vedere uno 0 e poi un 1. Ma se nello stato $q_0$ si vede per primo un 1 allora non abbiamo fatto alcun passo verso 01, e dunque dobbiamo permanere nello stato $q_0$, $\delta(q_0,1)=q_0$. D'altra parte se nello stato iniziale vedo 0 siamo nella seconda condizione, uso quindi $q_2$ per questa condizione, si avrà quindi $\delta(q_0,0)=q_2$. Vedo ora le transizoni di $q_2$, se vedo 0 ho che 0 è l'ultimo simbolo incontrato quindi uso nuovamente $q_2$, $\delta(q_2,0)=q_2$, in attesa di un 1. Se arriva 1 passo allo stato accertante $q_1$ corrispondente alla prima condizione, $\delta(q_2,1)=q_1$. Ora abbiamo incontrato 01 quindi può succedere qualsiasi cosa e dopo qualsiasi cosa accada potremo nuovamente aspettarci qualsiasi cosa, ovvero $\delta(q_1,0)=\delta(q_1,1)=q_1$. Si deduce quindi che:
-$$Q=\{q_0,q_1,q_2\} \mbox{ e } F=\{q_1\}$$
-quindi:
-$$A=\{\{q_0,q_1,q_2\} ,\{0,1\}, \delta, q_0, \{q_1\} \}$$
+L'automa DFA per rappresentare il linguaggio è il seguente:
+\[ A=\{\{q_0,q_1,q_2\} ,\{0,1\}, \delta, q_0, \{q_1\} \} \]
 con in totale le seguenti transizioni:
-$$\delta(q_0,1)=q_0$$
-$$\delta(q_0,0)=q_2$$
-$$\delta(q_2,0)=q_2$$
-$$\delta(q_2,1)=q_1$$
-$$\delta(q_1,0)=q_1$$
-$$\delta(q_1,1)=q_1$$
-posso rappresentarle in maniera tabulare, con lo stato inizale indicato da $\to$ e quelli accettanti con $*$:
-\begin{center}
-\begin{tabular}{c|c|c}
-$\delta$ & 0 & 1 \\
-\hline
-$\to\,q_0$ & $q_1$ & $q_0$\\
-\hline
-$*\,q_1$ & $q_1$ & $q_1$\\
-\hline
-$q_2$ & $q_2$ & $q_1$
-\end{tabular}
-\end{center}
-o col diagramma di transizione:
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-   \node[state,initial] (q_0)   {$q_0$};
-   \node[state] (q_2) [right=of q_0] {$q_2$};
-   \node[state, accepting] (q_1) [right=of q_2] {$q_1$};
-   \path[->]
-   (q_0) edge  node {0} (q_2)
-         edge [loop below] node {1} ()
-   (q_2) edge  node  {1} (q_1)
-         edge [loop below] node {0} ()
-   (q_1) edge [loop below] node {0,1} ();
-\end{tikzpicture}
-\end{center}
+\[ \delta(q_0,1)=q_0 \]
+\[ \delta(q_0,0)=q_2 \]
+\[ \delta(q_2,0)=q_2 \]
+\[ \delta(q_2,1)=q_1 \]
+\[ \delta(q_1,0)=q_1 \]
+\[ \delta(q_1,1)=q_1 \]
+Definire l'automa con questa notazione è noioso e non molto semplice da sviluppare
+per questo si possono utilizzare le seguenti due maniera per rappresentare un automa:
+\begin{itemize}
+  \item \textbf{tabella di transizione}: rappresentazione tabellare della funzione $\delta$,
+        dove lo stato iniziale viene indicato con $\to$ e gli stati accettati con $*$
+        Nel nostro esempio si ha la seguente tabella di transizione:
+        \begin{table}
+        \centering
+        \begin{tabular}{c|c|c}
+        $\delta$ & 0 & 1 \\
+        \hline
+        $\to\,q_0$ & $q_1$ & $q_0$\\
+        \hline
+        $*\,q_1$ & $q_1$ & $q_1$\\
+        \hline
+        $q_2$ & $q_2$ & $q_1$
+        \end{tabular}
+        \end{table}
+
+  \item \textbf{diagramma di transizione}: grafo indicante una rappresentazione grafica
+        dell'automa per capire in maniera semplice ed immediata il comportamento dell'automa.\newline
+        Nel nostro esempio di automa il diagramma di transizione è il seguente:
+        \begin{figure}
+        \caption{Automa per rappresentare le stringhe x01y}
+        \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+           \node[state,initial] (q_0)   {$q_0$};
+           \node[state] (q_2) [right=of q_0] {$q_2$};
+           \node[state, accepting] (q_1) [right=of q_2] {$q_1$};
+           \path[->]
+           (q_0) edge  node {0} (q_2)
+                 edge [loop below] node {1} ()
+           (q_2) edge  node  {1} (q_1)
+                 edge [loop below] node {0} ()
+           (q_1) edge [loop below] node {0,1} ();
+        \end{tikzpicture}
+        \end{figure}
+\end{itemize}
 \end{esempio}
-\newpage
+
 \begin{esempio}
-Trovo automa per: $$L=\{w\in\{a,b\}^*|\mbox{ w che contiene un numero pari di b}\}$$
-\begin{center}
+Trovo automa per: \[L=\{w\in\{a,b\}^*|\mbox{ w che contiene un numero pari di b}\} \]
+\begin{figure}
+\caption{Automa per rappresentare un numero pari di b}
 \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
 	\node[state, initial, accepting] (q_0) {$q_0$};
 	\node[state] (q_1) [right=of q_0] {$q_1$};
@@ -922,217 +879,333 @@ Trovo automa per: $$L=\{w\in\{a,b\}^*|\mbox{ w che contiene un numero pari di b}
 	(q_1) edge [bend left = 25] node {b} (q_0)
 	      edge [loop below] node {a} ();
 \end{tikzpicture}
-\end{center}
-ovvero se da $q_0$ vado a $q_1$ sono obbligato ab generare due $b$, dato che il nodo accettnate è $q_0$. In entrambi i nodi posso generare quante $a$ voglio.
+\end{figure}
 \end{esempio}
-\begin{esempio}
-Trovo automa per: $$L=\{w\in\{a,b\}^*|\mbox{ w che contiene un numero dispari di b}\}$$
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
-	\node[state, initial] (q_0) {$q_0$};
-	\node[state, accepting] (q_1) [right=of q_0] {$q_1$};
-	\path[->]
-	(q_0) edge [bend left = 25] node {b} (q_1)
-	      edge [loop below] node {a} ()
-	(q_1) edge [bend left = 25] node {b} (q_0)
-	      edge [loop below] node {a} ();
-\end{tikzpicture}
-\end{center}
-ovvero se da $q_0$ vado a $q_1$ sono obbligato ab generare una sola $b$, dato che il nodo accettnate è $q_1$. In entrambi i nodi posso generare quante $a$ voglio e posso tornare da $q_1$ a $q_0$ per generare altre $b$.
-\end{esempio}
-\begin{esempio}
-Trovo automa per: $$L=\{w\in\{0,1\}^*| w= 0^n1^m\}$$
-vediamo i vari casi:
+Definiamo ora un estenzione della funzione di transizione $\hat{\delta}$, il quale ci descrive
+come opera un automa fornendo uno stato e una sequenza di input.
+La definizione può essere di due diversi tipi, ambedue di tipo induttivo:
 \begin{itemize}
-\item $n,m\geq 0$:
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-   \node[state,initial, accepting] (q_0)   {$q_0$};
-   \node[state, accepting] (q_1) [right=of q_0] {$q_1$};
-   \node[state] (q_E) [right=of q_1] {$q_E$};
-   \path[->]
-   (q_0) edge  node {1} (q_1)
-         edge [loop below] node {0} ()
-   (q_1) edge  node  {} (q_E)
-         edge [loop below] node {1} ()
-   (q_E) edge [loop below] node {0,1} ();
-\end{tikzpicture}
-\end{center}
-ovvero posso non generare nulla e uscire subito con $q_0$, generare solo un 1 e passare a $q_1$ e uscire oppure generare 0 e 1 a piacere con l'ultimo stato o generare 0 a piacere dal primo e 1 a piacere dal secondo.
-\item $n\geq 0 \,\,m>0$:
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-   \node[state,initial] (q_0)   {$q_0$};
-   \node[state, accepting] (q_1) [right=of q_0] {$q_1$};
-   \node[state] (q_E) [right=of q_1] {$q_E$};
-   \path[->]
-   (q_0) edge  node {1} (q_1)
-         edge [loop below] node {0} ()
-   (q_1) edge  node  {} (q_E)
-         edge [loop below] node {1} ()
-   (q_E) edge [loop below] node {0,1} ();
-\end{tikzpicture}
-\end{center}
-ovvero come l'esempio sopra solo che non posso uscire in $q_0$ in quanto almeno un 1 deve essere per forza generato
-\item $n> 0\,\, m\geq 0$:
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-   \node[state,initial] (q_0)   {$q_0$};
-   \node[state, accepting] (q_1) [right=of q_0] {$q_1$};
-   \node[state, accepting] (q_2) [right=of q_1] {$q_2$};
-   \node[state] (q_E) [right=of q_2] {$q_E$};
-   \path[->]
-   (q_0) edge  node {0} (q_1)
-         edge [bend right] node {1} (q_E)
-   (q_1) edge  node {1} (q_2)
-         edge [loop above] node {0} ()
-   (q_2) edge node {0} (q_E)
-         edge [loop above] node {1} ()
-   (q_E) edge [loop below] node {0,1} ();
-\end{tikzpicture}
-\end{center}
-\textit{CHIARIRE}
-\item $n,m>0$:
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-   \node[state,initial] (q_0)   {$q_0$};
-   \node[state] (q_1) [right=of q_0] {$q_1$};
-   \node[state, accepting] (q_2) [right=of q_1] {$q_2$};
-   \node[state] (q_E) [right=of q_2] {$q_E$};
-   \path[->]
-   (q_0) edge  node {0} (q_1)
-         edge [bend right] node {1} (q_E)
-   (q_1) edge  node {1} (q_2)
-         edge [loop above] node {0} ()
-   (q_2) edge node {0} (q_E)
-         edge [loop above] node {1} ()
-   (q_E) edge [loop below] node {0,1} ();
-\end{tikzpicture}
-\end{center}
-\textit{CHIARIRE}
+  \item versione semplificata, comoda da definire ma difficile per dimostrare la correttezza
+        in cui si considera una stringa $w = ax$ con $x \in \Sigma^*$ per cui la definizione è la seguente:
+        \begin{description}
+          \item [caso base] $\hat{\delta}(q, \epsilon) = q$ con ovviamente $|w| = 0$
+          \item [caso passo] Supponiamo che $w = ax$, con $a \in \Sigma$ e $x \in \Sigma^*$ e $|w| \neq 0$
+                 allora $\hat{\delta}(q, w) = \hat{\delta}(q, ax) = \hat(\delta)(\delta(q, a), x)$.
+        \end{description}
+
+  \item versione fornita dal libro, comoda per la dimostrazione della correttezza del linguaggio
+        in cui si considera una stringa $w = xa$, sempre con $x \in \Sigma^*$ e $a \in \Sigma$.
+        La definizione è la seguente:
+        \begin{description}
+          \item [caso base] $\hat{\delta}(q, \epsilon) = q$ in caso $|w| = 0$
+          \item [caso passo] Supponiamo di avere la stringa come $w = xa$, con $|w| \neq 0$,
+                allora $\hat{\delta}(q, w) = \delta(\hat{\delta}(q, x), a)$.
+        \end{description}
 \end{itemize}
-\end{esempio}
-\newpage
+Dopo aver definito la funzione di transizione estesa possiamo fornire una definizione formale
+del linguaggio accettato da un'automa infatti:
+\[ L(a) = \{w | \hat{\delta}(q_0, w) \in F \} \].
+In caso $L = L(a)$ per un DFA A, allora diciamo che $L$ è un linguaggio regolare.
+
+\section{Automi non deterministici}
+Un automa a stati finiti non deterministici (\emph{NFA}) è un automa che può trovarsi in diversi stati contemporaneamente e come i DFA accettano linguaggi regolari.\newline
+Il motivo per cui sono studiati e definiti è perche spesso sono più semplici da trattare rispetto ai DFA,
+anche se è più difficile la dimostrazione della correttezza dei linguaggi.
+
+Un NFA è definito come un DFA, ossia con la solita quintupla ma si ha un diverso tipo di transizione $\delta$,
+che ha sempre come argomenti uno stato e un simbolo di input ma resituisce zero o più stati.
 \begin{esempio}
-Trovo automa per: $$L=\{w\in\{a,b\}^*|\mbox{ w che contiene un numero pari di a e dispari di b}\}$$
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-	\node[state, initial] (q_0) {$q_{pp}$};
-	\node[state] (q_1) [right=of q_0] {$q_{dp}$};
-	\node[state, accepting] (q_2) [below=of q_0] {$q_{pd}$};
-	\node[state] (q_3) [right=of q_2] {$q_{dd}$};
-	\path[->]
-	(q_0) edge [bend left = 25] node {a} (q_1)
-	      edge [bend right = 25] node [left] {b} (q_2)
-	(q_1) edge [bend left = 25] node {a} (q_0)
-	      edge [bend right = 25] node [left] {b} (q_3)
-	(q_2) edge [bend right = 25] node [right] {b} (q_0)
-	      edge [bend left = 25] node {a} (q_3)
-	(q_3) edge [bend right = 25] node [right] {b} (q_1)
-	      edge [bend left = 25] node {a} (q_2);
-\end{tikzpicture}
-\end{center}
-\end{esempio}
-\begin{esempio}
-Trovo automa per: $$L=\{w\in\{a,b\}^*|\mbox{ w che contiene un numero pari di a seguito da uno dispari di b}\}$$
-$$L=\{a^{2n}b^{2k+1}|j,k\geq 0\}$$
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-	\node[state, initial] (q_0) {$q_{0}$};
-	\node[state, accepting] (q_1) [right=of q_0] {$q_{1}$};
-	\node[state] (q_2) [below=of q_0] {$q_{2}$};
-	\node[state] (q_3) [right=of q_2] {$q_S$};
-	\node[state] (q_4) [right = of q_3] {$q_E$};
-	\path[->]
-	(q_0) edge [bend left = 25] node {b} (q_1)
-	      edge [bend right = 25] node [left] {a} (q_2)
-	(q_1) edge [bend left = 25] node {a} (q_4)
-	      edge [bend right = 25] node [left] {b} (q_3)
-	(q_2) edge [bend right = 25] node [below] {b} (q_4)
-	      edge [bend right = 25] node [right] {a} (q_0)
-	(q_3) edge [bend right = 25] node [right] {b} (q_1)
-	      edge [bend left = 25] node {a} (q_4);
-\end{tikzpicture}
-\end{center}
-ovvero in tabella:
-\begin{center}
-\begin{tabular}{c|c|c}
-$\delta$ & a & b \\
-\hline
-$\to\,q_0$ & $q_1$ & $q_2$\\
-\hline
-$q_1$ & $q_0$ & $q_E$\\
-\hline
-$*\,q_2$ & $q_E$ & $q_3$\\
-\hline
-$q_S$ & $q_E$ & $q_2$\\
-\hline
-$q_E$ & $q_E$ & $q_E$
-\end{tabular}
-\end{center}
-\end{esempio}
-\begin{esempio}
-Trovo automa per: $$L=\{a^{2k+1}b^{2h}|\, h,k\geq 0\}$$
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-	\node[state, initial] (q_0) {$q_{0}$};
-	\node[state, accepting] (q_1) [right=of q_0] {$q_{1}$};
-	\node[state] (q_3) [right=of q_1] {$q_{3}$};
-	\node[state] (q_2) [below= of q_1] {$q_{2}$};
-	\node[state, accepting] (q_4) [right = of q_2] {$q_4$};
-	\node[state] (q_5) [right=of q_4] {$q_E$};
-	\path[->]
-	(q_0) edge  node [bend left = 25] {a} (q_1)
-	(q_1) edge [bend left = 25] node {a} (q_2)
-	      edge node [bend left= 25] {b} (q_3)
-	(q_2) edge [bend left = 25] node [left] {a} (q_1)
-	(q_3) edge [bend right = 25] node [left] {b} (q_4)
-	(q_4) edge [bend right = 25] node {} (q_3);
-\end{tikzpicture}
-\end{center}
-\end{esempio}
-\begin{esempio}
-Trovo automa per: $$L=\{a^{2n+1}b^{2k+1}|\, n,k\geq 0\}$$
-\begin{center}
+Sia $L = \{x01| x\in\{0,1\}\}$ ovvero il linguaggio formato da tutte le stringhe binarie che terminano in 01
+per cui avremo il seguente automa determinsitico per rappresentare il linguaggio:
+\begin{figure}
+\centering
+\caption{DFA per il linguaggio $w = x01$}
 \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
 	\node[state, initial] (q_0) {$q_{0}$};
 	\node[state] (q_1) [right=of q_0] {$q_{1}$};
-	\node[state, accepting] (q_3) [right=of q_1] {$q_{3}$};
-	\node[state] (q_2) [below= of q_1] {$q_{2}$};
-	\node[state] (q_4) [right = of q_2] {$q_4$};
-	\node[state] (q_5) [right=of q_4] {$q_E$};
-	\path[->]
-	(q_0) edge  node [bend left = 25] {a} (q_1)
-	(q_1) edge [bend left = 25] node {a} (q_2)
-	      edge node [bend left= 25] {b} (q_3)
-	(q_2) edge [bend left = 25] node [left] {a} (q_1)
-	(q_3) edge [bend right = 25] node [left] {b} (q_4)
-	(q_4) edge [bend right = 25] node [right] {b} (q_3);
-\end{tikzpicture}
-\end{center}
-\end{esempio}
-\begin{esempio}
-Trovo automa per: $$L=\{x010y|\,x,y\in\{o,1\}^*\}$$
-\begin{center}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-	\node[state, initial] (q_0) {$q_{0}$};
-	\node[state] (q_1) [right=of q_0] {$q_{1}$};
-	\node[state] (q_2) [right=of q_1] {$q_{2}$};
-	\node[state, accepting] (q_3) [right= of q_2] {$q_{3}$};
+	\node[state, accepting] (q_2) [right=of q_1] {$q_{2}$};
 	\path[->]
 	(q_0) edge  node {0} (q_1)
 	      edge [loop above] node {1} ()
 	(q_1) edge  node {1} (q_2)
 	      edge [loop above] node {0} ()
+	(q_2) edge  [bend left =25] node {0} (q_1)
+	      edge [bend left = 50] node {1} (q_0);
+\end{tikzpicture}
+\end{figure}
+L'automa NFA corrispondente al linguaggio invece è:
+\begin{figure}
+\centering
+\caption{NFA per il linguaggio $w = x01$}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+	\node[state, initial] (q_0) {$q_{0}$};
+	\node[state] (q_1) [right=of q_0] {$q_{1}$};
+	\node[state, accepting] (q_2) [right=of q_1] {$q_{2}$};
+	\path[->]
+	(q_0) edge  node {0} (q_1)
+	      edge [loop above] node {0,1} ()
+	(q_1) edge  node {1} (q_2);
+\end{tikzpicture}
+\end{figure}
+quindi con:
+\[ \delta(q_0,0)=\{q_0,q_1\} \]
+\[ \delta(q_0,1)=\{q_0\} \]
+\[ \delta(q_1,0)=\emptyset \]
+\[ \delta(q_1,1)=\{q_2\} \]
+\[ \delta(q_2,0)=\emptyset \]
+\[ \delta(q_2,1)=\emptyset \]
+in forma tabulare:
+\begin{table}
+\begin{tabular}{c|c|c}
+\toprule $\delta$ & 0 & 1\\
+\midrule
+$\to \,q_0$ & $\{q_0,q_1\}$ & $\{q_1\}$\\
+$q_1$ & $\emptyset$ & $\{q_2\}$\\
+$*\, q_0$ & $\emptyset$ & $\emptyset$\\
+\bottomrule
+\end{tabular}
+\end{table}
+vediamone la simulazione per la stringa 00101:
+\begin{center}
+\includegraphics[scale=0.7]{img/nfa.png}
+\end{center}
+Il funzionamento dell'automa, come si nota nella figura, per la stringa $00101$ è la seguente:
+si parte dallo stato inziale $q_0$, quando viene letto 0 si passa a $q_0$ e $q_1$,
+poi viene letto il secondo 0 quindi $q_0$ va nuovamente verso $q_0$ e $q_1$ mentre il primo $q_1$ muore non avendo transizioni su 0.\newline
+Arriva poi l'1 quindi $q_0$ va solo verso $q_0$ e $q_1$ verso $q_2$ e sarebbe accettante ma l'input non è finito.\newline
+Ora arriva 0 e $q_2$ si blocca mentre $q_0$ va sia in $q_0$ che in $q_1$ ed arriva infine un 1 che manda $q_0$ in $q_0$ e $q_1$ in $q_2$
+che è accettante e non avendo altri input si è dimostrata l'appartenenza della stringa al linguaggio.
+\end{esempio}
+Definisco quindi un NFA come una quintupla:
+\[ A=(Q,\Sigma,\delta,q_0,F) \]
+con, a differenza dei DFA:
+\[ \delta:Q\times F\to 2^Q \]
+Possiamo ora definire induttivamente $\hat{\delta}$, delta cappuccio che prende in ingresso uno stato e l'intera stringa $w$
+e come già visto per i DFA ci sono ben due definizioni:
+\begin{itemize}
+  \item versione semplificata fornita a lezione in cui si considera una stringa come $w = ax$,
+        con $a \in Sigma$ e $x \in Sigma^*$ per cui la definizione di $\hat{delta}$ è:
+        \begin{itemize}
+          \item \textbf{caso base:} se $w = \epsilon$ si ha $\hat{\delta}(q, \epsilon) = \{q\}$
+          \item \textbf{caso passo:} sia $|w| > 0$, $w = ax$ ed avendo $\delta(q, a) = \{p_1, p_2,\dots, p_k\}$
+                allora $\hat{\delta}(q, w) = \bigcup _{i = 1} ^ k \hat{\delta}(p_i, x) = \{r_1, r_2,\dots, r_m\}$
+        \end{itemize}
+
+  \item versione fornita dal libro in cui si considera $w = xa$, con $x \in Sigma^*$
+        e $a \in \Sigma$ per cui la definizione di $\hat{\delta}$ è la seguente:
+        \begin{itemize}
+          \item \textbf{caso base:} se $|w|=0$ si ha $\hat{\delta}(q,\epsilon) =\{q\}$
+          \item \textbf{caso passo:} sia $|w|>0$, $W=xa$, con $a\in\Sigma$ e $x\in\Sigma^*$.\newline
+          Posto $\hat{\delta}(q, x)=\{p_1,...,p_k\}$ si ha:
+          \[ \hat{\delta}(q, w) = \hat{\delta}(q, xa) = \bigcup _{i = 1} ^ k \delta(p_i, a) \]
+        \end{itemize}
+\end{itemize}
+Il linguaggio accettato dall'automa $NFA$ è il seguente:
+\[ L(a) = \{w\in \Sigma^*|\, \hat{\delta}(q_0, q) \cap F \neq \emptyset\} \]
+\begin{esempio}
+Automa per $L=\{x010y|\,x,y\in\{0,1\}^*\}$ ovvero tutte le stringhe con dentro la sequenza $010$:
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+\node[state, initial] (q_0) {$q_{0}$};
+	\node[state] (q_1) [right=of q_0] {$q_{1}$};
+	\node[state] (q_2) [right=of q_1] {$q_{2}$};
+	\node[state, accepting] (q_3) [right=of q_2] {$q_{3}$};
+	\path[->]
+	(q_0) edge  node {0} (q_1)
+	      edge [loop above] node {0,1} ()
+	(q_1) edge  node {1} (q_2)
 	(q_2) edge  node {0} (q_3)
-	(q_3) edge [loop below] node {0,1} ();
+	(q_3)     edge [loop above] node {0,1} ();
 \end{tikzpicture}
 \end{center}
 \end{esempio}
-\subsection{Automi non deterministici}
-In sigla \textit{NFA} sono delle quintuple $A=(Q, \Sigma, \delta, q,F$ ma ora la delta prende uno stato e un simbolo e ci manda in un insieme di stati:
-$$\delta:Q\times \Sigma\to 2^Q$$
-delta è delta cappuccio
-$$DFA:\,\,\, L(A)=\{w\in \Sigma^*|\,\delta(q_0,w)\in F\}$$
-$$NFA:\,\,\, L(A)=\{w\in \Sigma^*|\,\delta(q_0,w)\cap F \neq \emptyset\}$$
+Troviamo ora un algoritmo che trasformi un NFA in un DFA.\\
+Dall'ultimo esempio ricavo:
+\begin{center}
+\begin{tabular}{c|c|c}
+& 0 & 1\\
+\hline
+$\emptyset$ & $\emptyset$ & $\emptyset$ \\
+\hline
+$\to \,\{q_0\}$ & $\{q_0,q_1\}$ & $\{q_0\}$\\
+\hline
+$\,\{q_1\}$ & $\emptyset$ & $\{q_2\}$\\
+\hline
+$*\,\{q_2\}$ & $\emptyset$ & $\emptyset$\\
+\hline
+$\{q_0,q_1\}$ & $\{q_0,q_1\}$ & $\{q_0,q_2\}$\\
+\hline
+$*\,\{q_0,q_2\}$ & $\{q_0,q_1\}$ & $\{q_0\}$\\
+\hline
+$*\,\{q_1, q_2\}$ & $\emptyset$ & $\{q_2\}$\\
+\hline
+$*\,\{q_0,q_1,q_2\}$ & $\{q_0,q_1\}$ & $\{q_0,q_2\}$
+\end{tabular}
+\end{center}
+ovvero:
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=4cm,on grid,auto]
+\node[state, initial] (q_0) {$\{q_{0}\}$};
+\node[state] (q_1) [right=of q_0] {$\{q_{0}, q_1\}$};
+\node[state] (q_2) [right=of q_1] {$\{q_0,q_{2}\}$};
+\path[->]
+(q_0) edge  node {0} (q_1)
+      edge [loop above] node {1} ()
+(q_1) edge  node {1} (q_2)
+      edge [loop above] node {0} ()
+(q_2) edge [bend left =25]  node {0} (q_1)
+      edge [bend left =45] node  {1} (q_0);
+\end{tikzpicture}
+\end{center}
+che è il DFA che si era anche prima ottenuto. Si hanno però dei sottoinsiemi mai raggiungibili. Si ha quindi:
+\begin{center}
+\begin{tabular}{c|c|c}
+& 0 & 1\\
+\hline
+$\to\,\{q_0\}$ & $\{q_0,q_1\}$ & $\{q_0\}$ \\
+\hline
+$\{q_0,q_1\}$ & $\{q_0,q_1\}$ & $\{q_0,q_2\}$\\
+\hline
+$\,\{q_0, q_2\}$ & $\{q_0,q_1\}$ & $\{q_0\}$
+\end{tabular}
+\end{center}
+e definendo $\{q_0\}=a, \, \{q_0,q_1\}=b\,\,\, e\,\,\, \{q_0,q_2\}=c$ si avrà:
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+\node[state, initial] (q_0) {$a$};
+\node[state] (q_1) [right=of q_0] {$b$};
+\node[state, accepting] (q_2) [right=of q_1] {$c$};
+\path[->]
+(q_0) edge  node {0} (q_1)
+      edge [loop above] node {1} ()
+(q_1) edge  node {1} (q_2)
+      edge [loop above] node {0} ()
+(q_2) edge  [bend left =25] node {0} (q_1)
+      edge [bend left = 50] node {1} (q_0);
+\end{tikzpicture}
+\end{center}
+Definiamo questo algoritmo che avrà:
+\begin{itemize}
+\item come input un NFA $N=(Q_n,\Sigma,\delta_N,q_0,F_N)$
+\item come output un DFA $D=(Q_D,\Sigma,\delta_D,\{q_0\},F_D)$ tale che $L(D)=L(N)$
+\end{itemize}
+con:
+\begin{itemize}
+\item $Q_D=2^{Q_N}$ (quindi se $Q_N=n$ si ha $|Q_D|=2^n$)
+\item $F_D=\{S\subseteq Q_n|\, S\cap F_N\neq \emptyset\}$
+\item $\forall S\subseteq Q_N$ e $ \forall a \in\Sigma$:
+$$\delta_D(S,a)=\cup \delta_n(p,a)$$
+per esempio:
+$$\delta_D(\{q_0,q_1,q_2\},0)=\delta_N(q_0,0)\cup \delta_N(q_1,0) \cup\delta_N(q_2,0) $$
+\end{itemize}
+
+\section{Automi $\epsilon-NFA$}
+Si definisce l'$\epsilon-NFA$ come l'automa a stati finiti non deterministici con $\epsilon$ transizioni,
+ossia la transizione che permette di saltare i nodi in cui si avanza nel grafo senza consumare caratteri.\newline
+Ovviamente questo automa non amplia la classe dei linguaggi accettati dall'automa, ma offre
+una certa comodità notazionale e come vedremo gli $\epsilon-NFA$ sono strettamente collegati alle espressioni regolari.
+
+Formalmente denotiamo un $\epsilon-NFA$ con $A = (Q, \Sigma, \delta, q_0, F)$, con gli
+stessi argomenti uguali a quelli per il $NFA$ con la differenza che la funzione $\delta$
+è definita come $\delta:Q \times \Sigma \cup \{\epsilon\} \to P \subseteq Q$.
+
+Per stabilire le stringhe e i linguaggi accettati da tali automi, dobbiamo introdurre
+la funzione $ECLOSE(q)$, per stabilire la chiusura di uno stato rispetto a $\epsilon$, definita induttivamente come:
+\begin{itemize}
+  \item \textbf{caso base:} lo stato $q$ appartiene a $ECLOSE(q)$
+  \item \textbf{caso passo:} se lo stato $p \in ECLOSE(q)$ ed esiste una transizione $\epsilon$ da $p$ a $r$, allora $r \in ECLOSE(q)$.\newline
+        Più precisamente, sia $\delta$ la funzione di transizione di un $\epsilon-NFA$: se $p \in ECLOSE(q)$,
+        allora $ECLOSE(q)$ contiene anche tutti gli stati in $\delta(p, \epsilon)$.
+\end{itemize}
+Tramite questa definizione di $ECLOSE$ possiamo definire ora la funzione $\hat{\delta}$ in maniera induttiva:
+\begin{itemize}
+\item Fare definizione
+\end{itemize}
+
+\begin{esempio}
+Si ha $ER=a^*b^*c^*$, che genera $L=\{a^nb^mc^k|\,n,m,k\geq 0\}$, l'automa per denotare il linguaggio è il seguente:
+\begin{figure}
+\caption{Automa $\epsilon-NFA$ per generare il linguaggio $a^nb^mc^k$}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+\node[state, initial] (q_0) {$q_0$};
+\node[state] (q_1) [right=of q_0] {$q_1$};
+\node[state, accepting] (q_2) [right=of q_1] {$q_2$};
+\path[->]
+(q_0) edge  node {$\epsilon$} (q_1)
+      edge [loop above] node {a} ()
+(q_1) edge  node {$\epsilon$} (q_2)
+      edge [loop above] node {b} ()
+(q_2) edge  [loop above] node {c} ();
+\end{tikzpicture}
+\end{figure}
+Si ha poi le seguenti $ECLOSE$:
+\[ E\,CLOSE(q_0)=\{q_0,q_1,q_2\} \]
+\[ E\,CLOSE(q_1)=\{q_1,q_2\} \]
+\[ E\,CLOSE(q_2)=\{q_2\} \]
+Mettendo in tabella l'automa $\epsilon-NFA$ si ha:
+\begin{table}
+\centering
+\caption{Tabella di transizione dell'$epsilon-NFA$}
+\begin{tabular}{c|c|c|c}
+\toprule & a & b & c\\
+\midrule
+$*\to\,\{q_0,q_1,q_2\}$ & $\{q_0,q_1,q_2\} = A$ & $\{q_1,q_2\} = B$ & $\{q_2\} = C$\\
+$*\{q_1,q_2\}$ & $\emptyset = D$ & $\{q_1,q_2\}$ & $\{q_2\}$\\
+$*\{q_2\}$ & $\emptyset$ & $\emptyset$ & $\{q_2\}$\\
+$\emptyset$ & $\emptyset$ & $\emptyset$ & $\emptyset$
+\end{tabular}
+\end{table}
+Una rappresentazione formale di come si ottengono le seguenti transizioni nella tabella è la seguente:
+\[ \delta_D(\{q_0,q_1,q_2\},a)=E\,CLOSE(\delta_N(q_0,a)\cup \delta_N(q_1,a)\cup \delta_N(q_2,a)) \]
+\[ =E\,CLOSE(\{q_0\} \cup \emptyset\cup \emptyset)=E\,CLOSE(\{q_0\}) \]
+\[ =E\,CLOSE	(q_0)=\{q_0,q_1,q_2\} \]
+
+\[ \delta_D(\{q_0,q_1,q_2\},B)=E\,CLOSE(\delta_N(q_0,b)\cup \delta_N(q_1,b)\cup \delta_N(q_2,b)) \]
+\[ =E\,CLOSE(\emptyset \cup \{q_1\}\cup \emptyset)=E\,CLOSE(\{q_1\}) \]
+\[ =E\,CLOSE	(q_1)=\{q_1,q_2\} \]
+
+\[ \delta_D(\{q_0,q_1,q_2\},c)=E\,CLOSE(\delta_N(q_0,c)\cup \delta_N(q_1,c)\cup \delta_N(q_2,c)) \]
+\[ =E\,CLOSE(\emptyset \cup \emptyset\cup \{q_2\})=E\,CLOSE(\{q_1\}) \]
+\[ =E\,CLOSE	(q_2)=\{q_2\} \]
+
+Si ottiene quindi il seguente NFA:
+\begin{figure}
+\caption{NFA corrispondente all'$\epsilon-NFA$}
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+\node[state, initial, accepting] (q_0) {$A$};
+\node[state, accepting] (q_1) [right=of q_0] {$B$};
+\node[state, accepting] (q_2) [below=of q_0] {$C$};
+\node[state] (q_3) [right=of q_2] {$D$};
+\path[->]
+(q_0) edge  node {b} (q_1)
+      edge  node {c} (q_2)
+      edge [loop above] node {a} ()
+(q_1) edge  node {c} (q_2)
+      edge  node {a} (q_3)
+      edge [loop above] node {b} ()
+(q_2) edge  node {a,b} (q_3)
+      edge [loop below] node {c} ()
+(q_3) edge [loop below] node {a,b,c} ();
+\end{tikzpicture}
+\end{figure}
+che diventa il seguente DFA:
+\begin{figure}
+\caption{Automa DFA corrispondente all'$\epsilon-NFA$}
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+\node[state, initial, accepting] (q_0) {$\{q_0,q_1,q_2\}$};
+\node[state, accepting] (q_1) [right=of q_0] {$\{q_1,q_2\}$};
+\node[state, accepting] (q_2) [below=of q_0] {$\{q_2\}$};
+\node[state] (q_3) [right=of q_2] {$q_E$};
+\path[->]
+(q_0) edge  node {b} (q_1)
+      edge  node {c} (q_2)
+      edge [loop above] node {a} ()
+(q_1) edge  node {c} (q_2)
+      edge  node {a} (q_3)
+      edge [loop above] node {b} ()
+(q_2) edge  node {a,b} (q_3)
+      edge [loop below] node {c} ();
+\end{tikzpicture}
+\end{figure}
+\end{esempio}
 \end{document}
