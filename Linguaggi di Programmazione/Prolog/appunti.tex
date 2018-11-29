@@ -1545,4 +1545,196 @@ solve_cf(A, C) :-
   C is CR * CB.
 \end{minted}
 Il programma $solve_cf$ è un meta-interprete per stabilire se un goal G è vero e quanto siamo certi che sia vero.
+
+\chapter{Lisp:Programmazione Funzionale}
+Dopo aver affrontato ed analizzato il Prolog e il paradigma Logico, è arrivato il momento di analizzare il paradigma ``matematico'' funzionale,
+in cui la computazione risiede nel definire e applicare una serie di funzioni, anche composte e soprattutto ricorsive.\newline
+Nel paradigma funzionale risulta verificato il concetto matematico della \textbf{trasparenza refenziale}, funzione senza effetti collaterali
+e che quando riceve lo stesso parametro in input, restituisce sempre lo stesso valore.
+
+L'uso della trasparenza referenziale ha il grande vantaggio di permettere al programmatore di poter contare su un comportamento
+univoco delle funzioni, a priori non sempre prevedibili e ciò aiuta molto nel processo di testing e debug,
+semplifica l'implementazione di algoritmi, rende più facili la modifica e l'ottimizzazione dei programmi senza cambiarne radicalmente la struttura.
+
+Nel paradigma funzionale vi sono oggetti di vario tipo e strutture di controllo, ma vengono raggruppati logicamente in modo diverso
+da come invece accade nel paradigma imperativo, infatti risulta utile pensare in termini di:
+\begin{itemize}
+\item espressioni, il quale rappresenta i fondamenti del linguaggio come le funzioni semplici e primitive.
+\item modi di combinare le espressioni per ottenerne di più complesse, tramite l'operazione di composizione
+\item modi e metodi di costruzione ``astratte''  per poter far riferimento a gruppi di espressioni per “nome” e per trattarle come unità separate
+\item operatori speciali (condizionali ed altri ancora, che verranno introdotti in seguito)
+\end{itemize}
+
+Noi affronteremo come esempio di linguaggio funzionale, il linguaggio Common Lisp, una dei principali dialetti, come anche lo Scheme, della famiglia
+di linguaggi chiamati Lisp.\newline
+Lo studio del Lisp, anche se in una delle sue incarnazioni, è importante dato che è il primo linguaggio di programmazione funzionale e
+le sue versioni minimali ammettono:
+\begin{itemize}
+\item funzioni primitive su \textbf{liste}
+\item un'operatore speciale \textbf{lambda} per creare funzioni
+\item un'operatore codizionale \textbf{cond}
+\item un piccolo insieme di predicati ed operatori speciali
+\end{itemize}
+
+Incominciamo a mostrare come valuta e computa le espressione il Common Lisp
+e la prima cosa notata è che ogni ``espressione'' denota un valore.
+\begin{minted}{Lisp}
+prompt> 42
+42
+
+prompt> ”Sapete che cos’e` ’42’?”
+”Sapete che cos’e` ’42’?”
+\end{minted}
+In Lisp sono presenti le operazioni aritmetiche principali(+ - * /), rappresentate in notazione prefissa,
+il quale permettono di essere applicate a più argomenti ed evitano di generare ambiguità su quale operazione viene
+applicata in caso di più operazioni, come si nota nei seguenti esempi:
+\begin{minted}{Lisp}
+  prompt> (+ 137 349)
+  486
+
+  prompt> (- 1000 334)
+  666
+
+  prompt> (+ 2.7 10)
+  12.7
+
+  prompt> (* 2 34)
+  68
+  
+  prompt> (/ 10 5)
+  2
+\end{minted}
+Queste espressioni, formate delimitanto una lista di espressioni all'interno di parentesi per mostrare l'applicazione di una funzione,
+sono chiamate \emph{combinazioni} e il valore viene determinato applicando la procedura, specificata dall'operatore, agli argomenti,
+i quali sono i valori degli operandi.
+Le espressioni possono essere annidate, per cui per motivi di lettura si allineano gli argomenti di chiamata verticalmente, come nell'esempio:
+\begin{minted}{Lisp}
+prompt> (+ (* 3
+              (+ (* 2 4)
+                 (+ 3 2)))
+           (+ (- 10 8)
+              1))
+42
+\end{minted}
+Notiamo come le funzioni aritmetiche elementari + e * in (Common) LISP rispettano i vincoli di “campo” algebrico:
+\begin{minted}{Lisp}
+prompt> (+)
+0
+
+prompt> (*)
+1
+\end{minted}
+Un aspetto dei linguaggi di programmazione è quello di fornire dei nomi, per riferirsi agli oggetti computazionali,
+ed ovviamente anche nel Common Lisp ciò avviene tramite l'istruzione $defparameter$, che si comporta nel seguente modo:
+\begin{minted}{Lisp}
+  (defparameter pi_greco 3.14)
+  (defparameter size 2)
+\end{minted}
+Per valutare una espressione combinata, l'interprete Lisp esegue le seugenti operazioni:
+\begin{enumerate}
+\item viene valutata la sottoespressione, presente nella combinazione
+\item viene applicata la procedura, rappresentata dalla sottoespressione left-most, agli argomenti
+  rappresentati dai valori delle altre sottoespressioni.
+\end{enumerate}
+Ovviamente come si può notare la valutazione risulta ricorsiva e i componenti basilari, su cui si riesce ad effettuare correttamente la valutazione
+sono i seguenti:
+\begin{itemize}
+\item il valore dei numeri sono ovviamente il numero stesso
+\item il valore degli operatori built-in sono le istruzioni macchina che corrispondono a quell'operatore.
+\item il valore degli altri nomi sono gli oggetti associati a quel nome nell'ambiente definito nel programma Lisp
+\end{itemize}
+Questo concetto per valutare le espressioni non si applica agli operatori speciali, come ad esempio defparameter.
+
+In Lisp si hanno come dati e procedure predefinite il seguente elenco di elementi:
+\begin{itemize}
+\item numeri interi, numeri in virgola mobile (es. $3.5$ o $6.02E+21$), numeri razionali (es. $-3/42$) o numeri complessi ($\#C (0 1)$)
+\item booleani $T$ e $NIL$
+\item stringhe (es $"sono\,\,\, una \,\,\,stringa"$)
+\item operatiori sui booleani $null,\,\,\,and,\,\,\, or,\,\,\,not$
+\item funzioni sui numeri \textit{+ - / * mod sin cos sqrt tan atan plusp > <= zerop}
+\end{itemize}
+Per definire nuove funzioni, per fornire una forma di astrattezza e fornire il nome ad una serie di operazione, in Lisp si usa il comando
+\mint{Lisp}|defun (nome (argomenti) (corpo funzione))|:
+Ovviamente questa possibilità di definire nuove funzioni può essere combinato per creare in maniera semplice nuove funzioni, come si può
+notare nel listato di esempio:
+\begin{figure}
+\caption{Esempi di definizioni di funzioni}
+\begin{minted}{Lisp}
+prompt> (defun square (x) (* x x))
+square
+
+prompt> (square 5)
+25 
+
+prompt> (defun sum-of-square(x, y) (+ (square x) (square y)))
+sum-of-square
+
+prompt> (sum-of-square 3 4)
+25
+\end{minted}
+\end{figure}
+Per valutare una espressione combinata dove un operatore indica una funzione composta, definita tramite \emph{defun}, l'interprete Lisp segue
+lo stesso processo visto per valutare le funzioni/operazioni primitive, infatti l'interprete valutano gli elementi presenti nell'espressioni
+e poi applicano la procedura agli argomenti, indicati dagli operandi nell'espressione.\newline
+Per applicare una funzione composta agli argomenti si valuta il corpo della procedura in cui ogni parametro formale
+viene sostituito dall'argomento corrispondente e per illustrare il processo vediamo come viene valutata la seguente espressione
+%inserire esempio di applicazione di un'espressione
+
+Il processo descritto e mostrato nel seguente esempio viene chiamato \textbf{substitution model} e lo scopo di questo processo è quello
+di aiutare a pensare a come si applica alla procedura, ma non fornisce una descrizione fedele di come un interprete realmente lavora.
+
+Inserire differenza tra applicazione e ordine normale
+
+
+La potenza espressiva delle funzioni definite fino ad ora è limitata, dato che non abbiamo ancora la possibilità di effettuare delle scelte
+e per risolvere introduciamo ora il costrutto speciale \textbf{cond}$(cond\,\,(p_1\,\,e_1),\,\,...\,\,(p_n\,\,e_n))$:
+consiste in una coppia di espressioni, dove il primo elemento è sempre un predicato ``logico'', come si può notare nel listato di esempio.\newline
+L'operatore cond verifica ogni coppia di espressioni e se il risultato è T ritorna il valore della seconda espressione altrimenti
+passa alla coppia successiva fino a che se non ci sono più coppie valutabili restituisce NIL.\newline
+In aggiunta ai predicati aritmetici, < > =, per effettuare dei confronti si possono utilizzare i predicati \textbf{and, or, not},
+definiti come si nota nel seguente listato:
+\begin{figure}
+\begin{minted}{lisp}
+prompt> (and (> 42 0) (< -42 0))
+T
+
+prompt> (not (> 42 0))
+NIL
+
+prompt> (and)
+T
+
+prompt> (or)
+NIL
+\end{minted}
+\end{figure}
+
+\begin{figure}
+\begin{minted}{lisp}
+(defun valore-assoluto (x)
+   (cond ((> x 0) x)
+         ((= x 0) 0)
+         ((< x 0) (- x))))
+
+prompt> (valore-assoluto 3)
+3
+
+prompt> (valore-assoluto -42)
+42
+\end{minted}
+\end{figure}
+Per rappresentare il valore assoluto, come si vede nel listato Y, si poteva utilizzare anche il predicato \mint{Lisp}
+|(if <predicate> <conseguent> <alternative>)|, applicabile quando si hanno solo due casi da analizzare.\newline
+Per valutare il predicato \emph{if} l'interprete inizia a valutare la parte <predicate> dell'espressione: in caso viene valutata con $T$
+allora l'interprete valuta la parte <conseguent> e ritornaa il suo valore, altrimenti viene valutato la parte <alternative> e ritorna il suo valore.
+
+\begin{figure}
+\begin{minted}{lisp}
+prompt> (define (abs x)
+            (if (< x 0)
+            (-x)
+             x))
+\end{minted}
+\end{figure}
+
 \end{document}
