@@ -770,10 +770,11 @@ Scrivere la regex del seguente linguaggio $L = \{ w \in {0,1\}^* | w = \text{str
   $10$ mi assicura di avere tutte e sole le strighe in cui compare $10$.
 
 \chapter{Automi a stati finiti}
-Un automa a stati finiti è un tipo di automa che permette di descrivere con precisione e in maniera formale il comportamento di molti sistemi.\newline
+Un automa a stati finiti è un automa che permette di descrivere con precisione e in maniera formale il comportamento di molti sistemi.\newline
 Grazie alla sua semplicità e chiarezza questo modello è molto diffuso nell'ingegneria e nelle scienze, soprattutto nel campo dell'informatica
- e della ricerca operativa e può essere utilizzato sia per modellare un sistema esistente
-  che per modellare un nuovo sistema formale in grado di risolvere alcuni nuovi problemi.
+e della ricerca operativa e può essere utilizzato sia per modellare un sistema esistente che per modellare un nuovo sistema formale
+in grado di risolvere alcuni nuovi problemi.
+
 Un automa a stati finiti permette di definire le stringhe accettabili in un linguaggio regolare
 e possiede un insieme di stati e un controllo che si muove da stato a stato in risposta a input esterni.\newline
  Si ha una distinzione:
@@ -793,19 +794,20 @@ e dal punto di vista formale un DFA consiste nelle seguenti parti:
 \begin{itemize}
 \item un insieme finito di stati, spesso indicato con $Q$
 \item un insieme finito di simboli di input , spesso indicato con $\Sigma$
-\item una funzione di transizione $\delta$, che prende come argomento uno stato e un simbolo di input e restituisce uno stato. \newline
-Nella rappresentazione grafica informale di automi $\delta$ è rappresentata dagli archi tra gli stati e dalle etichette sugli archi. Se $q$ è uno stato
-e $a$ è un simbolo di input, $\delta(q,a)$ è lo stato $p$ tale che esiste un arco etichettato con $a$ da $q$ a $p$
+\item una funzione di transizione $\delta$, che prende come argomento uno stato e un simbolo di input e restituisce uno stato, ossia consiste
+      nell'eseguire la consumazione di un simbolo della stringa nell'automa. \newline
+      Nella rappresentazione grafica informale di automi $\delta$ è rappresentata dagli archi tra gli stati e dalle etichette sugli archi, per cui
+      se $q$ è uno stato e $a$ è un simbolo di input, $\delta(q,a)$ è lo stato $p$ tale che esiste un arco etichettato con $a$ da $q$ a $p$.
 \item uno stato iniziale $q_0$, corrispondente ad uno degli stati in $Q$
 \item un insieme $F \subseteq Q$ di stati finali o accettanti, in cui si accettano le stringhe
       arrivate in quello stato
 \end{itemize}
 Nel complesso un DFA è rappresentato in maniera concisa con l'enumerazione dei suoi elementi, quindi con la quintupla:
 \[ A=(Q,\Sigma,\delta,q_0,F) \]
-Vediamo come decidere se accettare o meno una stringa (sequenza di caratteri) in input mediante un DFA.\newline
-Ho una sequenza in input $a_1...a_n$. Parto dallo stato iniziale $q_0$, consultando la funzione di transizione $\delta$, per esempio
+Vediamo come decidere se accettare o meno una stringa $a_1 \dots a_n$(sequenza di caratteri) in input mediante un DFA.\newline
+Partendo dallo stato iniziale $q_0$, consultiamo la funzione di transizione $\delta$, per esempio
 $\delta(q_0,a_1)=q_1$ e trovo lo stato in cui il DFA entra dopo aver letto $a_1$.\newline
-Poi passo a $\delta(q_1,a_2)=q_2$ e così via, $\delta(q_{i-1},a_i)=q_i$ fino a ottenere $q_n$
+Poi passo a $\delta(q_1,a_2)=q_2$, \dots, $\delta(q_{i-1},a_i)=q_i$ fino a ottenere $q_n$
 e se $q_n$ è elemento di $F$ allora $a_1...a_n$ viene accettato, altrimenti viene rifiutato.
 
 Vediamo ora un esempio per capire come si rappresenta e come si sviluppa un automa:
@@ -828,8 +830,8 @@ con in totale le seguenti transizioni:
 \[ \delta(q_2,1)=q_1 \]
 \[ \delta(q_1,0)=q_1 \]
 \[ \delta(q_1,1)=q_1 \]
-Definire l'automa con questa notazione è noioso e non molto semplice da sviluppare
-per questo si possono utilizzare le seguenti due maniera per rappresentare un automa:
+Definire l'automa con questa notazione è noioso e non molto semplice
+per questo si possono utilizzare le seguenti due maniere per rappresentare un automa:
 \begin{itemize}
   \item \textbf{tabella di transizione}: rappresentazione tabellare della funzione $\delta$,
         dove lo stato iniziale viene indicato con $\to$ e gli stati accettati con $*$
@@ -909,7 +911,8 @@ del linguaggio accettato da un'automa infatti:
 In caso $L = L(a)$ per un DFA A, allora diciamo che $L$ è un linguaggio regolare.
 
 \section{Automi non deterministici}
-Un automa a stati finiti non deterministici (\emph{NFA}) è un automa che può trovarsi in diversi stati contemporaneamente e come i DFA accettano linguaggi regolari.\newline
+Un automa a stati finiti non deterministici (\emph{NFA}) è un automa che può trovarsi in diversi stati contemporaneamente
+e come i DFA accettano linguaggi regolari.\newline
 Il motivo per cui sono studiati e definiti è perche spesso sono più semplici da trattare rispetto ai DFA,
 anche se è più difficile la dimostrazione della correttezza dei linguaggi.
 
@@ -1209,11 +1212,187 @@ che diventa il seguente DFA:
 \end{tikzpicture}
 \end{figure}
 \end{esempio}
+
 \section{Conversione da DFA a REGEX}
 Gli automi e le espressioni regolari definiscono e rappresentano, anche se in maniera diversa, lo stesso linguaggio
 per cui si possono notare nella figura X le seguenti uguaglianze:
 %Inserire immagine Figura 3.1 Pag 93
 
 Noi abbiamo già mostrato nei precedenti paragrafi tutti i collegamenti tranne il collegamento da DFA a RE, che mostriamo subito
+
+
+\section{Operazioni sui linguaggi Regolari}
+In questo paragrafo forniamo le proprietà di chiusura dei linguaggi regolari, ossia applicando un'operazione, come ad esempio l'unione,
+su due linguaggi regolari otteniamo un linguaggio regolare e ciò è molto importante per stabilire, assieme al pumping lemma, se un linguaggio
+appartiene alla classe regolare oppure è una grammatica di diverso tipo.
+
+\begin{description}
+\item [unione:] dati due linguaggi regolari $L$ e $M$, definite su un alfabeto $\Sigma$,
+                allora anche $L \cup M$ è un linguaggio regolare, definito anch'esso su $\Sigma$.
+
+\item [complemento] dato un linguaggio regolare $L$, allora anche $L^- = \Sigma - \{L\}$ è un linguaggio regolare.
+
+\item [intersezione] Se i linguaggi $L$ e $M$ sono regolari, allora anche $L \cap M$ sono regolari
+
+\item [differenza] Se $L$ e $M$ sono due linguaggi regolari, allora anche $L - M$ è un linguaggio regolare.
+
+\item [inversione] L'inverso di un linguaggio, indicato con $L^R$, è il linguaggio composto dall'inversione di tutte le sue stringhe
+  ed anche questa operazione preserva i linguaggi regolari, ossia se $L$ è regolare anche $L^R$ è regolare
+
+\item [concatenazione] anche l'operazione di concatenazione preserva i linguaggi regolari, infatti se $L$ e $M$ sono regolari anche $LM$ è regolare
+
+\item [chiusura] dato un linguaggio $L$ regolare, la sua chiusura di kleene $L^*$ appartiene anch'essa ai linguaggi regolari
+\end{description}
+Dopo aver visto ed determinato quale operazioni sui linguaggi regolari definiscono dei linguaggi regolari, analizzeremo nel prossimo paragrafo
+il teorema del Pumping Lemma, il quale ci permette di stabilire se un linguaggio è regolare oppure no.
+
+\section{Pumping Lemma}
+Il Pumping Lemma è un fondamentale teorema che ci permette di stabilire quando un linguaggio è regolare, rappresentabile attraverso un automa
+a stati finiti, Regex oppure grammatica regolare, ed assieme alle operazioni sui linguaggi ci permette di stabilire
+quali sono tutti i linguaggi non regolari.
+
+\begin{thm}[Pumping Lemma per i linguaggi regolari]
+  Sia $L$ un linguaggio regolare, allora esiste una costante $n$, dipendente dal linguaggio, tale che ogni $w \in L$, con $|w| > n$,
+  può essere scritta come $w = xyz$ tale per cui:
+  \begin{enumerate}
+  \item $y \neq \epsilon$
+  \item $|xy| \leq n$
+  \item $\forall k \geq 0 \, xy^kz \in L$
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  Se $L$ è un linguaggio regolare significa che esiste un DFA A tale che $L(A) = L$, con $A = (Q, \Sigma, \delta, q_0, F)$.\newline
+  Sia $n = |Q|$ e sia anche $w = a_1a_2\dots a_m $ appartenente a $L$ dove $a_i \in \Sigma \forall i$.\newline
+  Considerando $p_i = \hat{\delta}(q_0, a_1\dotsa_i)$ con $p_0 = q_0$ per ogni $i = 0\dots n$ e sapendo che il linguaggio L,
+  per l'ipotesi $|w| > n$, possiede $n + 1$ differenti stati per il principio della piccionaia almeno uno stato si ripete,
+  ossia $\exists i,j$ con $0 \leq i < j \leq n$ tale per cui risulta $p_i = p_j$.
+
+  Scriviamo $w = xyz$ con le seguente ripartizione:
+  \begin{itemize}
+  \item $x = a_1a_2 \dots a_i$
+  \item $y = a_{i+1} \dots a_j$
+  \item $z = a_{j+1} \dots a_m$
+  \end{itemize}
+  Proprio per il fatto di avere dimostrato che $p_i = p_j$ se risulta $xyz \in L$ anche $xy^kz \in L$.
+\end{proof}
+INSERIRE ESEMPI DI PUMPING LEMMA
+
+\section{Minimizzazione di un automa}
+In questo paragrafo ci occupiamo del problema di minimizzare e mostrare l'equivalenza di automi al fine di rendere il più
+possibile compatto ed efficente la rappresentazione di un automa e per riuscire ad effetttuare questo iniziamo con la
+definizione di stati di un DFA equivalenti.
+\begin{defi}
+  Dati $p,q \in Q$, stati del DFA, si dice che essi sono equivalenti, indicati con $p \equiv q$, se per ogni stringa di input $w \in \Sigma^*$
+  risulta $\hat{\delta}(p, w) \in F$ se e solo se $\hat{\delta}(q, w) \in F$.\newline
+  Se gli stati $p$ e $q$ non sono equivalenti, allora essi sono distinguibili(p \not \equiv q).
+\end{defi}
+L'equivalenza degli stati è una relazione di equivalenza, i cui elementi appartengono alla stessa classe di equivalenza.
+
+La definizione ricorsiva per stabilire se due stati sono equivalenti è la seguente:
+\begin{description}
+\item [base:] se $p \in F$ e $ q \not \in F$, allora $p \not \equiv q$
+\item [passo:] se per $a \in \Sigma$ gli stati $r = \delta(p, a)$ e $s = \delta(q, a)$ sono distinguibili,
+      allora p e q sono anch'essi distinguibili.
+\end{description}
+Questa definizione è scomoda e molto onerosa, dato che richiede di analizzare ricorsivamente tutti i casi mentre un modo più efficiente
+è l'algoritmo \textbf{riempi-tabella}, la versione iterativa della seguente definizione, che opera nel seguente modo:
+\begin{enumerate}
+\item si crea una tabella con $n-1$ righe e $n-1$ colonne in cui si inserisce una croce se $(riga, colonna)$ sono distinguibili
+\item si inserisce una croce in tutte gli elementi, in cui la riga o la colonna è uno stato finale mentre l'altro elemento non è uno stato finale
+\item si applica l'algoritmo riempi-tabella, sfruttando il caso passo della definizione <RIFERIMENTO>, inserendo una croce in caso applicando la
+  delta ai due stati si arriva in due stati distinguibili.
+\item si termina l'algoritmo quando non si è inserito alcuna croce nella presente iterazione e gli stati senza la croce sono equivalenti ed
+  appartengono alla stessa classe di equivalenza.
+\end{enumerate}
+Per poter stabilire che l'algoritmo riempi-tabella opera e rappresenta correttamente l'equivalenza tra stati abbiamo il seguente teorema:
+\begin{thm}
+  Se due stati non sono distinguibili dall'algoritmo riempi-tabella, allora i due stati sono equivalenti
+\end{thm}
+\begin{proof}
+  Assumendo di avere un automa DFA $A = (Q, \Sigma, \delta, q_0, F)$ e supponendo per assurdo
+  che il teorema sia falso, ossia esiste almeno una coppia di stati distinguibili $\{p, q\}$,
+   chiamati \textbf{bad pair}, per cui l'algoritmo riempi-tabella non riesce a determinarlo.\newline
+   Se ci sono dei bad pair, allora devono essere distinguibili da una stringa $w = a_1a_2\dotsa_n$,
+   definita come la più piccola stringa che distingue questa coppia bad pair, per cui
+   esattamente una tra $\hat{\delta}(p, w)$ e $\hat{\delta}(q, w)$ risulta accettata.
+
+  Si osserva che $w$ non può essere $\epsilon$, dato che essa distingue una coppia di stati
+  per cui l'algoritmo riempi-tabella avrebbe determinato che $\{p, q\}$ dono equivalenti,
+  da cui si ricava che $|w| = n \geq 1$.
+
+  Consideriamo gli stati $r = \delta(p, a_1)$ e $s = (q, a_1)$ distinguibili attraverso
+  la stringa $a_2\dotsa_n$ ma $r$ e $s$ non sono un bad pair, dato che l'algoritmo riempi-tabella
+  deve avere scoperto che $r$ e $s$ sono distinguibili.\newline
+  Ma la parte induttiva dell'algoritmo non finisce fino a che ha determinato che $p$ e $q$
+  sono distinguibili, in quanto $\delta(p, a_1) = r$ è distinguibile a $\delta(q, a_1) = s$
+  e ciò contraddice l'ipotesi che esiste un bad pair, per cui l'algoritmo riempi-tabella
+  determina tutti e solo gli stati equivalenti, come volevasi dimostrare.
+\end{proof}
+Considerato $n = |Q|$ si ha che le possibili coppie di stati sono $(^ n _ 2) = \frac{n(n-1)}{2} \in O(n^2)$ e prevede nel caso peggiore
+l'esecuzione di $O(n^2)$ passate dell'algoritmo, comportando un tempo di esecuzione dell'algoritmo riempi-tabella uguale a $O(n^4)$
+INSERIRE ESEMPIO FATTO DA LEPORATI
+
+Il test per stabilisce se due stati sono equivalenti permette di stabilire che possiamo minimizzare il DFA, ossia per ogni DFA possiamo trovare
+un DFA equivalente con un numero minore di stati che accetta lo stesso linguaggio, ed eccetto per una renominazione degli stato il DFA_{min} è
+unico per il linguaggio.\newline
+L'algoritmo per la minimizzazione opera nel seguente modo:
+\begin{enumerate}
+\item si eliminano gli stati irrangiubili dell'automa
+\item si partiziona $Q$ rispetto alla relazione di equivalenza $\equiv$, utilizzando l'algoritmo riempi-tabella
+\item stati del DFA = classi di equivalenza \newline
+      stato iniziale = classe di equivalenza che contiene $q_0$\newline
+      stati finali = classi di equivalenza che contengono solo stati di $F$.
+\end{enumerate}
+INSERIRE AUTOMA MINIMO
+
+L'algoritmo riempi-tabella fornisce anche un semplice modo per testare se due linguaggi regolari sono equivalenti,
+in cui gli stati iniziali dei due automi sono equivalenti, come si può notare nel seguente esempio:
+ESEMPIO DI LEPORATI
+
+SPIEGAZIONE PERCHE' NON È POSSIBILE FARE MEGLIO DELL'AUTOMA MINIMO E DI NON POTER
+MINIMIZZARE UN NFA
+
+\chapter{Pushdown Automata}
+In questo capitolo introduciamo e definiamo gli automi a pila(Pushdown Automata), usato per definire un linguaggio context-free:
+questa tipologia di automa è un estensione del $\epsilon-NFA$, con l'aggiunta dello stack, struttura dati che
+può leggere, pushare e poppare solo dalla testa.
+
+\begin{figure}
+  \includegraphics{/img/PDA.png}
+\end{figure}
+La presenza dello stack permette all'automa di ricordare un numero infinito di informazioni, anche se a differenza dei computer normali
+l'automa a pila può accedere soltanto alle informazioni presenti in testa allo stack, per questo motivo è in grado soltanto di definire
+e riconoscere soltanto i linguaggi context-free.
+
+La definizione formale dell'automa a pila è la seguente:
+\begin{defi}
+  Si definisce Automa a Pila    $P = (Q, \Sigma, \Delta, \delta, q_0, z_0, F)$ dove si ha:
+  \begin{itemize}
+  \item $Q$ è un insieme di stati finito e non vuoto
+  \item $\Sigma$ è l'alfabeto, composto da un numero finito di simboli di input dell'automa
+  \item $\Delta$ indica l'alfabeto dei simboli presenti nella pila
+  \item $\delta$ indica la funzione di transizione dell'automa definita come
+    $\delta: Q \times (\Sigma \cup \{\epsilon\}) \times \Delta \to 2^{Q \times \Delta^*}$.\newline
+    La funzione di transizione ritorna una coppia $(p, \gamma)$ in cui $p$ è il nuovo stato dell'automa
+    mentre $\gamma$ indica la stringa da inserire al posto della testa dello stack
+  \item $q_o \in Q$ indica lo stato iniziale dell'automa
+  \item $z_0 \in \Delta$ indica lo stato inizialmente presente nello stack
+  \item $F \subseteq Q$ è l'insieme degli stati finali accettati dall'automa
+\end{defi}
+  Consideriamo il linguaggio context-free $L_{wwr} = \{ww^R | w \in \{0,1\}^*\}$ definito dalle seguenti regole di produzione:
+  $P_g = \{ P \To 0P0 | 1P1 | \epsilon \}$, rappresentabile anche dall'automa $P = (\{q_0,q_1,q_2\},\{0,1\},\{0,1,z_0\},\delta,q_0,z_0,\{q_2\})$.
+
+  Le funzioni di tranzioni definite e presenti nel seguente automa sono rappresentate dalla tabella NUM e per rappresentare l'automa a pila
+  si può usare anche un diagramma, come già visto per gli automi a stati finiti, che rende più chiaro e comprensibile l'automa.\newline
+  Introduciamo e da qui in avanti useremo \emph{diagramma di transizione} in cui si ha:
+  \begin{itemize}
+  \item Ogni nodo corrisponde ad uno stato dell'automa
+  \item Una freccia, contrassegnata con l'etichetta Start, indica lo stato iniziale mentre uno stato con cerchio doppio
+    rappresenta uno stato accettante dell'automa.
+  \item Gli archi corrispondono ad una transizione del PDA in cui un arco etichettato con $a,X / \alpha$ significa che
+    $\delta(q,a,X)$ contiene $(p,\alpha)$, assieme ad altre coppie.
+  \end{itemize}
+  L'unica cosa che il diagramma non dice è quale è il simbolo iniziale dello stack, il quale convenzionalmente è $z_0$
+  a meno che viene indicato altrimenti.
 
 \end{document}

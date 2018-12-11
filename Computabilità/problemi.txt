@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Sistemare esempi delle grammatiche, espressioni regolari, automi
 sistemare alberi sintattici usando libreria forest
 sistemare gli automi disegnati come esercizi
@@ -9,3 +8,5 @@ fare maggiori esempi delle espressioni regolari
 inserire e sistemare il teorema delle grammatiche context-free
 fare immagine della gerarchia delle grammatiche
 Fare dimostrazione linguaggi con il contesto con la dimostrazione pag 14 di Lorenzo Soligo.
+fare esempi della miminazzazione dei DFA, degli pushdown automata, del pumping lemma, della trasformazione da DFA a ER
+Fare dimostrazione operazioni sui linguaggi regolari, stati equivalenti, definizione Eclose degli epsilon-NFA

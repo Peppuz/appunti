@@ -1600,7 +1600,7 @@ applicata in caso di più operazioni, come si nota nei seguenti esempi:
 
   prompt> (* 2 34)
   68
-  
+
   prompt> (/ 10 5)
   2
 \end{minted}
@@ -1647,16 +1647,17 @@ Questo concetto per valutare le espressioni non si applica agli operatori specia
 
 In Lisp si hanno come dati e procedure predefinite il seguente elenco di elementi:
 \begin{itemize}
-\item numeri interi, numeri in virgola mobile (es. $3.5$ o $6.02E+21$), numeri razionali (es. $-3/42$) o numeri complessi ($\#C (0 1)$)
+\item numeri interi, numeri in virgola mobile (es. $3.5$ o $6.02E+21$), numeri razionali
+      (es. $-3/42$) o numeri complessi ($\#C (0 1)$)
 \item booleani $T$ e $NIL$
 \item stringhe (es $"sono\,\,\, una \,\,\,stringa"$)
 \item operatiori sui booleani $null,\,\,\,and,\,\,\, or,\,\,\,not$
 \item funzioni sui numeri \textit{+ - / * mod sin cos sqrt tan atan plusp > <= zerop}
 \end{itemize}
-Per definire nuove funzioni, per fornire una forma di astrattezza e fornire il nome ad una serie di operazione, in Lisp si usa il comando
-\mint{Lisp}|defun (nome (argomenti) (corpo funzione))|:
-Ovviamente questa possibilità di definire nuove funzioni può essere combinato per creare in maniera semplice nuove funzioni, come si può
-notare nel listato di esempio:
+Per definire nuove funzioni, per fornire una forma di astrattezza e fornire il nome ad una serie di operazione,
+in Lisp si usa il comando \mint{Lisp}|defun (nome (argomenti) (corpo funzione))|:
+Ovviamente questa possibilità di definire nuove funzioni può essere combinato per creare
+in maniera semplice nuove funzioni, come si può notare nel listato di esempio:
 \begin{figure}
 \caption{Esempi di definizioni di funzioni}
 \begin{minted}{Lisp}
@@ -1664,7 +1665,7 @@ prompt> (defun square (x) (* x x))
 square
 
 prompt> (square 5)
-25 
+25
 
 prompt> (defun sum-of-square(x, y) (+ (square x) (square y)))
 sum-of-square
@@ -1673,12 +1674,16 @@ prompt> (sum-of-square 3 4)
 25
 \end{minted}
 \end{figure}
+La definizione di nuove funzioni permette di creare un'astrazione e considerare la procedura come una ``black box'', in cui l'utilizzatore
+della funzione può essere diverso da chi l'ha definita e la utilizza senza sapere i dettagli implementativi; ciò permette di poter cambiare
+l'implementazione senza preoccuparsi di dover cambiare tutti i riferimenti ad essa e di avere i parametri a visibilità locale alla procedura.
+
 Per valutare una espressione combinata dove un operatore indica una funzione composta, definita tramite \emph{defun}, l'interprete Lisp segue
 lo stesso processo visto per valutare le funzioni/operazioni primitive, infatti l'interprete valutano gli elementi presenti nell'espressioni
 e poi applicano la procedura agli argomenti, indicati dagli operandi nell'espressione.\newline
 Per applicare una funzione composta agli argomenti si valuta il corpo della procedura in cui ogni parametro formale
 viene sostituito dall'argomento corrispondente e per illustrare il processo vediamo come viene valutata la seguente espressione
-%inserire esempio di applicazione di un'espressione
+!!!inserire esempio di applicazione di un'espressione
 
 Il processo descritto e mostrato nel seguente esempio viene chiamato \textbf{substitution model} e lo scopo di questo processo è quello
 di aiutare a pensare a come si applica alla procedura, ma non fornisce una descrizione fedele di come un interprete realmente lavora.
@@ -1736,5 +1741,292 @@ prompt> (define (abs x)
              x))
 \end{minted}
 \end{figure}
+Nella definizione di una funzione è possibile che si abbia la necessità di usare delle funzioni ausiliarie, che può avvenire in maniera separata
+oppure in maniera innestata, attraverso una definizione \emph{block structure}, il quale permette di isolare e non fornire ad altre funzioni
+la procedura ausiliaria.\newline
+La scelta tra i due modi dipende dal fatto se la procedura ausiliaria può essere usata all'in fuori della procedura oppure dipende sempre da essa:
+nel primo caso si usa una definizione separata per poter usare da sola mentre nel secondo caso si utilizza una definizione innestata.
+
+Vediamo una funzione ricoriva come il fattoriale:
+\begin{minted}{lisp}
+(defun fattoriale (n)
+    (if (= n 0)
+        1
+        (* n (fattoriale (- n 1)))))
+\end{minted}
+Questa funzione calcola il fattoriale di un numero utilizzando una sequenza di valori intermedi che devono essere salvati sullo ``stack''
+di attivazione di ogni chiamata ricorsiva e questa definizione matematica e ricorsiva del fattoriale richiede $\Theta(n)$ sia in tempo che spazio
+per effettuare il fattoriale di un numero $n$ ma utilizzando una procedura iterativa, in cui ad ogni passo teniamo traccia del fattoriale
+calcolato al passato, richiedendo uno spazio $\Theta(1)$ per effettuare la computazione, come si può nuotare nel seguente listato:
+\begin{figure}
+  \includeminted{Esempi/fattorialeRicorsivo.lisp}{Lisp}
+\end{figure}
+Con la procedura ausiliaria innestata  si ha la presenza sia di un ``ciclo in incognito'' non visibile all'esterno, che permette al compilatore di
+ottimizzare, attraversola chiamata di una jump, e questa procedura ausiliaria viene detta \textbf{tail-recursive}.
+
+Vediamo anche Fibonacci:
+\begin{minted}{lisp}
+(defun fib (n)
+     (cond ((= n 0) 1)
+           ((= n 1) 1)
+           (T (+ (fib (- n 2)) (fib (- n 1))))
+            ))
+\end{minted}
+In Lisp, come tutti i linguaggi funzionali essendo basati sul lambda-calcolo di Church,
+si possono definire funzioni anonime, chiamate \textbf{funzioni lambda}, utili per
+definire funzioni ausiliarie senza fornigli un nome ed un'esempio viene fornito dal listato:
+\begin{figure}
+\begin{minted}{Lisp}
+       (lambda (x y) (* x y))
+\end{minted}
+\end{figure}
+Le funzioni lambda forniscono una certa eleganza al codice e permettono di non associare
+il nome a delle procedure ausiliarie, il cui utilizzo necessità di una procedura principale.
+Usando l'operatore lambda possiamo costruire una serie di valori intermedi da
+utilizzare per la computazione e questo utilizzo è talmente standard ed utilizzato
+che il Lisp ha fornito l'operatore speciale \textbf{let}, per cui i seguenti listati
+sono equivalenti:
+LISTATO LAMBDA
+
+LISTATO LET
+IMPLEMENTAZIONE ITERATIVA DEL FIBONACCI
+\section{Strutture Dati in Lisp}
+Nei precedenti paragrafi abbiamo assunto e definito solo espressioni e funzioni che operano su numeri mentre i programmi sono solitamente
+definiti su dati composti, al fine di rappresentare al meglio la realtà e di elevare il livello concettuale dei nostri programmi, permettendo
+di avere una maggiore potenza espressiva del linguaggio.
+
+Per vedere l'importanza e come definire un dato composto consideriamo ora la costruzione di una libreria per fare lavorare coi numeri razionali
+ed innanzitutto assumiamo di aver a disposizione una funzione che costruisce una rappresentazione di un numero razionale:
+\begin{minted}{lisp}
+(make-rat n d) Þ <il razionale n/d>
+\end{minted}
+Assumiamo anche di avere due funzioni numer and denom che straggono rispettivamente il numeratore n ed il denominatore dalla
+rappresentazione di un numero razionale <razionale n/d>:
+\begin{minted}{lisp}
+(defun somma-raz (r1 r2)
+    (crea-razionale (+ (* (numer r1) (denom r2))
+                       (* (numer r2) (denom r1)))
+                    (* (denom r1) (denom r2))))
+(defun molt-raz (r1 r2)
+    (crea-razionale (* (numer r1) (numer r2))
+                    (* (denom r1) (denom r2)))
+(defun =-raz (r1 r2)
+    (= (* (numer r1) (denom r2))
+       (* (numer r2) (denom r1))))
+
+...
+\end{minted}
+Questa definizione dei numeri razionali permettono di aumentare la modularità dei nostri programmi e di poter manipolare i numeri razionali,
+senza conoscere come sono stati definiti.
+
+Una delle strutture più importanti del Lisp è la \textbf{Cons-Cell}, ovvero una coppia di due elementi a cui si può accedere tramite
+\textit{car e cdr}, il quale puntano al primo e secondo elemento, come si nota nel seguente listato di esempio:
+\begin{figure}
+\begin{minted}{Lisp}
+prompt> (defparameter c (cons 40 2))
+c
+
+prompt> (car c)
+40
+
+prompt> (cdr c)
+2
+\end{minted}
+\end{figure}
+Una coppia è un oggetto a cui si può dare un nome e manipolare, come gli oggetti primitivi, e ciò permette di creare coppie annidate come si nota:
+\begin{figure}
+\begin{minted}{Lisp}
+  prompt> (defparameter x (cons 1 2))
+  x
+
+  prompt> (defparameter y (cons 3 4))
+  y
+
+  prompt> (defparameter z (cons x y))
+  z
+
+  prompt> (car (car z))
+  1
+
+  prompt> (car (cdr z))
+  3
+\end{minted}
+\end{figure}
+La definizione delle coppie ci semplifica la libreria per i razionali, infatti definiamo un numero razionale tramite la seguente definizione:
+con questo costrutto si semplifica la libreria per i razionali:
+\begin{figure}
+\begin{minted}{lisp}
+(defun make-rat (n d)
+                (cons n d))%rappresenta il costruttore
+
+(defun numer (r) (car r))%rappresenta il selettore
+
+(defun denom (r) (cdr r))%rappresenta il selettore
+
+prompt> (denom (make-rat 42 7))
+7
+\end{minted}
+\end{figure}
+
+La funzione cons genera in memoria dei grafi di puntatori arbitrariamente complessi, rappresentati in una tradizionale notazione
+detta \textit{box-and-pointer}:
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{img/cons.png}
+\end{figure}
+Posso inserire anche T e NIL (rappresentato da una sbarra):
+\begin{figure}
+\includegraphics[scale=0.7]{img/cons2.png}
+\end{figure}
+Vediamo qualche esempio:
+\begin{figure}
+\begin{minted}{Lisp}
+prompt> (cons NIL T)
+(NIL . T) ; Notazione “dotted-pair”
+          ; (“coppia-puntata”). Gli spazi
+          ; sono significativi.
+
+prompt> (cons 4 2)
+(4 . 2)
+\end{minted}
+\end{figure}
+Un altra utile struttura dati, definibile attraverso l'uso delle pairs, è la lista, sequenza ordinata di oggetti, rappresentabile in varie maniera
+ma la più immediata consiste una serie di pair, dove la car di ogni pair rappresenta un elemento mentre la cdr è un riferimento
+al prossimo elemento della lista che può essere NIL.\newline
+La definizione della sequenza $(1, 2, 3, 4)$ in Common Lisp viene definito nel seguente listato:
+\begin{figure}
+\begin{minted}{Lisp}
+  (defparameter L (cons 1 (cons 2 (cons 3 (cons 4)))))
+\end{minted}
+\end{figure}
+
+\begin{center}
+  \includegraphics[scale=0.7]{img/cons3.png}
+\end{center}
+Una lista Lisp corrispondente a questa configurazione di cons-cells viene rappresentata tipograficamente come \textit{((T) 42)} che è equivalente
+a \textit{((T . NIL) . (42 . NIL))}.\newline
+Quindi una cons-cell con NIL come secondo elemento (ovvero come cdr) viene stampata senza il punto ed il NIL:
+\begin{minted}{Lisp}
+prompt> (cons 42 nil)
+(42)
+
+prompt> (cons ”foo bar” nil)
+(”foo bar”)
+\end{minted}
+
+\begin{figure}
+\begin{minted}{lisp}
+  (defparameter L (list 1 2 3 4))
+
+  prompt> (car (cdr (cdr L)))
+  3
+\end{minted}
+\end{figure}
+L'implementazione delle operazioni standard definite sulle liste si può notare
+nel listato di esempio:
+INSERIRE LISTATO SULLE liste
+
+La definizione di funzioni ricorsive sulle liste può essere semplice, in caso si
+effettuano le chiamate ricorsive solo sulla coda, oppure doppia in caso si lavora
+sia sulla testa che sulla coda della lista.%Inserire esempi
+
+Per estrarre un elemento di una lista si utilizza la funzione standard \textbf{nth}
+ed inoltre la funzione \textbf{cdr} ritorna il "resto" di una lista, come fatto
+anche dalla funzione \textbf{rest}.\newline
+Per ottenere il primo elemento di una lista si può usare la funzione \textbf{car}
+oppure la funzione standard \textbf{first}.
+
+Se si volesse definire in Lisp una lista del tipo $(A B C D)$, per quello che
+abbiamo visto fino ad ora, non sarebbe possibile dato che l'interprete Lisp con l'espressione
+                     cercherebbe di valutare la funzione list, applicata ai simboli $A, B, C, D$
+ma ciò causa un errore, non essendo i simboli associati a qualche valore nell'ambiente,
+come si nota nel listato di seguito:
+\begin{figure}
+\begin{minted}{Lisp}
+prompt> (list A B C D)
+ERRORE A NON HA NESSUN VALORE ASSOCIATO
+
+prompt> (list 'A 'B 'C 'D)
+(A B C D)
+\end{minted}
+\end{figure}
+Per poter gestire i dati simbolici, come ad esempio la lista $(A B C D)$ oppure
+$(+ quaranta 2)$ senza procedere alla valutazione delle espressioni, si ha la funzione
+$quote <e>$, rappresentabile anche con $'<e>$;
+la funzione quote sui numeri e stringhe è inutile dato che la loro valutazione è
+identica alla rappresentazione data mentre serve per rappresentare i dati simbolici,
+come le espressioni composte e/o rappresentazione di una sequenza di elementi,
+come si nota nel listato ADD:
+\begin{figure}
+\begin{minted}
+prompt> '42
+42
+
+prompt> '"la gatta ha fretta"
+la gatta ha fretta
+
+prompt> (list 'A 'B)
+(A B)
+
+prompt> '(defun media (x y) (/ (+ x y) 2.0))
+(DEFUN MEDIA (X Y) (/ (+ X Y) 2.0))
+\end{minted}
+\end{figure}
+FARE LA VALUTAZIONE DELLA FUNZIONE EVAL
+
+In Lisp per controllare se due oggetti sono uguali vengono forniti una molteplicità
+di funzioni built-in ma le principali sono le seguenti:
+\begin{description}
+  \item [eql:] viene usato per controllare l'uguagianza di simboli, numeri interi e stringhe
+  \item [equal:] è in grado anche di controllare se due liste sono uguali e questa funzione
+         non fa altro che applcare eql ricorsivamente a tutti gli atomi della lista.
+\end{description}
+
+\section{Funzioni di ordine superiore}
+Dopo aver analizzato come si definiscono le liste, le funzioni e come essere in grado
+in modo simbolico i dati, grazie all'operatore speciale quote, possiamo considerare
+gli aspetti e  della programmazione funzionale.
+
+Incominciamo delle funzioni di ordine superiore, il quale sono delle funzioni che
+prendono uno o più funzioni come argomenti e possono ritornare anche una funzione.
+
+Questa possibilità rappresenta il cuore e l'essenza della programmazione funzionale
+e le principali funzioni standard di ordine superiore sono le seguenti:
+\begin{description}
+  \item [mapcar:] rappresenta l'astrazione di applicare la funzione f a tutti gli
+         elementi della lista L e ritorna una lista di valori.
+         Può essere definita, anche se è già built-in, nel seguente modo:
+         \begin{minted}{Lisp}
+              (defun mapcar (funzione lista)
+                     (if (null lista)
+                          null
+                          (cons (funcall funzione (car lista))
+                                 (mapcar funzione (cdr lista)))))
+         \end{minted}
+  \item [compose:] rappresenta la composizione di funzioni, ossia date due funzioni
+                   $f$ e $g$, di un solo parametro, come argomenti viene ritornata
+                   una nuova funzione corrispondente a $f(g(x))$.
+  \item [filter:]
+\end{description}
+(Parte della funzione EVAL E READ EVAL PRINT LOOP)
+Lisp languages are often used with an interactive command line, which may be combined with an integrated development environment (IDE). The user types in expressions at the command line, or directs the IDE to transmit them to the Lisp system. Lisp reads the entered expressions, evaluates them, and prints the result. For this reason, the Lisp command line is called a read–eval–print loop (REPL).
+
+The basic operation of the REPL is as follows. This is a simplistic description which omits many elements of a real Lisp, such as quoting and macros.
+
+The read function accepts textual S-expressions as input, and parses them into an internal data structure. For instance, if you type the text (+ 1 2) at the prompt, read translates this into a linked list with three elements: the symbol +, the number 1, and the number 2. It so happens that this list is also a valid piece of Lisp code; that is, it can be evaluated. This is because the car of the list names a function—the addition operation.
+
+Note that a foo will be read as a single symbol. 123 will be read as the number one hundred and twenty-three. "123" will be read as the string "123".
+
+The eval function evaluates the data, returning zero or more other Lisp data as a result. Evaluation does not have to mean interpretation; some Lisp systems compile every expression to native machine code. It is simple, however, to describe evaluation as interpretation: To evaluate a list whose car names a function, eval first evaluates each of the arguments given in its cdr, then applies the function to the arguments. In this case, the function is addition, and applying it to the argument list (1 2) yields the answer 3. This is the result of the evaluation.
+
+The symbol foo evaluates to the value of the symbol foo. Data like the string "123" evaluates to the same string. The list (quote (1 2 3)) evaluates to the list (1 2 3).
+
+It is the job of the print function to represent output to the user. For a simple result such as 3 this is trivial. An expression which evaluated to a piece of list structure would require that print traverse the list and print it out as an S-expression.
+
+To implement a Lisp REPL, it is necessary only to implement these three functions and an infinite-loop function. (Naturally, the implementation of eval will be complex, since it must also implement all special operators like if or lambda.) This done, a basic REPL is one line of code: (loop (print (eval (read)))).
+
+The Lisp REPL typically also provides input editing, an input history, error handling and an interface to the debugger.
+
+Lisp is usually evaluated eagerly. In Common Lisp, arguments are evaluated in applicative order ('leftmost innermost'), while in Scheme order of arguments is undefined, leaving room for optimization by a compiler.
 
 \end{document}

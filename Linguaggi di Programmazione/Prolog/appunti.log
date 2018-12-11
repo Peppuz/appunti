@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.21)  29 NOV 2018 10:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.21)  4 DEC 2018 16:14
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1464,7 +1464,14 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 6.25204pt on input line 34.
  [2
 
-] (./appunti.toc)
+] (./appunti.toc
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/pplj/m/sc/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/iwona/m/sc/10'.
+(microtype)             Ignoring protrusion settings for this character.
+)
 \tf@toc=\write8
 \openout8 = `appunti.toc'.
 
@@ -1506,9 +1513,6 @@ LaTeX Font Info:    Font shape `T1/fvm/m/it' in size <10> not available
 (Font)              Font shape `T1/fvm/m/sl' tried instead on input line 2.
 LaTeX Font Info:    Font shape `T1/fvm/m/sl' will be
 (Font)              scaled to size 8.50006pt on input line 2.
-Package microtype Info: Character `029' is missing
-(microtype)             in font `T1/iwona/m/sc/10'.
-(microtype)             Ignoring protrusion settings for this character.
  [6])
 Capitolo 2.
 [7] [8
@@ -1516,12 +1520,12 @@ Capitolo 2.
 ]
 LaTeX Font Info:    Font shape `T1/iwona/bx/n' in size <9> not available
 (Font)              Font shape `T1/iwona/b/n' tried instead on input line 150.
-<img/tri.png, id=143, 178.6675pt x 247.92625pt>
+<img/tri.png, id=166, 178.6675pt x 247.92625pt>
 File: img/tri.png Graphic file (type png)
 <use img/tri.png>
 Package pdftex.def Info: img/tri.png  used on input line 151.
 (pdftex.def)             Requested size: 89.33353pt x 123.96281pt.
-<img/tri2.png, id=145, 224.84pt x 252.945pt>
+<img/tri2.png, id=168, 224.84pt x 252.945pt>
 File: img/tri2.png Graphic file (type png)
 <use img/tri2.png>
 Package pdftex.def Info: img/tri2.png  used on input line 164.
@@ -1646,7 +1650,7 @@ ppunti.out.pyg appunti.pyg)...executed.
 
 
 (./appunti.out.pyg) [20]
-<img/alb.png, id=244, 665.48625pt x 381.425pt>
+<img/alb.png, id=267, 665.48625pt x 381.425pt>
 File: img/alb.png Graphic file (type png)
 <use img/alb.png>
 Package pdftex.def Info: img/alb.png  used on input line 791.
@@ -1656,7 +1660,7 @@ Overfull \hbox (95.83719pt too wide) in paragraph at lines 791--792
  [] 
  []
 
-<img/alb2.png, id=245, 644.4075pt x 395.4775pt>
+<img/alb2.png, id=268, 644.4075pt x 395.4775pt>
 File: img/alb2.png Graphic file (type png)
 <use img/alb2.png>
 Package pdftex.def Info: img/alb2.png  used on input line 802.
@@ -1673,7 +1677,7 @@ runsystem(pygmentize -l prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
  (./appunti.out.pyg) [22 <./img/alb2.png>]
-<img/cut.png, id=256, 439.6425pt x 281.55188pt>
+<img/cut.png, id=279, 439.6425pt x 281.55188pt>
 File: img/cut.png Graphic file (type png)
 <use img/cut.png>
 Package pdftex.def Info: img/cut.png  used on input line 834.
@@ -1685,7 +1689,7 @@ ppunti.out.pyg appunti.pyg)...executed.
 
 
 (./appunti.out.pyg)
-<img/cut2.png, id=257, 447.92343pt x 217.5628pt>
+<img/cut2.png, id=280, 447.92343pt x 217.5628pt>
 File: img/cut2.png Graphic file (type png)
 <use img/cut2.png>
 Package pdftex.def Info: img/cut2.png  used on input line 865.
@@ -1709,7 +1713,7 @@ runsystem(pygmentize -l Prolog -f latex -P commandprefix=PYG -F tokenmerge -o a
 ppunti.out.pyg appunti.pyg)...executed.
 
  (./appunti.out.pyg)
-<img/cut3.png, id=262, 426.84468pt x 220.57407pt>
+<img/cut3.png, id=285, 426.84468pt x 220.57407pt>
 File: img/cut3.png Graphic file (type png)
 <use img/cut3.png>
 Package pdftex.def Info: img/cut3.png  used on input line 898.
@@ -1860,7 +1864,7 @@ Overfull \hbox (15.98286pt too wide) in paragraph at lines 1433--1434
  []
 
 [36]
-<img/aut.png, id=445, 256.96pt x 86.3225pt>
+<img/aut.png, id=468, 256.96pt x 86.3225pt>
 File: img/aut.png Graphic file (type png)
 <use img/aut.png>
 Package pdftex.def Info: img/aut.png  used on input line 1441.
@@ -1987,58 +1991,49 @@ runsystem(pygmentize -l lisp -f latex -P commandprefix=PYG -F tokenmerge -o app
 unti.out.pyg appunti.pyg)...executed.
 
  (./appunti.out.pyg) [44]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1740.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1740.
- (./appunti.aux
+\openout4 = `appunti.pyg'.
 
-Package mparhack Warning: Marginpars may have changed.
-(mparhack)                Rerun to get them right.
+runsystem(pygmentize -l lisp -f latex -P commandprefix=PYG -F tokenmerge -o app
+unti.out.pyg appunti.pyg)...executed.
 
-)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1740.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1740.
-
-Package rerunfilecheck Info: File `appunti.out' has not changed.
-(rerunfilecheck)             Checksum: 57D09F1030BED543BB3149DE4C9F2B13;1779.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-runsystem(rm appunti.pyg)...executed.
-
-runsystem(rm appunti.out.pyg)...executed.
-
- ) 
+ (./appunti.out.pyg)
+! Undefined control sequence.
+<recently read> \includeminted 
+                               
+l.1761   \includeminted
+                       {Esempi/fattorialeRicorsivo.lisp}{Lisp}
+? x
+ 
 Here is how much of TeX's memory you used:
- 38886 strings out of 492642
- 871117 string characters out of 6135565
- 1335087 words of memory out of 5000000
- 41333 multiletter control sequences out of 15000+600000
- 102775 words of font info for 396 fonts, out of 8000000 for 9000
+ 38899 strings out of 492642
+ 871266 string characters out of 6135565
+ 1335096 words of memory out of 5000000
+ 41336 multiletter control sequences out of 15000+600000
+ 106599 words of font info for 402 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,23n,100p,851b,1176s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf-dist/fon
-ts/enc/dvips/iwona/ec-iwona-sc.enc}{/usr/share/texmf-dist/fonts/enc/dvips/iwona
-/ec-iwona.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/f
-pl/fplbij8a.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr
-/share/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf-dist/
-fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texmf-dist/fonts/type1/publi
-c/fpl/fplrc8a.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplrij8a.pfb></
-usr/share/texmf-dist/fonts/type1/public/bera/fvmb8a.pfb></usr/share/texmf-dist/
-fonts/type1/public/bera/fvmr8a.pfb></usr/share/texmf-dist/fonts/type1/public/be
-ra/fvmro8a.pfb></usr/share/texmf-dist/fonts/type1/nowacki/iwona/iwonab.pfb></us
-r/share/texmf-dist/fonts/type1/nowacki/iwona/iwonar.pfb></usr/share/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/typ
-e1/urw/palatino/uplb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplb
-i8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/
-texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on appunti.pdf (44 pages, 439458 bytes).
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf-dist/fonts
+/enc/dvips/iwona/ec-iwona-sc.enc}{/usr/share/texmf-dist/fonts/enc/dvips/iwona/e
+c-iwona.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/fpl
+/fplbij8a.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf-dist/fo
+nts/type1/public/mathpazo/fplmri.pfb></usr/share/texmf-dist/fonts/type1/public/
+fpl/fplrc8a.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplrij8a.pfb></us
+r/share/texmf-dist/fonts/type1/public/bera/fvmb8a.pfb></usr/share/texmf-dist/fo
+nts/type1/public/bera/fvmr8a.pfb></usr/share/texmf-dist/fonts/type1/public/bera
+/fvmro8a.pfb></usr/share/texmf-dist/fonts/type1/nowacki/iwona/iwonab.pfb></usr/
+share/texmf-dist/fonts/type1/nowacki/iwona/iwonar.pfb></usr/share/texmf-dist/fo
+nts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1
+/urw/palatino/uplb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplbi8
+a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/te
+xmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on appunti.pdf (44 pages, 442042 bytes).
 PDF statistics:
- 616 PDF objects out of 1000 (max. 8388607)
- 532 compressed objects within 6 object streams
+ 639 PDF objects out of 1000 (max. 8388607)
+ 552 compressed objects within 6 object streams
  239 named destinations out of 1000 (max. 500000)
- 53485 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 57569 words of extra memory for PDF output out of 61914 (max. 10000000)
 
