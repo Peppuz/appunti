@@ -11,3 +11,8 @@ Inserire l'implementazione di Stack, Code, Alberi e correggere la parte delle li
 Inserire albero di derivazione con Variabili
 Inserire colorazione ai red e green cut
 Inserire colore per il simbolo ! e a tutti i predicati presentati nel corso del capitolo
+Rivedere gli interpreti e i predicato di livello superiore in Prolog
+Fare listati dei parametri opzionali, chiave e variabili
+Fare funzione valuta ed applica in Lisp e analizzare gli ambienti
+Fare la funzione format
+Fare cenni alla programmazione in C con i puntatori e le librerie

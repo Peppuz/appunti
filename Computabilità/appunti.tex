@@ -20,9 +20,7 @@
 \theoremstyle{definition}%per avere lo stile tondo quando uso un ambiente definito da newtheorem
 \newtheorem*{defi}{Def}%Definizione per avere la gestione delle definizioni
 \newtheorem{prop}{Prop}[chapter]
-\newtheorem{lem}{Lemma:}
 \newtheorem{thm}{Thm:}[chapter]
-\newtheorem{corol}{Corol}[chapter]
 \newtheorem*{esempio}{Esempio}
 \newcommand{\numberset}{\mathbb}
 \newcommand{\N}{\numberset{N}}
@@ -1353,20 +1351,22 @@ SPIEGAZIONE PERCHE' NON È POSSIBILE FARE MEGLIO DELL'AUTOMA MINIMO E DI NON POT
 MINIMIZZARE UN NFA
 
 \chapter{Pushdown Automata}
-In questo capitolo introduciamo e definiamo gli automi a pila(Pushdown Automata), usato per definire un linguaggio context-free:
-questa tipologia di automa è un estensione del $\epsilon-NFA$, con l'aggiunta dello stack, struttura dati che
-può leggere, pushare e poppare solo dalla testa.
+In questo capitolo introduciamo e definiamo gli automi a pila(Pushdown Automata),
+usato per definire un linguaggio context-free:
+questa tipologia di automa è un estensione del $\epsilon-NFA$, con l'aggiunta dello stack,
+struttura dati che può leggere, pushare e poppare solo dalla testa.
 
+La presenza dello stack permette all'automa di ricordare un numero infinito di informazioni,
+anche se a differenza dei computer normali l'automa a pila può accedere soltanto alle informazioni
+presenti in testa allo stack, per questo motivo è in grado soltanto di definire
+e riconoscere soltanto i linguaggi context-free.
 \begin{figure}
   \includegraphics{/img/PDA.png}
 \end{figure}
-La presenza dello stack permette all'automa di ricordare un numero infinito di informazioni, anche se a differenza dei computer normali
-l'automa a pila può accedere soltanto alle informazioni presenti in testa allo stack, per questo motivo è in grado soltanto di definire
-e riconoscere soltanto i linguaggi context-free.
 
 La definizione formale dell'automa a pila è la seguente:
 \begin{defi}
-  Si definisce Automa a Pila    $P = (Q, \Sigma, \Delta, \delta, q_0, z_0, F)$ dove si ha:
+  Si definisce Automa a Pila come $P = (Q, \Sigma, \Delta, \delta, q_0, z_0, F)$ dove si ha:
   \begin{itemize}
   \item $Q$ è un insieme di stati finito e non vuoto
   \item $\Sigma$ è l'alfabeto, composto da un numero finito di simboli di input dell'automa
@@ -1379,20 +1379,149 @@ La definizione formale dell'automa a pila è la seguente:
   \item $z_0 \in \Delta$ indica lo stato inizialmente presente nello stack
   \item $F \subseteq Q$ è l'insieme degli stati finali accettati dall'automa
 \end{defi}
-  Consideriamo il linguaggio context-free $L_{wwr} = \{ww^R | w \in \{0,1\}^*\}$ definito dalle seguenti regole di produzione:
-  $P_g = \{ P \To 0P0 | 1P1 | \epsilon \}$, rappresentabile anche dall'automa $P = (\{q_0,q_1,q_2\},\{0,1\},\{0,1,z_0\},\delta,q_0,z_0,\{q_2\})$.
+Consideriamo il linguaggio context-free $L_{wwr} = \{ww^R | w \in \{0,1\}^*\}$
+definito dalle seguenti regole di produzione:
+  $P_g = \{ P \To 0P0 | 1P1 | \epsilon \}$, rappresentabile anche dall'automa
+  $P = (\{q_0,q_1,q_2\},\{0,1\},\{0,1,z_0\},\delta,q_0,z_0,\{q_2\})$.
 
-  Le funzioni di tranzioni definite e presenti nel seguente automa sono rappresentate dalla tabella NUM e per rappresentare l'automa a pila
-  si può usare anche un diagramma, come già visto per gli automi a stati finiti, che rende più chiaro e comprensibile l'automa.\newline
+  Le funzioni di tranzioni definite e presenti nel seguente automa sono rappresentate
+  dalla tabella NUM e per rappresentare l'automa a pila si può usare anche un diagramma,
+   come già visto per gli automi a stati finiti, che rende più chiaro e comprensibile l'automa.\newline
   Introduciamo e da qui in avanti useremo \emph{diagramma di transizione} in cui si ha:
   \begin{itemize}
   \item Ogni nodo corrisponde ad uno stato dell'automa
-  \item Una freccia, contrassegnata con l'etichetta Start, indica lo stato iniziale mentre uno stato con cerchio doppio
-    rappresenta uno stato accettante dell'automa.
-  \item Gli archi corrispondono ad una transizione del PDA in cui un arco etichettato con $a,X / \alpha$ significa che
-    $\delta(q,a,X)$ contiene $(p,\alpha)$, assieme ad altre coppie.
+  \item Una freccia, contrassegnata con l'etichetta Start, indica lo stato iniziale
+   mentre uno stato con cerchio doppio rappresenta uno stato accettante dell'automa.
+  \item Gli archi corrispondono ad una transizione del PDA in cui un arco etichettato
+   con $a,X / \alpha$ significa che $\delta(q,a,X)$ contiene $(p,\alpha)$, assieme ad altre coppie.
   \end{itemize}
-  L'unica cosa che il diagramma non dice è quale è il simbolo iniziale dello stack, il quale convenzionalmente è $z_0$
-  a meno che viene indicato altrimenti.
+  L'unica cosa che il diagramma non dice è quale è il simbolo iniziale dello stack,
+  il quale convenzionalmente è $Z_0$ a meno che viene indicato altrimenti.\newline
+  Il diagramma e la tabella dell'automa PDA usato per rappresentare il linguaggio $L = wwr$,
+  viene rappresentato nella figura X e ciò permette di notare alcuni aspetti:
+
+Definiamo ora il concetto di mossa e computazione negli automi a pila incominciando
+dalla definizione di ID(Instantaneous description), indicante lo stato attuale:
+\begin{defi}
+Si definisce configurazione(ID) la terna $(q, w, \gamma)$ dove $q \in Q$ rappresenta
+    lo stato attuale nel PDA, $w \in \Sigma ^ *$ indicante l'input residuo nel PDA
+    mentre infine $\gamma \Delta ^ *$ mostra il contenuto nello stack.
+ \end{defi}
+ Dopo aver considerato una configurazione nel PDA definiamo in maniera formale il passo di computazione
+ \begin{defi}
+   Supponiamo che $(p, \alpha) \in \delta(q, a, X)$, allora $\forall w \in \Sigma ^ *, \forall \beta \in \Delta ^ *$
+   risulta $(q, aw, X \beta) \vdash _P(p, w, \alpha \beta)$.
+ \end{defi}
+ Questa definizione rappresenta un singolo passo di computazione dell'automa ma per
+ capire come avviene l'effettiva computazione, eseguendo zero o più passi di computazione, definiamo:
+ \begin{defi}
+   il simbolo $\vdash ^ * _ P$, oppure $\vdash ^ *$ in caso l'automa è conosciuto,
+   rappresenta l'esecuzione di zero o più mosse nell'automa PDA definita in maniera ricorsiva:
+   \begin{description}
+     \item [base:] $I \vdash ^ * I$ per ogni configurazione $I$
+     \item [passo induttivo:] $I \vdash ^ * J$ se esiste una configurazione $K$ tale che
+                              $I \vdash K$ e $K \vdash ^* J$
+   \end{description}
+ \end{defi}
+
+Per riuscire a comprendere al meglio come computa un automa a pila abbiamo i seguenti teoremi:
+\begin{thm}
+  Se $P = (Q, \Sigma, \Delta, \delta, q_0, Z_0, F)$  è un PDA e $(q, x, \alpha) \vdash ^*_P (p, y, \beta)$
+  allora per ogni stringa $w \in \Sigma^*, \gamma \in \Delta^*$ risulta vero
+  $(q, xw, \alpha \gamma) \vdash ^*_P (p, yw, \beta \gamma)$
+\end{thm}
+\begin{proof}
+La dimostrazione consiste in una semplice induzione sul numero di passi della sequenza
+di configurazioni che portano $(q, xw, \alpha \gamma)$ nella configurazione $(p, yw, \beta \gamma)$
+\end{proof}
+\begin{thm}
+  Se $P = (Q, \Sigma, \Gamma, \gamma, q_0, Z_0, F)$ è un PDA e $(q, xw, \alpha) \vdash ^*_P (p, yw, \beta)$
+  allora risolta verificato $(q, x, \alpha) \vdash ^*_P (p, y, \beta)$.
+\end{thm}
+Il linguaggio accettato da un PDA può essere di due diversi tipi:
+\begin{description}
+  \item [accettazione per stato finale:] Dato un PDA $P = (Q, \Sigma, \Delta, \delta, q_0, Z_0, F)$
+         il linguaggio accetto per stato finale $L(P) = \{w | (q_0, w, Z_0) \vdash ^*_P (q, \epsilon, \alpha)$\}
+         per qualche stato $q \in F$ e per ogni stringa $\alpha \in \Delta$
+
+  \item [accettazione per stack vuoto:] Dato un PDA $P = (Q, \Sigma, \Delta, \delta, q_0, Z_0, F)$
+        definiamo il linguaggio $N(P) = \{w | (q_0, w, Z_0) \vdash ^* (q, \epsilon, \epsilon)\}$
+        per qualsiasi stato $q$.\newline
+        Dato che l'insieme degli stati accettanti è irrilevante, solitamente leviamo il settimo componente $F$
+        dalla specifica di un PDA, facendolo diventare una sestupla $(Q, \Sigma, \Delta, \delta, q_0, Z_0)$
+\end{description}
+Questa diversa definizione dei linguaggi accettati da un PDA sono equivalenti, anche se
+solitamente dato un automa $P$ risulta $L(P) \neq N(P)$, come proviamo con i seguenti teoremi:
+\begin{thm}
+  Se $L = N(P_N)$ per qualche PDA $P_N = (Q, \Sigma, \Delta, \delta_N, q_0, Z_0)$,
+  allora esiste un PDA $P_F$ tale che $L = L(P_F)$.
+\end{thm}
+\begin{proof}
+Sia $X_0 \in \Delta$ ed lo usiamo per indicare la fine dello stack di $P_F$ e per
+indicare la fine dello stack dell'automa $P(N)$, ossia se $P_F$ vede $X_0$ in testa allo stack
+allora conosce che $P_N$ dovrebbe avere lo stack vuoto con lo stesso input dato.
+
+Abbiamo bisogno di un nuovo stato iniziale $p_0$, la cui unica funzione è di pushare $Z_0$,
+il simbolo iniziale dello stack di $P_N$, in testa allo stack e si sposta nello stato $q_0$, stato iniziale dello $P_N$.\newline
+Poi $P_F$ simula $P_N$, fino a quando lo stack $P_N$ è vuoto, ossia quando $P_F$ trova $X_0$ in testa allo stack
+e necessitiamo inoltre dello stato finale $p_f$, lo stato accettato da $P_F$ per cui
+questo PDA si trasferisce $p_f$ quando scopre che $P_N$ ha lo stack vuoto, come si nota nella figura Y.
+
+La definizione di $P_F$ è la seguente:
+\[ P_F = (Q \cup \{p_0, p_1\}, \Sigma, \Gamma \cup \{X_0\}, \delta_F, p_0, X_0, \{p_f\})\]
+dove $\delta_F$ è definita da:
+\begin{enumerate}
+  \item $\delta_F(p_0, \epsilon, X_0) = \{(q_0, Z_0X_0)\}$, in cui
+  \item Per ogni stato $q \in Q$, qualsiasi input $a \in \Sigma$ oppure $a = \epsilon$ e il simbolo $Y \in \Gamma$ dello stack,
+        $\delta_F(q, a, Y)$ contiene tutte le coppie presenti in $\delta_N(q, a, Y)$.
+  \item In aggiunta alla regola 2, $\delta_F(q, \epsilon, X_0)$ contiene $(p_f, \epsilon)$ per ogni stato $q \in Q$.
+\end{enumerate}
+Dopo aver mostrato come è formato il PDA $P_F$ dobbiamo mostrare che $w \in L(P_F)$ se e solo se $w \in N(P_N)$:
+\begin{description}
+  \item [SE:] Supponiamo $(q_0, w, Z_0) \vdash ^* _{P_N} (q, \epsilon, \epsilon)$ per qualsiasi stato $q$
+        Per il teorema visto precedentemente abbiamo la possibilità di dire che $(q_0, w, Z_0)
+        \vdash ^* _{P_N} (q, \epsilon, X_0)$.\newline
+        Dalle regole viste prima sappiamo che $P_F$ ha lo stesso numero di mosse di $P_N$
+        da cui si ricava che $(q_0, w, Z_0X_0) \vdash ^* _{P_F} (q, \epsilon, X_0)$.
+
+       Se aggiungiamo anche la mossa iniziale e finale otteniamo
+       \[ (p_0, w, Z_0) \vdash _{P_F} (q_0, w, Z_0X_0) \vdash ^* _{P_F} (q, \epsilon, X_0) \vdash _{P_F}
+          (p_f, \epsilon, epsilon) \]
+      da cui si ricava che $P_F$ accetta $w$ tramite stato finale
+  \item [SOLO SE:] diamo solo l'idea che togliendo il primo e l'ultimo passo di $P_F$
+                   ripercorrendo all'indietro la precedente dimostrazione verificiamo la parte solo se
+\end{description}
+\end{proof}
+Dopo aver visto come passare dal linguaggio accettato dallo stack vuoto al linguaggio
+accettato dagli stati finali mostriamo il procedimento inverso, per mostrare che
+le due modalità sono equivalenti, attraverso il seguente teorema:
+\begin{thm}
+  Sia $L = L(P_F)$ per qualche PDA $P_F = (Q, \Sigma, \Delta, \delta_F, q_0, Z_0, F)$,
+  allora esiste un PDA $P_N$ tale che $L = N(P_N)$.
+\end{thm}
+\begin{proof}
+  La costruzione del PDA $P_N$ viene mostrata nella figura . Sia
+  \[ P_N = (Q \cup \{p_0, p\}, \Sigma, \Delta \cup \{X_0\}, \delta_N, p_0, X_0) \]
+  dove risulta $\delta_N$ definita come:
+  \begin{enumerate}
+    \item $\delta(p_0, \epsilon, X_0) = \{(q_0, Z_0X_0)\}$
+    \item Per ogni stato $q \in Q$, simbolo di input $a \in \Sigma \lor \epsilon$,e simbolo di stack $Y \in \Delta$,
+          allora $\delta_N(q, a, Y)$ contiene ogni coppia presente in $\delta_F(q, a, Y)$,
+          ossia $P_N$ simula $P_F$.
+    \item Per ogni stato accettato $q \in F$ e per ogni simbolo di stack $Y \in \Delta$ oppure $Y = X_0$,
+          allora $\delta_N(q, \epsilon, Y)$ contiene $(p, \epsilon)$.
+    \item Per ogni simbolo di stack $Y \in \Delta$ oppure $Y = X_0$, allora $\delta_N(p, \epsilon, Y) = \{(p, \epsilon)\}$.
+  \end{enumerate}
+  Ora dobbiamo mostrare che ogni stringa $w \in N(P_N)$ se e solo se $w \in L(P_F)$:
+  \begin{description}
+    \item [SE:] Supponiamo $(q_0, w, Z_0) \vdash ^* _{P_F}
+    \item [SOLO SE:] diamo solo l'idea che togliendo il primo e l'ultimo passo di $P_F$
+                     ripercorrendo all'indietro la precedente dimostrazione verificiamo la parte solo se
+  \end{description}
+\end{proof}
+
+\section{Equivalenza tra PDA e CFG}
+
+\section{PDA Deterministici}
 
 \end{document}
