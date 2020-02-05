@@ -1,0 +1,41 @@
+%Analisi Algoritmo binarySearch
+Il secondo algoritmo di ricerca è il $\proc{binarySearch}$, algoritmo divide et impera
+in cui viene già previsto che la sequenza di valori sia ordinata e sfruttando ciò ad ogni passo viene eliminata una parte della sequenza.\newline
+La ricerca binaria ad ogni passo controlla l'elemento mediano per vedere se è il valore ricercato altrimenti richiama l'algoritmo sulla sottosequenza sinistra
+in caso il valore da trovare sia minore oppure lo effettua sulla sottosequenza destra.
+
+%Pseudocodice binarySearch
+\begin{codebox}
+\Procname{$\proc{binarySearch}(A,\id{left},\id{right},\id{key})$}
+\li \If $\id{left} \isequal \id{right}$
+    \Then
+\li                \If $A[\id{left}] \isequal \id{key}$
+                   \Then
+\li                            \Return $\id{left}$
+\li                \Else \Return $\const{nil}$
+    \End
+\li \Else
+\li                $\id{mid} \gets (\id{left} + \id{right}) / 2$
+\li                \If $A[\id{mid}] \isequal \id{key}$
+\li                   \Then \Return $\id{mid}$
+                   \End
+\li                \If $A[\id{mid}] > \id{key}$
+                   \Then
+\li                          \Return $\proc{binarySearch}(A,\id{left},\id{mid}-1,\id{key})$
+\li                \Else \Return $\proc{binarySearch}(A,\id{mid}+1,\id{right},\id{key})$
+    \End
+\end{codebox}
+
+Il tempo di esecuzione del $\proc{binarySearch}$ nei diversi casi è il seguente:
+\begin{description}
+  \item[Caso migliore:] l'elemento $\id{key}$ viene trovato direttamente nell'elemento mediano
+        per cui viene risolto in un tempo costante $\Omega(1)$
+  \item[Caso peggiore:] l'elemento $\id{key}$ non viene trovato nella sequenza quindi
+        \begin{equation*}
+           T(n) = \begin{cases} 3c = \Theta(1) \quad \text{se} \ n = 1 \\
+                                T(\frac{n}{2}) + 4c \quad \text{se} \ n > 1\\
+                  \end{cases}
+        \end{equation*}
+        Applicando il secondo caso del teorema dell'esperto in quanto $4c = \Theta(n^{\log _2 1}) = \Theta(1)$
+        si ha che $T(n) = \Theta(\log n)$
+\end{description}

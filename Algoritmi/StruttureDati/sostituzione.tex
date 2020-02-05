@@ -1,0 +1,74 @@
+%paragrafo sul metodo di Sostituzione per risolvere le ricorrenze
+\section{Il metodo di Sostituzione}
+Il metodo di sostituzione è un tecnica di risoluzione delle equazioni di ricorrenza
+degli algoritmi divide et impera, che richiede due passi:
+\begin{enumerate}
+    \item Ipotizzare la forma della risoluzione.
+    \item Usare l'induzione matematica per trovare le costanti e dimostrare che
+          la soluzione proposta funziona ed è corretta.
+\end{enumerate}
+Per vedere il funzionamento di questo metodo proviamo ad usarlo per mostrare il seguente teorema
+%Dimostrazione
+\begin{thm}
+    $T(n) = 2T(n/2) + n = \Theta(n \ln n)$
+\end{thm}
+\begin{proof}
+Per dimostrare che $T(n) = \Theta(n \ln n)$ bisogna provare che $T(n) \leq cn \ln n$ per una costante $c > 0$
+\begin{equation*}
+\begin{split}
+T(n) & \leq 2(cn/2 \lg n/2) + n \\
+     & \leq cn \lg n - cn \lg 2 + n\\
+     & \leq cn \lg n - cn + n \\
+     & \leq cn \lg n \text{per} c \geq 1\\
+\end{split}
+\end{equation*}
+L'induzione matematica richiede di verificare i casi base ma solitamente le condizioni di contorno non vengono dimostrate in quanto può essere molto difficile 
+in alcuni casi e per risolvere si sfrutta la notazione asintotica, che prevede una costante $n_0$ arbitrariemente scelta e con questo si può rimuovere le condizioni
+di contorno difficili da dimostrare.
+\end{proof}
+
+%Scegliere una buona ipotesi
+Per scegliere una buona ipotesi da verificare mediante il metodo di sostituzione
+richiede fantasia, esperienza, cosa che non sempre si dispone soprattutto la fantasia.\newline
+Per aiutarci ad ottenere una buona ipotesi si potrebbe utilizzare l'albero di sostituzione
+e poi dimostrare l'ipotesi mediante induzione, con il metodo di sostituzione, oppure
+ci sono delle euristiche per diventare dei buoni indovini.
+
+Le euristiche per formulare buone ipotesi sono le seguenti:
+\begin{itemize}
+    \item Se una ricorrenza è simile ad una già analizzata conviene provare a dimostrare
+          la stessa soluzione come ad esempio:
+          \begin{equation*}
+              T(n) = 2T(\frac{n}{2} + 17) + n \text{è simile all'equazione precedente ed è un} \Theta(n \lg n)
+          \end{equation*}
+    \item Si inizia a dimostrare dei limiti superiori ed inferiori molto larghi e
+          poi restringere l'incertezza alzando il limite inferiore ed abbassando
+          il limite superiore fino a convergere con il risultato corretto.
+\end{itemize}
+
+%esempi
+
+%Errori tipici e togliere termini di ordine inferiore
+Ci sono dei casi in cui ipotiziamo correttamente un limite asintotico per la ricorrenza
+ma in qualche modo sembra che i calcoli matematici non tornino nell'Induzione.
+Per superare questo ostacolo spesso basta correggere l'ipotesi sottraendo un termine
+di ordine inferiore per far quadrare i conti, come nell'esempio:
+\[    T(n) = T(\lfloor n/2 \rfloor) + T(\lceil n/2 \rceil) + 1 \]
+Supponiamo che $T(n) = O(n)$ ossia $T(n) \leq cn$, otteniamo nella ricorrenza:
+\[ \begin{split}
+    T(n) & \leq c \lfloor n/2 \rfloor + c \lceil n/2 \rceil + 1 \\
+         & = cn + 1
+ \end{split} \]
+Questa equazione non implica che $T(n) \leq cn$ qualunque sia il valore di $c$ però
+l'intuizione che $T(n) = O(n)$ è corretta solo che per provarla dobbiamo utilizzare
+un ipotesi induttiva più forte, ossia $T(n) \leq cn - d$ con $d \geq 0$ rappresentante una costante.
+\[ \begin{split}
+    T(n) & \leq (c \lfloor n/2 \rfloor - d) + (c \lceil n/2 \rceil -d) + 1 \\
+         & \leq cn - 2d + 1 \\
+         & \leq cn - d \quad \text{per ogni} d \geq 1 \\
+ \end{split} \]
+A volte una piccola manipolazione algebrica può rendere una ricorrenza ignota simile a una che abbiamo già visto ed analizzato per esempio 
+\[ T(n) = 2T(\lfloor \sqrt{n} \rfloor) + \log n \]
+sembra difficile da risolvere ma, ignorando l'arrotondamento agli interi di valori come $\sqrt{n}$, ponendo $m = \log n$ si ottiente
+\[ T(2^m) = 2T(2^{\frac{m}{2}}) + m \]
+Ponendo ora $S(m) = T(2^m)$ si ottiene la ricorrenza $S(m) = 2S(\frac{m}{2}) + m$ che è simile alla ricorrenza analizzata nel mergeSort.

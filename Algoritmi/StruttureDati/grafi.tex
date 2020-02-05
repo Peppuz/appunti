@@ -1,0 +1,121 @@
+%Capitolo sui grafi
+\chapter{Grafi}
+I grafi sono un importante struttura dati usata in molti ambiti ed applicazioni nel mondo informatico, ad esempio viene usato per trovare il migliore percorso per arrivare 
+da un posto all'altro, infatti moltissimi ed interessanti problemi computazionali sono definiti in termini di grafi.\newline
+Prima di analizzare come sono rappresentati su un calcolatore e i relativi algoritmi per poter ricavare informazioni preziose, andiamo a definire formalmente la 
+nomenclatura rigurdo ai grafi, anche se è stata già affrontata nel corso di Fondamenti dell'Informatica.
+
+Si definisce come \emph{grafo orientato} $G$ una coppia $(V, E)$, dove $V$ è un insieme finito di vertici ed $E$ è una relazione binaria su $V$,
+i cui elementi sono chiamati \emph{archi}.\newline
+Definiamo invece come \emph{grafo non orientato} $G$ una coppia $(V, E)$, dove $V$ è un insieme finito di vertici mentre l'insieme degli archi $E$ è composto da 
+una coppia di vertici non ordinate, ossia se esiste un arco $(u, v)$ che collega il vertice $u$ a $v$ esiste anche l'arco simmetrico $(v, u)$, cosa non sempre verificata
+nel caso di grafo orientato.\newline
+Molte definizioni per i grafi orientati sono equivalenti anche per quelli non orientati, sebbene alcuni termini hanno significati leggermente differenti nei due contesti.
+
+Se $(u, v)$ è un arco in un grafo orientato $G = (V, E)$ diciamo che $(u, v)$ esce nel vertice $u$ ed entra nel vertice $v$ mentre se $(u, v)$ è un arco in un grafo orientato
+diciamo che $(u, v)$ è incidente nei vertici $u$ e $v$ ed inoltre $v$ è adiacente al vertice $u$, questa definizione di adiacenza è estendibile anche per i grafi orientati soltanto
+che solo in quelli non orientati si ha che è simmetrica.\newline
+Il \emph{grado} di un vertice in un grafo non orientato è il numero di archi che incidono nel vertice mentre in un grafo orientato si definisce come \emph{grado entrante}
+il numero di archi che entrano in un vertice, come \emph{grado uscente} il numero di archi che escono da un vertice ed infine il \emph{grado} di un vertice in un grafo orientato
+è la somma del suo grado uscente ed entrante.
+
+\section{Rappresentazione nei calcolatori}
+Per rappresentare un grafo in un calcolatore ci sono due maniere standard:una mediante una collezione di \emph{liste di adiacenza} ed una mediante una \emph{matrice di adiacenza}
+ed entrambi possono essere usati sia per i grafi orientiati che per quelli non orientati.\newline
+Di solito si preferisce utilizzare la rappresentazione mediante liste di adiacenza, perchè permette di rappresentare in modo compatto i grafi \emph{sparsi}, ossia quelli in cui 
+$|E|$ è molto più piccolo di $|V|^2$ ed inoltre per la maggior parte degli algoritmi presentati si suppone la rappresentazione mediante liste.\newline
+È preferibile usare la matrice di adiacenza quando si ha un grafo \emph{denso}, in cui $|E|$ è prossimo a $|V|^2$, o quando si ha la necessità di dire rapidamente se 
+c'è un arco che collega due vertici particolari.
+
+La rappresentazione con liste di adiacenza di un grafo $G = (V, E)$ consiste in una sequnza $Adj$ di $|V|$ liste, una per ogni vertice in $V$ in cui per ogni $u \in V$
+la lista di adiacenza $Adj[u]$ contiene tutti i vertici $v$ tali che esiste un arco $(u, v) \in E$ per cui si può dire che le liste di adiacenza rappresentano
+tutti gli archi di un grafo, per cui nello pseudocodice useremo la notazione $\attrib{G}{Adj[u]}$.\newline
+Una rappresentazione di un grafo orientato e di uno non orientato si può notare nelle figure \ref{img:22.1} e \ref{img:22.2}.\newline
+Se $G$ è un grafo orientato la somma delle lunghezze di tutte le liste di adiacenza è $|E|$, perchè un arco della forma $(u, v)$ è rappresentato inserendo $v$ in $Adj[u]$
+mentre se $G$ è un grafo non orientato la somma è pari a $2|E|$, in quando con un arco $(u, v)$ si ha che $u$ appare nella lista di adiacenza di $v$ e viceversa.\newline
+Le liste di adiacenza possono essere facilmente adattate per rappresentare i \emph{grafi pesati}, cioè i grafi per i quali ogni arco ha un \emph{peso} associato, 
+tipicamente dato da una \emph{funzione peso} $w:E \to \R$, in cui il peso $w(u, v)$ dell'arco $(u, v) \in E$ viene memorizzato semplicemente assieme al vertice $v$
+nella lista di adiacenza di $u$.
+
+La rappresentazione mediante matrice di adiacenza presuppone che i vertici siano numerati $1, 2, \dots, |V|$ in modo arbitrario e la sua rappresentazione consiste 
+in una matrice $A = (a_{ij})$ di dimensioni $|V| \times |V|$ tale che 
+\[ 
+    a_{ij} = \begin{cases}
+                1 \quad (i, j) \in E \\
+                0 \quad \text{negli altri casi} \\
+             \end{cases} \]
+Per comprendere al meglio la matrice di adiacenza si può notare le figure \ref{img:22.1} e \ref{img:22.2} ed inoltre richiede una memoria $\Theta(V^2)$,
+indipendentemente dal numero di archi in un grafo, in quanto la matrice è di dimensione $V \times V$.
+
+In un grafo non orientato la matrice di adiacenza è uguale alla sua trasposta, ossia $A = A^T$ ed in alcune applicazioni conviene memorizzare soltanto gli elementi
+che si trovano sopra e lungo la diagonale, riducendo così la memoria per memorizzare il grafo quasi della metà.\newline
+Anche la rappresentazione mediante matrice può essere utilizzata per i grafi pesati, in cui il peso $w(u, v)$ di un arco $(u, v) \in E$ viene semplicemente memorizzato
+come l'elemento nella riga $u$ e nella colonna $v$ della matrice di adiacenza ed in caso un arco non esiste si può memorizzare il valore $\nil$, anche se per 
+molti problemi sia preferibile usare il valore $0$ o $\infty$.\newline
+Le due rappresentazioni sono equivalenti dal punto di vista asintotico, anche se quella mediante matrice può essere preferita in caso di grafi abbastanza piccoli
+per la sua semplicità ed inoltre in caso di grafi non pesati con la rappresentazione con matrice si ha il vantaggio in memoria, in cui invece di rappresentare una 
+parola della memoria del calcolatore per ogni elemento della matrice, basta utilizzare un solo bit per ogni elemento.
+
+La maggior parte degli algoritmi che operano sui grafi devono mantenere degli attributi dei vertici e/o degli archi ed li indichiamo mediante $\attrib{v}{d}$,
+per un attributo $d$ di un vertice $v$ e l'implemetazione degli attributi dei vertici ed archi nei programmi reali può essere completamente differente, in quanto
+non esiste un modo migliore e la decisione su quale modo usare può dipendere dall'algoritmo che si sta implementando, dal linguaggio di programmazione usato ed ecc...
+
+\section{Visita in ampiezza}
+La \emph{visita in ampiezza}(breadth-first search) è uno dei più semplici algoritmi di ricerca nei grafi ed è la base per molti algoritmi importanti che operano
+con i grafi, come ad esempio l'algoritmo di \emph{Prim} per l'albero di connessione minimo e l'algoritmo di \emph{Dijkstra} per i cammini minimi da sorgente unica.
+
+Dato un grafo $G = (V, E)$ e un vertice distinto $s$, detto \emph{sorgente}, la visita in ampiezza ispeziona sistematicamente gli archi di $G$ per "scoprire"
+tutti i vertici raggiungibili da $s$ e calcola la distanza, il minimo numero di archi, da $s$ a ciascun vertice raggiungibile.\newline
+Per ogni vertice $v$ raggiungibile da $s$, il cammino semplice dell'albero BF che va da $s$ a $v$ corrisponde a un cammino minimo da $s$ a $v$, ossia un cammino
+che contiene il minor numero di archi.
+
+La visita in ampiezza è chiamata così perchè espande la frontiera fra i vertici scoperti e quelli da scoprire in maniera uniforme lungo l'ampiezza della frontiera,
+ossia l'algortimo scopre tutti i vertici che si trovano a distanza $k$ da $s$ prima di scoprire i vertici a distanza $k + 1$ e per tenere traccia del lavoro svolto
+vengono colorati i vertici di bianco, di grigio o di nero.\newline
+Inizialmente tutti i vertici sono bianchi e quando un vertice viene \emph{scoperto}, ossia quando viene incontrato per la prima volta durante la visita, 
+smette di essere definitavamente di colore bianco.
+
+La visita in ampiezza costruisce l'albero BF che inizialmente contiene soltanto la sua radice, ossia il vertice sorgente $s$ e quando un vertice bianco $v$
+viene scoperto durante l'ispezione della lista di adiacenza di un vertice $u$ già scoperto, il vertice $v$ e l'arco $(u, v)$ vengono aggiunti all'albero.\newline
+Il vertice $u$ viene detto \emph{precedessore} o \emph{padre} di $v$ nell'albero BF ed inoltre poichè un vertice può venire scoperto una sola volta esso ha al più un padre.
+
+La seguente procedura $\proc{BFS}$ \ref{alg:bfs} per la visita in ampiezza suppone che il grafo di input $G = (V, E)$ sia rappresentato mediante lista di adiacenza e
+il colore di ogni vertice $u \in V$ è memorizzato nell'attributo $\id{color}$ mentre il precedessore di un vertice è memorizzato nel suo attributo $\pi$, che in caso 
+non possiede un predecessore si ha $\attrib{v}{\pi} = \nil$.\newline
+La distanza dalla sorgente $s$ al vertice $v$ calcolata dall'algoritmo è memorizzata nell'attributo $\attrib{v}{d}$ ed inoltre l'algoritmo usa anche la coda $Q$, 
+con schema FIFO per gestire l'insieme dei vertici grigi.
+
+Per calcolare il tempo di esecuzione dell'algoritmo $\proc{BFS}$ usiamo il metodo dell'aggregazione ed dopo l'inizializzazione nessun vertice sarà colorato di bianco, 
+quindi il test $\attrib{v}{\id{color}} \equiv \id{WHITE}$ garantisce che ciascun vertice venga accodato al più una volta e di conseguenza venga eliminato dalla coda 
+al più una volta.\newline
+Le operazioni di inserimento e cancellazione dalla coda richiedono un tempo $O(1)$ quindi il tempo totale dedicato alle operazioni con la coda è $O(V)$ e 
+poichè la lista di adiacenza di ciascun vertice viene ispezionata soltanto quando viene rimosso dalla coda, ogni lista di adiacenza viene ispezionata al più una volta
+ed essendo la somma delle lunghezze di tutte le liste di adiacenza pari a $O(E)$, il costo di inizializzazione pari a $O(V)$, si ha che il tempo di esecuzione totale
+di $\proc{BFS}$ è pari a $O(V + E)$
+
+\subsection{Cammini minimi}
+Come detto in precedenza, la visita in ampiezza trova la distanza di ciascun vertice raggiungibile in un grafo $G = (V, E)$ da un dato vertice sorgente $s \in V$ 
+e definiamo ora la \emph{distanza di cammino minimo} $\gamma(s, v)$ da $s$ a $v$ come il numero minimo di archi in un cammino qualsiasi che va dal vertice $s$
+al vertice $v$ e se non esiste un cammino tra i due vertici si ha $\gamma(s, v) = \infty$.\newline
+Iniziamo ora a mostrare un importante lemma riguardo alla distanza di cammino minimo, che stabilisce un importante proprietà:
+\begin{lem}
+Sia $G = (V, E)$ un grafo qualsiasi e sia $s \in V$ un vertice qualsiasi del grafo allora per ogni arco $(u, v) \in E$ si ha
+\[ \gamma(s, v) \leq \gamma(s, u) + 1 \]
+\end{lem}
+\begin{proof}
+Se u è raggiungibile da s, allora anche v è raggiungibile dato che esiste, per ipotesi, l'arco $(u, v) \in E$.\newline
+In questo caso il cammino minimo tra s e v non può essere più grande del cammino minimo tra s e u seguita dall'arco $(u, v)$ e questo che la disuglianza stabilisce
+mentre in caso il cammino minimo tra s e v è pari a $\infty$ allora anche in quel caso la disuglianza è soddisfatta.
+\end{proof}
+Ora proviamo a mostrare che $v.d = \gamma(s, v)$ per ogni vertice $v \in V$, incominciando dal seguente lemma:
+\begin{lem}
+Sia $G = (V, E)$ un grafo qualsiasi e supponiamo che si è eseguita la BFS a partire da un vertice sorgente $s \in V$, allora per ogni vertice $v \in V$
+alla fine dell'algoritmo BFS risulta $v.d \geq \gamma(s, v)$
+\end{lem}
+\begin{proof}
+Per la dimostrazione usiamo l'induzione sul numero di operazioni $\proc{ENQUEUE}$ usate nell'algoritmo $\proc{BFS}$
+\end{proof}
+
+\section{Visita in profondità}
+La \emph{Visita in profondità}(depth-first search) prevede di andare in profondità nel grafo per trovare gli elementi ossia di andare alla ricerca dei vertici ancora inesplorati
+adiacenti all'ultimo vertice scoperto $u$

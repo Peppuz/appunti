@@ -1,0 +1,130 @@
+%Algoritmo QuickSort per risolvere il problema dell'ordinamento
+\chapter{QuickSort}
+Il $\proc{Quick-Sort}$ è un algoritmo divide et impera in loco ossia senza utilizzare
+una struttura di appoggio per effettuare l'ordinamento e funziona in maniera ottimale
+nell'implementazione sui calcolatori attuali.\newline
+Venne sviluppato ed ideato nel 1959 dall'importantissimo informatico C.H. Hoare
+e viene utilizzato come algoritmo di default delle libreria dei maggiori linguaggi.
+
+L'algoritmo $\proc{Quick-Sort}$ esegue i seguenti passi divide et impera:
+\begin{description}
+  \item[Divide] riarrangia l'array $A[p\twodots r]$ in due sottoarray, eventualmente nulli,
+                $A[p \twodots q-1]$ e $A[q+1 \twodots r]$ tali che tutti gli elementi
+                del primo sottoarray sono minori o uguali a $A[q]$ e tutti gli elementi
+                del secondo sottoarray sono maggiori o uguali a $A[q]$.\newline
+                Calcolare l'indice di $q$ viene effettuato nella procedura di riarrangiamento.
+  \item[Impera] ordina ricorsivamente i due sottoarray $A[p \twodots q-1]$ e $A[q+1 \twodots r]$.
+  \item[Combina] dato che i due sottoarray sono già ordinati per cui non viene eseguito nulla.
+\end{description}
+
+L'algoritmo $\proc{Quick-Sort}$ è il seguente
+%Pseudocodice Quicksort
+\begin{codebox}
+\Procname{$\proc{Quick-Sort}(A,p,r)$}
+\li \If $p < r$
+    \Then
+\li           $q = \proc{Partition}(A,p,r)$
+\li           $\proc{Quick-Sort}(A,p,q-1)$
+\li           $\proc{Quick-Sort}(A,q+1,r)$
+    \End
+\end{codebox}
+Per effettuare l'ordinamento di un array $A$ viene effettuata la chiamata iniziale
+$\proc{Quick-Sort}$(A,1,$\attrib{A}{length}$).
+
+La chiave dell'algoritmo è la procedura $\proc{Partition}$ che può essere implementata
+in due maniere:la prima, inventata da Hoare e quindi quella originale, prende come elemento
+pivot il primo elemento mentre la seconda versione, inventata da Lomuro, utilizza
+l'ultimo elemento;lo pseudocodice delle due partition è il seguente:
+%Pseudocodice Procedura Partition
+\begin{codebox}
+\Procname{$\proc{Lomuro-Partition}(A,p,r)$}
+\li $\id{pivot} \gets A[r]$
+\li $\id{indice} \gets p-1$
+\li \For $j \gets p$ \To $r-1$
+    \Do
+\li               \If $A[j] \leq \id{pivot}$
+                  \Then
+\li                              $\id{indice} \gets \id{indice} + 1$
+\li                              scambia $A[id{indice}]$ con $A[j]$
+                  \End
+    \End
+\li scambia $A[indice+1]$ con $A[r]$
+\li \Return $\id{indice} + 1$
+\end{codebox}
+
+\begin{codebox}
+\Procname{$\proc{Hoare-Partition}(A,p,r)$}
+\li $\id{pivot} \gets A[p]$
+\li $i \gets p$
+\li \For $j \gets p$ \To $r$
+    \Do
+\li               \If $A[j] < \id{pivot}$
+                  \Then
+\li                              $i \gets i + 1$
+\li                              scambia $A[i]$ con $A[j]$
+                  \End
+    \End
+\li scambia $A[i]$ con $A[r]$
+\li \Return $i$
+\end{codebox}
+
+%Invariante di Ciclo da fare!!!!
+
+Il tempo di esecuzione della procedura $\proc{Partition}$, sia Lomuro che Hoare, è il seguente:
+$T(n) = c_1 + c_2 + c_3(n+1) + c_4n + c_5n(t_{if}) + c_6n(t_{if}) + c_7 + c_8$.
+
+\begin{description}
+  \item[Caso migliore]:tutti gli elementi sono maggiori del pivot per cui $t_{if} = 0$
+        $T(n) = (c_3 + c_4)n + (c_1+c_2+c_3+c_7+c_8) = \Theta(n)$
+  \item[Caso peggiore]:tutti gli elementi sono inferiori del pivot per cui $t_{if} = 1$
+        $T(n) = (c_3+c_4+c_5+c_6)n + (c_1+c_2+c_3+c_7+c_8) = \Theta(n)$
+\end{description}
+
+\section{Analisi tempo QuickSort}
+L'equazione di ricorrenza generale del Quicksort è la seguente:
+\begin{equation*}
+    T(n) = \begin{cases} 0 \quad \text{se} \ n = 0,1 \\
+                         T(n-j) + T(j) + \Theta(n) \quad \text{se} \ n > 1 \\
+           \end{cases}
+\end{equation*}
+L'analisi del tempo di esecuzione del $\proc{Quick-Sort}$ è in base al fatto se
+la partizione dell'array è bilanciata o meno ossia se i due sottoproblemi da risolvere
+sono più o meno della stessa dimensione.
+\begin{description}
+  \item[Caso peggiore]:la procedura di partizione produce due sottoproblemi:
+        uno di $n-1$ elementi e l'altro di $0$ elementi.
+        $T(n) = T(n-1) + T(0) + \Theta(n)
+              = T(n-1) + \Theta(n)$
+        Attraverso il metodo di sostituzione arrivo a $T(n) = O(n^2)$
+  \item[Caso migliore]:la procedura di partizione produce due sottoproblemi di $\lceil n/2 \rceil$
+        e $\lfloor n/2 \rfloor$ elementi per cui, ignorando le condizioni di ceil e floor,
+        il tempo di esecuzione è $T(n) = 2T(n/2) + \Theta(n) = \Omega(n \log n)$ per il teorema dell'esperto.
+  \item[Caso medio]:
+\end{description}
+
+%Versione Randomizzata
+Una versione randomizzata del quicksort, utile per ottenere una buona prestazione attesa
+in tutti gli input, consiste nel prendere come pivot ad ogni iterazione un elemento a caso
+tra $p$ e $r$ così l'elemento pivot avrà la stessa possibilità di essere un elemento
+del sottoarray per cui ci aspettiamo che la ripartizione dell'array sia ben bilanciata in media.
+
+\begin{codebox}
+\Procname{$\proc{Randomized-Partition}(A,p,r)$}
+\li $i \gets \proc{RANDOM}(p,r)$
+\li scambia $A[i]$ con $A[r]$
+\li \Return $\proc{Partition}(A,p,r)$
+\end{codebox}
+La procedura randomizzata Quicksort chiama $\proc{Randomized-Partition}$
+invece che $\proc{Partition}$, per cui il suo pseudocodice è il seguente:
+\begin{codebox}
+\Procname{$\proc{Randomized-QuickSort}(A,p,r)$}
+\li \If $p < r$
+    \Then
+\li           $q = \proc{Randomized-Partition}(A,p,r)$
+\li           $\proc{Randomized-QuickSort}(A,p,q-1)$
+\li           $\proc{Randomized-QuickSort}(A,q+1,r)$
+    \End
+\end{codebox}
+Il tempo di esecuzione del Quicksort randomizzato coincide ovviamente a quello normale
+solo che il caso medio si verifica molto spesso ed è molto raro il caso peggiore
+per cui di solito viene utilizzata la versione randomizzata del Quicksort.

@@ -1,44 +1,41 @@
 %Strutture Dati Lista
 \section{Liste}
-Le liste implementano il concetto matematico di sequenza lineare di oggetti,
-in cui si possono eventualmente ripetere gli elementi.\newline
-La lista è una struttura dati lineare dinamica in cui l'accesso all'elemento successivo
-della sequenza avviene tramite un puntatore all'elemento successivo ed un elemento
-è composto da un valore , chiamato $\id{element}$ e da due puntatori $\id{prev}$ e $\id{next}$,
+Le liste vengono solitamente usate per implementare il concetto matematico di sequenza lineare di oggetti, in cui si possono eventualmente ripetere gli elementi
+ma questo non significa che le liste sono le sequenze dato che quest'ultima rappresenta la specifica del tipo del dato anche se solitamente è naturale usare per 
+implementare una sequenza la realizzazione di una lista.\newline
+La lista è una struttura dati lineare dinamica in cui l'accesso all'elemento successivo della sequenza avviene tramite un puntatore all'elemento successivo
+ed un elemento è composto da un valore , chiamato $\id{element}$ e da due puntatori $\id{prev}$ e $\id{next}$,
 i quali puntano all'elemento precedente o successivo della lista.\newline
-In caso $\id{prev} \gets \const{nil}$ l'elemento non ha nessun predecessore ed è la $\id{head}$
-della lista mentre il puntatore $\id{next} \gets \const{nil}$ l'elemento non ha
-nessun successore per cui è la coda della lista.
-Vi sono diversi tipologie di caratteristiche che una lista può possedere, anche in
-maniera multipla ossia può possedere più di una proprietà, come si può notare dal seguente elenco:
+In caso $\id{prev} \gets \const{nil}$ l'elemento non ha nessun predecessore ed è la $\id{head}$ della lista mentre in caso il puntatore $\id{next} \gets \const{nil}$
+l'elemento non ha nessun successore per cui è la coda della lista.
+Vi sono diversi tipologie di caratteristiche che una lista può possedere, anche in maniera multipla ossia può possedere più di una proprietà, come si può notare dal seguente elenco:
 \begin{itemize}
-  \item singolarmente o doppiamente concatenata: in caso una lista sia singolarmente
+    \item \emph{singolarmente o doppiamente concatenata}: in caso una lista sia singolarmente
         concatenata si ha soltanto il collegamento con l'elemento successivo, per
         cui viene omesso il puntatore $\id{prev}$, mentre nella lista doppiamente concatenata
          si ha il collegamento, tramite i puntatori, con l'elemento precedente e l'elemento successivo.
-  \item ordinata: una lista si dice ordinata se è previsto un ordinamento tra i valori
+     \item \emph{ordinata}: una lista si dice ordinata se è previsto un ordinamento tra i valori
         degli elementi presenti in una lista.
-  \item circolare: il puntatore $\id{prev}$ della testa della lista punta alla coda
+    \item \emph{circolare}: il puntatore $\id{prev}$ della testa della lista punta alla coda
         mentre il puntatore $\id{next}$ della coda della lista punta alla testa
        per cui si può dire che la lista è un anello di elementi.
 \end{itemize}
-
 La specifica di una sequenza, qualsiasi implementazione abbia, è la seguente:
-\textbf{void} insert(\textbf{List} L,\textbf{Item} x):inserisce un elemento in una lista \newline
-\textbf{List*} delete(\textbf{List} L): elimina il primo elemento da una lista \newline
-\textbf{List*} search(\textbf{List} L,\textbf{Item} key): cerca l'elemento key all'interno della lista.\newline
-\textbf{Item} min(\textbf{List} L):calcola e restituisce l'elemento minimo della lista.\newline
-\textbf{Item} max(\textbf{List} L):calcola e restituisce l'elemento massimo della lista.\newline
-\textbf{Item} successor(\textbf{List} L,\textbf{Item} key):calcola l'elemento predecessore di un elemento della lista.\newline
-\textbf{Item} predecessor(\textbf{List} L,\textbf{Item} key):calcola il successore di un elemento della lista.\newline
-
+\begin{minted}{c}
+ void insert(List L, Item x)%inserisce un elemento 
+ List* delete(List L)%elimina il primo elemento
+ List* search(List L, Item key)%cerca l'elemento key
+ Item min(List L)%calcola l'elemento minimo
+ Item max(List L)%calcola l'elemento massimo 
+ Item successor(List L, Item  key)%calcola l'elemento precedente come valore
+ Item predecessor(List L, Item key)%calcola l'elemento successivo come valore 
+\end{minted}
 Forniamo ora un implementazione di una lista doppiamente concatenata non ordinata
 in cui un elemento della lista è composto da un dato chiamato $\id{element}$ e da due
 puntatori, chiamati $\id{prev}$ e $\id{next}$, che puntano all'elemento precedente e successivo.
 
-La prima operazione implementata in una lista è la ricerca di un elemento che opera
-secondo l'algoritmo di ricerca Lineare in quanto non essendo ordinati i valori della lista
-non è possibile implentare la ricerca tramite la ricerca binaria.
+La prima operazione implementata in una lista è la ricerca di un elemento che opera secondo l'algoritmo di ricerca Lineare in quanto non essendo ordinati i valori della lista
+non è possibile implentare la ricerca tramite la ricerca binaria.\newline
 Lo pseudocodice della ricerca di un elemento di una lista è il seguente:
 %Pseudocodice della ricerca di una Lista
 \begin{codebox}
@@ -67,7 +64,7 @@ La ricerca di un elemento da una lista richiede il seguente tempo con i diversi 
 Il secondo metodo in una lista è $\proc{List-Insert}$ in cui si suppone che il valore
 dell'elemento da inserire sia stato già impostato ossia $\id{element}$ abbia già il valore desiderato.
 \begin{codebox}
-\Procname{$\proc{List-Insert}(L,x)$}
+\Procname{$\proc{List-Insert}(L, x)$}
 \li $\attrib{x}{\id{next}} \gets \attrib{L}{\id{head}}$
 \li \If $\attrib{L}{head} \neq \const{nil}$
     \Then
@@ -79,10 +76,8 @@ dell'elemento da inserire sia stato già impostato ossia $\id{element}$ abbia gi
 Il tempo di esecuzione $T(n) = 5c = \Theta(1)$ e tra il caso migliore e peggiore non
 vi è alcuna differenza se non il fatto che non viene eseguita soltanto la terza istruzione.
 
-La rimozione di un elemento da una lista, implementata tramite $\proc{List-Delete}$,
-prevede di darne il puntatore all'elemento alla procedura per cui per effettuare
-la rimozione di un elemento qualsiasi della lista bisogna effettuare la chiamata
-a $\proc{List-Search}$ prima per ottenere l'elemento da eliminare.
+La rimozione di un elemento da una lista, implementata tramite $\proc{List-Delete}$, prevede di darne il puntatore all'elemento alla procedura per cui per effettuare
+la rimozione di un elemento qualsiasi della lista bisogna effettuare la chiamata a $\proc{List-Search}$ prima per ottenere l'elemento da eliminare.\newline
 Lo pseudocodice per la rimozione di un elemento è il seguente:
 %Pseudocodice Rimozione da una Lista
 \begin{codebox}
@@ -108,7 +103,7 @@ Per trovare il massimo e/o il minimo di una lista bisogna scansionare tutta la l
 e scegliere l'elemento con valore massimo/minimo come si farebbe anche se si dovesse
 trovare il massimo di un array; lo pseudocodice del massimo e del minimo sono i seguenti:
 \begin{codebox}
-\Procname{\textbf{List*} $\proc{List-Max}(\textbf{List}L)$}
+\Procname{$\proc{List-Max}(L)$}
 \li \If $\attrib{L}{head} \isequal \const{nil}$
     \Then
 \li                \Return $\const{nil}$
@@ -129,7 +124,7 @@ del massimo di una lista di $n$ elementi richieda $\Theta(n)$ in quanto bisogna
 scansionare tuttti gli elementi per poterne determinare il massimo.
 
 \begin{codebox}
-\Procname{$\textbf{List*} \proc{List-Min}(\textbf{List}L)$}
+\Procname{$\proc{List-Min}(L)$}
 \li \If $\attrib{L}{head} \isequal \const{nil}$
     \Then
 \li                \Return $\const{nil}$
@@ -145,7 +140,6 @@ scansionare tuttti gli elementi per poterne determinare il massimo.
     \End
 \li \Return $\id{min}$
 \end{codebox}
-
 Ovviamente, come anche già notato nel calcolo del massimo di una lista, il tempo di
 esecuzione per il calcolo del minimo è $\Theta(n)$ in quanto bisogna sempre scansionare la lista.
 
@@ -157,14 +151,14 @@ elemento più piccolo come valore dell'elemento dato;ovviamente, come anche già
 per il minimo e il massimo, bisogna scandirre tutta la lista per stabilire il prede/successore
 e lo pseudocodice è il seguente:
 \begin{codebox}
-\Procname{$\textbf{List*} \proc{List-Successor}(\textbf{List}L,\textbf{int} key)$}
+    \Procname{$\proc{List-Successor}(L, \id{key})$}
 \li \If $\attrib{L}{head} \isequal \const{nil}$
     \Then
 \li                \Return $\const{nil}$
 \li $\id{succ} \gets \attrib{L}{head}$
 \li \While $\id{succ} \neq \const{nil}$ and $\id{succ}{value} \leq \id{key}$
     \Do
-           $\id{succ} \gets \attrib{\id{succ}}{\id{next}}$
+\li           $\id{succ} \gets \attrib{\id{succ}}{\id{next}}$
     \End
 \li \If $\id{succ} \isequal \const{nil}$ \Return $\const{nil}$
 \li $\id{elem} \gets \attrib{\id{succ}}{\id{next}}$
@@ -182,14 +176,14 @@ Il tempo di esecuzione è $\Theta(n)$ in quanto sia nel caso migliore che in que
 peggiore bisogna analizzare tutti gli elementi della lista.
 
 \begin{codebox}
-\Procname{$\textbf{List*} \proc{List-Predeccessor}(\textbf{List}L,\textbf{int} key)$}
+    \Procname{$\proc{List-Predeccessor}(L, \id{key})$}
 \li \If $\attrib{L}{head} \isequal \const{nil}$
     \Then
 \li                \Return $\const{nil}$
 \li $\id{prev} \gets \attrib{L}{head}$
 \li \While $\id{prev} \neq \const{nil}$ and $\id{prev}{value} \geq \id{key}$
     \Do
-           $\id{prev} \gets \attrib{\id{prev}}{\id{next}}$
+\li           $\id{prev} \gets \attrib{\id{prev}}{\id{next}}$
     \End
 \li \If $\id{prev} \isequal \const{nil}$ \Return $\const{nil}$
 \li $\id{elem} \gets \attrib{\id{prev}}{\id{next}}$
@@ -206,15 +200,14 @@ peggiore bisogna analizzare tutti gli elementi della lista.
 Come anche per il successore, il tempo di esecuzione per trovare il predecessore di
 un elemento è $\Theta(n)$ in quanto bisogna analizzare tutti gli elementi di una lista.
 
-Le altre implementazioni delle diverse tipologie di liste sono similari soltanto
-che implementano o meno l'ordinamento tra gli elementi, considerano o meno il puntatore prev
-ed altri considerazioni fatte in base alla tipologia di lista.
+Le altre implementazioni delle diverse tipologie di liste sono similari soltanto che implementano o meno l'ordinamento tra gli elementi,
+considerano o meno il puntatore $\id{prev}$ ed altre considerazioni fatte in base alla tipologia di lista.
 
-Un implementazione alternativa della sequenza, anche se meno intutiva e naturale
-di quella presentata fino ad ora, è quella tramite la memorizzazione degli elementi
-in un vettore, in cui la posizione di un elemento corrisponde all'indice del vettore.\newline
-Questa implementazione permette di passare in maniera costante da un elemento ad un altro,
-di accorgersi se si supera un estremo della sequenza, di modificare o leggere il valore
-di un elemento anche tramite un accesso diretto tramite indice, ma sfortunatamente
-richiede di conoscere la dimensione massima della sequenza per evitare sprechi di memoria
-e il tempo di inserimento e cancellazione richiede la scansione della sequenza per cui a tempo $\Theta(n)$.
+Un implementazione alternativa della sequenza, anche se meno intutiva e naturale di quella presentata fino ad ora,
+è quella tramite la memorizzazione degli elementi in un vettore, in cui la posizione di un elemento corrisponde all'indice del vettore.\newline
+Questa implementazione permette di passare in maniera costante da un elemento ad un altro, di accorgersi se si supera un estremo della sequenza,
+di modificare o leggere il valore di un elemento anche tramite un accesso diretto tramite indice, ma sfortunatamente richiede di conoscere 
+la dimensione massima della sequenza per evitare sprechi di memoria e il tempo di inserimento e cancellazione richiede la scansione della sequenza quindi a tempo $\Theta(n)$.
+
+Si evita di mostrare lo pseudocodice di questa implementazione alternativa perchè viene usata raramente e perchè conoscendo il funzionamento della sequenza è banale
+implementare le sue operazioni mediante un vettore di elementi.

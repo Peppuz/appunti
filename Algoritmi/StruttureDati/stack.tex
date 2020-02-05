@@ -1,22 +1,19 @@
 %Paragrafo sulle stack
 \section{Stack}
-Lo \emph{stack}, è una struttura dati di tipo \emph{LIFO}(Last in first out), utilizzata
-in tutti i linguaggi di programmazione per effettuare la memorizzazione di tutti i dati
-di tipo statico e dei record di attivazione, che può essere vista come un caso particolare
-di sequenza in cui l'inserimento avviene alla fine della sequenza e la rimozione avviene sempre in fondo.
+Lo \emph{stack}, è una struttura dati di tipo \emph{LIFO}(Last in first out), utilizzata in tutti i linguaggi di programmazione per effettuare 
+la memorizzazione di tutti i dati di tipo statico e dei record di attivazione, che può essere vista come un caso particolare di sequenza 
+in cui l'inserimento avviene alla fine della sequenza e la rimozione avviene sempre in fondo.\newline
+Uno stack può essere implementato attraverso array oppure delle liste a seconda della scelta implementatica e della capacità di stabilire un limite massimo di elementi utilizzati.
 
-Uno stack può essere implementato attraverso array oppure delle liste a seconda della
-scelta implementatica e della capacità di stabilire un limite massimo di elementi utilizzati.
-
-Essendo lo stack un particolare tipo di sequenza, essa può essere simulata tramite le operazioni di una lista,
-in particolare quella singolarmente concatenata, però è prassi comune utilizzare
-nomi diversi per indicarne le operazioni per migliore chiarezza.
+Essendo lo stack un particolare tipo di sequenza, essa può essere simulata tramite le operazioni di una lista, in particolare quella singolarmente concatenata,
+anche se  è prassi comune utilizzare nomi diversi per indicarne le operazioni per migliore chiarezza.
 
 %specifica operazioni su uno stack
-\textbf{void} $\proc{push}(S,x)$ inserisce un elemento in testa allo stack \newline
-\textbf{Item*} $\proc{pop}(S)$ rimuove l'elemento in testa allo stack \newline
-\textbf{boolean} $\proc{stackEmpty}$ indica se lo stack è vuoto o meno.
-
+\begin{minted}{c}
+ void push(S,x) %inserisce un elemento in testa allo stack 
+ Item* pop(S) %rimuove l'elemento in testa allo stack  
+ Boolean stackEmpty() %indica se lo stack contiene elementi.
+\end{minted}
 %pseudocodice delle operazioni dello stack
 Lo pseudocodice delle operazioni di uno stack implementate tramite liste sono:
 \begin{codebox}
@@ -74,5 +71,3 @@ La realizzazione delle operazioni dello stack tramite un vettore sono le seguent
 \li \Return $\attrib{S}{top} \leq 0$
 \end{codebox}
 
-Un famoso esempio di utilizzo dello stack è quello di valutare delle espressioni
-algebriche scritte in input tramite stringhe come cercheremo di fare ora:

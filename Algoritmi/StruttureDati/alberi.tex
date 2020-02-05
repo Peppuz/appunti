@@ -1,0 +1,48 @@
+%Paragrafo sugli Alberi
+\section{Alberi}
+Si definisce come \emph{Albero libero}, un DAG connesso con un solo nodo sorgente, detto \emph{radice}, in cui ogni nodo diverso dalla radice ha un solo nodo entrante
+mentre i nodi privi di archi entranti sono detti \emph{foglie} dell'albero.\newline
+
+
+%Inserire esempi e proprietà degli Alberi
+%\input{Esempi/alberi}Esempi Alberi!!!!
+
+L'albero è una struttura matematica importantissima in informatica utilizzata per rappresentare una serie di situazioni, come ad esempio organizzazioni gerarchiche di dati,
+procedimenti enumerativi o decisionali, e ve ne esistono un'infinita di implementazioni di alberi.\newline
+Solitamente si implementano ed utilizzano di solito gli alberi binari, in cui ogni nodo può avere al massimo due nodi uscenti, ma anche gli alberi liberi
+non avendo questa limitazione possono essere usati ed utili per cui forniremo un implementazione in pseudocodice sia degli alberi liberi che di quelli binari.
+
+%Inserire immagine albero binario
+
+%Metodi di visita di un albero
+I metodi di visita di un albero binario sono 3:
+\begin{itemize}
+  \item inorder: si visiona prima il sottoalbero sinistro poi il nodo e infine il sottoalbero destro
+  \item preorder: si visiona prima il nodo poi i suoi sottoalberi
+  \item postorder: si visionano prima i sottoalberi ed infine il nodo
+\end{itemize}
+Il primo metodo di visita viene usato soprattutto negli alberi binari di ricerca per
+stampare gli elementi dell'albero in maniera crescente mentre in un albero binario
+normale la scelta di quale metodo di visita utilizzare è inifluente e ogni programmatore
+sceglie nell'utilizzo quale metodo di visita utilizzare per stampare l'albero.
+Il cammino dalla radice ad un elemento foglia dell'albero richiede al massimo $O(h)$,
+in cui $h$ è l'altezza dell'albero, in quanto richiede di scendere di livello fino
+ad arrivare alle foglie, che si trovano al livello $h$.
+
+La specifica di un albero binario, in cui ogni implementazione per essere valida deve prevedere:\newline
+\begin{minted}{python}
+    Item search(Tree T,Item k);
+    void insertLeft(Tree T,Item x);
+    void insertyRight(Tree T, Item x);
+    Item deleteLeft(Tree T);
+    Item deleteRight(Tree T);
+    Item parent(Tree T);
+    Item left(Tree T);
+    Item right(Tree T);
+\end{minted}
+L'implementazione di un albero binario avviene solitamente mediante l'uso di puntatori, usando un puntatore per memorizzare il padre di un nodo, una per memorizzare
+il figlio sinistro ed infine uno per poter riconoscere il figlio destro di un nodo.\newline
+Lo pseudocodice delle operazioni di un albero binario si può trovare in seguito nel listato \ref{alg:binaryTree}, con i costi computazionale delle operazioni si 
+può trovare in \ref{img:binaryTreeCost}.
+
+

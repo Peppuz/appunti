@@ -1,0 +1,35 @@
+%Paragrafo sul Teorema dell'Esperto
+\section{Teorema dell'Esperto}
+Il teorema dell'Esperto è una per risolvere in maniera semplice ed immediata
+le equazioni di ricorrenza della forma $T(n) = aT(\frac{n}{b}) + f(n)$
+dove $a \geq 1 , b > 1$ e $f(n)$ una funzione asintoticamente positiva.
+Utilizzare il metodo dell'esperto richiede di memorizzare tre diversi casi e grazie
+a quelli posso risolvere una grande quantità di equazione di ricorrenza in maniera semplice e veloce.
+
+\begin{thm}[Master Theorem]
+Sia $a \geq 1, b > 1$ e $f(n)$ una funzione asintoticamente positiva e sia abbia
+un equazione di ricorrenza nella forma $T(n) = aT(\frac{n}{b}) + f(n)$ allora:
+\begin{enumerate}
+  \item se $f(n) = O(n^{\log _b  a - \epsilon})$ per $\epsilon > 0$, allora $T(n) = \Theta(n^{\log _b  a})$
+  \item se $f(n) = \Theta(n^{\log _b a})$, allora $T(n) = \Theta(n^{\log _b  a} \log n)$
+  \item se $f(n) = \Omega(n^{\log _b  a + \epsilon}$) per $\epsilon > 0$ e se
+        $af(\frac{n}{b}) \leq cf(n)$ per una costante $c < 1$ e $n$ sufficientemente grande,
+        allora $T(n) = \Theta(f(n))$
+\end{enumerate}
+\end{thm}
+Intuitivamente confrontiamo in tutti e tre i casi $f(n)$ con $n ^{\log _ b  a}$ e il più grande tra di essi determina la soluzione della ricorrenza
+ma bisogna stare attenti che vi deve essere una differenza polinomiale, controllata tramite $\epsilon$ tra $f(n)$ e $n^{\log _b  a}$.
+
+%Inserire esempi Metodo dell'Esperto
+Esempio:\newline
+Data un equazione $T(n) = 2T(\frac{n}{2}) + cn$ determinare il tempo tramite il metodo dell'Esperto.
+$f(n) = \Theta(n^{\log _ 2 2}) = \Theta(n)$ per cui si applica il secondo caso del Teorema dell'esperto
+quindi $T(n) = \Theta(n^{\log _2 2} \log n) = \Theta(n \log n)$.
+
+Ora effettuiamo una dimostrazione del metodo dell'esperto, poco utile per poterla applicare ma fondamentale per capirne il suo funzionamento.
+\begin{proof}
+La dimostrazione del metodo dell'esperto si divide in due parti:prima si analizza il caso in cui l'equazione di ricorrenza sia definita solo con potenze esatte di
+$b > 1$ ovvero per $1, b, b^2, \dots$ e ciò ci permette di intuire perchè il teorema dell'esperto risulta verificato mentre poi andremo ad estentere l'analisi a tutti 
+i numeri positivi, andando ad usare una tecnica matematica per la gestione di floor e ceiling.\newline
+In questa dimostrazione si abuserà un pochino della notazione asintotica 
+\end{proof}

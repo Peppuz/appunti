@@ -1,0 +1,14 @@
+3 Inserire esempi metodo di Sostituzione
+5 Fare gli algoritmi probabilistici
+6 fare analisi caso medio del QuickSort(farla quando conosco la distribuzione di probabilità)
+8 fare l'Ordinamento in tempo lineare
+10 inserire immagini di liste con spiegazioni delle diverse tipologie di liste
+   tramite prelievo dell'immagine con paint.
+13 Fare Heap ed Albero binario
+14 fare immagini albero binario di ricerca e analisi tempo procedure albero binario di ricerca
+15 fare procedure di inserimento e cancellazione nodo albero di ricerca
+16 fare Tabelle Hash e Alberi Rosso Neri
+17 fare la Programmazione Dinamica 
+18 Fare gli algoritmi greedy
+19 Fare i grafi e tutti gli algoritmi di visita
+

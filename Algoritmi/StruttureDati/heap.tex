@@ -1,0 +1,75 @@
+%Capitolo sul Heap
+\chapter{Heap}
+L'$\proc{heapSort}$ è un algoritmo di ordinamento che ordina sul posto, ossia solo un numero costante di elementi della sequenza
+sono salvati fuori dalla sequenza di input ed inoltre utilizza la struttura dati \emph{heap} per gestire le informazioni.\newline
+Lo \emph{heap} è una struttura dati rappresentata da un array $A$ che può essere vista come un albero binario
+in cui ogni nodo dell'albero è un elemento dell'array, chiamato \emph{chiave}.\newline
+L'array $A$ ha 2 attributi: $\attrib{A}{length}$ per rappresentare la lunghezza dell'array
+e $\attrib{A}{heap-size}$ che indica il numero degli elementi dell'heap memorizzati in cui $0 \leq \attrib{A}{heap-size} \leq \attrib{A}{length}$.\newline 
+Ci sono due tipologie di Heap:\emph{max-heap}, utilizzato nel heapSort e \emph{min-heap}, utilizzato principalmente per implementare code prioritarie;
+queste due tipologie verranno analizzate entrambe in seguito in questo paragrafo.
+
+%Fare disegno albero e array del heap
+
+%Fare pseudocodice immediato di left,right e parent
+Per poter effettuare l'accesso ai nodi left,right e parent si utilizzano le seguenti 3 procedure
+\begin{codebox}
+    \Procname{$\proc{left(i)}$}
+    \li \Return 2i 
+\end{codebox}
+\begin{codebox}
+    \Procname{$\proc{right(i)}$}
+    \li \Return 2i + 1
+\end{codebox}
+\begin{codebox}
+    \Procname{$\proc{parent(i)}$}
+    \li \Return \cfloor \frac{i}{2} \rfloor 
+\end{codebox}
+
+Nei moderni computer le procedure $\proc{left}, \proc{right}$ e $\proc{parent}$ effettuano il loro lavoro mediante una solo istruzione, attraverso uno shift di un solo bit
+verso sinistra in caso della procedura left e right mentre in caso della parent viene effettuato un shift di un solo bit verso destra.\newline
+Una buona implementazione del heapsort consiste nell'implementare queste procedure come delle macro.
+
+In un $\proc{max-heap}$ è soddisfatta per ogni nodo $i$ la seguente proprietà:
+$A[\proc{Parent}(i)] \geq A[i]$ per cui il massimo valore della array si trova nella radice dell'heap mentre in un $\proc{min-heap}$ avviene il contrario 
+ossia in ogni nodo si ha $A[\proc{Parent}(i)] \leq A[i]$ e la radice rappresenta l'elemento minimo dell'array.\newline
+Essendo lo heap definito tramite un albero binario la sua altezza è $\Theta(\log n)$, definita come il più lungo percorso per raggiungere i nodi foglia a partire dalla radice.
+
+\begin{figure}
+    \caption{Max-Heapify implementation}
+    \label{alg:maxHeapify}
+    \begin{codebox}
+        \li $l \gets \proc{Left(i)}$
+        \li $r \gets \proc{Right(i)}$
+        \li \If $l \leq \attrib{A}{heap-size}$ \And $A[l] > A[i]$
+        \li             $\id{largest} \gets l$
+        \li \Else $\id{largest} \gets i$
+        \li \If $r \leq \attrib{A}{heap-size}$ \And $A[r] > A[\id{largest}]$
+        \li             $\id{largest} \gets r$
+            \EndIf
+        \li \If $\id{largest} \neq i$
+        \li      $\proc{Swap(A[i], A[\id{largest}])}$
+        \li      $\proc{Max-Heapify(A, largest)}$
+    \end{codebox}
+\end{figure}
+La procedura $\proc{maxHeapify}$ \ref{alg:maxHeapify} controlla se l'elemento $i$-esimo rispetta la proprietà del max-heap ossia che il figlio sinistro e destro di $i$ sia 
+inferiore al valore dell'elemento $i$-esimo e in caso non sia rispettato viene sostituito il più grande tra $A[\proc{Left(i)}], A[\proc{Right(i)}], A[i]$ e lo sostituisce 
+al posto di $A[i]$ poi si applica l'algoritmo Max-Heapify al sottoalbero dell'elemento maggiore, che non è detto che rispetta ancora
+la proprietà di max heap dopo averlo sostituito con $A[i]$.
+
+Il tempo di esecuzione di $\proc{Max-Heapify}$ prevede di avere un tempo $\Theta(1)$ per trovare il valore maggiore e scambiarlo con $A[i]$ mentre il tempo per 
+risolvere l'algoritmo al sottoalbero prevede di avere al massimo $\frac{2n}{3}$  nodi per cui l'equazione di ricorrenza è la seguente
+\[ T(n) \leq T(\frac{2n}{3}) + \Theta(1) \]
+che per il teorema dell'esperto è $T(n) = O(\log n)$ o in maniera generale dato un heap di altezza $h$ il tempo di esecuzione di $\proc{Max-Heapify}$ è di $O(h)$.
+
+
+
+
+%Strutture dati aggiornate
+%suffix-tree
+%FM-index
+%suffix-array
+%wavelet-tree
+%Bloom filters
+%Sequence Bloom trees
+%Tabelle Hash
